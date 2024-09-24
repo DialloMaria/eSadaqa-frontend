@@ -1,1 +1,77 @@
-<p>inscription works!</p>
+<div class="register-page">
+  <div class="form-container animate__animated animate__fadeIn">
+    <form>
+      <h2 class="form-title animate__animated animate__bounce">Inscription</h2>
+      <!-- Informations Personnelles -->
+      <div class="step hidden">
+        <h3 class="animate__animated animate__backInLeft">Informations Personnelles</h3>
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input type="text" placeholder="Nom" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input type="text" placeholder="Prénom" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-map-marker-alt"></i>
+          <input type="text" placeholder="Adresse" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-phone"></i>
+          <input type="tel" placeholder="Téléphone" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email" placeholder="Email" required />
+        </div>
+        <button type="button" class="next-btn animate__animated animate__bounce">Suivant</button>
+      </div>
+
+      <!-- Informations Structure -->
+  <div class="step  ">
+    <h3 class="animate__animated animate__backInLeft">Informations sur la Structure</h3>
+    <div class="input-group-container">
+      <div class="input-group">
+        <i class="fas fa-building"></i>
+        <input type="text" placeholder="Nom de la structure" required />
+      </div>
+      <div class="input-group">
+        <i class="fas fa-envelope"></i>
+        <input type="email" placeholder="Email de la structure" required />
+      </div>
+      <div class="input-group">
+        <i class="fas fa-file-alt"></i>
+        <textarea placeholder="Description" required></textarea>
+      </div>
+      <div class="input-group">
+        <i class="fas fa-tags"></i>
+        <select required>
+          <option value="" disabled selected>Type de structure</option>
+          <option value="micro">Micro</option>
+          <option value="macro">Macro</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <i class="fas fa-map-signs"></i>
+        <input type="text" placeholder="Siège" required />
+      </div>
+      <div class="input-group">
+        <i class="fas fa-image"></i>
+        <input type="text" placeholder="URL du Logo (optionnel)" />
+      </div>
+      <div class="input-group">
+        <i class="fas fa-calendar-alt"></i>
+        <input type="date" required />
+      </div>
+      <div class="input-group">
+        <i class="fas fa-file-alt"></i>
+        <input type="text" placeholder="Numéro de Récepissé" required />
+      </div>
+    </div>
+    <button type="submit" class="submit-btn animate__animated animate__bounce">Envoyer</button>
+  </div>
+
+    </form>
+  </div>
+</div>

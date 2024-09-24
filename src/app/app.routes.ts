@@ -9,12 +9,12 @@ export const routes: Routes = [
 
 
 // Routes portails et par defaut
-  {path:'**', pathMatch:'full', redirectTo:'accueil'},
-  {path: 'accueil', component: AccueilComponent},
+  // {path:'**', pathMatch:'full', redirectTo:'accueil'},
+  // {path: 'accueil', component: AccueilComponent},
 
 // Routes pour l'authentification
   {path: 'inscription', component:InscriptionComponent},
-  {path: 'conxeion', component:ConnexionComponent},
+  {path: 'connexion', component:ConnexionComponent},
 
 
   // Route pour les Donateurs
