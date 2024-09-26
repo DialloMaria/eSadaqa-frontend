@@ -1,1 +1,28 @@
-<p>accueil works!</p>
+<div class="container">
+  <!-- Section du Menu -->
+  <header class="header">
+    <nav class="navbar animate__animated animate__fadeInDown">
+      <a class="logo" href="#">
+        <img src="assets/logo.png" alt="Logo" width="120">
+      </a>
+      <ul class="nav-links">
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#">À propos</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <a class="btn-inscription" [routerLink]="['/connexion']">Inscription</a>
+    </nav>
+  </header>
+
+  <!-- Section de la Bannière -->
+  <section class="banner">
+    <div class="banner-content animate__animated animate__fadeIn">
+      <h1 class="banner-title animate__animated animate__fadeInDown">Bienvenue sur notre portail</h1>
+      <p class="banner-text animate__animated animate__fadeInUp">Explorez notre site pour découvrir des fonctionnalités incroyables.</p>
+    </div>
+    <div class="custom-design animate__animated animate__bounceIn">
+      <div class="circle"></div>
+      <div class="square"></div>
+    </div>
+  </section>
+</div>

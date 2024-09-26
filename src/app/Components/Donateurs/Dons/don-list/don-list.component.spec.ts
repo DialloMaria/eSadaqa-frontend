@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DonComponent } from './don.component';
+import { DonListComponent } from './don-list.component';
 
-describe('DonComponent', () => {
-  let component: DonComponent;
-  let fixture: ComponentFixture<DonComponent>;
+describe('DonListComponent', () => {
+  let component: DonListComponent;
+  let fixture: ComponentFixture<DonListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DonComponent]
+      imports: [DonListComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DonComponent);
+    fixture = TestBed.createComponent(DonListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -3,7 +3,7 @@
   <header class="header">
     <div class="header-logo">eSadaqa</div>
     <nav class="nav-links">
-      <a href="#">Accueil</a>
+      <a  [routerLink]="['/accueil']">Accueil</a>
       <a href="#">À propos</a>
       <a href="#">Contact</a>
     </nav>
@@ -11,19 +11,29 @@
   </header>
 
   <!-- Page de connexion -->
-  <div class="login-page">
-    <div class="form-container">
-      <form class="login-form">
-        <h2 class="form-title">Connexion</h2>
-        <div class="input-group">
-          <input type="email" id="email" placeholder="Email" required>
+<div class="login-page">
+  <div class="form-container">
+    <form [formGroup]="loginForm" class="login-form" (ngSubmit)="login()">
+      <h2 class="form-title">Connexion</h2>
+      <div class="input-group">
+        <input type="email" formControlName="email" placeholder="Email" required>
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+          <small *ngIf="loginForm.get('email')?.errors?.['required']">L'email est requis.</small>
+          <small *ngIf="loginForm.get('email')?.errors?.['email']">Email invalide.</small>
         </div>
-        <div class="input-group">
-          <input type="password" id="password" placeholder="Mot de passe" required>
+      </div>
+      <div class="input-group">
+        <input type="password" formControlName="password" placeholder="Mot de passe" required>
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.['touched']">
+          <small *ngIf="loginForm.get('password')?.errors?.['required']">Le mot de passe est requis.</small>
+          <small *ngIf="loginForm.get('password')?.errors?.['minlength']">Le mot de passe doit contenir au moins 6 caractères.</small>
         </div>
-        <button type="submit" class="submit-btn">Se connecter</button>
-        <p class="signup-text">Pas encore de compte ? <a href="#">S'inscrire</a></p>
-      </form>
-    </div>
+      </div>
+      <button type="submit" class="submit-btn" [disabled]="loginForm.invalid">Se connecter</button>
+      <p class="signup-text">
+        Pas encore inscrit ? <a [routerLink]="['/inscription']">Inscrivez-vous ici</a>
+      </p>
+    </form>
   </div>
+</div>
 </body>
