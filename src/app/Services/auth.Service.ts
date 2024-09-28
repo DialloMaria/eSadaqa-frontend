@@ -97,6 +97,8 @@ export class AuthService{
     // method to login
   // Requête POST pour l'authentification
   login(userObject: { email: string; password: string }): Observable<any> {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.post(`${apiUrl}/login`, userObject);
   }
 

@@ -42,7 +42,7 @@ export class ConnexionComponent {
 
             // Vérifie les rôles et redirige en conséquence
             if (response.user.roles.some((role: RoleModel) => role.name === 'donateur')) {
-              this.router.navigateByUrl('dons');
+              this.router.navigateByUrl('produits');
             } else if (response.user.roles.some((role: RoleModel) => role.name === 'organisation')) {
               this.router.navigateByUrl('organisation');
             } else if (response.user.roles.some((role: RoleModel) => role.name === 'beneficiaire')) {

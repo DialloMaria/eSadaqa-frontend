@@ -4,6 +4,9 @@ import { ConnexionComponent } from './Components/Authentifications/Connexions/co
 import { AccueilComponent } from './Components/Portail/accueil.component';
 import { DonListComponent } from './Components/Donateurs/Dons/don-list/don-list.component';
 import { DonFormComponent } from './Components/Donateurs/Dons/don-form/don-form.component';
+import { ProduitListComponent } from './Components/Donateurs/Produits/produit-list/produit-list.component';
+import { ProduitFormComponent } from './Components/Donateurs/Produits/produit-form/produit-form.component';
+import { ProduitDetailComponent } from './Components/Donateurs/Produits/produit-detail/produit-detail.component';
 
 export const routes: Routes = [
 
@@ -27,6 +30,10 @@ export const routes: Routes = [
   // {path: 'organisation' , component: OrganisationComponent},
 
 
+  { path: 'produits', component: ProduitListComponent }, // Liste de produits
+  { path: 'produits/ajouter', component: ProduitFormComponent }, // Ajouter un produit
+  { path: 'produits/:id', component: ProduitDetailComponent }, // Détail d'un produit
+  { path: 'produits/:id/modifier', component: ProduitFormComponent }, // Modifier un produit
 
   // Route pour les Beneficiaires
   // {path: 'beneficiaire' , component: BeneficiaireComponent},

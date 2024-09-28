@@ -3,6 +3,7 @@ import { Route, Router, RouterLink } from '@angular/router';
 import { DonModel } from '../../../../Models/Don.model';
 import { DonService } from './../../../../Services/don.Services';
 import { CommonModule } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-don-list',
@@ -14,7 +15,7 @@ import { CommonModule } from '@angular/common';
 export class DonListComponent implements OnInit {
   dons: DonModel[] = [];
 
-  constructor(private DonService: DonService, private router: Router) {}
+  constructor(private DonService: DonService, private router: Router,private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.getAllDons();
@@ -66,6 +67,17 @@ export class DonListComponent implements OnInit {
     console.error('Token non trouvé ou ID invalide.');
   }
 }
+// openAddDonDialog(): void {
+//   const dialogRef = this.dialog.open(DonModalComponent, {
+//     width: '400px',
+//   });
+
+//   dialogRef.afterClosed().subscribe(result => {
+//     if (result) {
+//       // Optionnel : Rafraîchir la liste des dons après ajout
+//     }
+//   });
+// }
 }
 
 

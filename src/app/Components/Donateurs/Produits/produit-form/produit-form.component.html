@@ -1,10 +1,10 @@
 <h2>{{ isEditMode ? 'Modifier un Produit' : 'Ajouter un Produit' }}</h2>
 
-<form [formGroup]="ProduitForm" (ngSubmit)="submit()">
+<form [formGroup]="produitForm" (ngSubmit)="submit()">
   <div class="form-group">
     <label for="libelle">Libellé</label>
     <input id="libelle" formControlName="libelle" class="form-control" type="text" placeholder="Libellé" required>
-    <div *ngIf="ProduitForm.get('libelle')?.invalid && ProduitForm.get('libelle')?.touched" class="text-danger">
+    <div *ngIf="produitForm.get('libelle')?.invalid && produitForm.get('libelle')?.touched" class="text-danger">
       Le libellé est requis.
     </div>
   </div>
@@ -12,7 +12,7 @@
   <div class="form-group">
     <label for="quantite">Quantité</label>
     <input id="quantite" formControlName="quantite" class="form-control" type="number" placeholder="Quantité" required>
-    <div *ngIf="ProduitForm.get('quantite')?.invalid && ProduitForm.get('quantite')?.touched" class="text-danger">
+    <div *ngIf="produitForm.get('quantite')?.invalid && produitForm.get('quantite')?.touched" class="text-danger">
       La quantité est requise.
     </div>
   </div>
@@ -34,30 +34,3 @@
 
   <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Modifier' : 'Ajouter' }}</button>
 </form>
-
-<hr>
-
-<h3>Liste des Produits</h3>
-<table class="table">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Libellé</th>
-      <th>Quantité</th>
-      <th>Montant</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let produit of produits">
-      <td>{{ produit.id }}</td>
-      <td>{{ produit.libelle }}</td>
-      <td>{{ produit.quantite }}</td>
-      <td>{{ produit.montant }}</td>
-      <td>
-        <button class="btn btn-warning" (click)="editProduit(produit)">Modifier</button>
-        <button class="btn btn-danger" (click)="deleteProduit(produit.id)">Supprimer</button>
-      </td>
-    </tr>
-  </tbody>
-</table>

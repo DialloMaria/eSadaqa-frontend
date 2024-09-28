@@ -37,18 +37,42 @@ export class DonService {
     return this.http.delete<void>(`${apiUrl}/don/suppression/${id}`, { headers });
   }
   // Ajouter un nouveau don
-  addDon(don: DonModel): Observable<DonModel> {
-    return this.http.post<DonModel>(`${apiUrl}/donateur/`, don);
+  // addDon(don: DonModel): Observable<DonModel> {
+  //   const token = localStorage.getItem('access_token');
+  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  //   return this.http.post<DonModel>(`${apiUrl}/don/ajout`, don ,{ headers });
+  // }
+
+  addDon(donData: FormData): Observable<any> {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    // Pas de typage avec DonModel ici
+    return this.http.post<DonModel>(`${apiUrl}/don/ajout`, donData, { headers });
   }
+
+
+
+  // Modifier un don
+// Méthode pour mettre à jour un don avec FormData
+// updateDon(id: number, donData: FormData): Observable<DonModel> {
+//   const token = localStorage.getItem('access_token');
+//   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+//   return this.http.put<DonModel>(`${apiUrl}/don/modification/${id}`, donData, { headers });
+// }
+updateDon(id: number, donData: FormData): Observable<DonModel> {
+  const token = localStorage.getItem('access_token');
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+  return this.http.post<DonModel>(`${apiUrl}/don/modification/${id}`, donData, { headers });
+}
+
 
   // Récupérer un don par ID
   getDonById(id: number): Observable<DonModel> {
-    return this.http.get<DonModel>(`${apiUrl}/${id}`);
-  }
-
-  // Modifier un don
-  updateDon(id: number, don: DonModel): Observable<DonModel> {
-    return this.http.put<DonModel>(`${apiUrl}/${id}`, don);
+    const token = this.authService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<DonModel>(`${apiUrl}/don/modification/${id}`, { headers });
   }
 
   // Supprimer un don

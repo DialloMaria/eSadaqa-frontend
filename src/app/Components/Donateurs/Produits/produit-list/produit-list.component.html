@@ -1,0 +1,27 @@
+
+<h3>Liste des Produits</h3>
+<a routerLink="/produits/ajouter" class="btn btn-primary mb-3">Ajouter produit</a>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Libellé</th>
+      <th>Quantité</th>
+      <th>Montant</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let produit of produits">
+      <td>{{ produit.id }}</td>
+      <td>{{ produit.libelle }}</td>
+      <td>{{ produit.quantite }}</td>
+      <td>{{ produit.montant }}</td>
+      <td>
+        <button class="btn btn-warning" (click)="editProduit(produit)">Modifier</button>
+        <button class="btn btn-danger" (click)="deleteProduit(produit.id)">Supprimer</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

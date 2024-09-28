@@ -1,4 +1,4 @@
-export interface TypeProduitModel {
+export interface ProduitModel {
   id: number;
   libelle: string;
   quantite?: number | null; // nullable

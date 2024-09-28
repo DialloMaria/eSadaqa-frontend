@@ -1,21 +1,41 @@
-<div class="container my-5">
-  <h2 class="text-center mb-4">Liste des Dons</h2>
-  <a routerLink="/dons/add" class="btn btn-primary mb-3">Ajouter un Don</a>
+  <div class="container my-5">
+    <h2 class="text-center mb-4">Liste des Dons</h2>
+    <a routerLink="/dons/add" class="btn btn-primary mb-3">Ajouter un Don</a>
 
-  <div class="row">
-    <div class="col-md-4 mb-4" *ngFor="let don of dons">
-      <div class="card don-card animate-card">
-        <img [src]="don.image || 'https://via.placeholder.com/300'" class="card-img-top" alt="{{ don.libelle }}">
-        <div class="card-body">
-          <h5 class="card-title">{{ don.libelle }}</h5>
-          <p class="card-text">{{ don.description }}</p>
-          <p><strong>Catégorie:</strong> {{ don.categorie }}</p>
-          <p><strong>Status:</strong> {{ don.status }}</p>
-          <a routerLink="/dons/{{ don.id }}" class="btn btn-info btn-sm">Voir</a>
-          <a routerLink="/dons/edit/{{ don.id }}" class="btn btn-warning btn-sm">Modifier</a>
-          <button class="btn btn-danger btn-sm" (click)="deleteDon(don.id)">Supprimer</button>
+    <div class="row">
+      <div class="col-md-4 mb-4" *ngFor="let don of dons">
+        <div class="card don-card animate-card">
+          <img [src]="don.image || 'https://via.placeholder.com/300'" class="card-img-top" alt="{{ don.libelle }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ don.libelle }}</h5>
+            <p class="card-text">{{ don.description }}</p>
+            <p><strong>Catégorie:</strong> {{ don.categorie }}</p>
+            <p><strong>Status:</strong> {{ don.status }}</p>
+            <a routerLink="/dons/{{ don.id }}" class="btn btn-info btn-sm">Voir</a>
+            <a routerLink="/dons/edit/{{ don.id }}" class="btn btn-warning btn-sm">Modifier</a>
+            <button class="btn btn-danger btn-sm" (click)="deleteDon(don.id)">Supprimer</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+
+
+
+<body>
+  <div class="card">
+    <img src="Group 1000004320.png" alt="Enfant" class="card-image">
+    <div class="card-content">
+        <h2 class="card-title">Lorem lorem lorem lorem</h2>
+        <p class="card-description">Un projet pour aider les enfant en difficulté ...</p>
+        <div class="card-buttons">
+            <button class="btn detail">Détail</button>
+            <button class="btn modify">Modifier</button>
+            <button class="btn delete">Supprimer</button>
+        </div>
+    </div>
+  </div>
+</body>
+
+
+
