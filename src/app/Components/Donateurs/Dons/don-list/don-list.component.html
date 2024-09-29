@@ -11,7 +11,7 @@
             <p class="card-text">{{ don.description }}</p>
             <p><strong>Catégorie:</strong> {{ don.categorie }}</p>
             <p><strong>Status:</strong> {{ don.status }}</p>
-            <a routerLink="/dons/{{ don.id }}" class="btn btn-info btn-sm">Voir</a>
+            <a  [routerLink]="['/dons', don.id]"class="btn btn-info btn-sm">Voir</a>
             <a routerLink="/dons/edit/{{ don.id }}" class="btn btn-warning btn-sm">Modifier</a>
             <button class="btn btn-danger btn-sm" (click)="deleteDon(don.id)">Supprimer</button>
           </div>

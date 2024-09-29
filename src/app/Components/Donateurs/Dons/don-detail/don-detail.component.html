@@ -1,1 +1,28 @@
-<p>don-detail works!</p>
+<div *ngIf="don"  class="container my-5">
+  <h2 class="text-center mb-4">{{ don.libelle }}</h2>
+
+  <div class="row">
+    <div class="col-md-6">
+      <img [src]="don.image || 'https://via.placeholder.com/300'" alt="{{ don.libelle }}" class="img-fluid">
+    </div>
+    <div class="col-md-6">
+      <div class="card p-3">
+        <h5 class="card-title">Description</h5>
+        <p class="card-text">{{ don.description }}</p>
+
+        <h5 class="card-title">Catégorie</h5>
+        <p class="card-text">{{ don.categorie }}</p>
+
+        <h5 class="card-title">Adresse</h5>
+        <p class="card-text">{{ don.adresse }}</p>
+
+        <h5 class="card-title">Status</h5>
+        <p class="card-text">{{ don.status }}</p>
+
+        <div class="mt-3">
+          <a routerLink="/dons/edit/{{ don.id }}" class="btn btn-warning">Modifier</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

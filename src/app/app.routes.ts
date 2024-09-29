@@ -7,6 +7,7 @@ import { DonFormComponent } from './Components/Donateurs/Dons/don-form/don-form.
 import { ProduitListComponent } from './Components/Donateurs/Produits/produit-list/produit-list.component';
 import { ProduitFormComponent } from './Components/Donateurs/Produits/produit-form/produit-form.component';
 import { ProduitDetailComponent } from './Components/Donateurs/Produits/produit-detail/produit-detail.component';
+import { DonDetailComponent } from './Components/Donateurs/Dons/don-detail/don-detail.component';
 
 export const routes: Routes = [
 
@@ -25,6 +26,7 @@ export const routes: Routes = [
 
   { path: 'dons', component: DonListComponent },
   { path: 'dons/add', component: DonFormComponent },
+  { path: 'dons/:id', component: DonDetailComponent },
   { path: 'dons/edit/:id', component: DonFormComponent },
   // Route pour les Organisations
   // {path: 'organisation' , component: OrganisationComponent},

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, Observable, tap, throwError } from 'rxjs';
 import { DonModel } from '../Models/Don.model';
 import { apiUrl } from './apiUrl';
 import { AuthService } from './auth.Service';
@@ -72,8 +72,16 @@ updateDon(id: number, donData: FormData): Observable<DonModel> {
   getDonById(id: number): Observable<DonModel> {
     const token = this.authService.getToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<DonModel>(`${apiUrl}/don/modification/${id}`, { headers });
+
+    return this.http.get<DonModel>(`${apiUrl}/don/${id}`, { headers }).pipe(
+      tap(data=> console.log('Données récupérées:', data)), // Log de la réponse
+      catchError(error => {
+        console.error('Erreur lors de la récupération des données:', error);
+        return throwError(error);
+      })
+    );
   }
+
 
   // Supprimer un don
   // deleteDon(id: number, token: string): Observable<void> {
