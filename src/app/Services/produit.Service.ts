@@ -1,6 +1,6 @@
 import { AuthService } from './auth.Service';
 import { Injectable, inject } from "@angular/core";
-import { Observable } from "rxjs";
+import { catchError, Observable, tap, throwError } from "rxjs";
 import { apiUrl } from "./apiUrl";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { ProduitModel } from "../Models/TypeProduit.model";
@@ -10,7 +10,10 @@ import { ProduitModel } from "../Models/TypeProduit.model";
 })
 
 export class ProduitService  {
-  private http = inject(HttpClient);
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService,
+  ) {}
 
 
     // Ajouter un produit à un don
@@ -62,8 +65,32 @@ export class ProduitService  {
       return this.http.get<ProduitModel>(`${apiUrl}/${id}`);
     }
 
-    getProduitById(id: number): Observable<ProduitModel> {
-      return this.http.get<ProduitModel>(`${apiUrl}/${id}`);
+
+      // Récupérer un don par ID
+    //   getProduitById(id: number): Observable<ProduitModel> {
+    //   const token = this.authService.getToken();
+    //   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    //   return this.http.get<ProduitModel>(`${apiUrl}/produit/${id}`, { headers }).pipe(
+    //     tap(data=> console.log('Données récupérées:', data)), // Log de la réponse
+    //     catchError(error => {
+    //       console.error('Erreur lors de la récupération des données:', error);
+    //       return throwError(error);
+    //     })
+    //   );
+    // }
+
+    getProduitsByDonId(donId: number): Observable<ProduitModel[]> {
+      const token = this.authService.getToken();
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+      return this.http.get<ProduitModel[]>(`${apiUrl}/dons/${donId}/produits`, { headers }).pipe(
+        tap(data => console.log('Produits récupérés:', data)),
+        catchError(error => {
+          console.error('Erreur lors de la récupération des produits:', error);
+          return throwError(error);
+        })
+      );
     }
 
       // Créer un produit

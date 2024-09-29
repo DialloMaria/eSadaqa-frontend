@@ -1,1 +1,15 @@
-<p>produit-detail works!</p>
+<div *ngIf="produit"  class="container my-5">
+  <h2 class="text-center mb-4">DETAIL DES PRODUITS</h2>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card p-3">
+        <h5 class="card-title">libelle</h5>
+        <p class="card-text">{{ produit.libelle }}</p>
+
+        <h5 class="card-title">quantite</h5>
+        <p class="card-text">{{ produit.quantite }}</p>
+      </div>
+    </div>
+  </div>
+</div>

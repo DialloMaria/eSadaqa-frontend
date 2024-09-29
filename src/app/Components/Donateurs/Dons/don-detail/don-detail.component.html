@@ -19,6 +19,13 @@
         <h5 class="card-title">Status</h5>
         <p class="card-text">{{ don.status }}</p>
 
+        <h5 class="card-title">Produits</h5>
+        <ul>
+          <li *ngFor="let produit of produits">
+            {{ produit.libelle }} - {{ produit.quantite }} (Quantité: {{ produit.quantite }})
+          </li>
+        </ul>
+
         <div class="mt-3">
           <a routerLink="/dons/edit/{{ don.id }}" class="btn btn-warning">Modifier</a>
         </div>
