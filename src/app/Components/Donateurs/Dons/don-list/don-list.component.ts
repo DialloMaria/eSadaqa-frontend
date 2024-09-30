@@ -4,6 +4,7 @@ import { DonModel } from '../../../../Models/Don.model';
 import { DonService } from './../../../../Services/don.Services';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-don-list',
@@ -43,7 +44,7 @@ export class DonListComponent implements OnInit {
         },
         (error) => {
           if (error.status === 401) {
-            alert('Session expirée. Veuillez vous reconnecter.');
+            this.showAlert('Erreur', 'Session expirée. Veuillez vous reconnecter.', 'error');
             this.router.navigate(['/connexion']);
           } else {
             console.error('Erreur lors de la récupération des dons:', error);
@@ -51,7 +52,7 @@ export class DonListComponent implements OnInit {
         }
       );
     } else {
-      alert('Vous devez être connecté pour voir cette page.');
+      this.showAlert('Erreur', 'Vous devez être connecté pour voir cette page.', 'error');
       this.router.navigate(['/connexion']);
     }
   }
@@ -67,35 +68,60 @@ isDonCreator(createdBy: number): boolean {
 
 
    // Supprime un don
- deleteDon(id?: number): void {
-  const token = localStorage.getItem('access_token'); // Utilisation cohérente de 'access_token'
-  if (id !== undefined && token) {
-    this.DonService.deleteDon(id).subscribe(
-      () => {
-        this.getAllDons(); // Recharge la liste après la suppression
-      },
-      (error) => {
-        console.error('Erreur lors de la suppression du don:', error);
-      }
-    );
-  } else {
-    console.error('Token non trouvé ou ID invalide.');
+
+   deleteDon(id?: number): void {
+    const token = localStorage.getItem('access_token');
+    if (id !== undefined && token) {
+      // Afficher une boîte de dialogue de confirmation
+      Swal.fire({
+        title: 'Confirmation',
+        text: 'Êtes-vous sûr de vouloir supprimer ce don ?',
+        icon: 'warning',
+        imageWidth: 56,
+        imageHeight: 56,
+        showCancelButton: true,
+        confirmButtonText: 'Oui, supprimer',
+        cancelButtonText: 'Non, annuler',
+        customClass: {
+          confirmButton: 'btn-supprimer', // Ajoutez votre classe pour le bouton de confirmation
+          cancelButton: 'btn-annuler',   // Ajoutez votre classe pour le bouton d'annulation
+        }
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // L'utilisateur a confirmé la suppression
+          this.DonService.deleteDon(id).subscribe(
+            () => {
+              this.showAlert('Succès', 'Le don a été supprimé avec succès.', 'success');
+              this.getAllDons(); // Recharge la liste après la suppression
+            },
+            (error) => {
+              console.error('Erreur lors de la suppression du don:', error);
+              this.showAlert('Erreur', 'Une erreur est survenue lors de la suppression du don.', 'error');
+            }
+          );
+        }
+      });
+    } else {
+      console.error('Token non trouvé ou ID invalide.');
+      this.showAlert('Erreur', 'Token non trouvé ou ID invalide.', 'error');
+    }
   }
-}
+
+  // Méthode pour afficher les alertes avec SweetAlert2
+  showAlert(title: string, text: string, icon: 'success' | 'error' | 'warning' | 'info' | 'question'): void {
+    Swal.fire({
+      title: title,
+      text: text,
+      icon: icon,
+      confirmButtonText: 'OK',
+      customClass: {
+        confirmButton: 'btn-supprimer', // Ajoutez votre classe pour le bouton de confirmation
+        cancelButton: 'btn-annuler', // Ajoutez votre classe pour le bouton de confirmation
+      }
+    });
+  }
 
 
-
-// openAddDonDialog(): void {
-//   const dialogRef = this.dialog.open(DonModalComponent, {
-//     width: '400px',
-//   });
-
-//   dialogRef.afterClosed().subscribe(result => {
-//     if (result) {
-//       // Optionnel : Rafraîchir la liste des dons après ajout
-//     }
-//   });
-// }
 }
 
 
