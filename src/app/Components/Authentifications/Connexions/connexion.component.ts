@@ -44,7 +44,7 @@ export class ConnexionComponent {
             if (response.user.roles.some((role: RoleModel) => role.name === 'donateur')) {
               this.router.navigateByUrl('dons');
             } else if (response.user.roles.some((role: RoleModel) => role.name === 'organisation')) {
-              this.router.navigateByUrl('organisation');
+              this.router.navigateByUrl('dons');
             } else if (response.user.roles.some((role: RoleModel) => role.name === 'beneficiaire')) {
               this.router.navigateByUrl('beneficiaire');
             } else {

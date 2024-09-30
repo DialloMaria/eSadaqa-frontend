@@ -6,4 +6,5 @@ export interface DonModel {
   status?: 'en_attente' | 'reservé' | 'distribué'; // Enum
   adresse?: string;
   image?: string;
+  created_by?: number;
 }

@@ -14,41 +14,56 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class DonListComponent implements OnInit {
   dons: DonModel[] = [];
+  userId!: number; // ID de l'utilisateur connecté
+  nombreDonsUtilisateur: number = 0;
 
   constructor(private DonService: DonService, private router: Router,private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.getAllDons();
-  }
+    this.getUserId(); // Récupérer l'utilisateur connecté
 
+  }
+  // Méthode pour récupérer l'ID de l'utilisateur connecté depuis le token ou session
+  getUserId(): void {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    this.userId = user?.id || 0; // Récupérer l'ID de l'utilisateur connecté
+    this.getAllDons();  }
+
+  // Récupérer tous les dons et calculer le nombre de dons de l'utilisateur connecté
   getAllDons(): void {
     const token = localStorage.getItem('access_token');
     if (token) {
-        this.DonService.getDons().subscribe(
-            (response: any) => { // Change le type en 'any' temporairement
-                console.log('Dons récupérés:', response);
-                if (Array.isArray(response.data)) {
-                    this.dons = response.data; // Accède au tableau
-                } else {
-                    console.error('Erreur: les dons récupérés ne sont pas un tableau', response.data);
-                    this.dons = []; // Assure-toi que dons est un tableau
-                }
-            },
-            (error) => {
-                if (error.status === 401) {
-                    alert('Session expirée. Veuillez vous reconnecter.');
-                    this.router.navigate(['/connexion']);
-                } else {
-                    console.error('Erreur lors de la récupération des dons:', error);
-                }
-            }
-        );
+      this.DonService.getDons().subscribe(
+        (response: any) => {
+          if (Array.isArray(response.data)) {
+            this.dons = response.data;
+            this.getNombreDonsUtilisateur();
+          }
+        },
+        (error) => {
+          if (error.status === 401) {
+            alert('Session expirée. Veuillez vous reconnecter.');
+            this.router.navigate(['/connexion']);
+          } else {
+            console.error('Erreur lors de la récupération des dons:', error);
+          }
+        }
+      );
     } else {
-        alert('Vous devez être connecté pour voir cette page.');
-        this.router.navigate(['/connexion']);
+      alert('Vous devez être connecté pour voir cette page.');
+      this.router.navigate(['/connexion']);
     }
+  }
+  // Filtrer les dons par utilisateur connecté
+  // Calculer le nombre de dons créés par l'utilisateur connecté
+  getNombreDonsUtilisateur(): void {
+    this.nombreDonsUtilisateur = this.dons.filter(don => don.created_by === this.userId).length;
+  }
+// Vérifier si l'utilisateur connecté est celui qui a créé le don
+isDonCreator(createdBy: number): boolean {
+  return this.userId === createdBy;
 }
-
 
 
    // Supprime un don
@@ -67,6 +82,9 @@ export class DonListComponent implements OnInit {
     console.error('Token non trouvé ou ID invalide.');
   }
 }
+
+
+
 // openAddDonDialog(): void {
 //   const dialogRef = this.dialog.open(DonModalComponent, {
 //     width: '400px',
