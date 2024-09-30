@@ -5,17 +5,19 @@ import { DonService } from './../../../../Services/don.Services';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
+import { DonFormComponent } from "../don-form/don-form.component";
 
 @Component({
   selector: 'app-don-list',
   standalone: true,
-  imports: [RouterLink,CommonModule],
+  imports: [RouterLink, CommonModule, DonFormComponent],
   templateUrl: './don-list.component.html',
   styleUrl: './don-list.component.css'
 })
 export class DonListComponent implements OnInit {
   dons: DonModel[] = [];
   userId!: number; // ID de l'utilisateur connecté
+  prenom!: string; // ID de l'utilisateur connecté
   nombreDonsUtilisateur: number = 0;
 
   constructor(private DonService: DonService, private router: Router,private dialog: MatDialog) {}
@@ -29,6 +31,7 @@ export class DonListComponent implements OnInit {
   getUserId(): void {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     this.userId = user?.id || 0; // Récupérer l'ID de l'utilisateur connecté
+    this.prenom = user?.prenom || '';
     this.getAllDons();  }
 
   // Récupérer tous les dons et calculer le nombre de dons de l'utilisateur connecté

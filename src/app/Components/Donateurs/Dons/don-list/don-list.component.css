@@ -96,7 +96,7 @@
   margin-bottom: 20px;
 }
 
-.btn-banner {
+/* .btn-banner {
   padding: 10px 20px;
   background-color: #ff6137;
   color: white;
@@ -107,7 +107,7 @@
 
 .btn-banner:hover {
   background-color: #ce0033;
-}
+} */
 
 /* Animation keyframes */
 @keyframes fadeIn {

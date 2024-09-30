@@ -48,7 +48,7 @@
   <button type="submit" class="btn btn-primary"  [disabled]="donForm.invalid && produitForm.invalid">Ajouter le Don</button>
 </form> -->
 
-<!-- 
+<!--
 <h2>{{ isEditMode ? 'Modifier un Produit' : 'Ajouter un Produit' }}</h2>
 
 <form [formGroup]="produitForm" >
@@ -71,87 +71,121 @@
   <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Modifier' : 'Ajouter' }}</button>
 </form> -->
 
-<h2>Ajouter un Don</h2>
-<form [formGroup]="donForm" (ngSubmit)="submitDon()">
-  <div class="form-group">
-    <label for="libelle">Libellé</label>
-    <input id="libelle" formControlName="libelle" class="form-control" type="text" placeholder="Libellé" required>
-    <div *ngIf="donForm.get('libelle')?.invalid && donForm.get('libelle')?.touched" class="text-danger">
-      Le libellé est requis.
-    </div>
-  </div>
+<!-- Bouton pour ouvrir le modal -->
 
-  <div class="form-group">
-    <label for="description">Description</label>
-    <textarea id="description" formControlName="description" class="form-control" placeholder="Description" required></textarea>
-    <div *ngIf="donForm.get('description')?.invalid && donForm.get('description')?.touched" class="text-danger">
-      La description est requise.
-    </div>
-  </div>
+<!-- Modal -->
+<div class="modal fade" id="donModal" tabindex="-1" aria-labelledby="donModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="donModalLabel">Ajouter un Don</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="donForm" (ngSubmit)="submitDon()" class="shadow p-4 rounded bg-light">
+          <!-- Première ligne : Libellé et Description -->
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="libelle">Libellé</label>
+                <input id="libelle" formControlName="libelle" class="form-control" type="text" placeholder="Libellé" required>
+                <div *ngIf="donForm.get('libelle')?.invalid && donForm.get('libelle')?.touched" class="text-danger">
+                  Le libellé est requis.
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" formControlName="description" class="form-control" placeholder="Description" required></textarea>
+                <div *ngIf="donForm.get('description')?.invalid && donForm.get('description')?.touched" class="text-danger">
+                  La description est requise.
+                </div>
+              </div>
+            </div>
+          </div>
 
-  <div class="form-group">
-    <label for="lieuReception">Lieu de Réception</label>
-    <input id="lieuReception" formControlName="lieuReception" class="form-control" type="text" placeholder="Lieu de réception" required>
-    <div *ngIf="donForm.get('lieuReception')?.invalid && donForm.get('lieuReception')?.touched" class="text-danger">
-      Le lieu de réception est requis.
-    </div>
-  </div>
+          <!-- Deuxième ligne : Lieu de Réception et Catégorie -->
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="lieuReception">Lieu de Réception</label>
+                <input id="lieuReception" formControlName="lieuReception" class="form-control" type="text" placeholder="Lieu de réception" required>
+                <div *ngIf="donForm.get('lieuReception')?.invalid && donForm.get('lieuReception')?.touched" class="text-danger">
+                  Le lieu de réception est requis.
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="categorie">Catégorie</label>
+                <input id="categorie" formControlName="categorie" class="form-control" type="text" placeholder="Catégorie" required>
+                <div *ngIf="donForm.get('categorie')?.invalid && donForm.get('categorie')?.touched" class="text-danger">
+                  La catégorie est requise.
+                </div>
+              </div>
+            </div>
+          </div>
 
-  <div class="form-group">
-    <label for="categorie">Catégorie</label>
-    <input id="categorie" formControlName="categorie" class="form-control" type="text" placeholder="Catégorie" required>
-    <div *ngIf="donForm.get('categorie')?.invalid && donForm.get('categorie')?.touched" class="text-danger">
-      La catégorie est requise.
-    </div>
-  </div>
+          <!-- Troisième ligne : Adresse et Image -->
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="adresse">Adresse</label>
+                <input id="adresse" formControlName="adresse" class="form-control" type="text" placeholder="Adresse" required>
+                <div *ngIf="donForm.get('adresse')?.invalid && donForm.get('adresse')?.touched" class="text-danger">
+                  L'adresse est requise.
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="image">Image (URL)</label>
+                <input id="image" formControlName="image" class="form-control" type="text" placeholder="URL de l'image">
+              </div>
+            </div>
+          </div>
 
-  <div class="form-group">
-    <label for="adresse">Adresse</label>
-    <input id="adresse" formControlName="adresse" class="form-control" type="text" placeholder="Adresse" required>
-    <div *ngIf="donForm.get('adresse')?.invalid && donForm.get('adresse')?.touched" class="text-danger">
-      L'adresse est requise.
-    </div>
-  </div>
+          <!-- Ajouter vos projets button -->
+          <button type="button" class="btn btn-secondary" (click)="showProduitForm = true" [disabled]="donForm.invalid">
+            Ajouter vos projets
+          </button>
 
-  <div class="form-group">
-    <label for="image">Image (URL)</label>
-    <input id="image" formControlName="image" class="form-control" type="text" placeholder="URL de l'image">
-  </div>
+          <!-- Formulaire pour ajouter un produit -->
+          <div *ngIf="showProduitForm" class="mt-4">
+            <h2 class="text-center mb-4">Ajouter un Produit</h2>
+            <form [formGroup]="produitForm" (ngSubmit)="addProduit()" class="shadow p-4 rounded bg-light">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="libelleProduit">Libellé du produit</label>
+                    <input id="libelleProduit" formControlName="libelle" class="form-control" type="text" placeholder="Libellé" required>
+                    <div *ngIf="produitForm.get('libelle')?.invalid && produitForm.get('libelle')?.touched" class="text-danger">
+                      Le libellé est requis.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="quantite">Quantité</label>
+                    <input id="quantite" formControlName="quantite" class="form-control" type="number" placeholder="Quantité" required>
+                    <div *ngIf="produitForm.get('quantite')?.invalid && produitForm.get('quantite')?.touched" class="text-danger">
+                      La quantité est requise.
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-  <button type="button" class="btn btn-secondary" (click)="showProduitForm = true">Ajouter vos projets</button>
+              <button type="submit" class="btn btn-primary" [disabled]="produitForm.invalid">Ajouter le Produit</button>
+            </form>
+          </div>
 
-  <button type="submit" class="btn btn-primary" [disabled]="donForm.invalid">Ajouter le Don</button>
-</form>
-
-<!-- Formulaire pour ajouter un produit -->
-<div *ngIf="showProduitForm">
-  <h2>Ajouter un Produit</h2>
-  <form [formGroup]="produitForm" (ngSubmit)="addProduit()">
-    <div class="form-group">
-      <label for="libelle">Libellé du produit</label>
-      <input id="libelle" formControlName="libelle" class="form-control" type="text" placeholder="Libellé" required>
-      <div *ngIf="produitForm.get('libelle')?.invalid && produitForm.get('libelle')?.touched" class="text-danger">
-        Le libellé est requis.
+          <!-- Ajouter le Don button -->
+          <button *ngIf="produits.length > 0" type="submit" class="btn btn-primary mt-3" [disabled]="donForm.invalid">
+            Ajouter le Don ({{ produits.length }} produits ajoutés)
+          </button>
+        </form>
       </div>
     </div>
-
-    <div class="form-group">
-      <label for="quantite">Quantité</label>
-      <input id="quantite" formControlName="quantite" class="form-control" type="number" placeholder="Quantité" required>
-      <div *ngIf="produitForm.get('quantite')?.invalid && produitForm.get('quantite')?.touched" class="text-danger">
-        La quantité est requise.
-      </div>
-    </div>
-
-    <button type="submit" class="btn btn-primary" [disabled]="produitForm.invalid">Ajouter le Produit</button>
-  </form>
-
-  <!-- Liste des produits ajoutés -->
-  <h3>Produits Ajoutés</h3>
-  <ul>
-    <li *ngFor="let produit of produits">
-      {{ produit.libelle }} - {{ produit.quantite }}
-    </li>
-  </ul>
+  </div>
 </div>
-
