@@ -125,6 +125,13 @@ export class AuthService{
     return this.http.post(`${apiUrl}/register/donateur`, identifiant)
   }
 
+  registerOrganisation(identifiant: any) {
+    return this.http.post(`${apiUrl}/register/organisation`, identifiant)
+  }
+  registerBeneficiaire(identifiant: any) {
+    return this.http.post(`${apiUrl}/register/beneficiaire`, identifiant)
+  }
+
 
 
   registerUser(identifiant: any) {

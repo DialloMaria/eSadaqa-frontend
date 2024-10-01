@@ -8,3 +8,5 @@ export interface DonModel {
   image?: string;
   created_by?: number;
 }
+
+

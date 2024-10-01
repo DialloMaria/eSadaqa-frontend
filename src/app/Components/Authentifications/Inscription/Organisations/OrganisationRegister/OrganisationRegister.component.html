@@ -1,0 +1,140 @@
+
+
+<div class="Inscriptionstructure">
+  <!-- Step 1: Personal Information -->
+  <div *ngIf="currentStep === 1">
+    <h2>{{ isEditMode ? 'Modifier un Produit' : 'Ajouter un Produit' }}</h2>
+    <form [formGroup]="OrganisationRegister" (ngSubmit)="nextStep()">
+      <div class="form-group">
+        <label for="libelle">nom</label>
+        <input id="nom" formControlName="nom" class="form-control" type="text" placeholder="nom" required>
+        <div *ngIf="OrganisationRegister.get('nom')?.invalid && OrganisationRegister.get('nom')?.touched" class="text-danger">
+          Le Nom est requis.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="prenom">Prenom</label>
+        <input id="prenom" formControlName="prenom" class="form-control" type="text" placeholder="Quantité" required>
+        <div *ngIf="OrganisationRegister.get('prenom')?.invalid && OrganisationRegister.get('prenom')?.touched" class="text-danger">
+          La prenom est requise.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" formControlName="email" class="form-control" type="text" placeholder="Email" required>
+        <div *ngIf="OrganisationRegister.get('email')?.invalid && OrganisationRegister.get('email')?.touched" class="text-danger">
+          La Email est requise.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="telephone">telephone</label>
+        <input id="telephone" formControlName="telephone" class="form-control" type="tel" placeholder="telephone" required>
+        <div *ngIf="OrganisationRegister.get('telephone')?.invalid && OrganisationRegister.get('telephone')?.touched" class="text-danger">
+          La telephone est requise.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="adresse">adresse</label>
+        <input id="adresse" formControlName="adresse" class="form-control" type="text" placeholder="adresse" required>
+        <div *ngIf="OrganisationRegister.get('adresse')?.invalid && OrganisationRegister.get('adresse')?.touched" class="text-danger">
+          La adresse est requise.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">password</label>
+        <input id="password" formControlName="password" class="form-control" type="password" placeholder="password" required>
+        <div *ngIf="OrganisationRegister.get('password')?.invalid && OrganisationRegister.get('password')?.touched" class="text-danger">
+          La password est requise.
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-primary" (click)="nextStep()">Suivant</button>
+    </form>
+  </div>
+
+  <!-- Step 2: structure Information -->
+  <div >
+    <h2>{{ isEditMode ? 'Modifier une structure' : 'Ajouter une structure' }}</h2>
+    <form [formGroup]="OrganisationRegister" (ngSubmit)="submit()">
+      <div class="form-group">
+        <label for="nomstructure">Nom de la structure</label>
+        <input id="nomstructure" formControlName="nomstructure" class="form-control" type="text" placeholder="Nom de la structure" required>
+        <div *ngIf="OrganisationRegister.get('nomstructure')?.invalid && OrganisationRegister.get('nomstructure')?.touched" class="text-danger">
+          Le Nom de la structure est requis.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="emailstructure">Email de la structure</label>
+        <input id="emailstructure" formControlName="emailstructure" class="form-control" type="email" placeholder="Email de la structure">
+        <div *ngIf="OrganisationRegister.get('emailstructure')?.invalid && OrganisationRegister.get('emailstructure')?.touched" class="text-danger">
+          L'Email de la structure est invalide.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" formControlName="description" class="form-control" placeholder="Description" required></textarea>
+        <div *ngIf="OrganisationRegister.get('description')?.invalid && OrganisationRegister.get('description')?.touched" class="text-danger">
+          La description est requise.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="typestructure">Type de structure</label>
+        <select id="typestructure" formControlName="typestructure" class="form-control" required>
+          <option value="" disabled selected>Choisir le type de structure</option>
+          <option value="micro">Micro</option>
+          <option value="macro">Macro</option>
+        </select>
+        <div *ngIf="OrganisationRegister.get('typestructure')?.invalid && OrganisationRegister.get('typestructure')?.touched" class="text-danger">
+          Le type de structure est requis.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="siege">Siège</label>
+        <input id="siege" formControlName="siege" class="form-control" type="text" placeholder="Siège" required>
+        <div *ngIf="OrganisationRegister.get('siege')?.invalid && OrganisationRegister.get('siege')?.touched" class="text-danger">
+          Le siège est requis.
+        </div>
+      </div>
+
+
+
+      <div class="form-group">
+        <label for="date_creation">Date de Création</label>
+        <input id="date_creation" formControlName="date_creation" class="form-control" type="date" required>
+        <div *ngIf="OrganisationRegister.get('date_creation')?.invalid && OrganisationRegister.get('date_creation')?.touched" class="text-danger">
+          La date de création est requise.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="recepisse">Récépissé</label>
+        <input id="recepisse" formControlName="recepisse" class="form-control" type="text" placeholder="Récépissé" required>
+        <div *ngIf="OrganisationRegister.get('recepisse')?.invalid && OrganisationRegister.get('recepisse')?.touched" class="text-danger">
+          Le récépissé est requis.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="fondateur">Fondateur</label>
+        <input id="fondateur" formControlName="fondateur" class="form-control" type="text" placeholder="Fondateur" required>
+        <div *ngIf="OrganisationRegister.get('fondateur')?.invalid && OrganisationRegister.get('fondateur')?.touched" class="text-danger">
+          Le Fondateur est requis.
+        </div>
+      </div>
+
+
+
+      <button type="button" class="btn btn-secondary" (click)="previousStep()">Retour</button>
+      <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Modifier un Produit' : 'Ajouter un Produit' }}</button>
+    </form>
+  </div>
+</div>

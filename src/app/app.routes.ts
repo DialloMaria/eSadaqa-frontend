@@ -10,6 +10,8 @@ import { ProduitDetailComponent } from './Components/Donateurs/Produits/produit-
 import { DonDetailComponent } from './Components/Donateurs/Dons/don-detail/don-detail.component';
 import { InscriptionPersoComponent } from './Components/Authentifications/Inscription/Donateurs/DonateurPersonel/inscription-donateur-perso.component';
 import { InscriptionDonateurStructureComponent } from './Components/Authentifications/Inscription/Donateurs/DonateurStructure/inscription-donateur-structure.component';
+import { RegisterOrganisationComponent } from './Components/Authentifications/Inscription/Organisations/OrganisationRegister/OrganisationRegister.component';
+import { RegisterBeneficiaireComponent } from './Components/Authentifications/Inscription/Beneficiaires/BeneficiaireRegister/BeneficiaireRegister.component';
 
 export const routes: Routes = [
 
@@ -23,6 +25,8 @@ export const routes: Routes = [
   {path: 'inscription', component:InscriptionComponent},
   {path: 'inscription/perso', component:InscriptionPersoComponent},
   {path: 'inscription/structure', component:InscriptionDonateurStructureComponent},
+  {path: 'inscription/organisation', component:RegisterOrganisationComponent},
+  {path: 'inscription/beneficiaire', component:RegisterBeneficiaireComponent},
   {path: 'connexion', component:ConnexionComponent},
 
 
