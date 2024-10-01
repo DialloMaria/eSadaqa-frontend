@@ -90,7 +90,12 @@ export class AuthService{
   @Injectable({
     providedIn: 'root'
   })
+  currentUserRole: string = '';
 
+
+  getUserRole(): string{
+    return localStorage.getItem('userRole') || '';
+  }
 
   // Decaration des methods
 
@@ -111,6 +116,16 @@ export class AuthService{
   register(identifiant: any) {
     return this.http.post(`${apiUrl}/register`, identifiant)
   }
+
+  registerPerso(identifiant: any) {
+    return this.http.post(`${apiUrl}/register/donateur/perso`, identifiant)
+  }
+
+  registerdonateurStructure(identifiant: any) {
+    return this.http.post(`${apiUrl}/register/donateur`, identifiant)
+  }
+
+
 
   registerUser(identifiant: any) {
     return this.http.post(`${apiUrl}/register/admin`, identifiant)

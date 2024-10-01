@@ -6,11 +6,18 @@ import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 import { DonFormComponent } from "../don-form/don-form.component";
+import { AuthService } from '../../../../Services/auth.Service';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-don-list',
   standalone: true,
-  imports: [RouterLink, CommonModule, DonFormComponent],
+  imports: [
+    RouterLink,
+    CommonModule,
+    DonFormComponent,
+    NgxPaginationModule
+  ],
   templateUrl: './don-list.component.html',
   styleUrl: './don-list.component.css'
 })
@@ -19,8 +26,8 @@ export class DonListComponent implements OnInit {
   userId!: number; // ID de l'utilisateur connecté
   prenom!: string; // ID de l'utilisateur connecté
   nombreDonsUtilisateur: number = 0;
-
-  constructor(private DonService: DonService, private router: Router,private dialog: MatDialog) {}
+  page: number = 1;
+  constructor(private DonService: DonService, private router: Router,private dialog: MatDialog, authService: AuthService) {}
 
   ngOnInit(): void {
     this.getAllDons();
@@ -123,7 +130,17 @@ isDonCreator(createdBy: number): boolean {
       }
     });
   }
+  // // Méthode pour afficher les détails d'un don
+  voirDetails(don: any): void {
+    console.log('Voir les détails du don:', don);
+    // Implémentez la logique pour afficher plus de détails (par exemple, dans un autre modal)
+  }
 
+  // Méthode pour réserver un don
+  reserverDon(don: any): void {
+    console.log('Réserver ce don:', don);
+    // Implémentez la logique de réservation (par exemple, en envoyant une requête à l'API)
+  }
 
 }
 

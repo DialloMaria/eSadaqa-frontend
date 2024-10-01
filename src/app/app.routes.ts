@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { InscriptionComponent } from './Components/Authentifications/Inscriptions/inscription.component';
+import { InscriptionComponent } from './Components/Authentifications/Inscriptionst/inscription.component';
 import { ConnexionComponent } from './Components/Authentifications/Connexions/connexion.component';
 import { AccueilComponent } from './Components/Portail/accueil.component';
 import { DonListComponent } from './Components/Donateurs/Dons/don-list/don-list.component';
@@ -8,6 +8,8 @@ import { ProduitListComponent } from './Components/Donateurs/Produits/produit-li
 import { ProduitFormComponent } from './Components/Donateurs/Produits/produit-form/produit-form.component';
 import { ProduitDetailComponent } from './Components/Donateurs/Produits/produit-detail/produit-detail.component';
 import { DonDetailComponent } from './Components/Donateurs/Dons/don-detail/don-detail.component';
+import { InscriptionPersoComponent } from './Components/Authentifications/Inscription/Donateurs/DonateurPersonel/inscription-donateur-perso.component';
+import { InscriptionDonateurStructureComponent } from './Components/Authentifications/Inscription/Donateurs/DonateurStructure/inscription-donateur-structure.component';
 
 export const routes: Routes = [
 
@@ -19,6 +21,8 @@ export const routes: Routes = [
 
 // Routes pour l'authentification
   {path: 'inscription', component:InscriptionComponent},
+  {path: 'inscription/perso', component:InscriptionPersoComponent},
+  {path: 'inscription/structure', component:InscriptionDonateurStructureComponent},
   {path: 'connexion', component:ConnexionComponent},
 
 

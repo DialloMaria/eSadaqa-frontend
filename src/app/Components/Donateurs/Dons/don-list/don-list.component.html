@@ -161,14 +161,26 @@
             <button class="btn btn-modifier"  data-bs-toggle="modal" data-bs-target="#donModal">Modifier</button>
             <!-- <button class="btn btn-modifier"  data-bs-toggle="modal" data-bs-target="#donModal" [routerLink]="['/dons/edit', don.id]">Modifier</button> -->
             <button class="btn btn-supprimer" (click)="deleteDon(don.id)">Supprimer</button>
+            <!-- <button class="btn btn-success" (click)="reserverDon(don)">Réserver</button> -->
+
           </ng-container>
+
+             <!-- Afficher les boutons si l'utilisateur est une organisation -->
+             <!-- <button class="btn btn-success" (click)="reserverDon(don)">Réserver</button> -->
         </div>
       </div>
     </div>
   </div>
 </div>
+          <!-- Pagination controls -->
+          <!-- <pagination-controls (pageChange)="page = $event"></pagination-controls> -->
+          <pagination-controls id="donsPagination" (pageChange)="page = $event"></pagination-controls>
 
 <footer class="footer">
+</footer>
+
+
+
   <!-- <div class="container">
     <div class="footer-content">
       <div class="footer-links">
@@ -190,4 +202,3 @@
       <p>&copy; 2024 VotrePlateforme. Tous droits réservés.</p>
     </div>
   </div> -->
-</footer>
