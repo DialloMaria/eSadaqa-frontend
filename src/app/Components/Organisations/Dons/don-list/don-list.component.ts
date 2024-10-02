@@ -1,25 +1,19 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Route, Router, RouterLink } from '@angular/router';
 import { DonModel } from '../../../../Models/Don.model';
 import { DonService } from './../../../../Services/don.Services';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
-import { DonFormComponent } from "../don-form/don-form.component";
 import { AuthService } from '../../../../Services/auth.Service';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { FormGroup } from '@angular/forms';
-import { ReservationComponent } from '../../../Organisations/Reservations/reservation/reservation.component';
 
 @Component({
   selector: 'app-don-list',
   standalone: true,
   imports: [
     RouterLink,
-    CommonModule,
-    DonFormComponent,
-    ReservationComponent,
-    NgxPaginationModule
+    CommonModule
   ],
   templateUrl: './don-list.component.html',
   styleUrl: './don-list.component.css'
@@ -30,13 +24,6 @@ export class DonListComponent implements OnInit {
   prenom!: string; // ID de l'utilisateur connecté
   nombreDonsUtilisateur: number = 0;
   page: number = 1;
-  reservationForm!:FormGroup;
-  selectedDonId: number | null = null;
-
-
-// Déclarez un EventEmitter pour envoyer l'ID du don au parent
-@Output() reserveDon = new EventEmitter<number>();
-
   constructor(private DonService: DonService, private router: Router,private dialog: MatDialog, authService: AuthService) {}
 
   ngOnInit(): void {
@@ -44,29 +31,13 @@ export class DonListComponent implements OnInit {
     this.getUserId(); // Récupérer l'utilisateur connecté
 
   }
-    userRole!: string;
+  userRole!: string;
   // Méthode pour récupérer l'ID de l'utilisateur connecté depuis le token ou session
   getUserId(): void {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
-    console.log("Utilisateur connecté : ", user);
-
-    this.userId = user?.id || 0;
+    this.userId = user?.id || 0; // Récupérer l'ID de l'utilisateur connecté
     this.prenom = user?.prenom || '';
-
-    // Vérification du rôle dans le tableau 'roles'
-    if (user?.roles && user.roles.length > 0) {
-      this.userRole = user.roles[0].name || '';  // Récupérer le nom du rôle
-    } else {
-      this.userRole = '';
-    }
-
-    console.log("Rôle de l'utilisateur connecté : ", this.userRole);  // Vérifier le rôle dans la console
-  }
-
-    // Vérifier si l'utilisateur est une organisation
-    isOrganisation(): boolean {
-      return this.userRole === 'organisation'; // Adapter selon votre gestion des rôles
-    }
+    this.getAllDons();  }
 
   // Récupérer tous les dons et calculer le nombre de dons de l'utilisateur connecté
   getAllDons(): void {
@@ -102,7 +73,6 @@ export class DonListComponent implements OnInit {
 isDonCreator(createdBy: number): boolean {
   return this.userId === createdBy;
 }
-
 
 
    // Supprime un don
@@ -165,22 +135,11 @@ isDonCreator(createdBy: number): boolean {
   }
 
   // Méthode pour réserver un don
-  // reserverDon(id: number) {
-  //   this.selectedDonId = id;
-  //   console.log('Réserver ce don:', id);
-  //   // Montrez le modal ici si ce n'est pas fait automatiquement par Bootstrap
-  // }
-    // Méthode pour réserver un don
-    reserverDon(donId: number): void {
-      this.selectedDonId = donId; // Stocker l'ID du don sélectionné
-      console.log('Don ID sélectionné:', this.selectedDonId);
-    }
+  reserverDon(don: any): void {
+    console.log('Réserver ce don:', don);
+    // Implémentez la logique de réservation (par exemple, en envoyant une requête à l'API)
+  }
 
-
-
-
-      // Envoyer l'ID du don lorsqu'on clique sur "Réserver"
-  //     reserverDon(donId: any): void {
-  //   this.reserveDon.emit(donId); // Émet l'événement vers le parent
-  // }
 }
+
+

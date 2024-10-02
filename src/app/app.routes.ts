@@ -12,6 +12,7 @@ import { InscriptionPersoComponent } from './Components/Authentifications/Inscri
 import { InscriptionDonateurStructureComponent } from './Components/Authentifications/Inscription/Donateurs/DonateurStructure/inscription-donateur-structure.component';
 import { RegisterOrganisationComponent } from './Components/Authentifications/Inscription/Organisations/OrganisationRegister/OrganisationRegister.component';
 import { RegisterBeneficiaireComponent } from './Components/Authentifications/Inscription/Beneficiaires/BeneficiaireRegister/BeneficiaireRegister.component';
+import { ReservationComponent } from './Components/Organisations/Reservations/reservation/reservation.component';
 
 export const routes: Routes = [
 
@@ -37,8 +38,8 @@ export const routes: Routes = [
   { path: 'dons/:id', component: DonDetailComponent },
   { path: 'dons/edit/:id', component: DonFormComponent },
   // Route pour les Organisations
-  // {path: 'organisation' , component: OrganisationComponent},
-
+  {path: 'organisation/don' , component: DonListComponent},
+  { path: 'reservations/create', component: ReservationComponent },
 
   { path: 'produits', component: ProduitListComponent }, // Liste de produits
   { path: 'produits/ajouter', component: ProduitFormComponent }, // Ajouter un produit
