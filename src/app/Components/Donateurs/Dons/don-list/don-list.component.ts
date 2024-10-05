@@ -10,6 +10,7 @@ import { AuthService } from '../../../../Services/auth.Service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormGroup } from '@angular/forms';
 import { ReservationComponent } from '../../../Organisations/Reservations/reservation/reservation.component';
+import { NotificationsComponent } from "../../../notifications/notifications.component";
 
 @Component({
   selector: 'app-don-list',
@@ -19,8 +20,9 @@ import { ReservationComponent } from '../../../Organisations/Reservations/reserv
     CommonModule,
     DonFormComponent,
     ReservationComponent,
-    NgxPaginationModule
-  ],
+    NgxPaginationModule,
+    NotificationsComponent
+],
   templateUrl: './don-list.component.html',
   styleUrl: './don-list.component.css'
 })
@@ -32,7 +34,6 @@ export class DonListComponent implements OnInit {
   page: number = 1;
   reservationForm!:FormGroup;
   selectedDonId: number | null = null;
-
 
 // Déclarez un EventEmitter pour envoyer l'ID du don au parent
 @Output() reserveDon = new EventEmitter<number>();

@@ -1,0 +1,16 @@
+<div class="rapport-container">
+  <h2>Génération du rapport</h2>
+
+  <button (click)="generateRapport()" class="btn btn-primary">Générer un rapport</button>
+
+  <!-- Affichage du rapport -->
+  <div *ngIf="rapportContenu">
+    <h3>Rapport généré :</h3>
+    <pre>{{ rapportContenu }}</pre> <!-- Utilisez <pre> pour conserver le formatage -->
+  </div>
+
+  <!-- Affichage d'un message d'erreur en cas d'échec -->
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+</div>

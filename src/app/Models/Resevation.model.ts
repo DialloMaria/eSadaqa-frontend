@@ -5,3 +5,4 @@ export interface ReservationModel {
   beneficiaire_Id?: number | null; // nullable, foreign key to Beneficiaire
   organisation?: number | null; // nullable, foreign key to Beneficiaire
 }
+  

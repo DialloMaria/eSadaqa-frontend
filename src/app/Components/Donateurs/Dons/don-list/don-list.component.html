@@ -109,6 +109,8 @@
 
 <app-don-form></app-don-form>
 <app-reservation></app-reservation>
+<app-notifications></app-notifications>
+
 
 <div class="menu-bar animate__animated animate__fadeInDown">
   <div class="logo">
@@ -162,10 +164,11 @@
           <button class="btn btn-detail" [routerLink]="['/dons', don.id]">Détails</button>
 
           <!-- Boutons de Modification et Suppression visible seulement pour le créateur -->
-          <ng-container *ngIf="don.created_by && isDonCreator(don.created_by)">
+          <ng-container *ngIf="don.created_by && isDonCreator(don.created_by) ">
             <button class="btn btn-modifier" data-bs-toggle="modal" data-bs-target="#donModal">Modifier</button>
             <button class="btn btn-supprimer" (click)="deleteDon(don.id)">Supprimer</button>
           </ng-container>
+
 
           <!-- Afficher le bouton de réservation si l'utilisateur est une organisation -->
           <ng-container *ngIf="userRole === 'organisation'">

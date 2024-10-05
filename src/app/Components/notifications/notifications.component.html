@@ -1,0 +1,16 @@
+<div>
+  <h2>Liste des Réservations</h2>
+  <div *ngIf="reservations.length === 0">
+    <p>Aucune réservation disponible.</p>
+  </div>
+  <ul>
+    <li *ngFor="let reservation of reservations">
+      <div class="reservation-item">
+        <p>Réservation ID: {{ reservation.id }}</p>
+        <p>Bénéficiaire: {{ reservation.beneficiaire }}</p>
+        <p>Date: {{ reservation.date }}</p>
+        <button (click)="confirmReservation(reservation.id)">Confirmer la réservation</button>
+      </div>
+    </li>
+  </ul>
+</div>

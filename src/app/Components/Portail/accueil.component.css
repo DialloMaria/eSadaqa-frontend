@@ -74,10 +74,53 @@
   background-color: #A37500;
 }
 
+/* Styles pour le menu hamburger */
+.menu-toggle {
+  display: none; /* Masqué par défaut */
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-toggle div {
+  width: 30px;
+  height: 3px;
+  background-color: #ffffff; /* Couleur du hamburger */
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+/* Afficher le menu hamburger sur les écrans petits */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* Masquer les liens de navigation par défaut */
+    flex-direction: column;
+    position: absolute;
+    background-color: #00715D; /* Couleur de fond du menu */
+    top: 60px; /* Juste en dessous de la barre de navigation */
+    left: 0;
+    right: 0;
+    padding: 20px 0;
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    display: flex; /* Afficher les liens de navigation lorsque le menu est actif */
+  }
+
+  .menu-toggle {
+    display: flex; /* Afficher le hamburger */
+  }
+
+  .btn-inscription {
+    margin-top: 20px; /* Marge pour le bouton d'inscription */
+  }
+}
+
+
 /* Styles pour la bannière */
 /* Styles pour la bannière */
 .banner {
-  /* background-image: url('../../../assets/images/image.png'); Remplace par le chemin de ton image */
+  background-image: url('../../../assets/images/image.png');
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -201,3 +244,572 @@
   }
 }
 
+
+
+/* Section A Propos */
+.about-section {
+  background-repeat: no-repeat;
+  background-color: #f9f9f9;
+  font-family: "Nunito-SemiBold", Helvetica;
+  margin: 0;
+  padding: 40px;
+  box-sizing: border-box;
+  display: flex;
+  gap: 50px;
+  padding: 50px; /* Marge interne : 100px en haut/bas, 50px à gauche/droite */
+}
+
+.about-content {
+  display: flex;
+  flex-direction: row; /* Alignement par défaut en ligne */
+  justify-content: space-between;
+  align-items: center; /* Centre le contenu verticalement */
+  gap: 50px; /* Espacement entre le texte et l'image */
+  width: 100%;
+  margin-left: 150px;  /* Centre le contenu avec des marges égales à gauche et à droite */
+
+}
+
+.text-content {
+  font-family: "Buenard-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  margin-top: -150px;
+  letter-spacing: 10px;
+  line-height: normal;
+  flex: 1;
+  display: flex;
+  font-weight: 700;
+  font-size: 36px;
+  letter-spacing: 0;
+  line-height: normal;
+  flex-direction: column; /* Pour permettre un espacement vertical */
+  justify-content: space-between; /* Espacement vertical du texte */
+  gap: 10px; /* Ajoute de l'espace entre les éléments de texte */
+}
+.text-content h4 {
+  font-size: 1.5rem; /* Taille du titre h4 */
+  color: #00715D; /* Couleur du titre */
+  margin-bottom: 20px; /* Marge sous le titre */
+}
+
+.text-content h2 {
+  font-size: 2.5rem;
+  color: #00715D; /* Green title */
+  margin-bottom: 20px;
+}
+
+
+.text-content p {
+  font-size: 1.1rem;
+  line-height: 2; /* Ajustez l'interligne pour plus de lisibilité */
+  color: #333; /* Couleur du texte */
+}
+
+
+.image-content img {
+  max-width: 100%; /* L'image ne dépasse jamais le conteneur */
+  height: auto;
+  border-radius: 10px; /* Coins arrondis pour l'image */
+}
+
+
+.image-content {
+  flex: 1;
+  display: flex;
+  margin-left: 180px;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .text-content {
+    margin-bottom: 20px;
+  }
+
+  .image-content img {
+    width: 90%; /* Adjusted size for smaller screens */
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-content {
+    flex-direction: column; /* Changez la direction en colonne sur les petits écrans */
+    text-align: center; /* Centre le texte */
+  }
+
+  .image-content img {
+    width: 80%; /* Taille de l'image pour les petits écrans */
+  }
+
+  .text-content h2 {
+    font-size: 2rem; /* Réduisez la taille du titre */
+  }
+
+  .text-content p {
+    font-size: 0.9rem; /* Réduisez la taille du texte */
+  }
+}
+
+.demande{
+  z-index: 1;
+  margin-top: -180px;
+  width: 100%;
+}
+.demande img{
+  width: 100%;
+}
+
+
+
+.group {
+  position: relative;
+  width: 1105px;
+  height: 850px;
+  background-color: #ffffff;
+  border-radius: 28.09px;
+  box-shadow: 0px 2.25px 4.49px 4.49px #4b4b4b21;
+  z-index: 3;
+  margin-top: -150px;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  margin-left: 370px;
+
+}
+
+.valeurs{
+  margin-top: -90px;
+}
+
+.group .overlap {
+  top: 180px;
+  left: 170px;
+  position: absolute;
+  width: 330px;
+  height: 296px;
+  border-radius: 15.73px;
+}
+
+.group .text-wrapper {
+  position: absolute;
+  top: 93px;
+  left: 88px;
+  font-family: "Nunito-Bold", Helvetica;
+  font-weight: 700;
+  color: #cea100;
+  font-size: 24.7px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .div {
+  position: absolute;
+  width: 297px;
+  top: 140px;
+  left: 17px;
+  font-family: "Nunito-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #1b1b1b;
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 30.3px;
+}
+
+.group .rectangle {
+  position: absolute;
+  width: 330px;
+  height: 296px;
+  top: 0;
+  left: 0;
+  border-radius: 15.73px;
+  border: 2.25px solid;
+  border-color: #cea100;
+}
+
+.group .overlap-group {
+  top: 530px;
+  left: 174px;
+  position: absolute;
+  width: 330px;
+  height: 296px;
+  border-radius: 15.73px;
+}
+
+.group .text-wrapper-2 {
+  position: absolute;
+  top: 93px;
+  left: 129px;
+  font-family: "Nunito-Bold", Helvetica;
+  font-weight: 700;
+  color: #cea100;
+  font-size: 24.7px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .overlap-group-2 {
+  top: 180px;
+  left: 601px;
+  position: absolute;
+  width: 330px;
+  height: 296px;
+  border-radius: 15.73px;
+}
+
+.group .text-wrapper-3 {
+  position: absolute;
+  top: 93px;
+  left: 121px;
+  font-family: "Nunito-Bold", Helvetica;
+  font-weight: 700;
+  color: #cea100;
+  font-size: 24.7px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .overlap-2 {
+  top: 530px;
+  left: 605px;
+  position: absolute;
+  width: 330px;
+  height: 296px;
+  border-radius: 15.73px;
+}
+
+.group .text-wrapper-4 {
+  position: absolute;
+  width: 273px;
+  top: 30px;
+  left: 412px;
+  font-family: "Buenard-Bold", Helvetica;
+  font-weight: 700;
+  color: #cea100;
+  font-size: 22.5px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.group .p {
+  position: absolute;
+  width: 561px;
+  top: 100px;
+  left: 268px;
+  font-family: "Buenard-Bold", Helvetica;
+  font-weight: 700;
+  color: #1b1b1b;
+  font-size: 30px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+
+
+
+.aide {
+  background-image: url('../../../assets/images/patern1.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%; /* Assure que la bannière prend toute la largeur */
+
+  /* display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px;
+  background-color: rgba(217, 217, 217, 0.17);
+  font-family: 'Buenard', serif;
+  line-height: 1.6; */
+}
+
+.aide h4 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #CFA100;
+  font-family: "Buenard-Bold", Helvetica;
+  line-height: 1.6;
+  text-align: center;
+  margin-top: 80px;
+}
+
+.contenu{
+  display: flex;
+  margin-top: 90px;
+  margin-left: 200px;
+  gap: 50px;
+}
+.list {
+  list-style: none;
+  margin-top: 100px;
+  margin-left: 300px;
+}
+.aide .image{
+  margin-bottom: 100px;
+}
+.etape-list {
+  list-style: none; /* Remove default bullet points */
+  padding: 0;
+}
+
+.etape-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; /* Space between items */
+  font-family: "Buenard-Bold", Helvetica;
+  font-size: 18px;
+  color: #1b1b1b;
+  font-size: 25px;
+  line-height: 3rem;
+}
+
+.check-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background-color: #cea100; /* Circle background color */
+  color: white; /* Checkmark color */
+  border-radius: 50%; /* Make it a circle */
+  margin-right: 10px; /* Space between the circle and text */
+  font-size: 18px; /* Adjust checkmark size */
+}
+
+.text-container {
+  max-width: 50%;
+  margin-left: 80px;
+  margin-right: 150px;
+}
+
+
+.image-container {
+  max-width: 45%;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+}
+
+
+
+.don-section {
+  font-family: "Nunito-SemiBold", Helvetica;
+
+  box-sizing: border-box;
+  display: flex;
+  gap: 50px;
+  padding: 50px; /* Marge interne : 100px en haut/bas, 50px à gauche/droite */
+}
+
+.don-content {
+  display: flex;
+  flex-direction: row; /* Alignement par défaut en ligne */
+  justify-content: space-between;
+  align-items: center; /* Centre le contenu verticalement */
+  gap: 150px; /* Espacement entre le texte et l'image */
+  width: 100%;
+  margin-left: 150px;
+  margin-right: 150px;
+
+}
+
+.don-text-content {
+  font-family: "Buenard-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  letter-spacing: 10px;
+  line-height: normal;
+  flex: 1;
+  display: flex;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: 2.5rem;
+  flex-direction: column; /* Pour permettre un espacement vertical */
+  justify-content: space-between; /* Espacement vertical du texte */
+  gap: 10px; /* Ajoute de l'espace entre les éléments de texte */
+}
+.don-text-content h4{
+  font-size: 1.5rem; /* Taille du titre h4 */
+  color: #00715D; /* Couleur du titre */
+  margin-bottom: 20px; /* Marge sous le titre */
+  font-family: "Buenard-Bold", Helvetica;
+}
+
+
+.don-image-content{
+  margin-top: -60px;
+}
+
+.text-content p {
+  max-width: 80%;
+  font-size: 1.1rem;
+  line-height: 25px; /* Ajustez l'interligne pour plus de lisibilité */
+  color: #333; /* Couleur du texte */
+}
+
+.temoignage{
+  height: 20vh;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  background-color: #00715D;
+  font-family: "Buenard-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+.temoignage h1{
+  text-align: center;
+  padding-top: 50px;
+}
+
+
+.testimonial-card {
+  justify-content: center;
+
+  border: 2px solid #22A28F; /* Border color similar to the green shade */
+  border-radius: 20px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for effect */
+  position: relative;
+  padding: 20px;
+  background-color: #fff; /* White background */
+}
+
+.quote-icon {
+  font-size: 90px;
+  color: #22A28F;
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  font-weight: bold;
+}
+
+.card-title {
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 15px;
+}
+
+.card-text {
+  color: #5a5a5a;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.temoignage row{
+ justify-content: center;
+  align-items: center;
+  margin-left: 500px;
+}
+.card-image img {
+  width: 50px;
+  height: 50px;
+}
+
+h6 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+small {
+  font-size: 14px;
+  color: #777;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .quote-icon {
+    font-size: 24px;
+  }
+
+  .testimonial-card {
+    margin-bottom: 30px;
+  }
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+
+.footer {
+  margin-top: 500px;
+  background-color: #00715D; /* bg-sky-400 */
+  padding: 32px 16px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.footer-item {
+  margin: 0 20px;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+}
+
+.footer-link:hover {
+  color: #e5e7eb; /* hover:text-gray-200 */
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.footer-icon {
+  color: white;
+  margin: 0 10px;
+}
+
+.footer-icon:hover {
+  color: #e5e7eb; /* hover:text-gray-200 */
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.footer-text {
+  text-align: center;
+  color: white;
+}

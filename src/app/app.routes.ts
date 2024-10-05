@@ -13,6 +13,7 @@ import { InscriptionDonateurStructureComponent } from './Components/Authentifica
 import { RegisterOrganisationComponent } from './Components/Authentifications/Inscription/Organisations/OrganisationRegister/OrganisationRegister.component';
 import { RegisterBeneficiaireComponent } from './Components/Authentifications/Inscription/Beneficiaires/BeneficiaireRegister/BeneficiaireRegister.component';
 import { ReservationComponent } from './Components/Organisations/Reservations/reservation/reservation.component';
+import { RapportComponent } from './Components/Beneficiaires/rapport/rapport.component';
 
 export const routes: Routes = [
 
@@ -47,7 +48,8 @@ export const routes: Routes = [
   { path: 'produits/:id/modifier', component: ProduitFormComponent }, // Modifier un produit
 
   // Route pour les Beneficiaires
-  // {path: 'beneficiaire' , component: BeneficiaireComponent},
+  {path: 'rapport' , component: RapportComponent }, //
+  { path: 'rapport/:id', component: RapportComponent },
 
 
 
