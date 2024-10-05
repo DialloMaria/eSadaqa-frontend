@@ -1,0 +1,179 @@
+
+body{
+  font-family: "Buenard-Bold", Helvetica;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.banner {
+  background-image: url("../../../../assets/images/paternpropos1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right;
+  height: 45rem;
+  width: 100vw; /* Assure que la bannière prend toute la largeur */
+  color: white;
+  text-align: center;
+}
+.navbar {
+  display: flex;
+  padding-top: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 60px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #ffffff; /* Utilisation de la couleur primaire */
+  font-size: 1.1rem;
+  font-weight: bold; /* Texte en gras */
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #CFA100; /* Utilisation de la couleur secondaire */
+}
+.nav-links li a::after {
+  color: #CFA100; /* Utilisation de la couleur secondaire */
+  text-decoration: underline;
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px; /* Contrôle de l'espace entre le texte et la ligne */
+  height: 2px; /* Épaisseur de la ligne */
+  background-color: transparent;
+  transition: background-color 0.3s ease, bottom 0.3s ease;
+}
+
+.nav-links li a:hover::after {
+  background-color: #CFA100; /* Couleur de la ligne au survol */
+  bottom: -6px; /* Augmente l'espace*/
+}
+
+.btn-inscription {
+  background-color: #CFA100;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-inscription:hover {
+  background-color: #A37500;
+}
+.banner-title{
+  font-size: 3.5rem;
+  margin-top: 180px;
+  margin-bottom: 20px;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+  align-items: center;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+.nous
+{
+  margin-left: 150px;
+  margin-right: 150px;
+
+}
+.nous h2{
+  font-size: 2rem;
+  margin-top: -60px;
+  color: #CFA100;
+}
+.aide-content
+{
+  margin-top: 100px;
+  display: flex;
+  gap: 80px;
+}
+.nous-content p{
+  font-size: 1.6rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.footer {
+  margin-top: 500px;
+  background-color: #00715D; /* bg-sky-400 */
+  padding: 32px 16px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.footer-item {
+  margin: 0 20px;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+}
+
+.footer-link:hover {
+  color: #e5e7eb; /* hover:text-gray-200 */
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.footer-icon {
+  color: white;
+  margin: 0 10px;
+}
+
+.footer-icon:hover {
+  color: #e5e7eb; /* hover:text-gray-200 */
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.footer-text {
+  text-align: center;
+  color: white;
+}

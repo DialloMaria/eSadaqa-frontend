@@ -14,6 +14,7 @@ import { RegisterOrganisationComponent } from './Components/Authentifications/In
 import { RegisterBeneficiaireComponent } from './Components/Authentifications/Inscription/Beneficiaires/BeneficiaireRegister/BeneficiaireRegister.component';
 import { ReservationComponent } from './Components/Organisations/Reservations/reservation/reservation.component';
 import { RapportComponent } from './Components/Beneficiaires/rapport/rapport.component';
+import { ProposComponent } from './Components/Portail/propos/propos.component';
 
 export const routes: Routes = [
 
@@ -22,36 +23,49 @@ export const routes: Routes = [
 // Routes portails et par defaut
   // {path:'**', pathMatch:'full', redirectTo:'accueil'},
   {path: 'accueil', component: AccueilComponent},
+  {path: 'propos', component: ProposComponent},
 
 // Routes pour l'authentification
   {path: 'inscription', component:InscriptionComponent},
+
   {path: 'inscription/perso', component:InscriptionPersoComponent},
+
   {path: 'inscription/structure', component:InscriptionDonateurStructureComponent},
+
   {path: 'inscription/organisation', component:RegisterOrganisationComponent},
+
   {path: 'inscription/beneficiaire', component:RegisterBeneficiaireComponent},
+
   {path: 'connexion', component:ConnexionComponent},
 
 
   // Route pour les Donateurs
 
   { path: 'dons', component: DonListComponent },
+
   { path: 'dons/add', component: DonFormComponent },
-  { path: 'dons/:id', component: DonDetailComponent },
+
+  { path: 'dons/:id', component: DonDetailComponent },                                                                                                                      
+
   { path: 'dons/edit/:id', component: DonFormComponent },
   // Route pour les Organisations
   {path: 'organisation/don' , component: DonListComponent},
+
   { path: 'reservations/create', component: ReservationComponent },
 
   { path: 'produits', component: ProduitListComponent }, // Liste de produits
+
   { path: 'produits/ajouter', component: ProduitFormComponent }, // Ajouter un produit
+
   { path: 'produits/:id', component: ProduitDetailComponent }, // Détail d'un produit
+
   { path: 'produits/:id/modifier', component: ProduitFormComponent }, // Modifier un produit
 
   // Route pour les Beneficiaires
+
   {path: 'rapport' , component: RapportComponent }, //
-  { path: 'rapport/:id', component: RapportComponent },
 
-
+                      { path: 'rapport/:id', component: RapportComponent },
 
 
 ];
