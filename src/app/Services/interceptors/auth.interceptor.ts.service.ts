@@ -2,7 +2,7 @@ import { HttpEvent, HttpHandlerFn, HttpHeaders, HttpRequest } from "@angular/com
 import { Observable } from "rxjs";
 
 export function authInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
-  const token = localStorage.getItem("auth_token");
+  const token = localStorage.getItem("access_token");
 
   // Si pas de token, passer à la requête suivante sans modification
   if (!token) {
@@ -12,7 +12,8 @@ export function authInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn):
   // Ajouter l'en-tête Authorization avec le Bearer token
   const newRequete = req.clone({
     setHeaders: {
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
+      "content-type": "application/json",
     }
   });
 

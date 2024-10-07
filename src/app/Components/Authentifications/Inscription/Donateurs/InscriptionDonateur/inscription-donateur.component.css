@@ -1,0 +1,35 @@
+.auth-container {
+
+    background: #fffdfdb7;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    padding: 2rem;
+    margin-top: 2rem;
+  }
+  .form-container {
+    transition: opacity 0.3s ease;
+  }
+  .container {
+    margin-top: 7.5rem;
+
+  }  dans le style de insc et conn.form-control:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+
+.back {
+  height: 100vh;
+  background: linear-gradient(to bottom right, rgba(1, 131, 107, 0.7), rgba(0, 113, 93, 0.7)), url('../../../../../../assets/images/nexion.png') no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.nav-link
+{
+  color: #00715D;
+}

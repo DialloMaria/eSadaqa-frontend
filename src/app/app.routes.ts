@@ -16,6 +16,7 @@ import { RapportComponent } from './Components/Beneficiaires/rapport/rapport.com
 import { AccueilComponent } from './Components/Portail/accueil.component';
 import { ProposComponent } from './Components/Portail/propos/propos.component';
 import { DemandeComponent } from './Components/Portail/demande/demande.component';
+import { InscriptionDonateurComponent } from './Components/Authentifications/Inscription/Donateurs/InscriptionDonateur/inscription-donateur.component';
 
 export const routes: Routes = [
 
@@ -31,6 +32,8 @@ export const routes: Routes = [
 
 // Routes pour l'authentification
   {path: 'inscription', component:InscriptionComponent},
+
+  {path: 'inscription/donateur', component: InscriptionDonateurComponent}, // Inscription pour les donateurs personnels et structures
 
   {path: 'inscription/perso', component:InscriptionPersoComponent},
 

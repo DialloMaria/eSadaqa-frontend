@@ -36,17 +36,25 @@ export class RapportComponent {
       return;
     }
 
-    this.rapportService.generateRapport().subscribe(
+
+    this.rapportService.generateRapport(this.reservationId).subscribe(
       (response) => {
-        this.rapportContenu = response.rapport.contenu;
-        this.errorMessage = '';
+        console.log('Réponse reçue :', response);
+        if (response.success) {
+          this.rapportContenu = response;
+          this.errorMessage = '';
+        } else {
+          this.errorMessage = response.rapport.contenu || 'Erreur inconnue.';
+        }
       },
       (error) => {
+        console.error('Erreur API :', error);
         this.errorMessage = 'Erreur lors de la génération du rapport.';
         this.rapportContenu = '';
       }
     );
   }
+
 
 
 

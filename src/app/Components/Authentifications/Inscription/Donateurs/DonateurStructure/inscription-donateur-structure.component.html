@@ -1,23 +1,24 @@
 
 
+
 <div class="Inscriptionstructure">
   <!-- Step 1: Personal Information -->
   <div *ngIf="currentStep === 1">
     <h2>{{ isEditMode ? 'Modifier un Produit' : 'Ajouter un Produit' }}</h2>
     <form [formGroup]="InscriptionStructureForm" (ngSubmit)="nextStep()">
       <div class="form-group">
-        <label for="libelle">nom</label>
-        <input id="nom" formControlName="nom" class="form-control" type="text" placeholder="nom" required>
+        <label for="nom">Nom</label>
+        <input id="nom" formControlName="nom" class="form-control" type="text" placeholder="Nom" required>
         <div *ngIf="InscriptionStructureForm.get('nom')?.invalid && InscriptionStructureForm.get('nom')?.touched" class="text-danger">
-          Le Nom est requis.
+          Le nom est requis.
         </div>
       </div>
 
       <div class="form-group">
-        <label for="prenom">Prenom</label>
-        <input id="prenom" formControlName="prenom" class="form-control" type="text" placeholder="Quantité" required>
+        <label for="prenom">Prénom</label>
+        <input id="prenom" formControlName="prenom" class="form-control" type="text" placeholder="Prénom" required>
         <div *ngIf="InscriptionStructureForm.get('prenom')?.invalid && InscriptionStructureForm.get('prenom')?.touched" class="text-danger">
-          La prenom est requise.
+          Le prénom est requis.
         </div>
       </div>
 
@@ -25,31 +26,31 @@
         <label for="email">Email</label>
         <input id="email" formControlName="email" class="form-control" type="text" placeholder="Email" required>
         <div *ngIf="InscriptionStructureForm.get('email')?.invalid && InscriptionStructureForm.get('email')?.touched" class="text-danger">
-          La Email est requise.
+          L'email est requis.
         </div>
       </div>
 
       <div class="form-group">
-        <label for="telephone">telephone</label>
-        <input id="telephone" formControlName="telephone" class="form-control" type="tel" placeholder="telephone" required>
+        <label for="telephone">Téléphone</label>
+        <input id="telephone" formControlName="telephone" class="form-control" type="tel" placeholder="Téléphone" required>
         <div *ngIf="InscriptionStructureForm.get('telephone')?.invalid && InscriptionStructureForm.get('telephone')?.touched" class="text-danger">
-          La telephone est requise.
+          Le téléphone est requis.
         </div>
       </div>
 
       <div class="form-group">
-        <label for="adresse">adresse</label>
-        <input id="adresse" formControlName="adresse" class="form-control" type="text" placeholder="adresse" required>
+        <label for="adresse">Adresse</label>
+        <input id="adresse" formControlName="adresse" class="form-control" type="text" placeholder="Adresse" required>
         <div *ngIf="InscriptionStructureForm.get('adresse')?.invalid && InscriptionStructureForm.get('adresse')?.touched" class="text-danger">
-          La adresse est requise.
+          L'adresse est requise.
         </div>
       </div>
 
       <div class="form-group">
-        <label for="password">password</label>
-        <input id="password" formControlName="password" class="form-control" type="password" placeholder="password" required>
+        <label for="password">Mot de passe</label>
+        <input id="password" formControlName="password" class="form-control" type="password" placeholder="Mot de passe" required>
         <div *ngIf="InscriptionStructureForm.get('password')?.invalid && InscriptionStructureForm.get('password')?.touched" class="text-danger">
-          La password est requise.
+          Le mot de passe est requis.
         </div>
       </div>
 
@@ -57,15 +58,15 @@
     </form>
   </div>
 
-  <!-- Step 2: structure Information -->
-  <div >
-    <h2>{{ isEditMode ? 'Modifier une structure' : 'Ajouter une structure' }}</h2>
+  <!-- Step 2: Structure Information -->
+  <div *ngIf="currentStep === 2">
+    <h2>{{ isEditMode ? 'Modifier une Structure' : 'Ajouter une Structure' }}</h2>
     <form [formGroup]="InscriptionStructureForm" (ngSubmit)="submit()">
       <div class="form-group">
-        <label for="nomstructure">Nom de la structure</label>
-        <input id="nomstructure" formControlName="nomstructure" class="form-control" type="text" placeholder="Nom de la structure" required>
+        <label for="nomstructure">Nom de la Structure</label>
+        <input id="nomstructure" formControlName="nomstructure" class="form-control" type="text" placeholder="Nom de la Structure" required>
         <div *ngIf="InscriptionStructureForm.get('nomstructure')?.invalid && InscriptionStructureForm.get('nomstructure')?.touched" class="text-danger">
-          Le Nom de la structure est requis.
+          Le nom de la structure est requis.
         </div>
       </div>
 
@@ -129,8 +130,9 @@
         </div>
       </div>
 
+
       <button type="button" class="btn btn-secondary" (click)="previousStep()">Retour</button>
-      <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Modifier un Produit' : 'Ajouter un Produit' }}</button>
+      <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Modifier une Structure' : 'Ajouter une Structure' }}</button>
     </form>
   </div>
 </div>

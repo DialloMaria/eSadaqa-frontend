@@ -8,7 +8,7 @@ import { UserModel } from '../../../../../Models/User.model';
 import { DonateurModel } from '../../../../../Models/Donateur.model';
 
 @Component({
-  selector: 'app-produit-form',
+  selector: 'app-donateur-structure',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './inscription-donateur-structure.component.html',
@@ -25,31 +25,37 @@ export class InscriptionDonateurStructureComponent {
     private router: Router,
     private route: ActivatedRoute
   ) {
-
     this.InscriptionStructureForm = this.fb.group({
+      // Step 1 fields
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       adresse: ['', Validators.required],
       telephone: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
+
+      // Step 2 fields
       nomstructure: ['', Validators.required],
       emailstructure: ['', [Validators.required, Validators.email]],
       description: ['', Validators.required],
       typestructure: ['micro', Validators.required],
       siege: ['', Validators.required],
-      logo: [''],
-      date_creation: [''],
-      recepisse: [''],
+      logo: ['', Validators.required],
+      date_creation: ['', Validators.required],
+      recepisse: ['', Validators.required],
     });
   }
 
-
   nextStep() {
-    if (this.InscriptionStructureForm.valid) {
+    if (this.InscriptionStructureForm.controls['nom'].valid &&
+        this.InscriptionStructureForm.controls['prenom'].valid &&
+        this.InscriptionStructureForm.controls['email'].valid &&
+        this.InscriptionStructureForm.controls['adresse'].valid &&
+        this.InscriptionStructureForm.controls['telephone'].valid &&
+        this.InscriptionStructureForm.controls['password'].valid) {
       this.currentStep = 2;
     } else {
-      this.InscriptionStructureForm.markAllAsTouched(); // Mark all fields as touched to show validation messages
+      this.InscriptionStructureForm.markAllAsTouched();
     }
   }
 
@@ -57,27 +63,22 @@ export class InscriptionDonateurStructureComponent {
     this.currentStep = 1;
   }
 
-
-  // Soumission du formulaire
-  submit(): void {
-
-      if (this.InscriptionStructureForm.valid) {
-        const produitData: DonateurModel = this.InscriptionStructureForm.value;
-
-        // Ajoute un nouveau produit
-        this.authService.registerdonateurStructure(produitData).subscribe({
-          next: () => {
-            console.log('Produit ajouté avec succès');
-            this.router.navigate(['/connexion']);
-          },
-          error: (err) => {
-            console.error('Erreur lors de l\'ajout du produit', err);
-          }
-        });
-
+  submit() {
+    if (this.InscriptionStructureForm.valid) {
+      const formData = this.InscriptionStructureForm.value;
+      this.authService.registerdonateurStructure(formData).subscribe({
+        next: () => {
+          console.log('Structure ajoutée avec succès');
+          this.router.navigate(['/connexion']);
+        },
+        error: (err) => {
+          console.error('Erreur lors de l\'ajout de la structure', err);
+        }
+      });
+    } else {
+      this.InscriptionStructureForm.markAllAsTouched();
     }
   }
-
 
       // editProduit(produit: ProduitModel): void {
     //   this.isEditMode = true;

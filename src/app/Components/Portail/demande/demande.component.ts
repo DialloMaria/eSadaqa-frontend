@@ -13,4 +13,30 @@ export class DemandeComponent {
   {
 
   }
+    isModalActive: boolean = false;
+  modalTitle: string = '';
+  modalContent: string = '';
+
+  openModal(type: string) {
+    this.isModalActive = true;
+
+    switch (type) {
+      case 'donateur':
+        this.modalTitle = 'Donateur';
+        this.modalContent = 'You selected the Donateur option.';
+        break;
+      case 'organisation':
+        this.modalTitle = 'Organisation';
+        this.modalContent = 'You selected the Organisation option.';
+        break;
+      case 'beneficiaire':
+        this.modalTitle = 'Beneficiaire';
+        this.modalContent = 'You selected the Beneficiaire option.';
+        break;
+    }
+  }
+
+  closeModal() {
+    this.isModalActive = false;
+  }
 }

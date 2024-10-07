@@ -1,0 +1,35 @@
+<div class="back ">
+  <div class="container align-items-center">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="auth-container p-4 position-relative">
+            <h2 class="text-center mb-4">DONATEUR</h2>
+            <ul class="nav nav-tabs mb-4" id="authTab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" (click)="showLogin()" [class.active]="isSignupPerso">Personnel</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" (click)="showSignup()" accesskey="" [class.active]="isSignupStructure">Structure</button>
+              </li>
+            </ul>
+            <div class="tab-content" id="authTabContent">
+              <!-- Afficher le formulaire de connexion si isLogin est vrai -->
+              <div *ngIf="isSignupPerso">
+
+              <app-donateur-perso></app-donateur-perso>
+
+              </div>
+              <!-- Afficher le formulaire d'inscription si isSignupStructure est vrai -->
+              <div *ngIf="isSignupStructure">
+
+                <app-donateur-structure></app-donateur-structure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+

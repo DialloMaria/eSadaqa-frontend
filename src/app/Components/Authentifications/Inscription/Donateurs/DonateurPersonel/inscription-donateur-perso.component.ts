@@ -5,9 +5,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { UserModel } from '../../../../../Models/User.model';
-
+import { ValidatorCore } from '../../../../../Services/validator';
 @Component({
-  selector: 'app-produit-form',
+  selector: 'app-donateur-perso',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './inscription-donateur-perso.component.html',
@@ -17,6 +17,8 @@ export class InscriptionPersoComponent {
   InscriptionPersoForm: FormGroup;
   isEditMode = false;
   produitId: number | null = null;
+  messageErreur: string = ''; // Message d'erreur
+  showErrorMessage:string = ''; // Show
 
   constructor(
     private fb: FormBuilder,
