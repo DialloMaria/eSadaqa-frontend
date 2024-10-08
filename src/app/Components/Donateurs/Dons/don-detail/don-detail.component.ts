@@ -17,6 +17,8 @@ export class DonDetailComponent  {
   don: DonModel | null = null;
   donId: number | null = null;
   produits: ProduitModel[] = [];
+  prenom!: string; // ID de l'utilisateur connecté
+
 
   constructor(
     private produitservice: ProduitService,
@@ -68,6 +70,12 @@ export class DonDetailComponent  {
         this.router.navigate(['/dons']); // Redirection si le don n'est pas trouvé
       });
     }
+
+    getCleanImageUrl(imageUrl: string): string {
+      // Si l'URL contient "http://127.0.0.1:8000/storage/", on le retire
+      return imageUrl.replace('http://127.0.0.1:8000/storage/', '');
+    }
+
 
       // Fonction pour obtenir les détails du don
       // getProduitsDetails(id: number): void {

@@ -1,9 +1,81 @@
-<div *ngIf="don"  class="container my-5">
-  <h2 class="text-center mb-4">{{ don.libelle }}</h2>
 
-  <div class="row">
+<div class="menu-bar animate__animated animate__fadeInDown">
+  <div class="logo">
+    <img src="logo.png" alt="Logo" class="logo-img">
+  </div>
+  <ul class="nav-links">
+    <li><a routerLink="/accueil">Accueil</a></li>
+    <li><a routerLink="/dons">Dons</a></li>
+  </ul>
+  <div class="user-info">
+    <i class="fa fa-bell notification-icon"></i> <!-- Icone de notification -->
+    <span class="user-name">{{prenom}}</span> <!-- Nom de l'utilisateur connecté -->
+    <!-- <img src="" alt="User Image" class="user-img"> Image de l'utilisateur -->
+  </div>
+</div>
+
+
+<section *ngIf="don" class="detail">
+  <div class="contenu">
+    <div class="row">
+      <div class="col-md-6">
+        <img *ngIf="don.image" [src]="getCleanImageUrl(don.image)" [alt]="don.libelle" class="card-img-top"  height="350px">
+      </div>
+      <div class="col-md-6">
+      </div>
+    </div>
+    <div class="libelle">
+      <h2>{{ don.libelle }}</h2>
+    </div>
+  </div>
+
+  <div class="description">
+    <p>{{ don.description }}</p>
+  </div>
+
+  <h5 class="card-title"><i class="fas fa-map-marker-alt"></i> Adresse</h5>
+  <p class="card-text">{{ don.adresse }}</p>
+
+  <h5 class="card-title"><i class="fas fa-check-circle"></i> Status</h5>
+  <p class="card-text">{{ don.status }}</p>
+  <table class="table table-hover table-striped product-table">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Libelle</th>
+        <th scope="col">Quantité</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let produit of produits">
+        <td>{{ produit.libelle }}</td>
+        <td>{{ produit.quantite }}</td>
+
+        <td>
+          <button class="btn btn-success btn-sm">
+            <i class="fas fa-edit"></i>
+          </button>
+          <button class="btn btn-danger btn-sm">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</section>
+
+
+
+
+
+
+<div *ngIf="don"  class="container my-5">
+  <h2 class="text-center mb-4"></h2>
+
+  <!-- <div class="row">
     <div class="col-md-6">
-      <img [src]="don.image || 'https://via.placeholder.com/300'" alt="{{ don.libelle }}" class="img-fluid">
+      <img *ngIf="don.image" [src]="getCleanImageUrl(don.image)" [alt]="don.libelle" class="card-img-top">
     </div>
     <div class="col-md-6">
       <div class="card p-3">
@@ -31,5 +103,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>
