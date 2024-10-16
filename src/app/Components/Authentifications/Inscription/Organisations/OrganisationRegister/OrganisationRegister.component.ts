@@ -22,6 +22,9 @@ export class RegisterOrganisationComponent {
   selectedFile: File | null = null;
   selectedLogo: File | null = null;
   selectedRecepisse: File | null = null;
+  isSignupPerso = true; // Par défaut, on montre la page de connexion
+  isSignupStructure = false; // Inscription est cachée par défaut
+
 
   constructor(
     private fb: FormBuilder,
@@ -215,4 +218,16 @@ export class RegisterOrganisationComponent {
     }
   }
 
+
+    // Méthode pour afficher le formulaire de connexion
+    showLogin() {
+      this.isSignupPerso = true;
+      this.isSignupStructure = false;
+    }
+
+    // Méthode pour afficher le formulaire d'inscription
+    showSignup() {
+      this.isSignupPerso = false;
+      this.isSignupStructure = true;
+    }
 }
