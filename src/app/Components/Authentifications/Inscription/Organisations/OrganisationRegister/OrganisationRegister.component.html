@@ -470,14 +470,25 @@
                             Le recepisse est obligatoire.
                           </div>
                         </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="fondateur">Fondateur</label>
-                        <input id="fondateur" formControlName="fondateur" class="form-control" type="text" placeholder="Fondateur" required>
-                        <div *ngIf="OrganisationRegister.get('fondateur')?.invalid && OrganisationRegister.get('fondateur')?.touched" class="text-danger">
-                          Le Fondateur est requis.
+                        <div class="form-group">
+                          <label for="fondateur">fondateur</label>
+                          <i class="fas fa-user form-icon"></i>
+                          <input id="fondateur" formControlName="fondateur" class="form-control animate__animated animate__fadeInUp" type="text" placeholder="fondateur" required>
+                          <div *ngIf="OrganisationRegister.get('fondateur')?.invalid && OrganisationRegister.get('fondateur')?.touched" class="text-danger animate__animated animate__shakeX">
+                            <div *ngIf="OrganisationRegister.get('fondateur')?.errors?.['required']">Le fondateur est obligatoire.</div>
+                            <div *ngIf="!OrganisationRegister.get('fondateur')?.errors?.['required'] && OrganisationRegister.get('fondateur')?.errors?.['minlength']">
+                              Le fondateur doit contenir au moins 3 caractères.
+                            </div>
+                            <div *ngIf="!OrganisationRegister.get('fondateur')?.errors?.['required'] && !OrganisationRegister.get('fondateur')?.errors?.['minlength'] && OrganisationRegister.get('fondateur')?.errors?.['maxlength']">
+                              Le fondateur ne peut pas dépasser 20 caractères.
+                            </div>
+                            <div *ngIf="!OrganisationRegister.get('fondateur')?.errors?.['required'] && !OrganisationRegister.get('fondateur')?.errors?.['minlength'] && !OrganisationRegister.get('fondateur')?.errors?.['maxlength'] && OrganisationRegister.get('nom')?.errors?.['pattern']">
+                              Le Nom ne doit contenir que des lettres.
+                            </div>
+                          </div>
                         </div>
                       </div>
+
 
                       <button type="button" class="btn btn-secondary" (click)="previousStep()">Retour</button>
                       <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Modifier un Produit' : 'Ajouter un Produit' }}</button>

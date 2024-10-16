@@ -1,9 +1,11 @@
-
 <div class="reservation-list">
   <h2 class="mb-4">Liste des Réservations</h2>
+
+  <!-- Message si aucune réservation n'est disponible -->
   <div *ngIf="reservations.length === 0" class="alert alert-warning">
     <p>Aucune réservation disponible.</p>
   </div>
+
   <ul class="list-group">
     <li *ngFor="let reservation of reservations" class="list-group-item">
       <div class="reservation-item p-3">
@@ -11,12 +13,26 @@
         <p><strong>Bénéficiaire :</strong> {{ reservation.beneficiaire.nomstructure }}</p>
         <p><strong>Description :</strong> {{ reservation.description }}</p>
         <p><strong>Date :</strong> {{ reservation.date }}</p>
-        <button class="btn btn-success" (click)="confirmReservation(reservation.id)">Confirmer la réservation</button>
+
+        <!-- Bouton de confirmation -->
+        <button
+          class="btn btn-success"
+          *ngIf="reservation.don.status !== 'confirmé'"
+          (click)="confirmReservation(reservation.id)">
+          Confirmer la réservation
+        </button>
+
+        <!-- Icône de croix si la réservation est confirmée -->
+        <i
+          class="fa fa-times text-danger"
+          *ngIf="reservation.don.status === 'confirmé'"
+          aria-hidden="true"
+          title="Réservation confirmée">
+        </i>
       </div>
     </li>
   </ul>
 </div>
-
 
 
 <!-- <div class="dropdown">

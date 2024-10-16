@@ -13,7 +13,9 @@ import { AuthService } from '../../Services/auth.Service';
 })
 export class NotificationsComponent {
   reservations: any[] = [];
+  dons:any[] = [];
   donateurId: number | null = null;
+
 
   constructor(private notificationService: NotificationService, private authService: AuthService ) {}
 
@@ -22,13 +24,12 @@ export class NotificationsComponent {
     this.donateurId = this.authService.getDonateurId();
 
   }
-
+  // Récupérer les réservations
   fetchReservations(): void {
     this.notificationService.getReservations().subscribe({
       next: (data) => {
-
         this.reservations = data;
-        console.log('Réservations:', this.reservations); // Affichez pour vérifier la structure
+        console.log('Réservations:', this.reservations); // Vérifiez les données reçues
       },
       error: (error) => {
         console.error('Erreur lors de la récupération des réservations:', error);
@@ -36,6 +37,7 @@ export class NotificationsComponent {
     });
   }
 
+  // Confirmer une réservation
   confirmReservation(id: number): void {
     if (!id) {
       alert('ID de réservation manquant.');
@@ -44,7 +46,7 @@ export class NotificationsComponent {
 
     this.notificationService.confirmReservation(id).subscribe({
       next: (response) => {
-        alert(response.message); // Affichez le message de confirmation
+        alert(response.message); // Affiche un message de confirmation
         this.fetchReservations(); // Rafraîchir la liste après confirmation
       },
       error: (error) => {
@@ -53,6 +55,45 @@ export class NotificationsComponent {
       },
     });
   }
+
+  // confirmReservation(id: number): void {
+  //   if (!id) {
+  //     alert('ID de réservation manquant.');
+  //     return;
+  //   }
+
+  //   this.notificationService.confirmReservation(id).subscribe({
+  //     next: (response) => {
+  //       alert(response.message); // Affichez le message de confirmation
+  //       this.fetchReservations(); // Rafraîchir la liste après confirmation
+  //     },
+  //     error: (error) => {
+  //       console.error('Erreur lors de la confirmation de la réservation:', error);
+  //       alert('Erreur lors de la confirmation.');
+  //     },
+  //   });
+  // }
+  // confirmReservation(id: number): void {
+  //   if (!id) {
+  //     alert('ID de réservation manquant.');
+  //     return;
+  //   }
+
+  //   this.notificationService.confirmReservation(id).subscribe({
+  //     next: (response) => {
+  //       alert(response.message); // Affichez le message de confirmation
+
+  //       // Mettre à jour le statut localement ou supprimer la réservation confirmée
+  //       this.reservations = this.reservations.filter(reservation => reservation.id !== id || reservation.status !== 'confirmé');
+  //     },
+  //     error: (error) => {
+  //       console.error('Erreur lors de la confirmation de la réservation:', error);
+  //       alert('Erreur lors de la confirmation.');
+  //     },
+  //   });
+  // }
+
+
 
     createReservation(reservationData: any): void {
     this.notificationService.createReservation(reservationData).subscribe({

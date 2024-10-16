@@ -1,10 +1,24 @@
 
+.demande{
+  background-image: url("../../../../assets/images/patern2.png");
+  height: 100vh;
+
+}
 .demandeProfil{
+  background-image: url("../../../../assets/images/patern2.png");
+
   height: 400px;
   width: 100%;
   background-color: #00715D;
   color: white;
 }
+
+i{
+  font-size: 40px;
+  color: #00715D;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
 .demandeProfil h1 {
   font-size: 3.5rem;
   padding-top: 100px;
@@ -15,15 +29,15 @@
   text-align: center;
 }
 
-.container {
-  background-image: url("../../../../assets/images/patern2.png");
+/* .container {
+
   background-repeat: no-repeat;
   margin-top: 150px;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
 /* .container .glass {
   position: relative;
@@ -100,13 +114,13 @@
 }
 
 .container {
-  background-image: url("../../../../assets/images/patern2.png");
   background-repeat: no-repeat;
   margin-top: 150px;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 

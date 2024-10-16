@@ -22,7 +22,7 @@ import { NotificationsComponent } from "../../../notifications/notifications.com
     ReservationComponent,
     NgxPaginationModule,
     NotificationsComponent
-    
+
 ],
   templateUrl: './don-list.component.html',
   styleUrl: './don-list.component.css'
@@ -31,6 +31,7 @@ export class DonListComponent implements OnInit {
   dons: DonModel[] = [];
   userId!: number; // ID de l'utilisateur connecté
   prenom!: string; // ID de l'utilisateur connecté
+  photo_profile!: string; // ID de l'utilisateur connecté
   nombreDonsUtilisateur: number = 0;
   page: number = 1;
   reservationForm!:FormGroup;

@@ -22,6 +22,7 @@ import { ListDonReservationComponent } from './Components/Organisations/Dons/don
 import { ListBeneficiaireComponent } from './Components/Admins/list-beneficiare/list-beneficiaire.component';
 import { ListeOrganisationComponent } from './Components/Admins/list-organisation/list-organisation.component';
 import { ListDonComponent } from './Components/Admins/don-list/list-don.component';
+import { InscriptionBenefiaireComponent } from './Components/Authentifications/Inscription/Beneficiaires/InscriptionBeneficiaire/inscription-beneficiaire.component';
 
 export const routes: Routes = [
 
@@ -46,7 +47,10 @@ export const routes: Routes = [
 
   {path: 'inscription/organisation', component:RegisterOrganisationComponent},
 
-  {path: 'inscription/beneficiaire', component:RegisterBeneficiaireComponent},
+  {path: 'inscription/beneficiaire', component:InscriptionBenefiaireComponent},
+
+
+  {path: 'inscription/daara', component:RegisterBeneficiaireComponent},
 
   {path: 'connexion', component:ConnexionComponent},
 
@@ -59,7 +63,6 @@ export const routes: Routes = [
 
   {path: 'dashboard/dons', component:   ListDonComponent},
   {path: 'dashboard/Beneficiaire', component:   ListBeneficiaireComponent},
-
 
 
 

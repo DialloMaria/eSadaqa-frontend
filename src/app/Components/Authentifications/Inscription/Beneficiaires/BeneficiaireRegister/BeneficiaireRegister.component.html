@@ -5,129 +5,227 @@
   <div *ngIf="currentStep === 1">
     <h2>{{ isEditMode ? 'Modifier un Produit' : 'Ajouter un Produit' }}</h2>
     <form [formGroup]="BeneficiaireRegister" (ngSubmit)="nextStep()">
-      <div class="form-group">
-        <label for="libelle">nom</label>
-        <input id="nom" formControlName="nom" class="form-control" type="text" placeholder="nom" required>
-        <div *ngIf="BeneficiaireRegister.get('nom')?.invalid && BeneficiaireRegister.get('nom')?.touched" class="text-danger">
-          Le Nom est requis.
+      <div class="input-group-container">
+        <div class="form-group">
+          <label for="nom">Nom</label>
+          <i class="fas fa-user form-icon"></i>
+          <input id="nom" formControlName="nom" class="form-control animate__animated animate__fadeInUp" type="text" placeholder="Nom" required>
+          <div *ngIf="BeneficiaireRegister.get('nom')?.invalid && BeneficiaireRegister.get('nom')?.touched" class="text-danger animate__animated animate__shakeX">
+            <div *ngIf="BeneficiaireRegister.get('nom')?.errors?.['required']">Le Nom est obligatoire.</div>
+            <div *ngIf="!BeneficiaireRegister.get('nom')?.errors?.['required'] && BeneficiaireRegister.get('nom')?.errors?.['minlength']">
+              Le Nom doit contenir au moins 3 caractères.
+            </div>
+            <div *ngIf="!BeneficiaireRegister.get('nom')?.errors?.['required'] && !BeneficiaireRegister.get('nom')?.errors?.['minlength'] && BeneficiaireRegister.get('nom')?.errors?.['maxlength']">
+              Le Nom ne peut pas dépasser 20 caractères.
+            </div>
+            <div *ngIf="!BeneficiaireRegister.get('nom')?.errors?.['required'] && !BeneficiaireRegister.get('nom')?.errors?.['minlength'] && !BeneficiaireRegister.get('nom')?.errors?.['maxlength'] && BeneficiaireRegister.get('nom')?.errors?.['pattern']">
+              Le Nom ne doit contenir que des lettres.
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label for="prenom">Prenom</label>
-        <input id="prenom" formControlName="prenom" class="form-control" type="text" placeholder="Quantité" required>
-        <div *ngIf="BeneficiaireRegister.get('prenom')?.invalid && BeneficiaireRegister.get('prenom')?.touched" class="text-danger">
-          La prenom est requise.
+        <div class="form-group">
+          <label for="prenom">Prénom</label>
+          <i class="fas fa-user form-icon"></i>
+          <input id="prenom" formControlName="prenom" class="form-control animate__animated animate__fadeInUp" type="text" placeholder="Prénom" required>
+          <div *ngIf="BeneficiaireRegister.get('prenom')?.invalid && BeneficiaireRegister.get('prenom')?.touched" class="text-danger animate__animated animate__shakeX">
+            <div *ngIf="BeneficiaireRegister.get('prenom')?.errors?.['required']">Le Prénom est obligatoire.</div>
+            <div *ngIf="!BeneficiaireRegister.get('prenom')?.errors?.['required'] && BeneficiaireRegister.get('prenom')?.errors?.['minlength']">
+              Le Prénom doit contenir au moins 3 caractères.
+            </div>
+            <div *ngIf="!BeneficiaireRegister.get('prenom')?.errors?.['required'] && !BeneficiaireRegister.get('prenom')?.errors?.['minlength'] && BeneficiaireRegister.get('prenom')?.errors?.['maxlength']">
+              Le Prénom ne peut pas dépasser 20 caractères.
+            </div>
+            <div *ngIf="!BeneficiaireRegister.get('prenom')?.errors?.['required'] && !BeneficiaireRegister.get('prenom')?.errors?.['minlength'] && !BeneficiaireRegister.get('prenom')?.errors?.['maxlength'] && BeneficiaireRegister.get('prenom')?.errors?.['pattern']">
+              Le Prénom ne doit contenir que des lettres.
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input id="email" formControlName="email" class="form-control" type="text" placeholder="Email" required>
-        <div *ngIf="BeneficiaireRegister.get('email')?.invalid && BeneficiaireRegister.get('email')?.touched" class="text-danger">
-          La Email est requise.
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <i class="fas fa-envelope form-icon"></i>
+          <input id="email" formControlName="email" class="form-control animate__animated animate__fadeInUp" type="email" placeholder="Email" required>
+          <div *ngIf="BeneficiaireRegister.get('email')?.invalid && BeneficiaireRegister.get('email')?.touched" class="text-danger animate__animated animate__shakeX">
+            <div *ngIf="BeneficiaireRegister.get('email')?.errors?.['required']">L'Email est obligatoire.</div>
+            <div *ngIf="!BeneficiaireRegister.get('email')?.errors?.['required'] && BeneficiaireRegister.get('email')?.errors?.['email']">
+              L'Email doit être valide.
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label for="telephone">telephone</label>
-        <input id="telephone" formControlName="telephone" class="form-control" type="tel" placeholder="telephone" required>
-        <div *ngIf="BeneficiaireRegister.get('telephone')?.invalid && BeneficiaireRegister.get('telephone')?.touched" class="text-danger">
-          La telephone est requise.
+        <div class="form-group">
+          <label for="telephone">Téléphone</label>
+          <i class="fas fa-phone form-icon"></i>
+          <input id="telephone" formControlName="telephone" class="form-control animate__animated animate__fadeInUp" type="tel" placeholder="Téléphone" required>
+          <div *ngIf="BeneficiaireRegister.get('telephone')?.invalid && BeneficiaireRegister.get('telephone')?.touched" class="text-danger animate__animated animate__shakeX">
+            <div *ngIf="BeneficiaireRegister.get('telephone')?.errors?.['required']">Le Téléphone est obligatoire.</div>
+            <div *ngIf="!BeneficiaireRegister.get('telephone')?.errors?.['required'] && BeneficiaireRegister.get('telephone')?.errors?.['invalidLength']">
+              Le Téléphone doit contenir exactement 9 chiffres.
+            </div>
+            <div *ngIf="!BeneficiaireRegister.get('telephone')?.errors?.['required'] && !BeneficiaireRegister.get('telephone')?.errors?.['invalidLength'] && BeneficiaireRegister.get('telephone')?.errors?.['mustStartWith7']">
+              Le Téléphone doit commencer par '7'.
+            </div>
+            <div *ngIf="!BeneficiaireRegister.get('telephone')?.errors?.['required'] && !BeneficiaireRegister.get('telephone')?.errors?.['invalidLength'] && !BeneficiaireRegister.get('telephone')?.errors?.['mustStartWith7'] && BeneficiaireRegister.get('telephone')?.errors?.['pattern']">
+              Le Téléphone ne doit contenir que des chiffres.
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label for="adresse">adresse</label>
-        <input id="adresse" formControlName="adresse" class="form-control" type="text" placeholder="adresse" required>
-        <div *ngIf="BeneficiaireRegister.get('adresse')?.invalid && BeneficiaireRegister.get('adresse')?.touched" class="text-danger">
-          La adresse est requise.
+        <div class="form-group">
+          <label for="adresse">Adresse</label>
+          <i class="fas fa-home form-icon"></i>
+          <input id="adresse" formControlName="adresse" class="form-control animate__animated animate__fadeInUp" type="text" placeholder="Adresse" required>
+          <div *ngIf="BeneficiaireRegister.get('adresse')?.invalid && BeneficiaireRegister.get('adresse')?.touched" class="text-danger animate__animated animate__shakeX">
+            <div *ngIf="BeneficiaireRegister.get('adresse')?.errors?.['required']">L'Adresse est obligatoire.</div>
+            <div *ngIf="!BeneficiaireRegister.get('adresse')?.errors?.['required'] && BeneficiaireRegister.get('adresse')?.errors?.['minlength']">
+              L'Adresse doit contenir au moins 3 caractères.
+            </div>
+            <div *ngIf="!BeneficiaireRegister.get('adresse')?.errors?.['required'] && !BeneficiaireRegister.get('adresse')?.errors?.['minlength'] && BeneficiaireRegister.get('adresse')?.errors?.['maxlength']">
+              L'Adresse ne peut pas dépasser 20 caractères.
+            </div>
+            <div *ngIf="!BeneficiaireRegister.get('adresse')?.errors?.['required'] && !BeneficiaireRegister.get('adresse')?.errors?.['minlength'] && !BeneficiaireRegister.get('adresse')?.errors?.['maxlength'] && BeneficiaireRegister.get('adresse')?.errors?.['pattern']">
+              L'Adresse ne doit contenir que des lettres et des chiffres.
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label for="password">password</label>
-        <input id="password" formControlName="password" class="form-control" type="password" placeholder="password" required>
-        <div *ngIf="BeneficiaireRegister.get('password')?.invalid && BeneficiaireRegister.get('password')?.touched" class="text-danger">
-          La password est requise.
+        <div class="form-group ">
+          <label for="password">Mot de passe</label>
+          <i class="fas fa-lock form-icon"></i>
+          <input id="password" formControlName="password" class="form-control animate__animated animate__fadeInUp" type="password" placeholder="Mot de passe" required>
+          <div *ngIf="BeneficiaireRegister.get('password')?.invalid && BeneficiaireRegister.get('password')?.touched" class="text-danger animate__animated animate__shakeX">
+            <div *ngIf="BeneficiaireRegister.get('password')?.errors?.['required']">Le Mot de passe est obligatoire.</div>
+            <div *ngIf="!BeneficiaireRegister.get('password')?.errors?.['required'] && BeneficiaireRegister.get('password')?.errors?.['minlength']">
+              Le Mot de passe doit comporter au moins 6 caractères.
+            </div>
+            <div *ngIf="!BeneficiaireRegister.get('password')?.errors?.['required'] && !BeneficiaireRegister.get('password')?.errors?.['minlength'] && BeneficiaireRegister.get('password')?.errors?.['uppercase']">
+              Le Mot de passe doit contenir au moins une lettre majuscule.
+            </div>
+            <div *ngIf="!BeneficiaireRegister.get('password')?.errors?.['required'] && !BeneficiaireRegister.get('password')?.errors?.['minlength'] && !BeneficiaireRegister.get('password')?.errors?.['uppercase'] && BeneficiaireRegister.get('password')?.errors?.['number']">
+              Le Mot de passe doit contenir au moins un chiffre.
+            </div>
+          </div>
         </div>
-      </div>
 
-      <button type="button" class="btn btn-primary" (click)="nextStep()">Suivant</button>
-    </form>
+        <div class="form-group">
+          <label for="photo_profile">Photo de profil</label>
+          <i class="fas fa-file-image form-icon"></i>
+          <input id="photo_profile" (change)="onImageSelected($event)" class="form-control animate__animated animate__fadeInUp" type="file" accept="image/*" required>
+          <div *ngIf="!selectedFile && BeneficiaireRegister.get('photo_profile')?.touched" class="text-danger animate__animated animate__shakeX">
+            La photo de profil est obligatoire.
+          </div>
+        </div>
+
+        <div class="form-group ">
+          <label for="confimationMDP">Confirmation MDP</label>
+          <i class="fas fa-lock form-icon"></i>
+          <input id="confimationMDP" formControlName="confimationMDP"  class="form-control animate__animated animate__fadeInUp" type="password" placeholder="Confirmation du mot de passe" required>
+          <div *ngIf="BeneficiaireRegister.get('confimationMDP')?.invalid && BeneficiaireRegister.get('confimationMDP')?.touched" class="text-danger">
+            La confirmation du mot de passe est obligatoire.
+          </div>
+          <div *ngIf="BeneficiaireRegister.hasError('mismatch') && BeneficiaireRegister.get('confimationMDP')?.touched" class="text-danger">
+            Les mots de passe ne correspondent pas.
+          </div>
+        </div>
+         </div>
+
+
+         <button type="button" class="btn btn-primary  btn-block animate__animated animate__pulse" (click)="nextStep()">Suivant</button>
+        </form>
   </div>
 
   <!-- Step 2: structure Information -->
-  <div >
+  <div  *ngIf="currentStep === 2">
     <h2>{{ isEditMode ? 'Modifier une structure' : 'Ajouter une structure' }}</h2>
     <form [formGroup]="BeneficiaireRegister" (ngSubmit)="submit()">
+      <div class="input-group-container">
       <div class="form-group">
-        <label for="nomstructure">Nom de la structure</label>
-        <input id="nomstructure" formControlName="nomstructure" class="form-control" type="text" placeholder="Nom de la structure" required>
-        <div *ngIf="BeneficiaireRegister.get('nomstructure')?.invalid && BeneficiaireRegister.get('nomstructure')?.touched" class="text-danger">
-          Le Nom de la structure est requis.
+        <label for="nomstructure">nomstructure</label>
+        <i class="fas fa-building form-icon"></i>
+        <input id="nomstructure" formControlName="nomstructure" class="form-control animate__animated animate__fadeInUp" type="text" placeholder="nomstructure de la Structure" required>
+        <div *ngIf="BeneficiaireRegister.get('nomstructure')?.invalid && BeneficiaireRegister.get('nomstructure')?.touched" class="text-danger animate__animated animate__shakeX">
+          <div *ngIf="BeneficiaireRegister.get('nomstructure')?.errors?.['required']">Le nomstructure est obligatoire.</div>
+          <div *ngIf="!BeneficiaireRegister.get('nomstructure')?.errors?.['required'] && BeneficiaireRegister.get('nomstructure')?.errors?.['minlength']">
+            Le Nom Structure doit contenir au moins 3 caractères.
+          </div>
+          <div *ngIf="!BeneficiaireRegister.get('nomstructure')?.errors?.['required'] && !BeneficiaireRegister.get('nomstructure')?.errors?.['minlength'] && BeneficiaireRegister.get('nomstructure')?.errors?.['maxlength']">
+            Le  Nom Structure ne peut pas dépasser 20 caractères.
+          </div>
+          <div *ngIf="!BeneficiaireRegister.get('nomstructure')?.errors?.['required'] && !BeneficiaireRegister.get('nomstructure')?.errors?.['minlength'] && !BeneficiaireRegister.get('nomstructure')?.errors?.['maxlength'] && BeneficiaireRegister.get('nomstructure')?.errors?.['pattern']">
+            Le  Nom Structure ne doit contenir que des lettres.
+          </div>
         </div>
       </div>
 
       <div class="form-group">
         <label for="emailstructure">Email de la structure</label>
-        <input id="emailstructure" formControlName="emailstructure" class="form-control" type="email" placeholder="Email de la structure">
+        <i class="fas fa-envelope form-icon"></i>
+        <input id="emailstructure" formControlName="emailstructure"  class="form-control animate__animated animate__fadeInUp"type="email" placeholder="Email de la structure">
         <div *ngIf="BeneficiaireRegister.get('emailstructure')?.invalid && BeneficiaireRegister.get('emailstructure')?.touched" class="text-danger">
           L'Email de la structure est invalide.
         </div>
       </div>
 
       <div class="form-group">
-        <label for="telstructure">telstructure</label>
-        <input id="telstructure" formControlName="telstructure" class="form-control" type="tel" placeholder="telstructure" required>
-        <div *ngIf="BeneficiaireRegister.get('telstructure')?.invalid && BeneficiaireRegister.get('telstructure')?.touched" class="text-danger">
-          La telephone est requise.
+        <label for="description">description</label>
+        <i class="fas fa-align-left form-icon"></i>
+        <input id="description" formControlName="description" class="form-control animate__animated animate__fadeInUp" type="text" placeholder="description de la Structure" required>
+        <div *ngIf="BeneficiaireRegister.get('description')?.invalid && BeneficiaireRegister.get('description')?.touched" class="text-danger animate__animated animate__shakeX">
+          <div *ngIf="BeneficiaireRegister.get('description')?.errors?.['required']">Le description est obligatoire.</div>
+          <div *ngIf="!BeneficiaireRegister.get('description')?.errors?.['required'] && BeneficiaireRegister.get('description')?.errors?.['minlength']">
+            La description doit contenir au moins 10 caractères.
+          </div>
+          <div *ngIf="!BeneficiaireRegister.get('description')?.errors?.['required'] && !BeneficiaireRegister.get('description')?.errors?.['minlength'] && BeneficiaireRegister.get('description')?.errors?.['maxlength']">
+            La description ne peut pas dépasser 255 caractères.
+          </div>
+          <div *ngIf="!BeneficiaireRegister.get('description')?.errors?.['required'] && !BeneficiaireRegister.get('description')?.errors?.['minlength'] && !BeneficiaireRegister.get('description')?.errors?.['maxlength'] && BeneficiaireRegister.get('description')?.errors?.['letter']">
+            La description doit contenir au moins une lettre.
+          </div>
         </div>
       </div>
-
-      <div class="form-group">
-        <label for="description">Description</label>
-        <textarea id="description" formControlName="description" class="form-control" placeholder="Description" required></textarea>
-        <div *ngIf="BeneficiaireRegister.get('description')?.invalid && BeneficiaireRegister.get('description')?.touched" class="text-danger">
-          La description est requise.
-        </div>
-      </div>
-
 
       <div class="form-group">
         <label for="siege">Siège</label>
-        <input id="siege" formControlName="siege" class="form-control" type="text" placeholder="Siège" required>
-        <div *ngIf="BeneficiaireRegister.get('siege')?.invalid && BeneficiaireRegister.get('siege')?.touched" class="text-danger">
-          Le siège est requis.
+        <i class="fas fa-map-marker-alt form-icon"></i>
+        <input id="siege" formControlName="siege" class="form-control animate__animated animate__fadeInUp" type="text" placeholder="Siège" required>
+
+        <div *ngIf="BeneficiaireRegister.get('siege')?.invalid && BeneficiaireRegister.get('siege')?.touched" class="text-danger animate__animated animate__shakeX">
+          <div *ngIf="BeneficiaireRegister.get('siege')?.errors?.['required']">Le siège est requis.</div>
+          <div *ngIf="!BeneficiaireRegister.get('siege')?.errors?.['required'] && BeneficiaireRegister.get('siege')?.errors?.['minlength']">
+            Le siège doit contenir au moins 3 caractères.
+          </div>
+          <div *ngIf="!BeneficiaireRegister.get('siege')?.errors?.['required'] && !BeneficiaireRegister.get('siege')?.errors?.['minlength'] && BeneficiaireRegister.get('siege')?.errors?.['maxlength']">
+            Le siège ne peut pas dépasser 20 caractères.
+          </div>
+          <div *ngIf="!BeneficiaireRegister.get('siege')?.errors?.['required'] && !BeneficiaireRegister.get('siege')?.errors?.['minlength'] && !BeneficiaireRegister.get('siege')?.errors?.['maxlength'] && BeneficiaireRegister.get('siege')?.errors?.['letter']">
+            Le siège doit contenir au moins une lettre.
+          </div>
         </div>
       </div>
-
-
 
       <div class="form-group">
         <label for="date_creation">Date de Création</label>
-        <input id="date_creation" formControlName="date_creation" class="form-control" type="date" required>
-        <div *ngIf="BeneficiaireRegister.get('date_creation')?.invalid && BeneficiaireRegister.get('date_creation')?.touched" class="text-danger">
-          La date de création est requise.
+        <i class="fas fa-calendar-alt form-icon"></i>
+        <input id="date_creation" formControlName="date_creation" class="form-control animate__animated animate__fadeInUp" type="date" required>
+
+        <div *ngIf="BeneficiaireRegister.get('date_creation')?.invalid && BeneficiaireRegister.get('date_creation')?.touched" class="text-danger animate__animated animate__shakeX">
+          <div *ngIf="BeneficiaireRegister.get('date_creation')?.errors?.['required']">La date de création est obligatoire.</div>
+          <div *ngIf="!BeneficiaireRegister.get('date_creation')?.errors?.['required'] && BeneficiaireRegister.get('date_creation')?.errors?.['futureDate']">
+            La date de création ne peut pas être dans le futur.
+          </div>
         </div>
       </div>
-
       <div class="form-group">
-        <label for="recepisse">Récépissé</label>
-        <input id="recepisse" formControlName="recepisse" class="form-control" type="text" placeholder="Récépissé" required>
-        <div *ngIf="BeneficiaireRegister.get('recepisse')?.invalid && BeneficiaireRegister.get('recepisse')?.touched" class="text-danger">
-          Le récépissé est requis.
+        <label for="recepisse">Recepisse</label>
+        <input id="recepisse" (change)="onRecepisseSelected($event)"  class="form-control animate__animated animate__fadeInUp" type="file" accept="image/*" required>
+        <div *ngIf="!selectedRecepisse && BeneficiaireRegister.get('recepisse')?.touched" class="text-danger">
+          Le recepisse est obligatoire.
         </div>
       </div>
 
-      <div class="form-group">
-        <label for="fondateur">Fondateur</label>
-        <input id="fondateur" formControlName="fondateur" class="form-control" type="text" placeholder="Fondateur" required>
-        <div *ngIf="BeneficiaireRegister.get('fondateur')?.invalid && BeneficiaireRegister.get('fondateur')?.touched" class="text-danger">
-          Le Fondateur est requis.
-        </div>
-      </div>
-
+    </div>
 
 
       <button type="button" class="btn btn-secondary" (click)="previousStep()">Retour</button>
