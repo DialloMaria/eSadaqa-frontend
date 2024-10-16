@@ -20,3 +20,7 @@
 .shadow {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce */
 }
+
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.5); /* Opacité de 0.5, vous pouvez ajuster la valeur */
+}

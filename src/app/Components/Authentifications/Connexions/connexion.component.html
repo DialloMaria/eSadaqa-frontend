@@ -16,8 +16,8 @@
     <form [formGroup]="loginForm" class="login-form" (ngSubmit)="login()">
       <h2 class="form-title">Connexion</h2>
       <div class="input-group">
-        <input type="email" formControlName="email" placeholder="Email" required>
-        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+        <input type="email" formControlName="email" placeholder="Email" required >
+         <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
           <small *ngIf="loginForm.get('email')?.errors?.['required']">L'email est requis.</small>
           <small *ngIf="loginForm.get('email')?.errors?.['email']">Email invalide.</small>
         </div>

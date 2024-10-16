@@ -1,0 +1,532 @@
+/* Header styles */
+.header {
+  position: sticky;
+  padding-top: 100px;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 2rem;
+  background-color: #ffffff; /* Couleur de fond de l'en-tête */
+  color: #00715D;
+  height: 100px;
+  z-index: 0;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.welcome-message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.welcome-message i {
+  font-size: 1.5rem;
+}
+
+.welcome-message .username {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.sidebar {
+  position:sticky;
+  left: 0;
+  bottom: 0;
+  width: 110px;
+  height: 100vh;
+  padding: 0 1.7rem;
+  color: #fff;
+  overflow: hidden;
+  transition: all 0.5s linear;
+  background: #fff;
+  box-shadow: 0px 10px 25px #297fb918;
+  z-index: 1;
+}
+
+.sidebar:hover {
+  width: 260px;
+  transition: 0.5s;
+}
+
+.logo {
+  color: #2980B9;
+  height: 80px;
+  padding: 16px;
+}
+
+.menu {
+  height: 88%;
+  position: relative;
+  list-style: none;
+  padding: 0;
+}
+
+.menu li {
+  color: #8A92A6;
+  padding: 1rem;
+  margin: 8px 0;
+  border-radius: 8px;
+  transition: all 0.5 ease-in-out;
+}
+
+.menu li:hover,.menu a:hover,
+.active {
+  color: #fff;
+  background: #007461;
+}
+
+.menu a.active {
+  color: white;
+}
+
+.menu a {
+  color: inherit;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+
+
+.menu a span {
+  overflow: hidden;
+}
+
+.menu a i {
+  font-size: 1.2rem;
+}
+
+.logout {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+
+.organisation-list {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: #fff;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+/* Floating Action Button */
+.fab {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  background-color: #007461;
+  color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.fab:hover {
+  background-color: #005f4a;
+}
+
+.fab i {
+  pointer-events: none;
+}
+
+
+
+
+
+/* Style de la carte de compteur de dons */
+
+
+.don-count-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 250px;
+  height: 100px;
+  background-color: #D4A017; /* Couleur similaire à l'image */
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin-right: 20px; /* Ajuste selon l'emplacement souhaité */
+  margin-top: -50px;
+  margin-left: auto; /* Centers the card in the available space */
+  margin-right: 18rem; /* Centers the card in the available space */
+  position: relative;
+  z-index: 1;
+}
+
+/* Style du cercle contenant le nombre de dons */
+.cercle {
+  width: 70px;
+  height: 70px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title{
+  margin-top: 20px;
+  background-color: #007461;
+  height: 10vh;
+  color: #ddd;
+  width: 100%;
+}
+.title h1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 2rem;
+  color: white;
+  font-weight: bold;
+}
+
+.don-count {
+  font-size: 2rem;
+  color: #00715D; /* Couleur verte */
+  margin: 0;
+  font-weight: bold;
+}
+
+/* Texte à droite du cercle */
+.don-text {
+  text-align: center;
+  font-size: 1rem;
+  color: white;
+  font-weight: bold;
+}
+
+/* Media Queries pour le responsive */
+
+/* Pour les petits écrans */
+@media (max-width: 768px) {
+  .banner-title {
+    font-size: 2.5rem;
+  }
+
+  .banner-text {
+    font-size: 1.2rem;
+  }
+
+  .btn-banner {
+    padding: 8px 15px;
+  }
+
+  .menu-bar {
+    flex-direction: column; /* Stack menu items vertically */
+    align-items: flex-start; /* Align items to the left */
+  }
+
+  .user-info {
+    margin-top: 10px;
+    width: 100%; /* Full width on smaller screens */
+    justify-content: space-between; /* Space between notification and user name */
+  }
+
+  .don-count-card {
+    width: 80%; /* Responsive width for smaller screens */
+    margin: 20px auto; /* Center with auto margins */
+    padding: 15px;
+  }
+
+  .don-count-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .don-count-card p {
+    font-size: 1rem;
+  }
+}
+
+/* Responsive cards for the list of donations */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-wrap: wrap;
+  width: 100%;
+  /* padding: 0 50px; */
+  justify-content: center;
+}
+
+.don-card {
+  width: 25%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  background-color: white;
+  margin: 10px;
+}
+
+.don-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.don-card-body {
+  padding: 15px;
+  text-align: left;
+}
+
+.don-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.don-description {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.don-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* Button Styles */
+.btn-add {
+  color: #00715D;
+  border-radius: 15px;
+  border: 3px solid #00715D;
+  text-decoration: none;
+}
+
+.btn-detail {
+  color: #666;
+  background-color: white;
+  border-radius: 15px;
+  border: 3px solid #666;
+}
+
+.btn-modifier {
+  background-color: white;
+  color: #ffc107;
+  border-radius: 15px;
+  border: 3px solid #ffc107;
+}
+
+.btn-supprimer {
+  background-color: white;
+  color: #dc3545;
+  border-radius: 15px;
+  border: 3px solid #dc3545;
+}
+
+.btn-supprimer:hover {
+  border: 3px solid red;
+}
+
+.btn-annuler {
+  background-color: white;
+  color: #666;
+  border-radius: 15px;
+  border: 3px solid #666;
+}
+
+.btn-annuler:hover {
+  border: 3px solid red;
+}
+
+/* Responsive styles for donation cards */
+/* Pour les tablettes en mode portrait (768px et plus) */
+@media (max-width: 768px) {
+  .don-card {
+    width: 45%; /* Deux cartes par ligne sur les écrans moyens */
+  }
+}
+
+/* Pour les smartphones (576px et plus) */
+@media (max-width: 576px) {
+  .don-card {
+    width: 100%; /* Une seule carte par ligne sur les petits écrans */
+  }
+
+  .don-buttons {
+    flex-direction: column; /* Empile les boutons sur les petits écrans */
+    align-items: center;
+  }
+
+  .don-buttons button {
+    margin-bottom: 10px;
+    width: 100%; /* Full width buttons */
+  }
+}
+
+
+/*       ANIMATION        */
+
+/* Existing styles... */
+
+/* Button Styles */
+.btn-add,
+.btn-detail,
+.btn-modifier,
+.btn-supprimer {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-add:hover,
+.btn-detail:hover,
+.btn-modifier:hover,
+.btn-supprimer:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #00715D;
+}
+
+.btn-supprimer:hover {
+  color: #dc3545;
+  border: 3px solid #dc3545;
+}
+
+.btn-modifier:hover {
+  color: #ffc107;
+  border: 3px solid #ffc107;
+}
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.09);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.btn-add {
+  animation: pulsate 1.5s infinite;
+}
+
+/* Card Hover Effects */
+.don-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.don-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Image Hover Effects */
+.don-img {
+  transition: transform 0.3s ease;
+}
+
+.don-card:hover .don-img {
+  transform: scale(1.05);
+}
+
+/* Banner Button Hover Effects */
+.btn-banner {
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.btn-banner::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 113, 93, 0.5);
+  transition: transform 0.3s ease;
+  transform: translateY(-100%);
+  z-index: 1;
+}
+
+.btn-banner:hover::after {
+  transform: translateY(0);
+}
+
+.btn-banner:hover {
+  color: white;
+}
+
+/* Notification Icon Animation */
+.notification-icon {
+  transition: transform 0.3s ease;
+}
+
+.notification-icon:hover {
+  transform: translateY(-5px) rotate(20deg);
+}
+
+
+
+
+.main{
+  display: flex;
+}
+
+
+.calendar-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.p-calendar {
+  width: 300px;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+
+
+.main{
+  display: flex;
+  position: relative;
+}
+.contenu
+{
+  position: relative;
+  width: 100%;
+
+}

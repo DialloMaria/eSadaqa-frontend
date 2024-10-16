@@ -1,20 +1,20 @@
 .auth-container {
+/* From https://css.glass */
+background: rgba(255, 255, 255, 0.488);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(14px);
+-webkit-backdrop-filter: blur(20px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.form-container {
+  transition: opacity 0.3s ease;
+}
+.container {
+  margin-top: 7.5rem;
 
-    background: #fffdfdb7;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    position: relative;
-    padding: 2rem;
-    margin-top: 2rem;
   }
-  .form-container {
-    transition: opacity 0.3s ease;
-  }
-  .container {
-    margin-top: 7.5rem;
-
-  }  dans le style de insc et conn.form-control:focus {
+.form-control:focus {
     border-color: #28a745;
     box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
 }
@@ -22,10 +22,19 @@
 
 .back {
   height: 100vh;
-  background: linear-gradient(to bottom right, rgba(1, 131, 107, 0.7), rgba(0, 113, 93, 0.7)), url('../../../../../../assets/images/nexion.png') no-repeat center center/cover;
+  /* background: linear-gradient(to bottom right , rgba(42, 44, 44, 0.7), rgba(62, 151, 135, 0.7)), url('../../../../../../assets/images/nexion.png') no-repeat center center/cover; */
+  background-image: linear-gradient(rgba(41, 108, 91, 0.418),rgba(41, 108, 91, 0.418)), url('../../../../../../assets/images/nexion.png');
+
   display: flex;
+  background-size: cover;
+  background-position: center;
   justify-content: center;
   align-items: center;
+  font-family: 'Montserrat', sans-serif; /* Utilisation de Montserrat */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
 }
 
 

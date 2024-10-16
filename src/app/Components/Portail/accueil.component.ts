@@ -12,4 +12,6 @@ export class AccueilComponent {
   constructor(private router: Router ){
 
   }
+
+  
 }

@@ -1,0 +1,82 @@
+
+<app-reservation></app-reservation>
+
+<div class="menu-bar animate__animated animate__fadeInDown">
+  <div class="logo">
+    <img src="logo.png" alt="Logo" class="logo-img">
+  </div>
+  <ul class="nav-links">
+    <li><a routerLink="/accueil">Accueil</a></li>
+    <li><a routerLink="/dons">Dons</a></li>
+  </ul>
+  <div class="user-info">
+    <i class="fa fa-bell notification-icon"></i> <!-- Icone de notification -->
+    <span class="user-name">{{prenom}}</span> <!-- Nom de l'utilisateur connecté -->
+    <!-- <img src="" alt="User Image" class="user-img"> Image de l'utilisateur -->
+  </div>
+
+  <button  type="button"[routerLink]="['/connexion']"  class="btn btn-add mb-3 animate__animated animate__bounce" routerLinkerActive="active">
+    deconnexion
+  </button>
+
+</div>
+
+<!-- Section de la bannière -->
+<div class="banner-section animate__animated animate__zoomIn">
+  <div class="banner-content">
+    <h1 class="banner-title">Bienvenue sur notre plateforme de Dons</h1>
+    <p class="banner-text">Faites la différence en soutenant des causes importantes.</p>
+    <!-- <a routerLink="/dons" class="btn btn-banner">Découvrir les Dons</a> -->
+  </div>
+
+  <!-- Carte affichant le nombre de dons -->
+
+</div>
+
+<!-- <div class="don-count-card">
+  <div class="cercle">
+    <p class="don-count">{{ nombreDonsUtilisateur }}</p>
+  </div>
+  <p class=" don-text">DON OFFERTS</p>
+</div> -->
+
+<div class="container my-5">
+  <h2 class="text-center mb-4">Liste des Dons</h2>
+  <!-- <button  type="button" class="btn btn-primary mt-5" class="btn btn-add mb-3 animate__animated animate__bounce" data-bs-toggle="modal" data-bs-target="#donModal">
+    Ajouter un Don
+  </button> -->
+
+  <!-- <a routerLink="/dons/add" class="btn btn-add mb-3 animate__animated animate__bounce" data-bs-toggle="modal" data-bs-target="#donModal">Ajouter un Don</a> -->
+
+  <div class="cards-container">
+    <div class="don-card animate__animated animate__fadeInUp" *ngFor="let don of dons">
+      <!-- *ngIf="don.created_by && isDonCreator(don.created_by)" -->
+      <div>
+        <img [src]="don.image || 'https://via.placeholder.com/300'" class="don-img">
+
+        <div class="don-card-body">
+          <h5 class="don-title">{{ don.libelle }}</h5>
+          <p class="don-description">{{ don.description }}</p>
+          <div class="don-buttons">
+            <button class="btn btn-detail" [routerLink]="['/dons', don.id]">Détails</button>
+
+            <ng-container *ngIf="don.created_by && isDonCreator(don.created_by)">
+              <button class="btn btn-modifier" data-bs-toggle="modal" data-bs-target="#donModal">Modifier</button>
+              <button class="btn btn-supprimer" (click)="deleteDon(don.id)">Supprimer</button>
+            </ng-container>
+
+            <ng-container *ngIf="userRole === 'organisation'">
+              <button class="btn btn-success" (click)="reserverDon(don.id ?? 0)" type="button" data-bs-toggle="modal" data-bs-target="#reservationModal">Réserver</button>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+</footer>
+
+
+

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { catchError, Observable, tap, throwError } from 'rxjs';
 import { DonModel } from '../Models/Don.model';
 import { apiUrl } from './apiUrl';
 import { AuthService } from './auth.Service';
+import { DonEvolution } from '../Models/DonEvolution.model';
 
 @Injectable({
   providedIn: 'root',
@@ -61,9 +62,9 @@ export class DonService {
 //   return this.http.put<DonModel>(`${apiUrl}/don/modification/${id}`, donData, { headers });
 // }
 updateDon(id: number, donData: FormData): Observable<DonModel> {
+
   const token = localStorage.getItem('access_token');
   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
   return this.http.post<DonModel>(`${apiUrl}/don/modification/${id}`, donData, { headers });
 }
 
@@ -82,6 +83,18 @@ updateDon(id: number, donData: FormData): Observable<DonModel> {
     );
   }
 
+  // Méthode pour récupérer les dons publiés à une date donnée
+  getDonsByDate(date: string): Observable<{ data: DonModel[] }> {
+    const params = new HttpParams().set('date', date);
+    return this.http.get<{ data: DonModel[] }>(`${apiUrl}/dons/by-date`, { params });
+  }
+
+  // Méthode pour récupérer l'évolution des dons
+  getDonsEvolution(): Observable<DonEvolution[]> {
+  const token = localStorage.getItem('access_token');
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`)
+    return this.http.get<DonEvolution[]>(`${apiUrl}/evolution`); // Assurez-vous que l'URL est correcte
+  }
 
   // Supprimer un don
   // deleteDon(id: number, token: string): Observable<void> {

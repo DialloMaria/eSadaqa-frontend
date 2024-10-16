@@ -22,6 +22,7 @@ import { NotificationsComponent } from "../../../notifications/notifications.com
     ReservationComponent,
     NgxPaginationModule,
     NotificationsComponent
+    
 ],
   templateUrl: './don-list.component.html',
   styleUrl: './don-list.component.css'
@@ -34,6 +35,7 @@ export class DonListComponent implements OnInit {
   page: number = 1;
   reservationForm!:FormGroup;
   selectedDonId: number | null = null;
+  length= [];
 
 // Déclarez un EventEmitter pour envoyer l'ID du don au parent
 @Output() reserveDon = new EventEmitter<number>();
@@ -69,6 +71,9 @@ export class DonListComponent implements OnInit {
       return this.userRole === 'organisation'; // Adapter selon votre gestion des rôles
     }
 
+
+
+
   // Récupérer tous les dons et calculer le nombre de dons de l'utilisateur connecté
   getAllDons(): void {
     const token = localStorage.getItem('access_token');
@@ -76,9 +81,18 @@ export class DonListComponent implements OnInit {
       this.DonService.getDons().subscribe(
         (response: any) => {
           if (Array.isArray(response.data)) {
-            this.dons = response.data;
+            // this.dons = response.data;
+            this.dons = response.data.filter((don: DonModel) => don.created_by === this.userId); // Filtrer les dons
+            this.nombreDonsUtilisateur = this.dons.length; // Nombre de dons créés par l'utilisateur
+            console.log('dons:', this.dons);
+            this.dons.forEach((dons: DonModel) => {
+              dons.image = dons.image ? `http://127.0.0.1:8000/storage/${dons.image}` : 'https://img.freepik.com/photos-gratuite/pot-miel-cote-pot-miel_1340-23142.jpg?ga=GA1.1.242611404.1703246724&semt=ais_hybrid'
+
+            });
+
             this.getNombreDonsUtilisateur();
           }
+
         },
         (error) => {
           if (error.status === 401) {
@@ -185,3 +199,5 @@ isDonCreator(createdBy: number): boolean {
   //   this.reserveDon.emit(donId); // Émet l'événement vers le parent
   // }
 }
+
+

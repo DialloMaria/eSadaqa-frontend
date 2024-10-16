@@ -139,6 +139,19 @@ export class AuthService{
   }
 
 
+  getDonateurId(): number | null {
+    // Supposons que les informations du donateur sont stockées dans le localStorage après la connexion
+    const donateur = localStorage.getItem('donateur');
+
+    if (donateur) {
+      // Convertir le JSON en objet et retourner l'ID du donateur
+      return JSON.parse(donateur).id;
+    }
+
+    // Retourner null si aucun donateur n'est connecté
+    return null;
+  }
+
   // getSpecialisations(): Observable<DomaineModel[]> {
   //   return this.http.get<DomaineModel[]>(`${apiUrl}/domaines`);
   // }

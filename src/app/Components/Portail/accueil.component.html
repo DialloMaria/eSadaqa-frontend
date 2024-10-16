@@ -2,9 +2,15 @@
   <!-- Section du Menu -->
   <header class="header">
     <nav class="navbar animate__animated animate__fadeInDown">
-      <a class="logo" href="#">
-        <img src="assets/logo.png" alt="Logo" width="120">
+      <a class="logo" >e-Sadaqa
+        <img src="assets/logo.png" alt="" width="120">
       </a>
+      <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      
       <ul class="nav-links">
         <li><a href="">Accueil</a></li>
         <li><a [routerLink]="['/propos']"  href="#">À propos</a></li>
@@ -15,17 +21,17 @@
   </header>
 
   <!-- Section de la Bannière -->
-  <section class="banner">
-    <div class="banner-content animate__animated animate__fadeIn">
-      <h1 class="banner-title animate__animated animate__fadeInDown">Bienvenue sur notre portail</h1>
-      <p class="banner-text animate__animated animate__fadeInUp">Explorez notre site pour découvrir des fonctionnalités incroyables.</p>
-    </div>
-    <div class="custom-design animate__animated animate__bounceIn">
-      <div class="circle"></div>
-      <div class="square"></div>
-    </div>
-  </section>
+
 </div>
+<section class="banner">
+  <div class="banner-content animate__animated animate__fadeInLeft">
+    <h1 class="banner-title animate__animated animate__fadeInDown">Bienvenue sur notre portail</h1>
+    <p class="banner-text animate__animated animate__fadeInUp">Explorez notre site pour découvrir des fonctionnalités incroyables.</p>
+  </div>
+  <div class="banner-image animate__animated animate__fadeInRight">
+    <img src="../../../assets/image.png" alt="Image de la bannière">
+  </div>
+</section>
 
 <!-- Section A Propos De Nous -->
 <section class="about-section">
@@ -39,7 +45,6 @@
       <img src="../../../assets/images/propos.png" alt="A propos image"> <!-- Décommentez pour activer l'image -->
     </div>
   </div>
-
 </section>
 
 <section class="demande">
@@ -160,7 +165,7 @@
   <section class="temoignage">
     <h1>Temoignage</h1>
     <div class="container my-5">
-      <div class="row justify-content-center">
+      <div class=" mesCarte ">
         <!-- Card 1 -->
         <div class="col-md-4 mb-4">
           <div class="card testimonial-card p-4 h-100">

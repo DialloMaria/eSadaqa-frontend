@@ -30,7 +30,8 @@ export class ReservationComponent {
   ngOnInit(): void {
     // Charger les bénéficiaires et les dons
     this.loadBeneficiaires();
-    this.loadDons();
+    this.loadDonAutomatically();
+    // this.loadDons();
   }
 
   // Charger les bénéficiaires depuis l'API
@@ -49,35 +50,38 @@ loadBeneficiaires(): void {
   });
 }
 
-// loadDons(): void {
-//   this.reservationService.getDons().subscribe({
-//     next: (data) => {
-//       console.log('Données reçues:', data); // Vérifiez la structure ici
-//       if (data.success) {
-//         this.dons = Array.isArray(data.dons) ? data.dons : [];
-//         console.log('dons:', this.dons); // Vérifiez les bénéficiaires
-//       } else {
-//         console.error('Aucun dons trouvé dans la réponse');
-//       }
-//     },
-//     error: (err) => console.error('Erreur lors du chargement des dons:', err)
-//   });
-// }
 
-loadDons(): void {
+loadDonAutomatically(): void {
   this.reservationService.getDons().subscribe({
     next: (response) => {
-      console.log('Données reçues:', response); // Afficher toute la réponse ici
-      if (Array.isArray(response.data)) {
-        this.dons = response.data; // Assigner les données des dons
-        console.log('dons:', this.dons); // Vérifiez les dons dans la console
+      if (Array.isArray(response.data) && response.data.length > 0) {
+        this.dons = response.data;
+        // Automatically set the first available don (or select based on your logic)
+        const defaultDonId = this.dons[0].id; // Assuming you want to use the first don
+        this.reservationForm.patchValue({ don_id: defaultDonId });
+        console.log('Don sélectionné automatiquement:', defaultDonId);
       } else {
-        console.error('Aucun don trouvé dans la réponse');
+        console.error('Aucun don disponible');
       }
     },
     error: (err) => console.error('Erreur lors du chargement des dons:', err)
   });
 }
+
+// loadDons(): void {
+//   this.reservationService.getDons().subscribe({
+//     next: (response) => {
+//       console.log('Données reçues:', response); // Afficher toute la réponse ici
+//       if (Array.isArray(response.data)) {
+//         this.dons = response.data; // Assigner les données des dons
+//         console.log('dons:', this.dons); // Vérifiez les dons dans la console
+//       } else {
+//         console.error('Aucun don trouvé dans la réponse');
+//       }
+//     },
+//     error: (err) => console.error('Erreur lors du chargement des dons:', err)
+//   });
+// }
 
 
   // Soumettre le formulaire
@@ -103,6 +107,27 @@ loadDons(): void {
     }
   }
 
+
+  }
+
+
+// loadDons(): void {
+//   this.reservationService.getDons().subscribe({
+//     next: (data) => {
+//       console.log('Données reçues:', data); // Vérifiez la structure ici
+//       if (data.success) {
+//         this.dons = Array.isArray(data.dons) ? data.dons : [];
+//         console.log('dons:', this.dons); // Vérifiez les bénéficiaires
+//       } else {
+//         console.error('Aucun dons trouvé dans la réponse');
+//       }
+//     },
+//     error: (err) => console.error('Erreur lors du chargement des dons:', err)
+//   });
+// }
+
+
+
   // Charger les dons depuis l'API
   // loadDons(): void {
   //   // Assurez-vous que le token est bien initialisé
@@ -121,14 +146,6 @@ loadDons(): void {
   //       }
   //     }
   //   });
-
-
-  }
-
-
-
-
-
 
 
 

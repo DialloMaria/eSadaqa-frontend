@@ -1,6 +1,27 @@
-.notification-item {
-  border: 1px solid #ccc;
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 5px;
+
+.reservation-list{
+  z-index: 2;
+}
+.reservation-list h2 {
+  color: #ff6137;
+}
+
+.reservation-item {
+  border: 1px solid #ff6137;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+}
+
+.reservation-item p {
+  margin-bottom: 0.5rem;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border: none;
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #218838;
 }

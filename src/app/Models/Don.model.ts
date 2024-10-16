@@ -1,4 +1,6 @@
 export interface DonModel {
+  date: any;
+  montant: any;
   id?: number;
   libelle?: string;
   description?: string;
@@ -7,6 +9,7 @@ export interface DonModel {
   adresse?: string;
   image?: string;
   created_by?: number;
+  timestamps?:Date;
 }
 
 

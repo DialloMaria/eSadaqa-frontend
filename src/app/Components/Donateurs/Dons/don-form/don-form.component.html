@@ -79,7 +79,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="donModalLabel">Ajouter un Don</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close"  data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form [formGroup]="donForm" (ngSubmit)="submitDon()" class="shadow p-4 rounded bg-light">
@@ -89,8 +89,11 @@
               <div class="form-group">
                 <label for="libelle">Libellé</label>
                 <input id="libelle" formControlName="libelle" class="form-control" type="text" placeholder="Libellé" required>
-                <div *ngIf="donForm.get('libelle')?.invalid && donForm.get('libelle')?.touched" class="text-danger">
-                  Le libellé est requis.
+                <!-- Messages d'erreur -->
+                <div *ngIf="donForm.get('libelle')?.errors">
+                  <div *ngIf="donForm.get('libelle')?.errors?.['error']" class="text-danger">
+                    {{ donForm.get('libelle')?.errors?.['message'] }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -100,6 +103,9 @@
                 <textarea id="description" formControlName="description" class="form-control" placeholder="Description" required></textarea>
                 <div *ngIf="donForm.get('description')?.invalid && donForm.get('description')?.touched" class="text-danger">
                   La description est requise.
+                </div>
+                <div *ngIf="donForm.get('description')?.errors?.['maxlength'] && donForm.get('description')?.touched" class="text-danger">
+                  La description ne peut pas dépasser 255 caractères.
                 </div>
               </div>
             </div>
@@ -114,12 +120,19 @@
                 <div *ngIf="donForm.get('lieuReception')?.invalid && donForm.get('lieuReception')?.touched" class="text-danger">
                   Le lieu de réception est requis.
                 </div>
+                <div *ngIf="donForm.get('lieuReception')?.errors?.['maxlength'] && donForm.get('lieuReception')?.touched" class="text-danger">
+                  Le lieu de réception ne peut pas dépasser 150 caractères.
+                </div>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <label for="categorie">Catégorie</label>
-                <input id="categorie" formControlName="categorie" class="form-control" type="text" placeholder="Catégorie" required>
+                <select id="categorie" formControlName="categorie" class="form-control" required>
+                  <option value="" disabled selected>Choisir une catégorie</option>
+                  <option value="produit">Produit</option>
+                  <option value="montant">Montant</option>
+                </select>
                 <div *ngIf="donForm.get('categorie')?.invalid && donForm.get('categorie')?.touched" class="text-danger">
                   La catégorie est requise.
                 </div>
@@ -136,12 +149,15 @@
                 <div *ngIf="donForm.get('adresse')?.invalid && donForm.get('adresse')?.touched" class="text-danger">
                   L'adresse est requise.
                 </div>
+                <div *ngIf="donForm.get('adresse')?.errors?.['maxlength'] && donForm.get('adresse')?.touched" class="text-danger">
+                  L'adresse ne peut pas dépasser 200 caractères.
+                </div>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <label for="image">Image (URL)</label>
-                <input id="image" formControlName="image" class="form-control" type="text" placeholder="URL de l'image">
+                <label for="image">Image </label>
+                <input id="image" formControlName="image" class="form-control" type="file"  accept="image/*"   (change)="onImageSelected($event)"   placeholder="URL de l'image">
               </div>
             </div>
           </div>

@@ -57,6 +57,10 @@ export class DonDetailComponent  {
         // Vérifiez si la réponse contient des données
         if (response && response.data) {
           this.don = response.data; // Affectez les données récupérées à `don`
+          console.log(
+            this.don?.image
+          );
+
           // Vérifiez si le don contient un ID pour récupérer les produits associés
           if (this.don && this.don.id) {
             this.getProduitsDetails(this.don.id); // Récupérez les produits associés au don
@@ -72,8 +76,8 @@ export class DonDetailComponent  {
     }
 
     getCleanImageUrl(imageUrl: string): string {
-      // Si l'URL contient "http://127.0.0.1:8000/storage/", on le retire
-      return imageUrl.replace('http://127.0.0.1:8000/storage/', '');
+      // Remove 'http://127.0.0.1:8000/storage/' from the image URL if present
+      return imageUrl ='http://127.0.0.1:8000/storage/';
     }
 
 
@@ -96,12 +100,17 @@ export class DonDetailComponent  {
       getProduitsDetails(donId: number): void {
         this.produitservice.getProduitsByDonId(donId).subscribe((response: any) => {
           // Vérifiez si la réponse contient des données
+
           if (response && response.data) {
             this.produits = response.data; // Affectez les produits récupérés à `produits`
+            console.log('zertyètrgfedchcfuyjtgrfhytrfdzsdcfgvtrvf',this.produits);
+            console.log('dataaaaaaaaaaaaadescfdsx',response);
+
           } else {
             console.error('Aucune donnée de produit trouvée');
           }
         }, error => {
+
           console.error('Erreur lors de la récupération des produits:', error);
         });
       }

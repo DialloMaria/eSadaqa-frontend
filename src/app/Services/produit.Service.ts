@@ -66,6 +66,12 @@ export class ProduitService  {
     }
 
 
+    getEvolutionProduit(): Observable<ProduitModel[]> {
+      const token = localStorage.getItem('access_token');
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`)
+        return this.http.get<ProduitModel[]>(`${apiUrl}/produit/Fourni`); // Assurez-vous que l'URL est correcte
+    }
+
       // Récupérer un don par ID
     //   getProduitById(id: number): Observable<ProduitModel> {
     //   const token = this.authService.getToken();

@@ -1,16 +1,33 @@
-<div>
-  <h2>Liste des Réservations</h2>
-  <div *ngIf="reservations.length === 0">
+
+<div class="reservation-list">
+  <h2 class="mb-4">Liste des Réservations</h2>
+  <div *ngIf="reservations.length === 0" class="alert alert-warning">
     <p>Aucune réservation disponible.</p>
   </div>
-  <ul>
-    <li *ngFor="let reservation of reservations">
-      <div class="reservation-item">
-        <p>Réservation ID: {{ reservation.id }}</p>
-        <p>Bénéficiaire: {{ reservation.beneficiaire }}</p>
-        <p>Date: {{ reservation.date }}</p>
-        <button (click)="confirmReservation(reservation.id)">Confirmer la réservation</button>
+  <ul class="list-group">
+    <li *ngFor="let reservation of reservations" class="list-group-item">
+      <div class="reservation-item p-3">
+        <p><strong>ID Réservation :</strong> {{ reservation.id }}</p>
+        <p><strong>Bénéficiaire :</strong> {{ reservation.beneficiaire.nomstructure }}</p>
+        <p><strong>Description :</strong> {{ reservation.description }}</p>
+        <p><strong>Date :</strong> {{ reservation.date }}</p>
+        <button class="btn btn-success" (click)="confirmReservation(reservation.id)">Confirmer la réservation</button>
       </div>
     </li>
   </ul>
 </div>
+
+
+
+<!-- <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+  clique
+  </button>
+  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+    <li><a class="dropdown-item active" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="#">Separated link</a></li>
+  </ul>
+</div> -->

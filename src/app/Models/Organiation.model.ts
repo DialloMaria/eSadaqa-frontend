@@ -1,4 +1,5 @@
 export interface OrganisationModel {
+  user: any;
   id?: number;
   nom?: string;
   prenom ?: string;

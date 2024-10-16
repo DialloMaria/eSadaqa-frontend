@@ -1,6 +1,6 @@
 /* Conteneur global */
 .container {
-  font-family: 'Montserrat', sans-serif; /* Utilisation de Montserrat */
+  font-family: "Buenard-Bold", Helvetica;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -89,47 +89,78 @@
   transition: all 0.3s ease;
 }
 
-/* Afficher le menu hamburger sur les écrans petits */
+/* Responsivité */
 @media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
   .nav-links {
-    display: none; /* Masquer les liens de navigation par défaut */
-    flex-direction: column;
     position: absolute;
-    background-color: #00715D; /* Couleur de fond du menu */
-    top: 60px; /* Juste en dessous de la barre de navigation */
+    top: 100%;
     left: 0;
-    right: 0;
-    padding: 20px 0;
-    z-index: 999;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    flex-direction: column;
+    background-color: #00715D;
+    transition: height 0.3s ease;
   }
 
-  .nav-links.active {
-    display: flex; /* Afficher les liens de navigation lorsque le menu est actif */
+  .nav-links li {
+    text-align: center;
+    width: 100%;
+    padding: 10px 0;
   }
 
-  .menu-toggle {
-    display: flex; /* Afficher le hamburger */
+  .nav-links li a {
+    font-size: 1.2rem;
+    padding: 10px;
   }
 
   .btn-inscription {
-    margin-top: 20px; /* Marge pour le bouton d'inscription */
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  /* Afficher le menu quand on clique sur l'icône burger */
+  .nav-open #nav-links {
+    height: 180px; /* Ajuster en fonction du nombre de liens */
+  }
+
+  /* Transition du bouton burger */
+  .menu-toggle.open .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .menu-toggle.open .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle.open .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
   }
 }
 
 
 /* Styles pour la bannière */
-/* Styles pour la bannière */
+/* Styles de base pour la bannière */
 .banner {
-  background-image: url('../../../assets/images/image.png');
+  display: flex;
+  margin-top: 60px;
+  background-image: url('../../../assets/image copy 2.png');
   background-size: cover;
   background-position: center;
-  height: 100vh;
-  width: 100vw; /* Assure que la bannière prend toute la largeur */
-  display: flex;
+  height: 95vh;
+  width: 100vw; /* S'assure que la bannière prend toute la largeur */
   justify-content: center;
   align-items: center;
   position: relative;
-  color: white;
+  color: #00715D;
   text-align: center;
 }
 
@@ -141,16 +172,31 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, rgba(0, 113, 93, 0.7), rgba(0, 113, 93, 0.5)); /* Vert foncé */
+  background: linear-gradient(to bottom, rgba(0, 113, 92, 0.161), rgba(0, 113, 93, 0.161));
   z-index: 1;
 }
 
 /* Contenu de la bannière (texte) */
 .banner-content {
-  position: relative; /* Assure que le texte est au-dessus du dégradé */
-  z-index: 2; /* Position plus élevée que le dégradé */
+  position: relative;
+  z-index: 2;
+  max-width: 600px; /* Limite la largeur pour plus de lisibilité sur grands écrans */
 }
 
+/* Image de la bannière */
+.banner-image {
+  position: relative;
+  z-index: 2;
+  margin-left: 50px;
+}
+
+.banner-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Titres et textes */
 .banner-title {
   font-size: 3.5rem;
   margin-bottom: 20px;
@@ -224,33 +270,57 @@
   }
 }
 
-/* Responsive Design */
+/* Pour les écrans de 768px et moins (tablettes et petits ordinateurs) */
 @media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
-
-  .btn-inscription {
-    font-size: 0.9rem;
-    padding: 8px 16px;
+  .banner {
+    text-align: center;
+    padding: 15px;
   }
 
   .banner-title {
-    font-size: 2.2rem;
+    font-size: 2rem;
+  }
+
+  .banner-text {
+    font-size: 1.1rem;
+  }
+
+  .banner-image img {
+    width: 80%; /* Réduit la taille de l'image sur petits écrans */
+  }
+}
+
+/* Pour les écrans de 480px et moins (mobiles) */
+@media (max-width: 480px) {
+  .banner {
+    margin-top: 130px;
+    padding: 10px;
+    height: auto; /* Adapte la hauteur à l'écran mobile */
+  }
+
+  .banner-title {
+    font-size: 1.8rem;
   }
 
   .banner-text {
     font-size: 1rem;
   }
-}
 
+  .banner-image img {
+    width: 100%; /* Prend toute la largeur de l'écran */
+  }
+}
 
 
 /* Section A Propos */
 .about-section {
+  background-image: url('../../../assets/image\ copy\ 3.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom ;
   background-repeat: no-repeat;
   background-color: #f9f9f9;
-  font-family: "Nunito-SemiBold", Helvetica;
+  font-family: "Buenard-Bold", Helvetica;
   margin: 0;
   padding: 40px;
   box-sizing: border-box;
@@ -260,6 +330,7 @@
 }
 
 .about-content {
+
   display: flex;
   flex-direction: row; /* Alignement par défaut en ligne */
   justify-content: space-between;
@@ -271,6 +342,7 @@
 }
 
 .text-content {
+
   font-family: "Buenard-Bold", Helvetica;
   font-weight: 700;
   color: #000000;
@@ -288,12 +360,16 @@
   gap: 10px; /* Ajoute de l'espace entre les éléments de texte */
 }
 .text-content h4 {
+  font-family: "Buenard-Bold", Helvetica;
+
   font-size: 1.5rem; /* Taille du titre h4 */
   color: #00715D; /* Couleur du titre */
   margin-bottom: 20px; /* Marge sous le titre */
 }
 
 .text-content h2 {
+  font-family: "Buenard-Bold", Helvetica;
+
   font-size: 2.5rem;
   color: #00715D; /* Green title */
   margin-bottom: 20px;
@@ -301,8 +377,9 @@
 
 
 .text-content p {
+  font-family: "Buenard-Bold", Helvetica;
   font-size: 1.1rem;
-  line-height: 2; /* Ajustez l'interligne pour plus de lisibilité */
+  line-height: 2px; /* Ajustez l'interligne pour plus de lisibilité */
   color: #333; /* Couleur du texte */
 }
 
@@ -374,6 +451,7 @@
 
 
 .group {
+  background-image: url('../../../assets/image\ copy.png');
   position: relative;
   width: 1105px;
   height: 850px;
@@ -391,6 +469,7 @@
 
 .valeurs{
   margin-top: -90px;
+
 }
 
 .group .overlap {
@@ -406,7 +485,7 @@
   position: absolute;
   top: 93px;
   left: 88px;
-  font-family: "Nunito-Bold", Helvetica;
+  font-family: "Buenard-Bold", Helvetica;
   font-weight: 700;
   color: #cea100;
   font-size: 24.7px;
@@ -420,7 +499,7 @@
   width: 297px;
   top: 140px;
   left: 17px;
-  font-family: "Nunito-SemiBold", Helvetica;
+  font-family: "Buenard-Bold", Helvetica;
   font-weight: 600;
   color: #1b1b1b;
   font-size: 18px;
@@ -453,7 +532,7 @@
   position: absolute;
   top: 93px;
   left: 129px;
-  font-family: "Nunito-Bold", Helvetica;
+  font-family: "Buenard-Bold", Helvetica;
   font-weight: 700;
   color: #cea100;
   font-size: 24.7px;
@@ -475,7 +554,7 @@
   position: absolute;
   top: 93px;
   left: 121px;
-  font-family: "Nunito-Bold", Helvetica;
+  font-family: "Buenard-Bold", Helvetica;
   font-weight: 700;
   color: #cea100;
   font-size: 24.7px;
@@ -613,7 +692,7 @@
 
 
 .don-section {
-  font-family: "Nunito-SemiBold", Helvetica;
+  font-family: "Buenard-Bold", Helvetica;
 
   box-sizing: border-box;
   display: flex;
@@ -685,10 +764,18 @@
   padding-top: 50px;
 }
 
+.mesCarte{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-left: 250px;
+  padding-left: 100px;
+  margin-right: -100px;
+  gap: 50px;
+}
 
 .testimonial-card {
   justify-content: center;
-
   border: 2px solid #22A28F; /* Border color similar to the green shade */
   border-radius: 20px; /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for effect */

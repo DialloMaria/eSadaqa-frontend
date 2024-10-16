@@ -16,13 +16,20 @@ export class NotificationService {
   ) {}
 
 
-  // Récupérer les réservations
-  getReservations(): Observable<any> {
+  // Récupérer les réservations par donateur
+  getReservations(): Observable<any[]> {
     const token = this.authService.getToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
-    return this.http.get<any>(`${apiUrl}/reservation/affichage`, { headers });
+    return this.http.get<any[]>(`${apiUrl}/reservation/affichageByDonateur`, { headers }); // Mettez à jour cette route selon votre API
   }
+
+  // Récupérer les réservations
+  // getReservations(): Observable<any> {
+  //   const token = this.authService.getToken();
+  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+  //   return this.http.get<any>(`${apiUrl}/reservation/affichage`, { headers });
+  // }
 
   // Confirmer une réservation
   confirmReservation(id: number): Observable<any> {
@@ -30,4 +37,22 @@ export class NotificationService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.post<any>(`${apiUrl}/reservations/${id}/confirm`, {}, { headers });
   }
+
+    // Méthode pour créer une réservation
+    createReservation(reservationData: any): Observable<any> {
+      const token = this.authService.getToken();
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      return this.http.post<any>(`${apiUrl}/reservations`, reservationData, { headers });
+    }
+
+    // Méthode pour envoyer une notification au donateur
+    sendNotification(donateurId: number, message: string): Observable<any> {
+      const token = this.authService.getToken();
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      return this.http.post<any>(`${apiUrl}/notifications`, {
+        donateurId,
+        message,
+      },
+      { headers });
+    }
 }

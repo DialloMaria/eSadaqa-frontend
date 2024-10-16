@@ -20,6 +20,6 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideHttpClient(),  // This provides HttpClient globally
     provideRouter(routes),
-    HttpClientModule, provideAnimationsAsync()
+    HttpClientModule, provideAnimationsAsync(), provideAnimationsAsync(), provideAnimationsAsync()
   ],
 }).catch((err) => console.error(err));

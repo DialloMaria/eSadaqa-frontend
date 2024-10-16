@@ -17,6 +17,11 @@ import { AccueilComponent } from './Components/Portail/accueil.component';
 import { ProposComponent } from './Components/Portail/propos/propos.component';
 import { DemandeComponent } from './Components/Portail/demande/demande.component';
 import { InscriptionDonateurComponent } from './Components/Authentifications/Inscription/Donateurs/InscriptionDonateur/inscription-donateur.component';
+import { AdminComponent } from './Components/Admins/admin/admin.component';
+import { ListDonReservationComponent } from './Components/Organisations/Dons/don-list/list-don-reservation.component';
+import { ListBeneficiaireComponent } from './Components/Admins/list-beneficiare/list-beneficiaire.component';
+import { ListeOrganisationComponent } from './Components/Admins/list-organisation/list-organisation.component';
+import { ListDonComponent } from './Components/Admins/don-list/list-don.component';
 
 export const routes: Routes = [
 
@@ -44,6 +49,20 @@ export const routes: Routes = [
   {path: 'inscription/beneficiaire', component:RegisterBeneficiaireComponent},
 
   {path: 'connexion', component:ConnexionComponent},
+
+  {path: 'deconnexion', component: ConnexionComponent},
+
+  {path: 'dashboard', component: AdminComponent},
+
+  {path: 'dashboard/organisation', component: ListeOrganisationComponent},
+
+
+  {path: 'dashboard/dons', component:   ListDonComponent},
+  {path: 'dashboard/Beneficiaire', component:   ListBeneficiaireComponent},
+
+
+
+
 
 
   // Route pour les Donateurs
@@ -74,6 +93,7 @@ export const routes: Routes = [
 
   { path: 'rapport/:id', component: RapportComponent },
 
+  { path: 'list/don', component:   ListDonReservationComponent},
 
 ];
 

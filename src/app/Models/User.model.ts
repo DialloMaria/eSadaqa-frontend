@@ -7,6 +7,6 @@ export interface UserModel
   adresse ?: string;
   telephone ?: number;
   password ?: string;
-  // userType ?: string;
-  // donorType ?: string;
+  photo_profile?:string;
+
 }

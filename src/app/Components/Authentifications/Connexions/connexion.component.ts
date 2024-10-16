@@ -44,10 +44,13 @@ export class ConnexionComponent {
             if (response.user.roles.some((role: RoleModel) => role.name === 'donateur')) {
               this.router.navigateByUrl('dons');
             } else if (response.user.roles.some((role: RoleModel) => role.name === 'organisation')) {
-              this.router.navigateByUrl('dons');
+              this.router.navigateByUrl('list/don');
             } else if (response.user.roles.some((role: RoleModel) => role.name === 'beneficiaire')) {
               this.router.navigateByUrl('rapport');
-            } else {
+            } else if (response.user.roles.some((role: RoleModel) => role.name === 'admin')) {
+              this.router.navigateByUrl('dashboard');
+            }
+            else {
               this.router.navigateByUrl('donateur');
             }
           }
@@ -60,5 +63,12 @@ export class ConnexionComponent {
     } else {
       alert('Veuillez entrer un email et un mot de passe valides.');
     }
+  }
+
+  logout(){
+    this.authService.logout();
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('user');
+    this.router.navigateByUrl('/connexion');
   }
 }

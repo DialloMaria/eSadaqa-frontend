@@ -1,0 +1,103 @@
+
+.container {
+  display: flex;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 110px;
+  padding: 1rem;
+  color: #fff;
+  background: #007461; /* Couleur de fond de la sidebar */
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+  z-index: 5;
+  transition: width 0.5s linear;
+}
+
+.sidebar:hover {
+  width: 260px; /* Largeur lorsqu'on survole la sidebar */
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+.menu {
+  flex-grow: 1; /* Permet au menu de prendre de l'espace restant */
+  list-style: none;
+  padding: 0;
+}
+
+.menu-item {
+  color: #8A92A6;
+  padding: 1rem;
+  margin: 8px 0;
+  border-radius: 8px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  /* transition: background 0.3s ease; */
+}
+
+.menu-item:hover,
+.menu-item.active {
+  color: #fff;
+  background: #2980B9; /* Couleur de survol et active */
+}
+
+.menu-item i {
+  font-size: 1.5rem;
+}
+
+.logout {
+  margin-top: auto; /* Pousse le logout en bas de la sidebar */
+  padding: 1rem;
+  color: #8A92A6;
+}
+
+.logout a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logout a:hover {
+  color: #fff;
+  background: #2980B9; /* Couleur de survol pour la déconnexion */
+}
+
+.main-content {
+  flex-grow: 1; /* Permet au contenu principal de prendre de l'espace restant */
+  padding: 20px;
+  background: #f8f9fa; /* Couleur de fond du contenu principal */
+}
+
+.content-box {
+  padding: 20px;
+  border-radius: 8px;
+  background: #ffffff; /* Couleur de fond de la boîte de contenu */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar {
+      width: 100px; /* Réduire la largeur sur mobile */
+  }
+
+  .sidebar:hover {
+      width: 100px; /* Ne pas élargir sur mobile */
+  }
+}

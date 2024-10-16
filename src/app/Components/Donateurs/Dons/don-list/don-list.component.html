@@ -107,9 +107,12 @@
   </div>
 </div> -->
 
+
+
 <app-don-form></app-don-form>
 <app-reservation></app-reservation>
-<app-notifications></app-notifications>
+<!-- <app-notifications></app-notifications> -->
+
 
 
 <div class="menu-bar animate__animated animate__fadeInDown">
@@ -120,11 +123,20 @@
     <li><a routerLink="/accueil">Accueil</a></li>
     <li><a routerLink="/dons">Dons</a></li>
   </ul>
-  <div class="user-info">
-    <i class="fa fa-bell notification-icon"></i> <!-- Icone de notification -->
-    <span class="user-name">{{prenom}}</span> <!-- Nom de l'utilisateur connecté -->
-    <!-- <img src="" alt="User Image" class="user-img"> Image de l'utilisateur -->
-  </div>
+<div class="user-info">
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fa fa-bell notification-icon"></i>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+        <app-notifications></app-notifications>
+      </ul>
+    </div>
+      <span class="user-name">{{prenom}}</span>
+    </div>
+    <button  type="button"[routerLink]="['/connexion']"  class="btn btn-add mb-3 animate__animated animate__bounce" routerLinkerActive="active">
+      deconnexion
+    </button>
 </div>
 
 <!-- Section de la bannière -->
@@ -151,31 +163,30 @@
   <button  type="button" class="btn btn-primary mt-5" class="btn btn-add mb-3 animate__animated animate__bounce" data-bs-toggle="modal" data-bs-target="#donModal">
     Ajouter un Don
   </button>
+
   <!-- <a routerLink="/dons/add" class="btn btn-add mb-3 animate__animated animate__bounce" data-bs-toggle="modal" data-bs-target="#donModal">Ajouter un Don</a> -->
 
   <div class="cards-container">
     <div class="don-card animate__animated animate__fadeInUp" *ngFor="let don of dons">
-      <img [src]="don.image || 'https://via.placeholder.com/300'" class="don-img">
-      <div class="don-card-body">
-        <h5 class="don-title">{{ don.libelle }}</h5>
-        <p class="don-description">{{ don.description }}</p>
-        <div class="don-buttons">
-          <!-- Bouton Détails visible pour tous -->
-          <button class="btn btn-detail" [routerLink]="['/dons', don.id]">Détails</button>
+      <!-- *ngIf="don.created_by && isDonCreator(don.created_by)" -->
+      <div>
+        <img [src]="don.image || 'https://via.placeholder.com/300'" class="don-img">
 
-          <!-- Boutons de Modification et Suppression visible seulement pour le créateur -->
-          <ng-container *ngIf="don.created_by && isDonCreator(don.created_by) ">
-            <button class="btn btn-modifier" data-bs-toggle="modal" data-bs-target="#donModal">Modifier</button>
-            <button class="btn btn-supprimer" (click)="deleteDon(don.id)">Supprimer</button>
-          </ng-container>
+        <div class="don-card-body">
+          <h5 class="don-title">{{ don.libelle }}</h5>
+          {{ don.description ? (don.description | slice: 0:190) + '...' : don.description }}
+          <div class="don-buttons">
+            <button class="btn btn-detail" [routerLink]="['/dons', don.id]">Détails</button>
 
+            <ng-container *ngIf="don.created_by && isDonCreator(don.created_by)">
+              <button class="btn btn-modifier" data-bs-toggle="modal" data-bs-target="#donModal">Modifier</button>
+              <button class="btn btn-supprimer" (click)="deleteDon(don.id)">Supprimer</button>
+            </ng-container>
 
-          <!-- Afficher le bouton de réservation si l'utilisateur est une organisation -->
-          <ng-container *ngIf="userRole === 'organisation'">
-          <!-- Bouton pour ouvrir la modal -->
-          <button class="btn btn-success" (click)="reserverDon(don.id ?? 0)" type="button" data-bs-toggle="modal" data-bs-target="#reservationModal">Réserver</button>
-        </ng-container>
-
+            <ng-container *ngIf="userRole === 'organisation'">
+              <button class="btn btn-success" (click)="reserverDon(don.id ?? 0)" type="button" data-bs-toggle="modal" data-bs-target="#reservationModal">Réserver</button>
+            </ng-container>
+          </div>
         </div>
       </div>
     </div>
@@ -190,24 +201,5 @@
 
 
 
-  <!-- <div class="container">
-    <div class="footer-content">
-      <div class="footer-links">
-        <h4>Liens Utiles</h4>
-        <ul>
-          <li><a routerLink="/accueil">Accueil</a></li>
-          <li><a routerLink="/dons">Dons</a></li>
-          <li><a routerLink="/a-propos">À Propos</a></li>
-          <li><a routerLink="/contact">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-contact">
-        <h4>Contactez-Nous</h4>
-        <p>Email: contact.com</p>
-        <p>Téléphone: +33 1 23 45 67 89</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2024 VotrePlateforme. Tous droits réservés.</p>
-    </div>
-  </div> -->
+
+
