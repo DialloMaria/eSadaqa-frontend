@@ -160,7 +160,7 @@ createChart(dates: string[], totals: number[]) {
 getEvolutionProduit(): void {
   this.ProduitServices.getEvolutionProduit()
     .subscribe((response: { message: string; data: ProduitModel[] }): void => {
-      console.log('Réponse complète:', response); // Ajoutez cette ligne
+      console.log('Réponse complète:', response);
 
       const data = response.data;
 

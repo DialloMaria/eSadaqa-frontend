@@ -37,12 +37,11 @@ export class DonFormComponent {
     this.donForm = this.fb.group({
       libelle: ['', [
         ValidatorData.requiredValidator('Libellé'),
-        ValidatorData.checkValidOnlyLetterOrNumber, 
+        ValidatorData.checkValidOnlyLetterOrNumber,
         ValidatorData.minLengthValidator('Libellé', 3),
         ValidatorData.maxLengthValidator('Libellé', 50)
       ]],
       description: ['', [Validators.required, Validators.maxLength(255)]],
-      lieuReception: ['', [Validators.required, Validators.maxLength(150)]],
       categorie: ['', [Validators.required, Validators.maxLength(50)]],
       adresse: ['', [Validators.required, Validators.maxLength(200)]],
       image: ['']
