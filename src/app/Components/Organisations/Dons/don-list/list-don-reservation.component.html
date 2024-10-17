@@ -1,6 +1,6 @@
 
-<app-reservation></app-reservation>
-
+<!-- <app-reservation [donId]="selectedDonId"></app-reservation> -->
+<app-reservation *ngIf="selectedDonId !== null" [donId]="selectedDonId"></app-reservation>
 <div class="menu-bar animate__animated animate__fadeInDown">
   <div class="logo">
     <img src="logo.png" alt="Logo" class="logo-img">

@@ -41,6 +41,7 @@
         </div>
         <div class="modal-body">
           <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+            
             <div class="form-group">
               <label for="description">Description</label>
               <input id="description" formControlName="description" class="form-control" placeholder="Entrez la description de la réservation" />

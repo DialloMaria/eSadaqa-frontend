@@ -75,8 +75,8 @@ export class ListDonReservationComponent implements OnInit {
             this.dons = response.data;
             console.log('dons:', this.dons);
             this.dons.forEach((dons: DonModel) => {
-              dons.image = dons.image ? `http://127.0.0.1:8000/storage/${dons.image}` : 'https://img.freepik.com/photos-gratuite/pot-miel-cote-pot-miel_1340-23142.jpg?ga=GA1.1.242611404.1703246724&semt=ais_hybrid'
-
+              dons.image = dons.image ? `http://127.0.0.1:8000/storage/${dons.image}` : 'https://img.freepik.com/photos-gratuite/pot-miel-cote-pot-miel_1340-23142.jpg?ga=GA1.1.242611404.1703246724&semt=ais_hybrid',
+              dons.id = dons.id
             });
 
             this.getNombreDonsUtilisateur();
@@ -177,8 +177,9 @@ isDonCreator(createdBy: number): boolean {
     // Méthode pour réserver un don
     reserverDon(donId: number): void {
       this.selectedDonId = donId; // Stocker l'ID du don sélectionné
-      console.log('Don ID sélectionné:', this.selectedDonId);
+      console.log('Don ID sélectionné:', donId);
     }
+
 
 
 

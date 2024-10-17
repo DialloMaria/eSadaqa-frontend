@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input, input } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ReservationService } from '../../../../Services/reservation.Service';
 import { CommonModule } from '@angular/common';
+import { DonModel } from '../../../../Models/Don.model';
 
 @Component({
   selector: 'app-reservation',
@@ -13,8 +14,9 @@ import { CommonModule } from '@angular/common';
 export class ReservationComponent {
   reservationForm: FormGroup;
   beneficiaires: any[] = [];
-  dons: any[] = [];
   token: string = "";
+  dons: DonModel[] = [];
+  @Input() donId!: number;
 
   constructor(
     private fb: FormBuilder,
@@ -22,15 +24,16 @@ export class ReservationComponent {
   ) {
     this.reservationForm = this.fb.group({
       description: ['', Validators.required],
-      don_id: ['', Validators.required],
       beneficiaire_id: ['', Validators.required]
     });
   }
 
+
   ngOnInit(): void {
+    console.log('ID du don reçu depuis le parent:', this.donId);
     // Charger les bénéficiaires et les dons
     this.loadBeneficiaires();
-    this.loadDonAutomatically();
+    // this.loadDonAutomatically();
     // this.loadDons();
   }
 
@@ -50,23 +53,82 @@ loadBeneficiaires(): void {
   });
 }
 
+// loadDonAutomatically(): void {
+//   this.reservationService.getDons().subscribe({
+//     next: (response) => {
+//       if (Array.isArray(response.data) && response.data.length > 0) {
+//         this.dons = response.data;
+//         // Automatically set the first available don (or select based on your logic)
+//         // const defaultDonId = this.dons[0].id; // Assuming you want to use the first don
+//         const defaultDonId = this.dons.forEach((dons: DonModel) => {
+//         return  dons.id = dons.id
+//         });
+//         console.log('id don',defaultDonId);
 
-loadDonAutomatically(): void {
-  this.reservationService.getDons().subscribe({
-    next: (response) => {
-      if (Array.isArray(response.data) && response.data.length > 0) {
-        this.dons = response.data;
-        // Automatically set the first available don (or select based on your logic)
-        const defaultDonId = this.dons[0].id; // Assuming you want to use the first don
-        this.reservationForm.patchValue({ don_id: defaultDonId });
-        console.log('Don sélectionné automatiquement:', defaultDonId);
-      } else {
-        console.error('Aucun don disponible');
-      }
-    },
-    error: (err) => console.error('Erreur lors du chargement des dons:', err)
-  });
+//         this.reservationForm.patchValue({ don_id: defaultDonId });
+//         console.log('Don sélectionné automatiquement:', defaultDonId);
+//       } else {
+//         console.error('Aucun don disponible');
+//       }
+//     },
+//     error: (err) => console.error('Erreur lors du chargement des dons:', err)
+//   });
+// }
+
+onSubmit(): void {
+  // Vérifiez que le don_id est défini
+  if (this.donId) {
+    // Fusionnez don_id dans les valeurs du formulaire
+    const reservationData = {
+      ...this.reservationForm.value,
+      don_id: this.donId // Ajoutez ici votre don_id
+    };
+
+    console.log(reservationData);
+
+    if (this.reservationForm.valid) {
+      this.reservationService.createReservation(reservationData) // Utilisez reservationData ici
+        .subscribe({
+          next: (response) => {
+            console.log('Réservation créée avec succès:', response);
+            alert('Réservation créée avec succès !');
+          },
+          error: (error) => {
+            if (error.status === 409) {
+              // Afficher un message spécifique pour l'erreur 409
+              alert('Erreur: Une réservation existe déjà pour ce don.');
+            } else {
+              console.error('Erreur lors de la création de la réservation:', error);
+              alert('Erreur lors de la création de la réservation.');
+            }
+          }
+        });
+    }
+  } else {
+    alert('Erreur: Aucun ID de don trouvé.');
+  }
 }
+
+
+
+  }
+
+// loadDonAutomatically(): void {
+//   this.reservationService.getDons().subscribe({
+//     next: (response) => {
+//       if (Array.isArray(response.data) && response.data.length > 0) {
+//         this.dons = response.data;
+//         // Automatically set the first available don (or select based on your logic)
+//         const defaultDonId = this.dons[0].id; // Assuming you want to use the first don
+//         this.reservationForm.patchValue({ don_id: defaultDonId });
+//         console.log('Don sélectionné automatiquement:', defaultDonId);
+//       } else {
+//         console.error('Aucun don disponible');
+//       }
+//     },
+//     error: (err) => console.error('Erreur lors du chargement des dons:', err)
+//   });
+// }
 
 // loadDons(): void {
 //   this.reservationService.getDons().subscribe({
@@ -85,31 +147,6 @@ loadDonAutomatically(): void {
 
 
   // Soumettre le formulaire
-
-  onSubmit(): void {
-    if (this.reservationForm.valid) {
-      this.reservationService.createReservation(this.reservationForm.value)
-        .subscribe({
-          next: (response) => {
-            console.log('Réservation créée avec succès:', response);
-            alert('Réservation créée avec succès !');
-          },
-          error: (error) => {
-            if (error.status === 409) {
-              // Afficher un message spécifique pour l'erreur 409
-              alert('Erreur: Une réservation existe déjà pour ce don.');
-            } else {
-              console.error('Erreur lors de la création de la réservation:', error);
-              alert('Erreur lors de la création de la réservation.');
-            }
-          }
-        });
-    }
-  }
-
-
-  }
-
 
 // loadDons(): void {
 //   this.reservationService.getDons().subscribe({
