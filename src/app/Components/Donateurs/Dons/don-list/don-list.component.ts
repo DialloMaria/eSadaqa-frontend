@@ -37,6 +37,8 @@ export class DonListComponent implements OnInit {
   reservationForm!:FormGroup;
   selectedDonId: number | null = null;
   length= [];
+  reservations: any[] = [];
+  don:any[] = [];
 
 // Déclarez un EventEmitter pour envoyer l'ID du don au parent
 @Output() reserveDon = new EventEmitter<number>();
@@ -56,6 +58,7 @@ export class DonListComponent implements OnInit {
 
     this.userId = user?.id || 0;
     this.prenom = user?.prenom || '';
+    this.photo_profile = user?.photo_profile || '';  // Récupérer la photo de profil de l'utilisateur connecté
 
     // Vérification du rôle dans le tableau 'roles'
     if (user?.roles && user.roles.length > 0) {
@@ -74,6 +77,9 @@ export class DonListComponent implements OnInit {
 
 
 
+    get unconfirmedReservationsCount(): number {
+      return this.reservations.filter(reservation => reservation.don.status !== 'confirme').length;
+    }
 
   // Récupérer tous les dons et calculer le nombre de dons de l'utilisateur connecté
   getAllDons(): void {
@@ -88,7 +94,6 @@ export class DonListComponent implements OnInit {
             console.log('dons:', this.dons);
             this.dons.forEach((dons: DonModel) => {
               dons.image = dons.image ? `http://127.0.0.1:8000/storage/${dons.image}` : 'https://img.freepik.com/photos-gratuite/pot-miel-cote-pot-miel_1340-23142.jpg?ga=GA1.1.242611404.1703246724&semt=ais_hybrid'
-
             });
 
             this.getNombreDonsUtilisateur();

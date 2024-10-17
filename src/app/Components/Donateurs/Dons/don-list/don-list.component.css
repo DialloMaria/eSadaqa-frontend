@@ -533,3 +533,21 @@
 }
 
 
+
+
+.notification-icon {
+  position: relative;
+  display: inline-block;
+  margin-right: 5px; /* Espacement entre l'icône et le badge */
+}
+
+.badge {
+  position: absolute;
+  top: -5px; /* Ajustez la position verticale */
+  right: -10px; /* Ajustez la position horizontale */
+  background-color: red; /* Choisissez une couleur pour le badge */
+  color: white; /* Couleur du texte */
+  border-radius: 50%; /* Badge circulaire */
+  padding: 0.25em 0.5em; /* Espacement interne */
+  font-size: 0.75em; /* Taille du texte du badge */
+}

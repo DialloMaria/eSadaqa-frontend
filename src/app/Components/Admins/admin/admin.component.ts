@@ -59,6 +59,9 @@ chart: any;
 quantite!:number;
 date!: string;
 total!: number;
+chartDons: Chart | null = null; // Pour le graphique d'évolution des dons
+chartProduits: Chart | null = null; // Pour le graphique des produits
+
 // chart!: Chart<"line", number[], string>;
 
 constructor(
@@ -77,6 +80,7 @@ constructor(
 ngOnInit(): void {
   this.getDonsByDate(this.formatDate(this.selectedDate));
   this.getDonsEvolution();
+  this.getEvolutionProduit();
 }
 
 // Fonction pour récupérer les dons en fonction de la date
@@ -111,19 +115,25 @@ return `${year}-${month}-${day}`;
 getDonsEvolution() {
   this.DonService.getDonsEvolution()
     .subscribe((data: DonEvolution[]) => { // Utilisation du type DonEvolution
+      console.log('Données d\'évolution des dons:', data); // Vérifiez ce que vous recevez
       const dates = data.map(item => item.date); // Extraction des dates
       const totals = data.map(item => item.total); // Extraction des totaux
 
       this.createChart(dates, totals); // Création du graphique
+    }, error => {
+      console.error('Erreur lors de la récupération des données d\'évolution:', error);
     });
 }
 
 
 
-
 // Méthode pour créer un graphique à partir des données
 createChart(dates: string[], totals: number[]) {
-  this.chart = new Chart('donChart', {
+  if (this.chartDons) {
+    this.chartDons.destroy();
+  }
+
+  this.chartDons = new Chart('donChart', {
     type: 'line',
     data: {
       labels: dates,
@@ -131,13 +141,13 @@ createChart(dates: string[], totals: number[]) {
         label: 'Évolution des Dons',
         data: totals,
         fill: false,
-        borderColor: '#ce0033',
+        borderColor: '#D4A017',
         tension: 0.1
       }]
     },
     options: {
       responsive: true,
-      maintainAspectRatio: true, // Permet de personnaliser les dimensions
+      maintainAspectRatio: true,
       scales: {
         y: {
           beginAtZero: true
@@ -149,50 +159,67 @@ createChart(dates: string[], totals: number[]) {
 
 getEvolutionProduit(): void {
   this.ProduitServices.getEvolutionProduit()
-    .subscribe((data: ProduitModel[]) => {
-      const nomProduit = data.map(item => item.libelle);  // Extraction des noms des produits
-      const quantiteProduit = data.map(item => item.quantite); // Extraction des quantités fournies
-      console.log('Données reçues du serveur:', data);
+    .subscribe((response: { message: string; data: ProduitModel[] }): void => {
+      console.log('Réponse complète:', response); // Ajoutez cette ligne
 
-      // Vérifiez ici les valeurs undefined dans les quantités
-      const undefinedQuantities = quantiteProduit.filter(value => value === undefined || value === null);
-      if (undefinedQuantities.length > 0) {
-        console.warn('Certaines quantités sont undefined ou null:', undefinedQuantities);
+      const data = response.data;
+
+      // Vérifiez si 'data' est bien un tableau
+      if (Array.isArray(data)) {
+        const nomProduit = data.map(item => item.libelle);
+        const quantiteProduit = data.map(item => item.quantite);
+
+        const filteredQuantiteProduit = quantiteProduit.filter((value): value is number => value !== undefined && value !== null);
+
+        if (nomProduit.length > 0 && filteredQuantiteProduit.length > 0) {
+          this.createBarChart(nomProduit, filteredQuantiteProduit);
+        } else {
+          console.warn('Aucune donnée à afficher pour le graphique à barres.');
+        }
+      } else {
+        console.error('Les données reçues ne sont pas un tableau:', data);
       }
-
-      const filteredQuantiteProduit = quantiteProduit.filter((value): value is number => value !== undefined && value !== null);
-
-      console.log('Produits:', nomProduit);
-      console.log('Quantité filtrée:', filteredQuantiteProduit);
-
-      this.createBarChart(nomProduit, filteredQuantiteProduit); // Création du graphique
     });
 }
 
 
+
 createBarChart(nomProduit: string[], filteredQuantiteProduit: number[]) {
+  console.log('Noms des produits:', nomProduit);
+  console.log('Quantités des produits:', filteredQuantiteProduit);
+
+
+  // Vérifiez si le graphique existe déjà et détruisez-le
+  if (this.chart) {
+    this.chart.destroy(); // Détruisez le graphique précédent s'il existe
+  }
+
+  // Création du nouveau graphique
   this.chart = new Chart('productChart', {
-    type: 'bar', // Type du graphique: barres
+    type: 'bar',
     data: {
-      labels: nomProduit, // Noms des produits comme étiquettes
+      labels: nomProduit,
       datasets: [{
         label: 'Quantité de Produits Fournis',
-        data: filteredQuantiteProduit, // Quantités fournies des produits
-        backgroundColor: '#ff6137', // Couleur des barres
-        borderColor: '#ce0033', // Couleur de la bordure des barres
-        borderWidth: 1 // Épaisseur de la bordure
+        data: filteredQuantiteProduit,
+        backgroundColor: '#D4A017',
+        borderColor: '#007461',
+        borderWidth: 1
       }]
     },
     options: {
       responsive: true,
-      maintainAspectRatio: false, // Permet de personnaliser les dimensions du graphique
+      maintainAspectRatio: false,
       scales: {
         y: {
-          beginAtZero: true // Commencer l'axe Y à zéro
+          beginAtZero: true
         }
       }
     }
   });
+
+  // Mettre à jour le graphique après sa création
+  this.chart.update();
 }
 
 

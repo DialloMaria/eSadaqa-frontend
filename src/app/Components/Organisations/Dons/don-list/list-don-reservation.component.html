@@ -9,15 +9,19 @@
     <li><a routerLink="/accueil">Accueil</a></li>
     <li><a routerLink="/dons">Dons</a></li>
   </ul>
-  <div class="user-info">
-    <i class="fa fa-bell notification-icon"></i> <!-- Icone de notification -->
-    <span class="user-name">{{prenom}}</span> <!-- Nom de l'utilisateur connecté -->
-    <!-- <img src="" alt="User Image" class="user-img"> Image de l'utilisateur -->
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+      <span class="user-name">{{ prenom }}</span>
+      <!-- <img [src]="photo_profile" alt="Profile" class="user-photo"> -->
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="userDropdown">
+      <li>
+        <button  type="button"[routerLink]="['/connexion']"  class="btn btn-add mb-3 animate__animated animate__bounce" routerLinkerActive="active">
+          deconnexion
+        </button>
+      </li>
+    </ul>
   </div>
-
-  <button  type="button"[routerLink]="['/connexion']"  class="btn btn-add mb-3 animate__animated animate__bounce" routerLinkerActive="active">
-    deconnexion
-  </button>
 
 </div>
 

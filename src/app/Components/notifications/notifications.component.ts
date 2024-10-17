@@ -13,8 +13,9 @@ import { AuthService } from '../../Services/auth.Service';
 })
 export class NotificationsComponent {
   reservations: any[] = [];
-  dons:any[] = [];
+  don:any[] = [];
   donateurId: number | null = null;
+reservation: any;
 
 
   constructor(private notificationService: NotificationService, private authService: AuthService ) {}
@@ -24,20 +25,24 @@ export class NotificationsComponent {
     this.donateurId = this.authService.getDonateurId();
 
   }
-  // Récupérer les réservations
-  fetchReservations(): void {
-    this.notificationService.getReservations().subscribe({
-      next: (data) => {
-        this.reservations = data;
-        console.log('Réservations:', this.reservations); // Vérifiez les données reçues
-      },
-      error: (error) => {
-        console.error('Erreur lors de la récupération des réservations:', error);
-      },
-    });
-  }
 
-  // Confirmer une réservation
+
+    // Fetches the reservations from the server
+    fetchReservations(): void {
+      this.notificationService.getReservations().subscribe({
+        next: (data) => {
+          // Filter out confirmed reservations from the fetched data
+          this.reservations = data.filter((reservation: any) => reservation.don.status !== 'confirme');
+          console.log('Réservations:', this.reservations);
+        },
+        error: (error) => {
+          console.error('Erreur lors de la récupération des réservations:', error);
+        },
+      });
+    }
+    // Dans votre composant TypeScript
+
+
   confirmReservation(id: number): void {
     if (!id) {
       alert('ID de réservation manquant.');
@@ -46,8 +51,10 @@ export class NotificationsComponent {
 
     this.notificationService.confirmReservation(id).subscribe({
       next: (response) => {
-        alert(response.message); // Affiche un message de confirmation
-        this.fetchReservations(); // Rafraîchir la liste après confirmation
+        alert(response.message); // Affichez le message de confirmation
+
+        // Mettre à jour la liste des réservations après confirmation
+        this.reservations = this.reservations.filter(reservation => reservation.id !== id);
       },
       error: (error) => {
         console.error('Erreur lors de la confirmation de la réservation:', error);
@@ -56,46 +63,7 @@ export class NotificationsComponent {
     });
   }
 
-  // confirmReservation(id: number): void {
-  //   if (!id) {
-  //     alert('ID de réservation manquant.');
-  //     return;
-  //   }
-
-  //   this.notificationService.confirmReservation(id).subscribe({
-  //     next: (response) => {
-  //       alert(response.message); // Affichez le message de confirmation
-  //       this.fetchReservations(); // Rafraîchir la liste après confirmation
-  //     },
-  //     error: (error) => {
-  //       console.error('Erreur lors de la confirmation de la réservation:', error);
-  //       alert('Erreur lors de la confirmation.');
-  //     },
-  //   });
-  // }
-  // confirmReservation(id: number): void {
-  //   if (!id) {
-  //     alert('ID de réservation manquant.');
-  //     return;
-  //   }
-
-  //   this.notificationService.confirmReservation(id).subscribe({
-  //     next: (response) => {
-  //       alert(response.message); // Affichez le message de confirmation
-
-  //       // Mettre à jour le statut localement ou supprimer la réservation confirmée
-  //       this.reservations = this.reservations.filter(reservation => reservation.id !== id || reservation.status !== 'confirmé');
-  //     },
-  //     error: (error) => {
-  //       console.error('Erreur lors de la confirmation de la réservation:', error);
-  //       alert('Erreur lors de la confirmation.');
-  //     },
-  //   });
-  // }
-
-
-
-    createReservation(reservationData: any): void {
+  createReservation(reservationData: any): void {
     this.notificationService.createReservation(reservationData).subscribe({
       next: (response) => {
         alert('Réservation créée avec succès.');

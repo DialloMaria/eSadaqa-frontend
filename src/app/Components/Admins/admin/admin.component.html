@@ -40,7 +40,7 @@
         </li>
 
         <li class="logout">
-          <a href="#">
+          <a href="#" [routerLink]="['/connexion']">
             <i class="fas fa-sign-out-alt"></i>
             <span>Deconnexion</span>
           </a>
@@ -50,12 +50,12 @@
 
   <div class="contenu">
     <div class="header">
-
       <div class="welcome-message">
         <i class="fas fa-user-circle"></i>
         <span class="username">Mariam</span>
       </div>
     </div>
+
 
     <!-- Section des cartes -->
     <div class="dashboard-cards">
@@ -96,57 +96,17 @@
       <div class="diagram">
         <h2>Évolution des Dons</h2>
         <!-- Adjust the size of the canvas -->
-        <canvas id="donChart" width="200" height="200"></canvas>
+        <canvas id="donChart" width="50%" height="90%"></canvas>
       </div>
-
-      <div class="container ">
-        <div class="text-right">
-          <!-- Datepicker ngx-bootstrap -->
-          <div class="d-flex  calendar-right">
-            <bs-datepicker-inline
-              [bsValue]="selectedDate"
-              (bsValueChange)="onDateSelect($event)"
-              class="datepicker-custom"></bs-datepicker-inline>
-          </div>
-
-          <!-- Error Message -->
-          <div *ngIf="errorMessage" class="alert alert-danger mt-3">
-            <i class="fas fa-exclamation-circle"></i> {{ errorMessage }}
-          </div>
-
-          <!-- Donation List -->
-          <div *ngIf="dons.length > 0" class="mt-3">
-            <h2 class="text-success">Dons du {{ selectedDate | date:'yyyy-MM-dd' }}</h2>
-            <div class="row justify-content-center">
-              <div class="col-md-8">
-                <div class="card-columns">
-                  <div class="card shadow-sm mb-4" *ngFor="let don of dons">
-                    <div class="card-body">
-                      <h5 class="card-title">{{ don.libelle }}</h5>
-                      <p class="card-text">{{ don.description }}</p>
-                      <p class="text-muted">Date: {{ selectedDate | date:'yyyy-MM-dd' }}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- No donation found -->
-          <div *ngIf="dons.length === 0 && selectedDate" class="mt-3 text-center">
-            <p class="text-muted">Aucun don trouvé pour la date sélectionnée.</p>
-          </div>
-        </div>
+      <div class="diagramBar">
+        <h2>Produits les plus fournis</h2>
+       
+        <canvas id="productChart" width="400" height="200"></canvas>
       </div>
     </div>
 
   </div>
 
 </div>
-<!--
-<div class="diagramBar">
-  <h2>Produits les plus fournis</h2>
-  Canvas pour le graphique en barres
-  <canvas id="productChart" width="400" height="200"></canvas>
-</div>
-: -->
+
+
