@@ -76,7 +76,6 @@ export class DonListComponent implements OnInit {
     }
 
 
-
     get unconfirmedReservationsCount(): number {
       return this.reservations.filter(reservation => reservation.don.status !== 'confirme').length;
     }
@@ -132,20 +131,20 @@ isDonCreator(createdBy: number): boolean {
     const token = localStorage.getItem('access_token');
     if (id !== undefined && token) {
       // Afficher une boîte de dialogue de confirmation
-      Swal.fire({
-        title: 'Confirmation',
-        text: 'Êtes-vous sûr de vouloir supprimer ce don ?',
-        icon: 'warning',
-        imageWidth: 56,
-        imageHeight: 56,
-        showCancelButton: true,
-        confirmButtonText: 'Oui, supprimer',
-        cancelButtonText: 'Non, annuler',
-        customClass: {
-          confirmButton: 'btn-supprimer', // Ajoutez votre classe pour le bouton de confirmation
-          cancelButton: 'btn-annuler',   // Ajoutez votre classe pour le bouton d'annulation
-        }
-      }).then((result) => {
+        Swal.fire({
+          title: 'Confirmation',
+          text: 'Êtes-vous sûr de vouloir supprimer ce don ?',
+          icon: 'warning',
+          imageWidth: 56,
+          imageHeight: 56,
+          showCancelButton: true,
+          confirmButtonText: 'Oui, supprimer',
+          cancelButtonText: 'Non, annuler',
+          customClass: {
+            confirmButton: 'btn-supprimer', // Ajoutez votre classe pour le bouton de confirmation
+            cancelButton: 'btn-annuler',   // Ajoutez votre classe pour le bouton d'annulation
+          }
+        }).then((result) => {
         if (result.isConfirmed) {
           // L'utilisateur a confirmé la suppression
           this.DonService.deleteDon(id).subscribe(

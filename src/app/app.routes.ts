@@ -23,6 +23,7 @@ import { ListBeneficiaireComponent } from './Components/Admins/list-beneficiare/
 import { ListeOrganisationComponent } from './Components/Admins/list-organisation/list-organisation.component';
 import { ListDonComponent } from './Components/Admins/don-list/list-don.component';
 import { InscriptionBenefiaireComponent } from './Components/Authentifications/Inscription/Beneficiaires/InscriptionBeneficiaire/inscription-beneficiaire.component';
+import { RegisterComponent } from './Components/Authentifications/Inscription/Beneficiaires/register/register.component';
 
 export const routes: Routes = [
 
@@ -48,6 +49,11 @@ export const routes: Routes = [
   {path: 'inscription/organisation', component:RegisterOrganisationComponent},
 
   {path: 'inscription/beneficiaire', component:InscriptionBenefiaireComponent},
+
+
+  {path: 'registerB', component:  RegisterComponent},
+
+
 
 
   {path: 'inscription/daara', component:RegisterBeneficiaireComponent},

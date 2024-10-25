@@ -9,5 +9,7 @@ export interface BeneficiaireModel {
   fondateur?: string;
   date_creation?: Date;
   recepisse?: string;
+  image_cn?: string;
+  numero_identite?: string;
   user_Id?: number | null; // nullable, foreign key to User
 }

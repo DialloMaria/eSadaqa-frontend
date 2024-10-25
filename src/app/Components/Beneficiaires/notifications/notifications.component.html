@@ -1,20 +1,3 @@
-<div class="rapport-container">
-  <h2>Génération du rapport</h2>
-
-  <button (click)="generateRapport()" class="btn btn-primary">Générer un rapport</button>
-
-  <!-- Affichage du rapport -->
-  <div *ngIf="rapportContenu">
-    <h3>Rapport généré :</h3>
-    <pre>{{ rapportContenu }}</pre> <!-- Utilisez <pre> pour conserver le formatage -->
-  </div>
-
-  <!-- Affichage d'un message d'erreur en cas d'échec -->
-  <div *ngIf="errorMessage" class="alert alert-danger">
-    {{ errorMessage }}
-  </div>
-</div>
-
 <div class="reservation-list">
   <h2 class="mb-4">Liste des Réservations</h2>
 
@@ -23,7 +6,7 @@
   </div>
   <ul class="list-group">
     <li *ngFor="let reservation of reservations" class="list-group-item">
-      <div class="reservation-item p-3"  *ngIf="reservation.don.status == 'confirme'">
+      <div class="reservation-item p-3"  *ngIf="reservation.don.status !== 'confirme'">
         <!-- <p><strong>ID Réservation :</strong> {{ reservation.id }}</p> -->
         <p><strong>Bénéficiaire :</strong> {{ reservation.beneficiaire.nomstructure }}</p>
         <p><strong>Description :</strong> {{ reservation.description }}</p>
@@ -33,3 +16,19 @@
     </li>
   </ul>
 </div>
+
+
+
+
+<!-- <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+  clique
+  </button>
+  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+    <li><a class="dropdown-item active" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="#">Separated link</a></li>
+  </ul>
+</div> -->

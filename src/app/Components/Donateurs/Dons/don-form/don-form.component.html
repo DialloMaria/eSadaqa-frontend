@@ -4,7 +4,7 @@
     <label for="libelle">Libellé</label>
     <input id="libelle" formControlName="libelle" class="form-control" type="text" placeholder="Libellé" required>
     <div *ngIf="donForm.get('libelle')?.invalid && donForm.get('libelle')?.touched" class="text-danger">
-      Le libellé est requis.
+      Le libellé est obligatoirng serv.
     </div>
   </div>
 
@@ -12,7 +12,7 @@
     <label for="description">Description</label>
     <textarea id="description" formControlName="description" class="form-control" placeholder="Description" required></textarea>
     <div *ngIf="donForm.get('description')?.invalid && donForm.get('description')?.touched" class="text-danger">
-      La description est requise.
+      La description est obligatoirng serve.
     </div>
   </div>
 
@@ -20,7 +20,7 @@
     <label for="lieuReception">Lieu de Réception</label>
     <input id="lieuReception" formControlName="lieuReception" class="form-control" type="text" placeholder="Lieu de réception" required>
     <div *ngIf="donForm.get('lieuReception')?.invalid && donForm.get('lieuReception')?.touched" class="text-danger">
-      Le lieu de réception est requis.
+      Le lieu de réception est obligatoirng serv.
     </div>
   </div>
 
@@ -28,7 +28,7 @@
     <label for="categorie">Lieu de Réception</label>
     <input id="categorie" formControlName="categorie" class="form-control" type="text" placeholder="Lieu de réception" required>
     <div *ngIf="donForm.get('categorie')?.invalid && donForm.get('categorie')?.touched" class="text-danger">
-      Le categorie est requis.
+      Le categorie est obligatoirng serv.
     </div>
   </div>
 
@@ -36,7 +36,7 @@
     <label for="adresse">Lieu de Réception</label>
     <input id="adresse" formControlName="adresse" class="form-control" type="text" placeholder="Lieu de réception" required>
     <div *ngIf="donForm.get('adresse')?.invalid && donForm.get('adresse')?.touched" class="text-danger">
-      L'adresse  est requis.
+      L'adresse  est obligatoirng serv.
     </div>
   </div>
 
@@ -56,7 +56,7 @@
     <label for="libelle">Libellé</label>
     <input id="libelle" formControlName="libelle" class="form-control" type="text" placeholder="Libellé" required>
     <div *ngIf="produitForm.get('libelle')?.invalid && produitForm.get('libelle')?.touched" class="text-danger">
-      Le libellé est requis.
+      Le libellé est obligatoirng serv.
     </div>
   </div>
 
@@ -64,7 +64,7 @@
     <label for="quantite">Quantité</label>
     <input id="quantite" formControlName="quantite" class="form-control" type="number" placeholder="Quantité" required>
     <div *ngIf="produitForm.get('quantite')?.invalid && produitForm.get('quantite')?.touched" class="text-danger">
-      La quantité est requise.
+      La quantité est obligatoirng serve.
     </div>
   </div>
 
@@ -90,11 +90,6 @@
                 <label for="libelle">Libellé</label>
                 <input id="libelle" formControlName="libelle" class="form-control" type="text" placeholder="Libellé" required>
                 <!-- Messages d'erreur -->
-                <div *ngIf="donForm.get('libelle')?.errors">
-                  <div *ngIf="donForm.get('libelle')?.errors?.['error']" class="text-danger">
-                    {{ donForm.get('libelle')?.errors?.['message'] }}
-                  </div>
-                </div>
               </div>
             </div>
             <div class="col-md-6">
@@ -102,7 +97,7 @@
                 <label for="description">Description</label>
                 <textarea id="description" formControlName="description" class="form-control" placeholder="Description" required></textarea>
                 <div *ngIf="donForm.get('description')?.invalid && donForm.get('description')?.touched" class="text-danger">
-                  La description est requise.
+                  La description est obligatoirng serve.
                 </div>
                 <div *ngIf="donForm.get('description')?.errors?.['maxlength'] && donForm.get('description')?.touched" class="text-danger">
                   La description ne peut pas dépasser 255 caractères.
@@ -115,16 +110,28 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
+                <label for="adresse">Lieu de Réception</label>
+                <input id="adresse" formControlName="adresse" class="form-control" type="text" placeholder="lieu de reception" required>
+                <div *ngIf="donForm.get('adresse')?.invalid && donForm.get('adresse')?.touched" class="text-danger">
+                  L'adresse est obligatoirng serve.
+                </div>
+                <div *ngIf="donForm.get('adresse')?.errors?.['maxlength'] && donForm.get('adresse')?.touched" class="text-danger">
+                  L'adresse ne peut pas dépasser 200 caractères.
+                </div>
+              </div>
+            </div>
+            <!-- <div class="col-md-6">
+              <div class="form-group">
                 <label for="lieuReception">Lieu de Réception</label>
                 <input id="lieuReception" formControlName="lieuReception" class="form-control" type="text" placeholder="Lieu de réception" required>
                 <div *ngIf="donForm.get('lieuReception')?.invalid && donForm.get('lieuReception')?.touched" class="text-danger">
-                  Le lieu de réception est requis.
+                  Le lieu de réception est obligatoirng serv.
                 </div>
                 <div *ngIf="donForm.get('lieuReception')?.errors?.['maxlength'] && donForm.get('lieuReception')?.touched" class="text-danger">
                   Le lieu de réception ne peut pas dépasser 150 caractères.
                 </div>
               </div>
-            </div>
+            </div> -->
             <div class="col-md-6">
               <div class="form-group">
                 <label for="categorie">Catégorie</label>
@@ -134,7 +141,7 @@
                   <option value="montant">Montant</option>
                 </select>
                 <div *ngIf="donForm.get('categorie')?.invalid && donForm.get('categorie')?.touched" class="text-danger">
-                  La catégorie est requise.
+                  La catégorie est obligatoirng serve.
                 </div>
               </div>
             </div>
@@ -142,19 +149,19 @@
 
           <!-- Troisième ligne : Adresse et Image -->
           <div class="row">
-            <div class="col-md-6">
+            <!-- <div class="col-md-6">
               <div class="form-group">
-                <label for="adresse">Adresse</label>
+                <label for="adresse">Lieu de Réception</label>
                 <input id="adresse" formControlName="adresse" class="form-control" type="text" placeholder="Adresse" required>
                 <div *ngIf="donForm.get('adresse')?.invalid && donForm.get('adresse')?.touched" class="text-danger">
-                  L'adresse est requise.
+                  L'adresse est obligatoirng serve.
                 </div>
                 <div *ngIf="donForm.get('adresse')?.errors?.['maxlength'] && donForm.get('adresse')?.touched" class="text-danger">
                   L'adresse ne peut pas dépasser 200 caractères.
                 </div>
               </div>
-            </div>
-            <div class="col-md-6">
+            </div> -->
+            <div class="row">
               <div class="form-group">
                 <label for="image">Image </label>
                 <input id="image" formControlName="image" class="form-control" type="file"  accept="image/*"   (change)="onImageSelected($event)"   placeholder="URL de l'image">
@@ -173,11 +180,11 @@
             <form [formGroup]="produitForm" (ngSubmit)="addProduit()" class="shadow p-4 rounded bg-light">
               <div class="row">
                 <div class="col-md-6">
-                  <div class="form-group">
+                  <div class="form-group">ng serv
                     <label for="libelleProduit">Libellé du produit</label>
                     <input id="libelleProduit" formControlName="libelle" class="form-control" type="text" placeholder="Libellé" required>
                     <div *ngIf="produitForm.get('libelle')?.invalid && produitForm.get('libelle')?.touched" class="text-danger">
-                      Le libellé est requis.
+                      Le libellé est obligatoir.
                     </div>
                   </div>
                 </div>
@@ -186,7 +193,7 @@
                     <label for="quantite">Quantité</label>
                     <input id="quantite" formControlName="quantite" class="form-control" type="number" placeholder="Quantité" required>
                     <div *ngIf="produitForm.get('quantite')?.invalid && produitForm.get('quantite')?.touched" class="text-danger">
-                      La quantité est requise.
+                      La quantité est obligatoirng serve.
                     </div>
                   </div>
                 </div>

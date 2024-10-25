@@ -1,0 +1,119 @@
+<div class="container">
+  <div  *ngIf="currentStep === 1">
+    <form [formGroup]="registerForm" (ngSubmit)="nextStep()">
+    <!-- Nom -->
+    <div class="form-group">
+      <label for="nom">Nom</label>
+      <input type="text" id="nom" class="form-control" formControlName="nom">
+    </div>
+
+    <!-- Prenom -->
+    <div class="form-group">
+      <label for="prenom">Prénom</label>
+      <input type="text" id="prenom" class="form-control" formControlName="prenom">
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" class="form-control" formControlName="email">
+    </div>
+
+    <!-- Mot de passe -->
+    <div class="form-group">
+      <label for="password">Mot de passe</label>
+      <input type="password" id="password" class="form-control" formControlName="password">
+    </div>
+
+    <!-- Adresse -->
+    <div class="form-group">
+      <label for="adresse">Adresse</label>
+      <input type="text" id="adresse" class="form-control" formControlName="adresse">
+    </div>
+
+    <!-- Téléphone -->
+    <div class="form-group">
+      <label for="telephone">Téléphone</label>
+      <input type="text" id="telephone" class="form-control" formControlName="telephone">
+    </div>
+
+    <!-- Photo de profil -->
+    <div class="form-group">
+      <label for="photo_profile">Photo de Profil</label>
+      <input type="file" id="photo_profile" class="form-control" (change)="onFileChange($event, 'photo_profile')">
+    </div>
+
+    <button type="button" (click)="nextStep()" > Suivant </button>
+    </form>
+  </div>
+
+  <div *ngIf="currentStep === 2">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <!-- Nom de la structure -->
+    <div class="form-group">
+      <label for="nomstructure">Nom de la Structure</label>
+      <input type="text" id="nomstructure" class="form-control" formControlName="nomstructure">
+    </div>
+
+    <!-- Email de la structure -->
+    <div class="form-group">
+      <label for="emailstructure">Nom de la Structure</label>
+      <input type="email" id="emailstructure" class="form-control" formControlName="emailstructure">
+    </div>
+
+    <!-- Tel de la structure -->
+    <div class="form-group">
+      <label for="telstructure">Nom de la Structure</label>
+      <input type="tel" id="telstructure" class="form-control" formControlName="telstructure">
+    </div>
+
+    <!-- Description de la structure -->
+    <div class="form-group">
+      <label for="description">Description de la Structure</label>
+      <textarea id="description" class="form-control" formControlName="description"></textarea>
+    </div>
+
+    <!-- FOndateur de la structure -->
+    <div class="form-group">
+      <label for="fondateur">Fondateur</label>
+      <input type="text" id="fondateur" class="form-control" formControlName="fondateur">
+    </div>
+
+    <!-- Logo -->
+    <div class="form-group">
+      <label for="logo">Logo</label>
+      <input type="file" id="logo" class="form-control" (change)="onFileChange($event, 'logo')">
+    </div>
+
+    <!-- Recepisse -->
+    <div class="form-group">
+      <label for="recepisse">Récépissé</label>
+      <input type="file" id="recepisse" class="form-control" (change)="onFileChange($event, 'recepisse')">
+    </div>
+
+    <!-- Image CNI -->
+    <div class="form-group">
+      <label for="image_cni">Image CNI</label>
+      <input type="file" id="image_cni" class="form-control" (change)="onFileChange($event, 'image_cni')">
+    </div>
+
+    <!-- Date de création -->
+    <div class="form-group">
+      <label for="date_creation">Date de création</label>
+      <input type="date" id="date_creation" class="form-control" formControlName="date_creation">
+    </div>
+
+    <button type="submit" class="btn btn-primary">S'inscrire</button>
+
+    </form>
+  </div>
+
+
+  <div *ngIf="successMessage" class="alert alert-success mt-3">
+    {{ successMessage }}
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    {{ errorMessage }}
+  </div>
+</div>

@@ -202,7 +202,7 @@ createBarChart(nomProduit: string[], filteredQuantiteProduit: number[]) {
       datasets: [{
         label: 'Quantité de Produits Fournis',
         data: filteredQuantiteProduit,
-        backgroundColor: '#D4A017',
+        backgroundColor: '#D4A017', 
         borderColor: '#007461',
         borderWidth: 1
       }]

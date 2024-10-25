@@ -9,12 +9,10 @@ import { AuthService } from './auth.Service';
 })
 export class NotificationService {
 
-
   constructor(
     private http: HttpClient,
     private authService: AuthService
   ) {}
-
 
   // Récupérer les réservations par donateur
   getReservations(): Observable<any[]> {
@@ -22,6 +20,14 @@ export class NotificationService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get<any[]>(`${apiUrl}/reservation/affichageByDonateur`, { headers }); // Mettez à jour cette route selon votre API
   }
+
+  getReservationByBeneficiare(): Observable<any[]> {
+    const token = this.authService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<any[]>(`${apiUrl}/reservation/affichageByBeneficiaire`, { headers }); // Mettez à jour cette route selon votre API
+  }
+
+
 
   // Récupérer les réservations
   // getReservations(): Observable<any> {
