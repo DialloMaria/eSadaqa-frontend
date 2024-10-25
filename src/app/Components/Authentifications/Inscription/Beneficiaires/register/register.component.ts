@@ -30,16 +30,14 @@ export class RegisterComponent {
     password: ['', [Validators.required, Validators.minLength(6), this.passwordValidator]],
     photo_profile: [null],
 
-     nomstructure: ['', [Validators.maxLength(255)]],
-     emailstructure: ['', [Validators.email, Validators.maxLength(255)]],
-     description: [''],
-     telstructure: ['', [Validators.maxLength(15)]],
-     logo: [null],
-     fondateur: ['', [Validators.maxLength(100)]],
-     date_creation: ['', Validators.required],
+     nomstructure: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+     emailstructure: ['', [Validators.required, Validators.email]],
+     description: [null, [Validators.required, Validators.minLength(10), Validators.maxLength(255),this.letterValidator]],
+     logo: [null, Validators.required],
+     fondateur: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20),  Validators.pattern(/^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/)]],
      recepisse: [null, Validators.required],
      image_cni: [null],
-
+     date_creation: ['', [Validators.required, this.dateNotInFuture]],
 
    });
  }
@@ -91,6 +89,41 @@ passwordValidator(control: AbstractControl): ValidationErrors | null {
 
       return Object.keys(errors).length ? errors : null;
 }
+
+   // Validator personnalisé pour la date de création
+   dateNotInFuture(control: AbstractControl): ValidationErrors | null {
+    const dateValue = control.value;
+
+    if (!dateValue) {
+      return null; // Si le champ est vide, laisser Validators.required gérer cette erreur
+    }
+
+    const selectedDate = new Date(dateValue);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Réinitialiser l'heure pour comparer uniquement les dates
+
+    if (selectedDate > today) {
+      return { futureDate: true }; // Erreur si la date sélectionnée est dans le futur
+    }
+
+    return null; // Si tout va bien, retourner null
+  }
+   // Validator personnalisé pour le champ Siège
+   letterValidator(control: AbstractControl): ValidationErrors | null {
+    const siegeValue = control.value;
+
+    if (!siegeValue) {
+      return null; // Si le champ est vide, laisser Validators.required gérer cette erreur
+    }
+
+    const hasLetter = /[a-zA-Z]/.test(siegeValue);
+
+    if (!hasLetter) {
+      return { letter: true }; // Erreur si le champ ne contient pas de lettres
+    }
+
+    return null; // Si tout va bien, retourner null
+  }
 
 nextStep() {
   if (
