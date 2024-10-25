@@ -56,8 +56,8 @@ export class InscriptionDonateurStructureComponent {
 
 
 
-    // Fonction de validation personnalisée
-    phoneValidator(control: AbstractControl): ValidationErrors | null {
+  // Fonction de validation personnalisée
+  phoneValidator(control: AbstractControl): ValidationErrors | null {
       const phoneNumber = control.value;
 
       if (!phoneNumber) {
@@ -78,11 +78,10 @@ export class InscriptionDonateurStructureComponent {
 
       // Si des erreurs ont été trouvées, retourner l'objet d'erreurs
       return Object.keys(errors).length ? errors : null;
-    }
-
-
-      // Fonction de validation personnalisée pour le mot de passe
-      passwordValidator(control: AbstractControl): ValidationErrors | null {
+  }
+  
+   // Fonction de validation personnalisée pour le mot de passe
+  passwordValidator(control: AbstractControl): ValidationErrors | null {
         const password = control.value;
         const errors: any = {};
 
@@ -103,8 +102,7 @@ export class InscriptionDonateurStructureComponent {
         }
 
         return Object.keys(errors).length ? errors : null;
-      }
-
+  }
    // Validator personnalisé pour le champ Siège
    letterValidator(control: AbstractControl): ValidationErrors | null {
     const siegeValue = control.value;
@@ -121,7 +119,6 @@ export class InscriptionDonateurStructureComponent {
 
     return null; // Si tout va bien, retourner null
   }
-
    // Validator personnalisé pour la date de création
    dateNotInFuture(control: AbstractControl): ValidationErrors | null {
     const dateValue = control.value;
