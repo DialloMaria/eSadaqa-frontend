@@ -11,6 +11,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { FormGroup } from '@angular/forms';
 import { ReservationComponent } from '../../../Organisations/Reservations/reservation/reservation.component';
 import { NotificationsComponent } from "../../../notifications/notifications.component";
+import { PaginationComponent } from '../../../pagination/pagination.component';
 
 @Component({
   selector: 'app-don-list',
@@ -21,8 +22,8 @@ import { NotificationsComponent } from "../../../notifications/notifications.com
     DonFormComponent,
     ReservationComponent,
     NgxPaginationModule,
-    NotificationsComponent
-
+    NotificationsComponent,
+    PaginationComponent
 ],
   templateUrl: './don-list.component.html',
   styleUrl: './don-list.component.css'
@@ -39,18 +40,28 @@ export class DonListComponent implements OnInit {
   length= [];
   reservations: any[] = [];
   don:any[] = [];
+  currentPage: number = 1; // Page actuelle
+  itemsPerPage: number = 6; // Nombre de cartes par page
+  paginatedDons: any[] = []; // Tableau des dons paginés
+  totalPages : number = 10;
 
 // Déclarez un EventEmitter pour envoyer l'ID du don au parent
 @Output() reserveDon = new EventEmitter<number>();
 
-  constructor(private DonService: DonService, private router: Router,private dialog: MatDialog, authService: AuthService) {}
+  constructor(private DonService: DonService, private router: Router,private dialog: MatDialog, authService: AuthService) {
+    this.dons = this.getDummyDons();
+  }
 
   ngOnInit(): void {
+    // Remplacez par la méthode pour récupérer vos dons
+    // Initialisation de la pagination
+    this.updatePaginatedDons();
     this.getAllDons();
     this.getUserId(); // Récupérer l'utilisateur connecté
 
   }
-    userRole!: string;
+
+  userRole!: string;
   // Méthode pour récupérer l'ID de l'utilisateur connecté depuis le token ou session
   getUserId(): void {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -78,6 +89,16 @@ export class DonListComponent implements OnInit {
 
     get unconfirmedReservationsCount(): number {
       return this.reservations.filter(reservation => reservation.don.status !== 'confirme').length;
+    }
+
+    getDummyDons(): any[] {
+      return Array.from({ length: 20 }, (_, i) => ({
+        id: i + 1,
+        libelle: `Don ${i + 1}`,
+        description: `Description du don ${i + 1}`,
+        image: 'https://via.placeholder.com/300',
+        created_by: null // Remplace par la vraie logique
+      }));
     }
 
   // Récupérer tous les dons et calculer le nombre de dons de l'utilisateur connecté
@@ -196,13 +217,36 @@ isDonCreator(createdBy: number): boolean {
       console.log('Don ID sélectionné:', this.selectedDonId);
     }
 
-
-
-
       // Envoyer l'ID du don lorsqu'on clique sur "Réserver"
   //     reserverDon(donId: any): void {
   //   this.reserveDon.emit(donId); // Émet l'événement vers le parent
   // }
+
+
+
+
+  updatePaginatedDons(): void {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.paginatedDons = this.dons.slice(startIndex, endIndex);
+
+    console.log('Current Page:', this.currentPage); // Debug: Vérifie la page actuelle
+    console.log('Paginated Dons:', this.paginatedDons); // Debug: Vérifie les dons affichés
+  }
+
+  changePage(page: number): void {
+    if (page < 1 || page > this.getTotalPages()) return; // Limite de pages
+    this.currentPage = page;
+    this.updatePaginatedDons(); // Met à jour les dons affichés
+  }
+
+  getTotalPages(): number {
+    return Math.ceil(this.dons.length / this.itemsPerPage); // Nombre total de pages
+  }
+
+
 }
+
+
 
 

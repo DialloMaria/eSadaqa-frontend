@@ -208,7 +208,7 @@
   <!-- <a routerLink="/dons/add" class="btn btn-add mb-3 animate__animated animate__bounce" data-bs-toggle="modal" data-bs-target="#donModal">Ajouter un Don</a> -->
 
   <div class="cards-container">
-    <div class="don-card animate__animated animate__fadeInUp" *ngFor="let don of dons">
+    <div class="don-card animate__animated animate__fadeInUp" *ngFor="let don of paginatedDons">
       <!-- *ngIf="don.created_by && isDonCreator(don.created_by)" -->
       <div>
         <img [src]="don.image || 'https://via.placeholder.com/300'" class="don-img">
@@ -233,10 +233,29 @@
     </div>
   </div>
 </div>
-          <!-- Pagination controls -->
-          <!-- <pagination-controls (pageChange)="page = $event"></pagination-controls> -->
-          <pagination-controls id="donsPagination" (pageChange)="page = $event"></pagination-controls>
 
+<!-- Pagination -->
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item" [ngClass]="{'disabled': currentPage === 1}">
+      <a class="page-link" (click)="changePage(currentPage - 1)">Previous</a>
+    </li>
+    <li class="page-item" *ngFor="let page of [].constructor(getTotalPages()); let i = index"
+        [ngClass]="{'active': i + 1 === currentPage}">
+      <a class="page-link" (click)="changePage(i + 1)">{{ i + 1 }}</a>
+    </li>
+    <li class="page-item" [ngClass]="{'disabled': currentPage === getTotalPages()}">
+      <a class="page-link" (click)="changePage(currentPage + 1)">Next</a>
+    </li>
+  </ul>
+</nav>
+
+
+<!-- <div class="pagination">
+  <button class="btn" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Précédent</button>
+  <span>Page {{currentPage}} / {{totalPages}}</span>
+  <button class="btn" (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Suivant</button>
+</div> -->
 <footer class="footer">
 </footer>
 
