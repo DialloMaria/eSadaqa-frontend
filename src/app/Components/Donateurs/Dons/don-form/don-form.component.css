@@ -21,10 +21,13 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce */
 }
 
-/* Réduire l'opacité de l'overlay du modal */
-.donModal {
-  background-color: rgba(255, 255, 255, 0.5); /* Ajustez cette valeur pour rendre l'overlay plus clair */
-}
 .modal-content {
   background-color: #fff; /* S'assurer que le contenu du modal est bien clair */
+}
+ #donModal{
+  background-color: rgba(24, 20, 20, 0.699); /* Ajustez cette valeur pour rendre l'overlay plus clair */
+
+ }
+ .modal-backdrop.custom-backdrop {
+  background-color: rgba(0, 0, 0, 0.5); /* Un fond noir avec 50% de transparence */
 }

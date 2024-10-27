@@ -15,12 +15,11 @@
             <div class="tab-content" id="authTabContent">
               <!-- Afficher le formulaire de connexion si isLogin est vrai -->
               <div *ngIf="isSignupPerso">
-
-              <app-inscription-daara></app-inscription-daara>
+                <app-register></app-register>
               </div>
               <!-- Afficher le formulaire d'inscription si isSignupStructure est vrai -->
               <div *ngIf="isSignupStructure">
-
+                <app-inscription-daara></app-inscription-daara>
               </div>
             </div>
           </div>
