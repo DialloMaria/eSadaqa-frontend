@@ -40,7 +40,7 @@
         </li>
 
         <li class="logout">
-          <a href="#" [routerLink]="['/connexion']">
+          <a  (click)="logout()" >
             <i class="fas fa-sign-out-alt"></i>
             <span>Deconnexion</span>
           </a>
@@ -100,7 +100,7 @@
       </div>
       <div class="diagramBar">
         <h2>Produits les plus fournis</h2>
-       
+
         <canvas id="productChart" width="400" height="200"></canvas>
       </div>
     </div>

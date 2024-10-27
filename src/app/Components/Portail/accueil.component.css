@@ -900,3 +900,38 @@ small {
   text-align: center;
   color: white;
 }
+
+
+/* Button Styles */
+.btn-add {
+  color: #00715D;
+  border-radius: 15px;
+  border: 3px solid #00715D;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-add:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #00715D;
+}
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.09);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.btn-add {
+  animation: pulsate 3s infinite;
+}
