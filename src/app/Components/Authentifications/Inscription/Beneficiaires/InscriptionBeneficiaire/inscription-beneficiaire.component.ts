@@ -5,11 +5,12 @@
  import { CommonModule } from '@angular/common';
 import { ConnexionComponent } from "../../../Connexions/connexion.component";
 import { RegisterBeneficiaireComponent } from "../BeneficiaireRegister/BeneficiaireRegister.component";
+import { RegisterComponent } from '../register/register.component';
 
  @Component({
    selector: 'app-inscriptionBeneficiaire',
    standalone: true,
-   imports: [ReactiveFormsModule, RouterLink, HttpClientModule, CommonModule, ConnexionComponent, RegisterBeneficiaireComponent],
+   imports: [ReactiveFormsModule, RouterLink, HttpClientModule, CommonModule, ConnexionComponent, RegisterBeneficiaireComponent, RegisterComponent],
    templateUrl: './inscription-beneficiaire.component.html',
    styleUrls: ['./inscription-beneficiaire.component.css']
  })

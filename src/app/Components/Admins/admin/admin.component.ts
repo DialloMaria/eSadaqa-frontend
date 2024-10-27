@@ -202,7 +202,7 @@ createBarChart(nomProduit: string[], filteredQuantiteProduit: number[]) {
       datasets: [{
         label: 'Quantité de Produits Fournis',
         data: filteredQuantiteProduit,
-        backgroundColor: '#D4A017', 
+        backgroundColor: '#D4A017',
         borderColor: '#007461',
         borderWidth: 1
       }]
@@ -222,6 +222,52 @@ createBarChart(nomProduit: string[], filteredQuantiteProduit: number[]) {
   this.chart.update();
 }
 
+logout(): void {
+  const token = localStorage.getItem('access_token');
+
+  if (token) {
+    // Afficher une boîte de dialogue de confirmation
+    Swal.fire({
+      title: 'Tu pars déja',
+      text: 'Êtes-vous sûr de vouloir vous déconnecter ?',
+      icon: 'warning',
+      showCancelButton: true,
+      cancelButtonText: 'Non, c"est une erreur',
+      confirmButtonText: 'Oui, je me deconnecte',
+      customClass: {
+        confirmButton: 'btn-supprimer', // Classe CSS pour personnaliser le bouton de confirmation
+        cancelButton: 'btn-annuler'     // Classe CSS pour personnaliser le bouton d'annulation
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // L'utilisateur a confirmé la déconnexion
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('user');
+
+        // Afficher une alerte de déconnexion réussie
+        this.showAlert('Déconnexion réussie', 'Vous avez été déconnecté avec succès.', 'success');
+        this.router.navigateByUrl('/connexion'); // Redirige vers la page de connexion
+      }
+    });
+  } else {
+    console.error('Token non trouvé.');
+    this.showAlert('Erreur', 'Token non trouvé.', 'error');
+  }
+}
+
+// Méthode pour afficher les alertes avec SweetAlert2
+showAlert(title: string, text: string, icon: 'success' | 'error' | 'warning' | 'info' | 'question'): void {
+  Swal.fire({
+    title: title,
+    text: text,
+    icon: icon,
+    confirmButtonText: 'OK',
+    customClass: {
+      confirmButton: 'btn-supprimer', // Classe CSS pour personnaliser le bouton de confirmation
+      cancelButton: 'btn-annuler'     // Classe CSS pour personnaliser le bouton d'annulation
+    }
+  });
+}
 
 }
 

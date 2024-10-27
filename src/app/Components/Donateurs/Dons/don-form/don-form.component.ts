@@ -8,6 +8,7 @@ import { DonModel } from '../../../../Models/Don.model';
 import { ProduitModel } from '../../../../Models/TypeProduit.model';
 import { ProduitService } from '../../../../Services/produit.Service';
 import { ValidatorData } from '../../../Validator';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-don-form',
@@ -60,7 +61,7 @@ export class DonFormComponent {
       if (file.type.startsWith('image/')) { // Vérifie si le fichier est une image
         this.selectedImage = file; // Stocke le fichier sélectionné
       } else {
-        alert('Veuillez sélectionner un fichier image valide.');
+        // alert('Veuillez sélectionner un fichier image valide.');
         this.selectedImage = null;
       }
     } else {
@@ -72,7 +73,7 @@ export class DonFormComponent {
 
   submitDon(): void {
     if (this.donForm.invalid || this.produits.length === 0) {
-      alert('Veuillez ajouter au moins un produit.');
+      // alert('Veuillez ajouter au moins un produit.');
       return;
     }
 
@@ -94,8 +95,19 @@ export class DonFormComponent {
       next: (response) => {
         const donId = response.data.id;
         this.submitProduits(donId);
-        window.location.reload();
-        this.donForm.reset(); // Réinitialise le formulaire après l'ajout
+        // Afficher SweetAlert après l'ajout réussi
+        Swal.fire({
+          icon: 'success',
+          title: 'Don ajouté avec succès!',
+          text: 'Votre don a été ajouté avec succès.',
+          confirmButtonText: 'OK'
+        }).then(() => {
+          window.location.reload(); // Recharger la page ou rediriger vers une autre route
+          this.donForm.reset(); // Réinitialise le formulaire après l'ajout
+        });
+        // window.location.reload();
+        // this.donForm.reset(); // Réinitialise le formulaire après l'ajout
+
 
         // this.router.navigate(['/demande']);
       },

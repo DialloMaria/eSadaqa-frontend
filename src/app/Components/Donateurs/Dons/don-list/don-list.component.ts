@@ -48,7 +48,7 @@ export class DonListComponent implements OnInit {
 // Déclarez un EventEmitter pour envoyer l'ID du don au parent
 @Output() reserveDon = new EventEmitter<number>();
 
-  constructor(private DonService: DonService, private router: Router,private dialog: MatDialog, authService: AuthService) {
+  constructor(private DonService: DonService, private router: Router,private dialog: MatDialog, authsercie: AuthService) {
     this.dons = this.getDummyDons();
   }
 
@@ -242,6 +242,53 @@ isDonCreator(createdBy: number): boolean {
 
   getTotalPages(): number {
     return Math.ceil(this.dons.length / this.itemsPerPage); // Nombre total de pages
+  }
+
+  logout(): void {
+    const token = localStorage.getItem('access_token');
+
+    if (token) {
+      // Afficher une boîte de dialogue de confirmation
+      Swal.fire({
+        title: 'Confirmation',
+        text: 'Êtes-vous sûr de vouloir vous déconnecter ?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Oui, déconnectez-moi',
+        cancelButtonText: 'Non, annuler',
+        customClass: {
+          confirmButton: 'btn-supprimer', // Classe CSS pour personnaliser le bouton de confirmation
+          cancelButton: 'btn-annuler'     // Classe CSS pour personnaliser le bouton d'annulation
+        }
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // L'utilisateur a confirmé la déconnexion
+          localStorage.removeItem('access_token');
+          localStorage.removeItem('user');
+
+          // Afficher une alerte de déconnexion réussie
+          this.showAlert('Déconnexion réussie', 'Vous avez été déconnecté avec succès.', 'success');
+          this.router.navigateByUrl('/connexion'); // Redirige vers la page de connexion
+        }
+      });
+    } else {
+      console.error('Token non trouvé.');
+      this.showAlert('Erreur', 'Token non trouvé.', 'error');
+    }
+  }
+
+  // Méthode pour afficher les alertes avec SweetAlert2
+  showAlertD(title: string, text: string, icon: 'success' | 'error' | 'warning' | 'info' | 'question'): void {
+    Swal.fire({
+      title: title,
+      text: text,
+      icon: icon,
+      confirmButtonText: 'OK',
+      customClass: {
+        confirmButton: 'btn-supprimer', // Classe CSS pour personnaliser le bouton de confirmation
+        cancelButton: 'btn-annuler'     // Classe CSS pour personnaliser le bouton d'annulation
+      }
+    });
   }
 
 
