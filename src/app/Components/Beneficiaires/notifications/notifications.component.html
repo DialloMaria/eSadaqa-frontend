@@ -1,20 +1,21 @@
 <div class="reservation-list">
   <h2 class="mb-4">Liste des Réservations</h2>
 
-  <div *ngIf="reservations.length === 0" class="alert alert-warning">
-    <p>Aucune réservation disponible.</p>
-  </div>
-  <ul class="list-group">
-    <li *ngFor="let reservation of reservations" class="list-group-item">
-      <div class="reservation-item p-3"  *ngIf="reservation.don.status !== 'confirme'">
-        <!-- <p><strong>ID Réservation :</strong> {{ reservation.id }}</p> -->
-        <p><strong>Bénéficiaire :</strong> {{ reservation.beneficiaire.nomstructure }}</p>
-        <p><strong>Description :</strong> {{ reservation.description }}</p>
-        <!-- <p><strong>Date :</strong> {{ reservation.date }}</p> -->
-        <button class="btn btn-success" >Generer un rapport</button>
+  <div *ngIf="reservations.length > 0; else noReservations">
+    <div *ngFor="let reservation of reservations" class="card mb-3">
+      <div class="card-header">
+        Donateur: {{ reservation.don.creator.name }}
       </div>
-    </li>
-  </ul>
+      <div class="card-body">
+        <h5 class="card-title">Don: {{ reservation.don.name }}</h5>
+        <p class="card-text">{{ reservation.description }}</p>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noReservations>
+    <p>Aucune réservation trouvée pour ce bénéficiaire.</p>
+  </ng-template>
 </div>
 
 

@@ -193,9 +193,11 @@ isDonCreator(createdBy: number): boolean {
       text: text,
       icon: icon,
       confirmButtonText: 'OK',
+      timer: 2500, // Fermer automatiquement après 3 secondes (3000 millisecondes)
+      timerProgressBar: true, // Afficher une barre de progression
       customClass: {
-        confirmButton: 'btn-supprimer', // Ajoutez votre classe pour le bouton de confirmation
-        cancelButton: 'btn-annuler', // Ajoutez votre classe pour le bouton de confirmation
+        confirmButton: 'btn-supprimer', // Classe CSS pour personnaliser le bouton de confirmation
+        cancelButton: 'btn-annuler'     // Classe CSS pour personnaliser le bouton d'annulation
       }
     });
   }

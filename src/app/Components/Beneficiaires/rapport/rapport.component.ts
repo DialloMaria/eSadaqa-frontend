@@ -1,6 +1,7 @@
+import { ReservationModel } from './../../../Models/Resevation.model';
 import { Component, OnInit } from '@angular/core';
 import { RapportService } from '../../../Services/rapport.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
@@ -11,11 +12,12 @@ import { DonModel } from '../../../Models/Don.model';
 import { ReservationService } from '../../../Services/reservation.Service';
 import { AuthService } from '../../../Services/auth.Service';
 import { NotificationService } from '../../../Services/notification.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-rapport',
   standalone: true,
-  imports: [CommonModule, NotificationsBeneficiaireComponent , ReactiveFormsModule],
+  imports: [CommonModule, NotificationsBeneficiaireComponent , ReactiveFormsModule, RouterLink],
   templateUrl: './rapport.component.html',
   styleUrl: './rapport.component.css'
 })
@@ -31,8 +33,11 @@ export class RapportComponent implements OnInit {
   reservations: any[] = [];
   don:any[] = [];
   donateurId: number | null = null;
-reservation: any;
-
+reservation: ReservationModel[] = [];
+userId!: number; // ID de l'utilisateur connecté
+prenom!: string; // ID de l'utilisateur connecté
+photo_profile!: string; // ID de l'utilisateur connecté
+userRole!: string;
 
   constructor(
     private fb: FormBuilder,
@@ -40,17 +45,14 @@ reservation: any;
     private rapportService: RapportService,
     private route: ActivatedRoute,
     private authService: AuthService,
-    private notificationService : NotificationService
-
+    private notificationService : NotificationService,
+    private router: Router
   ) {
     this.reservationForm = this.fb.group({
       description: ['', Validators.required],
       beneficiaire_id: ['', Validators.required]
     });
-      // Récupérer l'ID de la réservation depuis l'URL
-    this.route.params.subscribe(params => {
-      this.reservationId = 103;
-    });
+
   }
 
 
@@ -58,49 +60,53 @@ reservation: any;
   ngOnInit(): void {
     console.log('ID du don reçu depuis le parent:', this.donId);
     // Charger les bénéficiaires et les dons
-    this.loadBeneficiaires();
-    this.fetchReservations();
+    this.loadReservations();
     this.donateurId = this.authService.getDonateurId();
+    this.getUserId(); // Récupérer l'utilisateur connecté
+
 
   }
-  loadBeneficiaires(): void {
-    this.reservationService.getBeneficiaires().subscribe({
-      next: (data) => {
-        console.log('Données reçues:', data);
-        if (data.success) {
-          this.beneficiaires = Array.isArray(data.beneficiaires) ? data.beneficiaires : [];
-          console.log('Bénéficiaires:', this.beneficiaires); // Vérifiez les bénéficiaires
-        } else {
-          console.error('Aucun bénéficiaire trouvé dans la réponse');
-        }
-      },
-      error: (err) => console.error('Erreur lors du chargement des bénéficiaires:', err)
-    });
+  getUserId(): void {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    console.log("Utilisateur connecté : ", user);
+
+    this.userId = user?.id || 0;
+    this.prenom = user?.prenom || '';
+    this.photo_profile = user?.photo_profile || '';  // Récupérer la photo de profil de l'utilisateur connecté
+
+    // Vérification du rôle dans le tableau 'roles'
+    if (user?.roles && user.roles.length > 0) {
+      this.userRole = user.roles[0].name || '';  // Récupérer le nom du rôle
+    } else {
+      this.userRole = '';
+    }
+
+    console.log("Rôle de l'utilisateur connecté : ", this.userRole);  // Vérifier le rôle dans la console
   }
 
-  fetchReservations(): void {
-    this.notificationService.getReservationByBeneficiare().subscribe({
-      next: (data) => {
-        // Filter out confirmed reservations from the fetched data
-        this.reservations = data.filter((reservation: any) => reservation.don.status == 'confirme');
-        console.log('Réservations:', this.reservations);
+  loadReservations(): void {
+    this.reservationService.getReservationByBeneficiare().subscribe(
+      (response) => {
+        this.reservations = response.reservations; // Assurez-vous de la structure des données
       },
-      error: (error) => {
-        console.error('Erreur lors de la récupération des réservations:', error);
-      },
-    });
+      (error) => {
+        this.errorMessage = 'Erreur lors de la récupération des réservations';
+        console.error(error);
+      }
+    );
   }
+
 
 
   // Méthode pour générer le rapport
-  generateRapport() {
+  generateRapport(reservationId:any) {
     const token = localStorage.getItem('access_token');
     if (!token) {
       this.errorMessage = 'Token d\'accès manquant.';
       return;
     }
 
-    this.rapportService.generateRapport(this.reservationId).subscribe(
+    this.rapportService.generateRapport(reservationId).subscribe(
       (response) => {
         console.log('Réponse reçue :', response);
         if (response.success) {
@@ -118,6 +124,58 @@ reservation: any;
     );
   }
 
+
+
+  logout(): void {
+    const token = localStorage.getItem('access_token');
+
+    if (token) {
+      // Afficher une boîte de dialogue de confirmation
+      Swal.fire({
+        title: 'Confirmation',
+        text: 'Êtes-vous sûr de vouloir vous déconnecter ?',
+        icon: 'warning',
+        showCancelButton: true,
+
+        confirmButtonText: 'Oui, déconnectez-moi',
+        cancelButtonText: 'Non, annuler',
+        customClass: {
+          confirmButton: 'btn-supprimer', // Classe CSS pour personnaliser le bouton de confirmation
+          cancelButton: 'btn-annuler'     // Classe CSS pour personnaliser le bouton d'annulation
+        }
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // L'utilisateur a confirmé la déconnexion
+          localStorage.removeItem('access_token');
+          localStorage.removeItem('user');
+
+          // Afficher une alerte de déconnexion réussie
+          this.showAlert('Déconnexion réussie', 'Vous avez été déconnecté avec succès.', 'success');
+          this.router.navigateByUrl('/connexion'); // Redirige vers la page de connexion
+        }
+      });
+    } else {
+      console.error('Token non trouvé.');
+      this.showAlert('Erreur', 'Token non trouvé.', 'error');
+    }
+  }
+
+  // Méthode pour afficher les alertes avec SweetAlert2
+// Méthode pour afficher les alertes avec SweetAlert2 avec fermeture automatique après 3 secondes
+showAlert(title: string, text: string, icon: 'success' | 'error' | 'warning' | 'info' | 'question'): void {
+  Swal.fire({
+    title: title,
+    text: text,
+    icon: icon,
+    confirmButtonText: 'OK',
+    timer: 2500, // Fermer automatiquement après 3 secondes (3000 millisecondes)
+    timerProgressBar: true, // Afficher une barre de progression
+    customClass: {
+      confirmButton: 'btn-supprimer', // Classe CSS pour personnaliser le bouton de confirmation
+      cancelButton: 'btn-annuler'     // Classe CSS pour personnaliser le bouton d'annulation
+    }
+  });
+}
 
 
   }

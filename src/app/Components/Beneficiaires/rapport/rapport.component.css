@@ -1,4 +1,64 @@
 
+/* Menu-bar */
+.menu-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(10, 80, 0, 0.3);
+  color: #00715D;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  z-index: 500;
+  position: relative;
+}
+
+.logo-img {
+  width: 100px; /* Taille du logo */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li {
+  display: inline;  
+}
+
+.nav-links a {
+  color: #00715D;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  color: #00715D;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.notification-icon {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.user-name {
+  font-weight: bold;
+}
+
+.user-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+
 .reservation-list{
   z-index: 2;
 }

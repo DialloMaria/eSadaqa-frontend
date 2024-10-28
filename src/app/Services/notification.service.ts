@@ -28,7 +28,6 @@ export class NotificationService {
   }
 
 
-
   // Récupérer les réservations
   // getReservations(): Observable<any> {
   //   const token = this.authService.getToken();
