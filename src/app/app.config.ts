@@ -7,6 +7,9 @@ import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { authInterceptor } from './Services/interceptors/auth.interceptor';
 
+
+
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),

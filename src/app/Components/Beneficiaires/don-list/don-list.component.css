@@ -60,7 +60,7 @@
 /* Banner Section */
 .banner-section {
   height: 500px;
-  background-image: url('../../../../assets/images/donation.png');
+  background-image: url('../../../../../assets/images/donation.png');
   background-size: cover;
   background-position: bottom center;
   display: flex;
@@ -424,4 +424,130 @@
 
 .btn-banner:hover {
   color: white;
+}
+
+/* Notification Icon Animation */
+.notification-icon {
+  transition: transform 0.3s ease;
+}
+
+.notification-icon:hover {
+  transform: translateY(-5px) rotate(20deg);
+}
+
+
+
+.btn-add, .btn-detail, .btn-modifier, .btn-supprimer {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-add:hover, .btn-detail:hover, .btn-modifier:hover, .btn-supprimer:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+/************************************FOOTER********************************/
+.footer {
+  background-color: #00715D;
+  color: white;
+  padding: 20px 0;
+  height: 250px;
+}
+
+
+.footer-links a {
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
+
+.dropdown-menu {
+  top: 30px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  padding: 10px;
+  /* z-index: 3; */
+}
+
+.dropdown-menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-menu ul li {
+  padding: 5px 0;
+}
+
+.dropdown-menu ul li:hover {
+  background-color: #f0f0f0;
+}
+
+.notification-icon {
+  cursor: pointer;
+  font-size: 24px;
+}
+
+
+.notification-item {
+  border: 1px solid #ccc;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+.notification-dropdown .btn-secondary {
+  background-color: #00715D;
+  border: none;
+  color: white;
+}
+
+.notification-dropdown .btn-secondary:focus,
+.notification-dropdown .btn-secondary:hover {
+  background-color: #D4A017;
+}
+.notification-dropdown {
+  position: relative;
+  margin-right: 10px; /* Space between user name and bell icon */
+}
+
+.notification-icon {
+  font-size: 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+.notification-dropdown .dropdown-menu {
+  right: 0; /* Align dropdown to the right */
+  left: auto; /* Cancel any left alignment */
+}
+.dropdown-menu-dark {
+  background-color: #343a40;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+
+
+
+.notification-icon {
+  position: relative;
+  display: inline-block;
+  margin-right: 5px; /* Espacement entre l'icône et le badge */
+}
+
+.badge {
+  position: absolute;
+  top: -5px; /* Ajustez la position verticale */
+  right: -10px; /* Ajustez la position horizontale */
+  background-color: red; /* Choisissez une couleur pour le badge */
+  color: white; /* Couleur du texte */
+  border-radius: 50%; /* Badge circulaire */
+  padding: 0.25em 0.5em; /* Espacement interne */
+  font-size: 0.75em; /* Taille du texte du badge */
 }

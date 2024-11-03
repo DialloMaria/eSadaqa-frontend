@@ -8,8 +8,6 @@
   box-shadow: 0 2px 10px rgba(10, 80, 0, 0.3);
   color: #00715D;
   flex-wrap: wrap; /* Allows wrapping on smaller screens */
-  z-index: 500;
-  position: relative;
 }
 
 .logo-img {
@@ -33,7 +31,7 @@
 }
 
 .nav-links a:hover {
-  color: #00715D;
+  color: #ce0033;
 }
 
 .user-info {
@@ -60,7 +58,7 @@
 /* Banner Section */
 .banner-section {
   height: 500px;
-  background-image: url('../../../../assets/images/donation.png');
+  background-image: url('../../../../../assets/images/donation.png');
   background-size: cover;
   background-position: bottom center;
   display: flex;
@@ -84,7 +82,6 @@
 .banner-content {
   text-align: center;
   color: white;
-  position: relative;
   animation: fadeIn 2s ease-in-out;
 }
 
@@ -139,11 +136,9 @@
   margin-left: auto; /* Centers the card in the available space */
   margin-right: 18rem; /* Centers the card in the available space */
   position: relative;
+  z-index: 1;
 }
-.menu-bar {
-  margin-top: -8px;
-  z-index: 20;
-}
+
 /* Style du cercle contenant le nombre de dons */
 .cercle {
   width: 70px;
@@ -425,3 +420,38 @@
 .btn-banner:hover {
   color: white;
 }
+
+/* Notification Icon Animation */
+.notification-icon {
+  transition: transform 0.3s ease;
+}
+
+.notification-icon:hover {
+  transform: translateY(-5px) rotate(20deg);
+}
+
+
+
+.btn-add, .btn-detail, .btn-modifier, .btn-supprimer {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-add:hover, .btn-detail:hover, .btn-modifier:hover, .btn-supprimer:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+/************************************FOOTER********************************/
+.footer {
+  background-color: #00715D;
+  color: white;
+  padding: 20px 0;
+  height: 250px;
+}
+
+
+.footer-links a {
+  color: white;
+}
+

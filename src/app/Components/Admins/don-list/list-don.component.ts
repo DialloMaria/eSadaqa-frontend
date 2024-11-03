@@ -94,7 +94,7 @@ export class ListDonComponent implements OnInit {
   getAllDons(): void {
     const token = localStorage.getItem('access_token');
     if (token) {
-      this.DonService.getDons().subscribe(
+      this.DonService.getAllDons().subscribe(
         (response: any) => {
           if (Array.isArray(response.data)) {
             this.dons = response.data;

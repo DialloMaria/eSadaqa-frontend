@@ -1,5 +1,4 @@
-<div class="corp">
-    <!-- <div class="container my-5">
+  <!-- <div class="container my-5">
     <h2 class="text-center mb-4">Liste des Dons</h2>
     <a routerLink="/dons/add" class="btn btn-primary mb-3">Ajouter un Don</a>
 
@@ -110,10 +109,6 @@
 
 
 
-<app-don-form></app-don-form>
-<app-reservation></app-reservation>
-<!-- <app-notifications></app-notifications> -->
-
 
 
 <!-- <div class="menu-bar animate__animated animate__fadeInDown">
@@ -159,7 +154,6 @@
         <!-- <span class="badge" *ngIf="unconfirmedReservationsCount > 0">{{ unconfirmedReservationsCount }}</span> -->
       </button>
       <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-        <app-notifications></app-notifications>
       </ul>
     </div>
 
@@ -209,7 +203,8 @@
   <!-- <a routerLink="/dons/add" class="btn btn-add mb-3 animate__animated animate__bounce" data-bs-toggle="modal" data-bs-target="#donModal">Ajouter un Don</a> -->
 
   <div class="cards-container">
-    <div class="don-card animate__animated animate__fadeInUp" *ngFor="let don of paginatedDons">
+    <div class="don-card animate__animated animate__fadeInUp" *ngFor="let don of dons.slice().reverse()">
+      <!-- *ngIf="don.created_by && isDonCreator(don.created_by)" -->
       <div>
         <img [src]="don.image || 'https://via.placeholder.com/300'" class="don-img">
 
@@ -221,39 +216,44 @@
 
             <ng-container *ngIf="don.created_by && isDonCreator(don.created_by)">
               <button class="btn btn-modifier" data-bs-toggle="modal" data-bs-target="#donModal">Modifier</button>
-              <button class="btn btn-supprimer" (click)="deleteDon(don.id)">Supprimer</button>
+              <button class="btn btn-supprimer">Supprimer</button>
             </ng-container>
 
             <ng-container *ngIf="userRole === 'organisation'">
-              <button class="btn btn-success" (click)="reserverDon(don.id ?? 0)" data-bs-toggle="modal" data-bs-target="#reservationModal">Réserver</button>
+              <button class="btn btn-success" (click)="reserverDon(don.id ?? 0)" type="button" data-bs-toggle="modal" data-bs-target="#reservationModal">Réserver</button>
             </ng-container>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- Pagination -->
-  <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-      <li class="page-item" [ngClass]="{'disabled': currentPage === 1}">
-        <a class="page-link" (click)="changePage(currentPage - 1)">Previous</a>
-      </li>
-      <li class="page-item" *ngFor="let page of [].constructor(getTotalPages()); let i = index"
-          [ngClass]="{'active': i + 1 === currentPage}">
-        <a class="page-link" (click)="changePage(i + 1)">{{ i + 1 }}</a>
-      </li>
-      <li class="page-item" [ngClass]="{'disabled': currentPage === getTotalPages()}">
-        <a class="page-link" (click)="changePage(currentPage + 1)">Next</a>
-      </li>
-    </ul>
-  </nav>
-
 </div>
-<div >
-  <footer class="footer">
-  </footer>
-</div>
+
+<!-- Pagination -->
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item" [ngClass]="{'disabled': currentPage === 1}">
+      <a class="page-link" (click)="changePage(currentPage - 1)">Previous</a>
+    </li>
+    <li class="page-item" *ngFor="let page of [].constructor(getTotalPages()); let i = index"
+        [ngClass]="{'active': i + 1 === currentPage}">
+      <a class="page-link" (click)="changePage(i + 1)">{{ i + 1 }}</a>
+    </li>
+    <li class="page-item" [ngClass]="{'disabled': currentPage === getTotalPages()}">
+      <a class="page-link" (click)="changePage(currentPage + 1)">Next</a>
+    </li>
+  </ul>
+</nav>
+
+
+<!-- <div class="pagination">
+  <button class="btn" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Précédent</button>
+  <span>Page {{currentPage}} / {{totalPages}}</span>
+  <button class="btn" (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Suivant</button>
+</div> -->
+<footer class="footer">
+</footer>
+
 
 
 

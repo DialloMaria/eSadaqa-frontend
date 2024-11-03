@@ -24,11 +24,9 @@ import { ListeOrganisationComponent } from './Components/Admins/list-organisatio
 import { ListDonComponent } from './Components/Admins/don-list/list-don.component';
 import { InscriptionBenefiaireComponent } from './Components/Authentifications/Inscription/Beneficiaires/InscriptionBeneficiaire/inscription-beneficiaire.component';
 import { RegisterComponent } from './Components/Authentifications/Inscription/Beneficiaires/register/register.component';
+import { RoleGuard } from './guards/role.guard'; // Assurez-vous que le chemin est correct
 
 export const routes: Routes = [
-
-
-
 // Routes portails et par defaut
   // {path:'**', pathMatch:'full', redirectTo:'accueil'},
   {path: 'accueil', component: AccueilComponent},
@@ -53,26 +51,19 @@ export const routes: Routes = [
 
   {path: 'registerB', component:  RegisterComponent},
 
-
-
-
   {path: 'inscription/daara', component:RegisterBeneficiaireComponent},
 
   {path: 'connexion', component:ConnexionComponent},
 
-  {path: 'deconnexion', component: ConnexionComponent},
+  {path: 'deconnexion', component: ConnexionComponent  },
 
   {path: 'dashboard', component: AdminComponent},
 
   {path: 'dashboard/organisation', component: ListeOrganisationComponent},
 
-
   {path: 'dashboard/dons', component:   ListDonComponent},
+
   {path: 'dashboard/Beneficiaire', component:   ListBeneficiaireComponent},
-
-
-
-
 
   // Route pour les Donateurs
 
@@ -105,4 +96,3 @@ export const routes: Routes = [
   { path: 'list/don', component:   ListDonReservationComponent},
 
 ];
-

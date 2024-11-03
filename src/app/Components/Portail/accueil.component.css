@@ -5,6 +5,13 @@
   padding: 0;
   box-sizing: border-box;
 }
+.logo {
+  font-size: 24px;
+  font-weight: 600;
+  color:#CFA100;
+  text-decoration: none;
+  font-family: 'Arial', sans-serif;
+}
 
 /* Styles pour le menu */
 .header {
@@ -81,7 +88,7 @@
   cursor: pointer;
 }
 
-.menu-toggle div {
+.menu-toggle .bar {
   width: 30px;
   height: 3px;
   background-color: #ffffff; /* Couleur du hamburger */
@@ -90,61 +97,35 @@
 }
 
 /* Responsivité */
-@media (max-width: 768px) {
-  .navbar {
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-
-  .nav-links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    height: 0;
-    overflow: hidden;
-    flex-direction: column;
-    background-color: #00715D;
-    transition: height 0.3s ease;
-  }
-
-  .nav-links li {
-    text-align: center;
-    width: 100%;
-    padding: 10px 0;
-  }
-
-  .nav-links li a {
-    font-size: 1.2rem;
+/* Pour mobile */
+@media screen and (max-width: 768px) {
+  .header {
     padding: 10px;
   }
 
-  .btn-inscription {
-    margin-top: 20px;
-    padding: 12px 25px;
-    font-size: 1.2rem;
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 100%;
+    background-color: #00715D;
+  }
+
+  .nav-links.active {
+    display: flex;
   }
 
   .menu-toggle {
     display: flex;
   }
 
-  /* Afficher le menu quand on clique sur l'icône burger */
-  .nav-open #nav-links {
-    height: 180px; /* Ajuster en fonction du nombre de liens */
-  }
-
-  /* Transition du bouton burger */
-  .menu-toggle.open .bar:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-  .menu-toggle.open .bar:nth-child(2) {
-    opacity: 0;
-  }
-  .menu-toggle.open .bar:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+  .btn-inscription {
+    margin-top: 10px;
   }
 }
+
 
 
 /* Styles pour la bannière */

@@ -2,10 +2,7 @@ import { ReservationModel } from './../../../Models/Resevation.model';
 import { Component, OnInit } from '@angular/core';
 import { RapportService } from '../../../Services/rapport.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
-import { ToastrModule, ToastrService } from 'ngx-toastr';
-import { BrowserModule } from '@angular/platform-browser';
 import { NotificationsBeneficiaireComponent } from "../notifications/notifications.component";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DonModel } from '../../../Models/Don.model';
@@ -13,6 +10,7 @@ import { ReservationService } from '../../../Services/reservation.Service';
 import { AuthService } from '../../../Services/auth.Service';
 import { NotificationService } from '../../../Services/notification.service';
 import Swal from 'sweetalert2';
+import { BeneficiaireService } from '../../../Services/beneficiaire.Service';
 
 @Component({
   selector: 'app-rapport',
@@ -38,6 +36,8 @@ userId!: number; // ID de l'utilisateur connecté
 prenom!: string; // ID de l'utilisateur connecté
 photo_profile!: string; // ID de l'utilisateur connecté
 userRole!: string;
+nombreDonsUtilisateur: number = 0;
+
 
   constructor(
     private fb: FormBuilder,
@@ -46,7 +46,9 @@ userRole!: string;
     private route: ActivatedRoute,
     private authService: AuthService,
     private notificationService : NotificationService,
-    private router: Router
+    private router: Router,
+    private beneficiaireService:BeneficiaireService
+
   ) {
     this.reservationForm = this.fb.group({
       description: ['', Validators.required],
@@ -63,7 +65,7 @@ userRole!: string;
     this.loadReservations();
     this.donateurId = this.authService.getDonateurId();
     this.getUserId(); // Récupérer l'utilisateur connecté
-
+this.getAllDons();
 
   }
   getUserId(): void {
@@ -125,40 +127,103 @@ userRole!: string;
   }
 
 
+  // Récupérer tous les dons et calculer le nombre de dons de l'utilisateur connecté
 
-  logout(): void {
+  // Récupérer tous les dons et calculer le nombre de dons de l'utilisateur connecté
+  getAllDons(): void {
     const token = localStorage.getItem('access_token');
-
     if (token) {
-      // Afficher une boîte de dialogue de confirmation
-      Swal.fire({
-        title: 'Confirmation',
-        text: 'Êtes-vous sûr de vouloir vous déconnecter ?',
-        icon: 'warning',
-        showCancelButton: true,
+      this.beneficiaireService.getDonsByBeneficiaire().subscribe(
+        (response: any) => {
+          if (Array.isArray(response.dons)) {
+            this.dons = response.dons;
+            console.log('dons:', this.dons);
+            this.dons.forEach((dons: DonModel) => {
+              dons.image = dons.image ? `http://127.0.0.1:8000/storage/${dons.image}` : 'https://img.freepik.com/photos-gratuite/pot-miel-cote-pot-miel_1340-23142.jpg?ga=GA1.1.242611404.1703246724&semt=ais_hybrid',
+              dons.id = dons.id
+            });
 
-        confirmButtonText: 'Oui, déconnectez-moi',
-        cancelButtonText: 'Non, annuler',
-        customClass: {
-          confirmButton: 'btn-supprimer', // Classe CSS pour personnaliser le bouton de confirmation
-          cancelButton: 'btn-annuler'     // Classe CSS pour personnaliser le bouton d'annulation
+            this.getNombreDonsUtilisateur();
+          }
+         },
+        (error) => {
+          if (error.status === 401) {
+            this.showAlert('Erreur', 'Session expirée. Veuillez vous reconnecter.', 'error');
+            this.router.navigate(['/connexion']);
+          } else {
+            console.error('Erreur lors de la récupération des dons:', error);
+          }
         }
-      }).then((result) => {
-        if (result.isConfirmed) {
-          // L'utilisateur a confirmé la déconnexion
-          localStorage.removeItem('access_token');
-          localStorage.removeItem('user');
-
-          // Afficher une alerte de déconnexion réussie
-          this.showAlert('Déconnexion réussie', 'Vous avez été déconnecté avec succès.', 'success');
-          this.router.navigateByUrl('/connexion'); // Redirige vers la page de connexion
-        }
-      });
+      );
     } else {
-      console.error('Token non trouvé.');
-      this.showAlert('Erreur', 'Token non trouvé.', 'error');
+      this.showAlert('Erreur', 'Vous devez être connecté pour voir cette page.', 'error');
+      this.router.navigate(['/connexion']);
     }
   }
+
+
+
+  // getAllDons(): void {
+  //   const token = localStorage.getItem('access_token');
+  //   if (token) {
+  //     this.beneficiaireService.getDonsByBeneficiaire().subscribe(
+  //       (response: any) => {
+  //         // Vérifie si response.dons est bien un tableau
+  //         if (Array.isArray(response.dons)) {
+  //           this.dons = response.dons; // Met à jour this.dons avec les données correctes
+  //           console.log('dons:', this.dons);
+
+  //           // Ajoute le chemin de l'image pour chaque don
+  //           this.dons.forEach((don: DonModel) => {
+  //             don.image = don.image
+  //               ? `http://127.0.0.1:8000/storage/${don.image}`
+  //               : 'https://img.freepik.com/photos-gratuite/pot-miel-cote-pot-miel_1340-23142.jpg?ga=GA1.1.242611404.1703246724&semt=ais_hybrid';
+  //           });
+
+  //           this.getNombreDonsUtilisateur();
+  //         }
+
+  //         console.log('API response:', response);
+
+  //       },
+  //       (error) => {
+  //         if (error.status === 401) {
+  //           this.showAlert('Erreur', 'Session expirée. Veuillez vous reconnecter.', 'error');
+  //           this.router.navigate(['/connexion']);
+  //         } else {
+  //           console.error('Erreur lors de la récupération des dons:', error);
+  //         }
+  //       }
+  //     );
+  //   } else {
+  //     this.showAlert('Erreur', 'Vous devez être connecté pour voir cette page.', 'error');
+  //     this.router.navigate(['/connexion']);
+  //   }
+  // }
+
+
+  getNombreDonsUtilisateur(): void {
+    this.nombreDonsUtilisateur = this.dons.filter(don => don.created_by === this.userId).length;
+  }
+  // Vérifier si l'utilisateur connecté est celui qui a créé le don
+isDonCreator(createdBy: number): boolean {
+  return this.userId === createdBy;
+}
+
+logout(): void {
+  const token = localStorage.getItem('access_token');
+  if (token) {
+    // Suppression des informations d'authentification
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('user');
+
+    // Redirection vers la page de connexion
+    this.router.navigateByUrl('/connexion');
+  } else {
+    console.error('Token non trouvé.');
+  }
+}
+
 
   // Méthode pour afficher les alertes avec SweetAlert2
 // Méthode pour afficher les alertes avec SweetAlert2 avec fermeture automatique après 3 secondes

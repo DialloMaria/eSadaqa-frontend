@@ -1,17 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Route, Router, RouterLink } from '@angular/router';
-import { DonModel } from '../../../../Models/Don.model';
-import { DonService } from '../../../../Services/don.Services';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
-import { AuthService } from '../../../../Services/auth.Service';
-import { NgxPaginationModule } from 'ngx-pagination';
-import { FormGroup } from '@angular/forms';
-import { ReservationComponent } from "../../Reservations/reservation/reservation.component";
+import { ReservationComponent } from '../Reservations/reservation/reservation.component';
+import { DonModel } from '../../../Models/Don.model';
+import { DonService } from '../../../Services/don.Services';
+import { AuthService } from '../../../Services/auth.Service';
 
 @Component({
-  selector: 'app-don-list',
+  selector: 'app-listDonConfirmer',
   standalone: true,
   imports: [
     RouterLink,
@@ -19,9 +17,9 @@ import { ReservationComponent } from "../../Reservations/reservation/reservation
     ReservationComponent
 ],
   templateUrl: './list-don-reservation.component.html',
-  styleUrl: './list-don-reservation.component.css'
+  styleUrl: './don-list.component.css'
 })
-export class ListDonReservationComponent implements OnInit {
+export class ListDonCOnfirmerComponent implements OnInit {
   dons: DonModel[] = [];
   userId!: number; // ID de l'utilisateur connecté
   prenom!: string; // ID de l'utilisateur connecté
@@ -34,8 +32,9 @@ export class ListDonReservationComponent implements OnInit {
   constructor(private DonService: DonService, private router: Router,private dialog: MatDialog, authService: AuthService) {}
 
   ngOnInit(): void {
-    this.getAllDons();
+    this.getDonsConfirmerForOrganisation();
     this.getUserId(); // Récupérer l'utilisateur connecté
+
   }
     userRole!: string;
   // Méthode pour récupérer l'ID de l'utilisateur connecté depuis le token ou session
@@ -61,75 +60,11 @@ export class ListDonReservationComponent implements OnInit {
       return this.userRole === 'organisation'; // Adapter selon votre gestion des rôles
     }
 
-    getDonsConfirmerForOrganisation(): void {
-      const token = localStorage.getItem('access_token');
-      if (token) {
-        this.DonService.getDonsConfirmerForOrganisation().subscribe(
-          (response: any) => {
-            if (Array.isArray(response.data)) {
-              this.dons = response.data;
-              console.log('dons:', this.dons);
-              this.dons.forEach((dons: DonModel) => {
-                dons.image = dons.image ? `http://127.0.0.1:8000/storage/${dons.image}` : 'https://img.freepik.com/photos-gratuite/pot-miel-cote-pot-miel_1340-23142.jpg?ga=GA1.1.242611404.1703246724&semt=ais_hybrid',
-                dons.id = dons.id
-              });
-
-              this.getNombreDonsUtilisateur();
-            }
-
-          },
-          (error) => {
-            if (error.status === 401) {
-              this.showAlert('Erreur', 'Session expirée. Veuillez vous reconnecter.', 'error');
-              this.router.navigate(['/connexion']);
-            } else {
-              console.error('Erreur lors de la récupération des dons:', error);
-            }
-          }
-        );
-      } else {
-        this.showAlert('Erreur', 'Vous devez être connecté pour voir cette page.', 'error');
-        this.router.navigate(['/connexion']);
-      }
-    }
-    getDonsEnAttenteForOrganisation(): void {
-      const token = localStorage.getItem('access_token');
-      if (token) {
-        this.DonService.getDonsEnAttenteForOrganisation().subscribe(
-          (response: any) => {
-            if (Array.isArray(response.data)) {
-              this.dons = response.data;
-              console.log('dons:', this.dons);
-              this.dons.forEach((dons: DonModel) => {
-                dons.image = dons.image ? `http://127.0.0.1:8000/storage/${dons.image}` : 'https://img.freepik.com/photos-gratuite/pot-miel-cote-pot-miel_1340-23142.jpg?ga=GA1.1.242611404.1703246724&semt=ais_hybrid',
-                dons.id = dons.id
-              });
-
-              this.getNombreDonsUtilisateur();
-            }
-
-          },
-          (error) => {
-            if (error.status === 401) {
-              this.showAlert('Erreur', 'Session expirée. Veuillez vous reconnecter.', 'error');
-              this.router.navigate(['/connexion']);
-            } else {
-              console.error('Erreur lors de la récupération des dons:', error);
-            }
-          }
-        );
-      } else {
-        this.showAlert('Erreur', 'Vous devez être connecté pour voir cette page.', 'error');
-        this.router.navigate(['/connexion']);
-      }
-    }
-
-
   // Récupérer tous les dons et calculer le nombre de dons de l'utilisateur connecté
-  getAllDons(): void {
+  getDonsConfirmerForOrganisation(): void {
     const token = localStorage.getItem('access_token');
     if (token) {
-      this.DonService.getDons().subscribe(
+      this.DonService.getDonsConfirmerForOrganisation().subscribe(
         (response: any) => {
           if (Array.isArray(response.data)) {
             this.dons = response.data;
@@ -157,7 +92,6 @@ export class ListDonReservationComponent implements OnInit {
       this.router.navigate(['/connexion']);
     }
   }
-
 
 
   // Filtrer les dons par utilisateur connecté
@@ -197,7 +131,7 @@ isDonCreator(createdBy: number): boolean {
           this.DonService.deleteDon(id).subscribe(
             () => {
               this.showAlert('Succès', 'Le don a été supprimé avec succès.', 'success');
-              this.getAllDons(); // Recharge la liste après la suppression
+              this.getDonsConfirmerForOrganisation(); // Recharge la liste après la suppression
             },
             (error) => {
               console.error('Erreur lors de la suppression du don:', error);
@@ -231,24 +165,10 @@ isDonCreator(createdBy: number): boolean {
     // Implémentez la logique pour afficher plus de détails (par exemple, dans un autre modal)
   }
 
-  // Méthode pour réserver un don
-  // reserverDon(id: number) {
-  //   this.selectedDonId = id;
-  //   console.log('Réserver ce don:', id);
-  //   // Montrez le modal ici si ce n'est pas fait automatiquement par Bootstrap
-  // }
     // Méthode pour réserver un don
     reserverDon(donId: number): void {
       this.selectedDonId = donId; // Stocker l'ID du don sélectionné
       console.log('Don ID sélectionné:', donId);
     }
 
-
-
-
-
-      // Envoyer l'ID du don lorsqu'on clique sur "Réserver"
-  //     reserverDon(donId: any): void {
-  //   this.reserveDon.emit(donId); // Émet l'événement vers le parent
-  // }
   }

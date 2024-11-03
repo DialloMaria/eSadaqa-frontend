@@ -2,6 +2,7 @@
   <!-- Section du Menu -->
   <header class="header">
     <nav class="navbar animate__animated animate__fadeInDown">
+
       <a class="logo" >e-Sadaqa
         <img src="assets/logo.png" alt="" width="120">
       </a>
@@ -19,6 +20,12 @@
       <a class="btn-inscription" [routerLink]="['/demande']">Inscription</a>
     </nav>
   </header>
+  <script>
+    document.getElementById('mobile-menu').addEventListener('click', function() {
+      const navLinks = document.getElementById('nav-links');
+      navLinks.classList.toggle('active');
+    });
+  </script>
 
   <!-- Section de la Bannière -->
 
