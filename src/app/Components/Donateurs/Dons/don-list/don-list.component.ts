@@ -85,9 +85,7 @@ export class DonListComponent implements OnInit {
 
             this.nombreDonsUtilisateur = this.dons.length;
             this.dons.forEach((don: DonModel) => {
-              don.image = don.image
-                ? `http://127.0.0.1:8000/storage/${don.image}`
-                : 'https://img.freepik.com/photos-gratuite/pot-miel-cote-pot-miel_1340-23142.jpg?ga=GA1.1.242611404.1703246724&semt=ais_hybrid';
+              don.image = don.image? `http://127.0.0.1:8000/storage/${don.image}`: 'https://img.freepik.com/photos-gratuite/pot-miel-cote-pot-miel_1340-23142.jpg?ga=GA1.1.242611404.1703246724&semt=ais_hybrid';
             });
             this.updatePaginatedDons();
           }

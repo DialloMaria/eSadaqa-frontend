@@ -1,29 +1,24 @@
-.main{
-  display: flex;
-  position: relative;
-}
-.contenu
-{
-  position: relative;
-  width: 100%;
-
-}
-
-
+/* Header styles */
 .header {
   position: sticky;
   padding-top: 100px;
+  margin-left: 100px;
   display: flex;
-  width: 100%;
   justify-content: flex-end;
   align-items: center;
   padding: 2rem;
   background-color: #007461; /* Couleur de fond de l'en-tête */
   color: #fff;
   height: 100px;
-  z-index: 0;
+  z-index: 1;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+.main
+{
+  display: flex;
+}
+
 
 
 
@@ -54,7 +49,7 @@
   transition: all 0.5s linear;
   background: #fff;
   box-shadow: 0px 10px 25px #297fb918;
-  z-index: 1;
+  z-index: 5;
 }
 
 .sidebar:hover {
@@ -146,20 +141,17 @@ li {
 /* Floating Action Button */
 .fab {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
+border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 24px;
   background-color: #007461;
   color: white;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease;
+
 }
+
+
 
 .fab i {
   pointer-events: none;
@@ -171,60 +163,99 @@ button.h3{
 
 
 
-/* Adjusting the table container */
-.detail {
-  width: 100%; /* Decrease the width of the table */
-  transition: margin-left 0.5s ease-in-out;
-}
 
-.sidebar:hover .detail {
-  margin-left: 260px; /* Move the table further left when sidebar expands */
-  transition: 0.5s;
-}
-
-/* Adjusting the table size and position */
-.table {
-  width: 90%; 
-  margin-top: 50px;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for effect */
-}
-
-/* Table header styling */
-.table-dark {
-  background-color: #007461; /* Keep header aligned with theme */
+.profile-header {
+  background-color: #046a54;
   color: white;
-}
-
-.product-table th, .product-table td {
-  text-align: center;
-  vertical-align: middle;
-}
-
-.main
-{
+  padding: 20px;
+  border-radius: 8px;
   display: flex;
-}
-
-.ajout-ORG {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 24px;
-  /* background-color: #007461; */
-  /* color: white; */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease;
-  display: flex;
-  overflow: hidden;
+  gap: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
 }
-/* .ajout-ORG:hover {
-  background-color: #007461;
-  width: 200px;
-} */
+
+.profile-header:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.profile-header img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.profile-header img:hover {
+  transform: scale(1.05);
+}
+
+.profile-section {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.profile-section:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+h4 {
+  color: #333;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-custom {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-save {
+  background-color: #046a54;
+  color: white;
+  border: none;
+}
+
+.btn-save:hover {
+  background-color: #03493c;
+  transform: scale(1.05);
+}
+
+.btn-cancel {
+  background-color: white;
+  color: #ff3b3b;
+  border: 1px solid #ff3b3b;
+}
+
+.btn-cancel:hover {
+  background-color: #ff3b3b;
+  color: white;
+  transform: scale(1.05);
+}
+
+
+.btn-back {
+  background-color: #046a54;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-back:hover {
+  background-color: #03493c;
+}

@@ -1,6 +1,15 @@
 
-<div class="main">
 
+
+
+<div class="header">
+  <div class="welcome-message">
+    <i class="fas fa-user-circle"></i>
+    <span class="username">Mariam</span>
+  </div>
+</div>
+
+<div class="main">
   <div class="sidebar">
     <div class="logo"></div>
     <ul class="menu">
@@ -46,54 +55,28 @@
       </li>
     </ul>
   </div>
-
-  <div class="contenu">
-
-    <div class="header">
-      <div class="welcome-message">
-        <i class="fas fa-user-circle"></i>
-        <span class="username">Mariam</span>
-      </div>
+  <div class="profile-card" *ngFor="let user of users">
+    <div class="profile-header">
+      <img
+      *ngIf="user.photo_profile"
+      [src]="user.photo_profile"
+      alt="Photo de profil"
+      class="img-thumbnail"
+      style="width: 50px; height: 50px;"/>
+        <h2>{{ user.nom }} {{ user.prenom }}</h2>
     </div>
-
-<div class="detail">
-  <h2 class="text-center my-4">Liste des Beneficiaires</h2>
-  <table class="table table-hover table-striped product-table">
-    <thead class="table-dark">
-      <tr>
-        <th scope="col">Nom</th>
-        <th scope="col">Prénom</th>
-        <th scope="col">E-mail</th>
-        <th scope="col">Téléphone</th>
-        <th scope="col">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let beneficiaire of beneficiaires">
-
-        <td>{{ beneficiaire.nom }}</td>
-        <td>{{ beneficiaire.prenom }}</td>
-        <td>{{ beneficiaire.email }}</td>
-        <td>{{ beneficiaire.telephone }}</td>
-        <td>
-          <button class="btn btn-success btn-sm" >
-            <i class="fas fa-edit"></i>
-          </button>
-          <button class="btn btn-danger btn-sm" >
-            <i class="fas fa-trash-alt"></i>
-          </button>
-          <button [routerLink]="['/profilDetailBeneficiaire',beneficiaire.id]" class="btn btn-info btn-sm" title="Voir détails">
-            <i class="fas fa-eye"></i>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-
+    <div class="profile-info">
+      <p><strong>Adresse :</strong> {{ user.adresse }}</p>
+      <p><strong>Email :</strong> {{ user.email }}</p>
+      <p><strong>Téléphone :</strong> {{ user.telephone }}</p>
+      <button class="change-password">Changer le mot de passe</button>
+    </div>
   </div>
-
 </div>
 
 
+
+<!-- Floating Action Button -->
+<!-- <button class="fab btn btn-primary">
+  <i class="fas fa-plus"></i>
+</button> -->

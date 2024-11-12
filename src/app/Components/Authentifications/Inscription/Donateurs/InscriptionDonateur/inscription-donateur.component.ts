@@ -10,7 +10,19 @@ import { InscriptionDonateurStructureComponent } from "../DonateurStructure/insc
  @Component({
    selector: 'app-inscription',
    standalone: true,
-   imports: [ReactiveFormsModule, RouterLink, HttpClientModule, CommonModule, ConnexionComponent, InscriptionPersoComponent, InscriptionDonateurStructureComponent],
+  //  imports:[
+  //   ReactiveFormsModule,
+  //   CommonModule,
+  //   InscriptionPersoComponent,
+  //   InscriptionDonateurStructureComponent
+  //  ],
+   imports: [
+    ReactiveFormsModule,
+    RouterLink,
+    CommonModule,
+    ConnexionComponent,
+    InscriptionPersoComponent,
+    InscriptionDonateurStructureComponent],
    templateUrl: './inscription-donateur.component.html',
    styleUrls: ['./inscription-donateur.component.css']
  })

@@ -1,0 +1,135 @@
+<div class="header">
+  <div class="welcome-message">
+    <i class="fas fa-user-circle"></i>
+    <span class="username">Mariam</span>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="sidebar">
+    <div class="logo"></div>
+    <ul class="menu">
+      <li class="active">
+        <a href="#" [routerLink]="['/dashboard']" class="menu-item">
+          <i class="fas fa-tachometer-alt"></i>
+          <span class="menu-text">Dashboard</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="#" [routerLink]="['/dashboard/dons']" class="menu-item">
+          <i class="fas fa-gift"></i>
+          <span class="menu-text">Dons</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="#" [routerLink]="['/dashboard/donateurs']" class="menu-item">
+          <i class="fas fa-users"></i>
+          <span class="menu-text">Donateurs</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" [routerLink]="['/dashboard/organisation']" class="menu-item">
+          <i class="fas fa-building"></i>
+          <span class="menu-text">Organisations</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="#" [routerLink]="['/dashboard/Beneficiaire']" class="menu-item">
+          <i class="fas fa-hand-holding-heart"></i>
+          <span class="menu-text">Bénéficiaires</span>
+        </a>
+      </li>
+
+      <li class="logout">
+        <a href="#">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>Deconnexion</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div
+  class="container my-5 animate__animated animate__fadeIn animate__delay-1s"
+  *ngFor="let ProfilDonateur of ProfilDonateurs"
+>
+  <!-- Bouton Retour -->
+  <button [routerLink]="['/dashboard/donateurs']" class="btn-back animate__animated animate__fadeInLeft animate__delay-1s">
+    ← Retour
+  </button>
+
+  <!-- Profile Header -->
+  <div class="profile-header animate__animated animate__slideInLeft animate__delay-1s">
+    <img
+      *ngIf="ProfilDonateur.photo_profile"
+      [src]="ProfilDonateur.photo_profile"
+      alt="Photo de profil"
+      class="img-thumbnail animate__animated animate__zoomIn animate__delay-1s"
+    />
+    <div>
+      <h3>{{ ProfilDonateur.prenom }} {{ ProfilDonateur.nom }}</h3>
+    </div>
+  </div>
+
+  <!-- User Information Section -->
+  <div class="profile-section animate__animated animate__fadeInUp animate__delay-2s">
+    <h4>Information</h4>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Prénom</label>
+        <p>{{ ProfilDonateur.prenom }}</p>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Nom</label>
+        <p>{{ ProfilDonateur.nom }}</p>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Adresse email</label>
+        <p>{{ ProfilDonateur.email }}</p>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Téléphone</label>
+        <p>{{ ProfilDonateur.telephone }}</p>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Adresse</label>
+        <p>{{ ProfilDonateur.adresse }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Structure Information Section (displayed only if `donateur` has data) -->
+  <div
+    class="profile-section animate__animated animate__fadeInUp animate__delay-3s"
+    *ngIf="ProfilDonateur.nomstructure || ProfilDonateur.siege || ProfilDonateur.emailstructure || ProfilDonateur.date_creation || ProfilDonateur.description"
+  >
+    <h4>Information de la structure</h4>
+    <div class="row">
+      <div class="col-md-6 mb-3" *ngIf="ProfilDonateur.nomstructure">
+        <label class="form-label">Nom de la structure</label>
+        <p>{{ ProfilDonateur.nomstructure }}</p>
+      </div>
+      <div class="col-md-6 mb-3" *ngIf="ProfilDonateur.siege">
+        <label class="form-label">Siège</label>
+        <p>{{ ProfilDonateur.siege }}</p>
+      </div>
+      <div class="col-md-6 mb-3" *ngIf="ProfilDonateur.emailstructure">
+        <label class="form-label">Email de la structure</label>
+        <p>{{ ProfilDonateur.emailstructure }}</p>
+      </div>
+      <div class="col-md-6 mb-3" *ngIf="ProfilDonateur.date_creation">
+        <label class="form-label">Date de création</label>
+        <p>{{ ProfilDonateur.date_creation }}</p>
+      </div>
+      <div class="col-md-6 mb-3" *ngIf="ProfilDonateur.description">
+        <label class="form-label">Description</label>
+        <p>{{ ProfilDonateur.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>

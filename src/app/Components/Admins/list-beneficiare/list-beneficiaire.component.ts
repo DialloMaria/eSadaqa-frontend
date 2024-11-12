@@ -5,16 +5,17 @@ import { AdminService } from '../../../Services/admin.Service';
 import { OrganisationModel } from '../../../Models/Organiation.model';
 import { UserModel } from '../../../Models/User.model';
 import { AdminComponent } from '../admin/admin.component';
+import { BeneficiaireModel } from '../../../Models/Beneficiaire.model';
 
 @Component({
   selector: 'app-list-beneficiaire',
   standalone: true,
-  imports: [RouterLink,CommonModule,AdminComponent],
+  imports: [RouterLink,CommonModule],
   templateUrl: './list-beneficiaire.component.html',
   styleUrl: './list-beneficiaire.component.css'
 })
-export class ListBeneficiaireComponent  {
-  organisations: OrganisationModel[] = [];
+export class ListBeneficiaireComponent implements OnInit {
+  beneficiaires: any[] = [];
   users: UserModel[] = [];
   errorMessage: string = '';
 
@@ -25,25 +26,29 @@ export class ListBeneficiaireComponent  {
   ) {}
 
 
-
-  // Méthode pour récupérer les organisations
-  // fetchOrganisations() {
-  //   this.adminService.getOrganisations().subscribe(
-  //     (response) => {
-  //       if (response.success) {
-  //         this.organisations = response.donateurs_structures;
-  //         this.users = response.donateurs_structures.user;
-  //         console.log('rrr',  this.organisations );
-  //         console.log('ttt' , this.users );
+  ngOnInit(): void {
+    this.fetchAllBeneficiaires();
+  }
 
 
-  //       }
-  //     },
-  //     (error) => {
-  //       this.errorMessage = "Erreur lors du chargement des organisations";
-  //     }
-  //   );
-  // }
+  fetchAllBeneficiaires() {
+    this.adminService.getAllBeneficiaire().subscribe(
+      (response) => {
+        console.log('Réponse complète de l\'API:', response); // Affiche toute la réponse
+        if (response && response.data) {
+          console.log('Liste des bénéficiaires:', response.data);
+          this.beneficiaires = response.data;
+        } else {
+          console.warn('Données manquantes dans la réponse:', response); // Alerte si `data` est manquant
+        }
+      },
+      (error) => {
+        this.errorMessage = "Erreur lors du chargement des donateurs";
+        console.error('Erreur:', error); // Affiche les erreurs dans la console
+      }
+    );
+  }
+
 
 
 }

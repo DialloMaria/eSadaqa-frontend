@@ -1,0 +1,79 @@
+<div class="container my-5" *ngFor="let ProfilOrganisation of ProfilOrganisations">
+  <!-- Profile Header -->
+  <div class="profile-header d-flex align-items-center">
+      <img src="profile-photo-url.jpg" alt="Profile Picture">
+      <div>
+          <h3> {{ProfilOrganisation.user?.prenom}}  {{ProfilOrganisation.user?.nom}} </h3>
+          <button class="btn-modify-photo">Modifier la photo</button>
+      </div>
+  </div>
+
+  <!-- User Information Section -->
+  <div class="profile-section" *ngFor="let ProfilOrganisation of ProfilOrganisations" >
+      <h4>Information</h4>
+      <div class="row">
+          <div class="col-md-6 mb-3">
+              <label for="prenom" class="form-label">Prénom</label>
+              <input type="text" class="form-control" id="prenom"  [value]="ProfilOrganisation.user?.prenom">
+          </div>
+          <div class="col-md-6 mb-3">
+              <label for="nom" class="form-label">Nom</label>
+              <input type="text" class="form-control" id="nom" [value]="ProfilOrganisation.user?.nom">
+          </div>
+          <div class="col-md-6 mb-3">
+              <label for="email" class="form-label">Adresse email</label>
+              <input type="email" class="form-control" id="email" [value]="ProfilOrganisation.user?.email">
+          </div>
+          <div class="col-md-6 mb-3">
+              <label for="telephone" class="form-label">Téléphone</label>
+              <input type="text" class="form-control" id="telephone"  [value]="ProfilOrganisation.user?.telephone">
+          </div>
+          <div class="col-md-6 mb-3">
+              <label for="adresse" class="form-label">Adresse</label>
+              <input type="text" class="form-control" id="adresse" [value]="ProfilOrganisation.user?.adresse">
+          </div>
+          <div class="col-md-6 mb-3">
+              <label for="password" class="form-label">Mot de passe</label>
+              <input [type]="passwordFieldType" class="form-control" id="password" [value]="ProfilOrganisation.password">
+              <button type="button" (click)="togglePasswordVisibility()">Afficher/Masquer</button>
+          </div>
+      </div>
+  </div>
+
+  <!-- Structure Information Section -->
+  <div class="profile-section" *ngFor="let ProfilOrganisation of ProfilOrganisations" >
+      <h4>Information du structure</h4>
+      <div class="row">
+          <div class="col-md-6 mb-3">
+              <label for="nom-structure" class="form-label">Nom de la structure</label>
+              <input type="text" class="form-control" id="nom-structure"  [value]="ProfilOrganisation.nomstructure ">
+          </div>
+          <div class="col-md-6 mb-3">
+              <label for="siege" class="form-label">Siège</label>
+              <input type="text" class="form-control" id="siege" [value]="ProfilOrganisation.siege ">
+          </div>
+          <div class="col-md-6 mb-3">
+              <label for="email-structure" class="form-label">Email de la structure</label>
+              <input type="email" class="form-control" id="email-structure" [value]="ProfilOrganisation.emailstructure ">
+          </div>
+          <div class="col-md-6 mb-3">
+              <label for="fondateur" class="form-label">Fondateur</label>
+              <input type="text" class="form-control" id="fondateur" [value]="ProfilOrganisation.fondateur ">
+          </div>
+          <div class="col-md-6 mb-3">
+              <label for="date-creation" class="form-label">Date de création</label>
+              <input type="text" class="form-control" id="date-creation" [value]="ProfilOrganisation.date_creation ">
+          </div>
+          <div class="col-md-6 mb-3">
+              <label for="description" class="form-label">Description</label>
+              <input type="text" class="form-control" id="description" [value]="ProfilOrganisation.description ">
+          </div>
+      </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="text-center my-4">
+      <button class="btn-custom btn-save">Modifier</button>
+      <button class="btn-custom btn-cancel">Annuler</button>
+  </div>
+</div>

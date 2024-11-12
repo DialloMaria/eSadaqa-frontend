@@ -56,42 +56,49 @@
       </div>
     </div>
 
-<div class="detail">
-  <h2 class="text-center my-4">Liste des Beneficiaires</h2>
-  <table class="table table-hover table-striped product-table">
-    <thead class="table-dark">
-      <tr>
-        <th scope="col">Nom</th>
-        <th scope="col">Prénom</th>
-        <th scope="col">E-mail</th>
-        <th scope="col">Téléphone</th>
-        <th scope="col">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let beneficiaire of beneficiaires">
-
-        <td>{{ beneficiaire.nom }}</td>
-        <td>{{ beneficiaire.prenom }}</td>
-        <td>{{ beneficiaire.email }}</td>
-        <td>{{ beneficiaire.telephone }}</td>
-        <td>
-          <button class="btn btn-success btn-sm" >
-            <i class="fas fa-edit"></i>
-          </button>
-          <button class="btn btn-danger btn-sm" >
-            <i class="fas fa-trash-alt"></i>
-          </button>
-          <button [routerLink]="['/profilDetailBeneficiaire',beneficiaire.id]" class="btn btn-info btn-sm" title="Voir détails">
-            <i class="fas fa-eye"></i>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-
+    <div class="detail">
+      <h2 class="text-center my-4">Liste des Donateurs</h2>
+      <table class="table table-hover table-striped product-table">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Photo</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Téléphone</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let donateur of donateurs">
+            <td>
+              <img
+                *ngIf="donateur.photo_profile"
+                [src]="donateur.photo_profile"
+                alt="Photo de profil"
+                class="img-thumbnail"
+                style="width: 50px; height: 50px;"
+              />
+            </td>
+            <td>{{ donateur.nom }}</td>
+            <td>{{ donateur.prenom }}</td>
+            <td>{{ donateur.email }}</td>
+            <td>{{ donateur.telephone }}</td>
+            <td>
+              <button class="btn btn-success btn-sm" >
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="btn btn-danger btn-sm" >
+                <i class="fas fa-trash-alt"></i>
+              </button>
+              <button    [routerLink]="['/profilDetailDonateur', donateur.id]"  class="btn btn-info btn-sm" title="Voir détails">
+                <i class="fas fa-eye"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
 </div>

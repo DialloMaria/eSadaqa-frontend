@@ -14,6 +14,7 @@
       <span class="user-name">{{ prenom }}</span>
       <!-- <img [src]="photo_profile" alt="Profile" class="user-photo"> -->
     </button>
+    <button [routerLink]="['/profilOrganisation']"  >Profile</button>
     <ul class="dropdown-menu" aria-labelledby="userDropdown">
       <li>
         <button  type="button"[routerLink]="['/connexion']"  class="btn btn-add mb-3 animate__animated animate__bounce" routerLinkerActive="active">
@@ -22,7 +23,6 @@
       </li>
     </ul>
   </div>
-
 </div>
 
 <!-- Section de la bannière -->

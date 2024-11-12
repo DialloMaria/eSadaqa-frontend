@@ -20,13 +20,13 @@ import { Chart, LineController, LineElement, PointElement, LinearScale, Title, C
 import {  BarController, BarElement} from 'chart.js';
 import { ProduitService } from '../../../Services/produit.Service';
 import { ProduitModel } from '../../../Models/TypeProduit.model';
+import { ProfilAdminComponent } from "../profil-admin/profil-admin.component";
 
 
 @Component({
   selector: 'app-admin-dashbord-menu',
   standalone: true,
   imports: [
-    CommonModule,
     ReactiveFormsModule,
     CalendarModule,
     RouterLink,
@@ -39,6 +39,7 @@ import { ProduitModel } from '../../../Models/TypeProduit.model';
     MatDatepickerModule,
     MatNativeDateModule,
     BsDatepickerModule,
+    ProfilAdminComponent
 ],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css'
@@ -170,6 +171,7 @@ getEvolutionProduit(): void {
         const quantiteProduit = data.map(item => item.quantite);
 
         const filteredQuantiteProduit = quantiteProduit.filter((value): value is number => value !== undefined && value !== null);
+        this.nombreDonsUtilisateur = this.dons.length;
 
         if (nomProduit.length > 0 && filteredQuantiteProduit.length > 0) {
           this.createBarChart(nomProduit, filteredQuantiteProduit);
@@ -224,50 +226,20 @@ createBarChart(nomProduit: string[], filteredQuantiteProduit: number[]) {
 
 logout(): void {
   const token = localStorage.getItem('access_token');
-
   if (token) {
-    // Afficher une boîte de dialogue de confirmation
-    Swal.fire({
-      title: 'Tu pars déja',
-      text: 'Êtes-vous sûr de vouloir vous déconnecter ?',
-      icon: 'warning',
-      showCancelButton: true,
-      cancelButtonText: 'Non, c"est une erreur',
-      confirmButtonText: 'Oui, je me deconnecte',
-      customClass: {
-        confirmButton: 'btn-supprimer', // Classe CSS pour personnaliser le bouton de confirmation
-        cancelButton: 'btn-annuler'     // Classe CSS pour personnaliser le bouton d'annulation
-      }
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // L'utilisateur a confirmé la déconnexion
-        localStorage.removeItem('access_token');
-        localStorage.removeItem('user');
+    // Suppression des informations d'authentification
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('user');
 
-        // Afficher une alerte de déconnexion réussie
-        this.showAlert('Déconnexion réussie', 'Vous avez été déconnecté avec succès.', 'success');
-        this.router.navigateByUrl('/connexion'); // Redirige vers la page de connexion
-      }
-    });
+    // Redirection vers la page de connexion
+    this.router.navigateByUrl('/connexion');
   } else {
     console.error('Token non trouvé.');
-    this.showAlert('Erreur', 'Token non trouvé.', 'error');
   }
 }
 
-// Méthode pour afficher les alertes avec SweetAlert2
-showAlert(title: string, text: string, icon: 'success' | 'error' | 'warning' | 'info' | 'question'): void {
-  Swal.fire({
-    title: title,
-    text: text,
-    icon: icon,
-    confirmButtonText: 'OK',
-    customClass: {
-      confirmButton: 'btn-supprimer', // Classe CSS pour personnaliser le bouton de confirmation
-      cancelButton: 'btn-annuler'     // Classe CSS pour personnaliser le bouton d'annulation
-    }
-  });
-}
+
+// profilAdmin()
 
 }
 

@@ -190,47 +190,6 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
-/* Eléments graphiques pour la bannière */
-.design-elements {
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  z-index: 0; /* Position inférieure pour les éléments graphiques */
-}
-
-/* Lignes décoratives */
-.line {
-  width: 80px;
-  height: 3px;
-  background-color: #CFA100;
-  animation: growLine 2s infinite alternate;
-}
-
-.line1 {
-  animation-delay: 0.3s;
-}
-
-.line2 {
-  animation-delay: 0.6s;
-}
-
-.line3 {
-  animation-delay: 0.9s;
-}
-
-/* Cercle décoratif */
-.circle {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #ffffff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  animation: bounceCircle 1.5s infinite ease-in-out;
-}
 
 /* Animations */
 @keyframes growLine {
@@ -253,10 +212,6 @@
 
 /* Pour les écrans de 768px et moins (tablettes et petits ordinateurs) */
 @media (max-width: 768px) {
-  .banner {
-    text-align: center;
-    padding: 15px;
-  }
 
   .banner-title {
     font-size: 2rem;
@@ -275,7 +230,6 @@
 @media (max-width: 480px) {
   .banner {
     margin-top: 130px;
-    padding: 10px;
     height: auto; /* Adapte la hauteur à l'écran mobile */
   }
 
@@ -311,7 +265,6 @@
 }
 
 .about-content {
-
   display: flex;
   flex-direction: row; /* Alignement par défaut en ligne */
   justify-content: space-between;
@@ -323,7 +276,6 @@
 }
 
 .text-content {
-
   font-family: "Buenard-Bold", Helvetica;
   font-weight: 700;
   color: #000000;
@@ -332,7 +284,6 @@
   line-height: normal;
   flex: 1;
   display: flex;
-  font-weight: 700;
   font-size: 36px;
   letter-spacing: 0;
   line-height: normal;
@@ -340,9 +291,9 @@
   justify-content: space-between; /* Espacement vertical du texte */
   gap: 10px; /* Ajoute de l'espace entre les éléments de texte */
 }
+
 .text-content h4 {
   font-family: "Buenard-Bold", Helvetica;
-
   font-size: 1.5rem; /* Taille du titre h4 */
   color: #00715D; /* Couleur du titre */
   margin-bottom: 20px; /* Marge sous le titre */
@@ -350,7 +301,6 @@
 
 .text-content h2 {
   font-family: "Buenard-Bold", Helvetica;
-
   font-size: 2.5rem;
   color: #00715D; /* Green title */
   margin-bottom: 20px;
@@ -379,7 +329,6 @@
   justify-content: center;
   align-items: center;
   z-index: 100;
-
 }
 
 
@@ -581,9 +530,6 @@
   line-height: normal;
 }
 
-
-
-
 .aide {
   background-image: url('../../../assets/images/patern1.png');
   background-repeat: no-repeat;
@@ -660,7 +606,6 @@
   margin-right: 150px;
 }
 
-
 .image-container {
   max-width: 45%;
 }
@@ -671,10 +616,8 @@
 }
 
 
-
 .don-section {
   font-family: "Buenard-Bold", Helvetica;
-
   box-sizing: border-box;
   display: flex;
   gap: 50px;
@@ -816,12 +759,11 @@ small {
   }
 }
 
-
 * {
   box-sizing: border-box;
 }
 
-
+/****************************** SECTION FOOTER  ******************************/
 
 .footer {
   margin-top: 500px;
@@ -881,7 +823,6 @@ small {
   text-align: center;
   color: white;
 }
-
 
 /* Button Styles */
 .btn-add {

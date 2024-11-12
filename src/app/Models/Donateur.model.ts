@@ -14,7 +14,8 @@ export interface DonateurModel {
   date_creation?: Date;
   recepisse?: string;
   user_Id?: number | null; // nullable, foreign key to User
-
+  user: any;
+  photo_profile?: string;
 }
 
 

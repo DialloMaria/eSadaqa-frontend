@@ -161,6 +161,8 @@ li {
   transition: background-color 0.3s ease;
 }
 
+
+
 .fab i {
   pointer-events: none;
 }
@@ -184,8 +186,8 @@ button.h3{
 
 /* Adjusting the table size and position */
 .table {
-  width: 90%; 
-  margin-top: 50px;
+  width: 90%; /* Decrease the width of the table */
+  margin-top: 50px; /* Move the table up */
   margin-left: auto;
   margin-right: auto;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for effect */
@@ -207,6 +209,9 @@ button.h3{
   display: flex;
 }
 
+
+
+
 .ajout-ORG {
   position: fixed;
   bottom: 30px;
@@ -217,14 +222,101 @@ button.h3{
   justify-content: center;
   align-items: center;
   font-size: 24px;
-  /* background-color: #007461; */
-  /* color: white; */
+  background-color: #007461;
+  color: white;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease;
   display: flex;
   overflow: hidden;
 }
-/* .ajout-ORG:hover {
+.ajout-ORG:hover {
   background-color: #007461;
   width: 200px;
-} */
+}
+/* Sidebar mobile */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    width: 100%;
+    height: 12vh;
+    margin: 0px;
+    padding: 0px;
+    /*height: auto;
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1); */
+  }
+
+  li{
+    height: 12vh;
+    margin: 0;
+    padding: 0;
+  }
+  .menu li {
+    margin: 0;
+    padding: 0px;
+  }
+  .logo {
+    display: none;
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 0;
+    list-style: none;
+  }
+
+  .menu li {
+    flex: 1;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.8rem;
+  }
+
+  .menu a {
+    color: #8A92A6;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu .active,
+  .menu li.active a {
+    color: #007461;
+    font-weight: bold;
+  }
+
+  .menu a .menu-text {
+    display: block;
+    font-size: 0.75rem;
+  }
+
+  /* Enlever les animations de largeur */
+  .sidebar:hover {
+    width: 100%;
+  }
+  .logout{
+    display: none;
+  }
+  /* .detail{
+    margin-bottom: 500px;
+  } */  
+  .product-table th:nth-child(3),
+  .product-table th:nth-child(4),
+  .product-table td:nth-child(3),
+  .product-table td:nth-child(4) {
+    display: none; /* Masque les colonnes Prénom et E-mail */
+  }
+
+  .product-table th,
+  .product-table td {
+    font-size: 0.9rem; /* Réduit la taille de la police */
+  }
+}
+

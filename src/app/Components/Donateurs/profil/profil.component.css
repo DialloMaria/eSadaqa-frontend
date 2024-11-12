@@ -1,0 +1,52 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+.profile-header {
+  background-color: #046a54;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.profile-header img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+.btn-modify-photo {
+  margin-top: 10px;
+  color: white;
+  background-color: #046a54;
+  border: none;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+.profile-section {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.btn-custom {
+  margin: 10px;
+  padding: 8px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+.btn-save {
+  background-color: #046a54;
+  color: white;
+  border: none;
+}
+.btn-cancel {
+  background-color: white;
+  color: #ff3b3b;
+  border: 1px solid #ff3b3b;
+}

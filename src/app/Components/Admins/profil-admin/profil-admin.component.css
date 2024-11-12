@@ -1,27 +1,15 @@
-.main{
-  display: flex;
-  position: relative;
-}
-.contenu
-{
-  position: relative;
-  width: 100%;
-
-}
-
-
+/* Header styles */
 .header {
-  position: sticky;
   padding-top: 100px;
+  margin-left: 100px;
   display: flex;
-  width: 100%;
   justify-content: flex-end;
   align-items: center;
   padding: 2rem;
   background-color: #007461; /* Couleur de fond de l'en-tête */
   color: #fff;
   height: 100px;
-  z-index: 0;
+  z-index: 1;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -44,6 +32,7 @@
 
 .sidebar {
   position: sticky;
+  top: -50px;
   left: 0;
   bottom: 0;
   width: 110px;
@@ -54,7 +43,7 @@
   transition: all 0.5s linear;
   background: #fff;
   box-shadow: 0px 10px 25px #297fb918;
-  z-index: 1;
+  z-index: 5;
 }
 
 .sidebar:hover {
@@ -161,45 +150,12 @@ li {
   transition: background-color 0.3s ease;
 }
 
+.fab:hover {
+  background-color: #005f4a;
+}
+
 .fab i {
   pointer-events: none;
-}
-button.h3{
-  color: #0000;
-  font-size: 1.5rem;
-}
-
-
-
-/* Adjusting the table container */
-.detail {
-  width: 100%; /* Decrease the width of the table */
-  transition: margin-left 0.5s ease-in-out;
-}
-
-.sidebar:hover .detail {
-  margin-left: 260px; /* Move the table further left when sidebar expands */
-  transition: 0.5s;
-}
-
-/* Adjusting the table size and position */
-.table {
-  width: 90%; 
-  margin-top: 50px;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for effect */
-}
-
-/* Table header styling */
-.table-dark {
-  background-color: #007461; /* Keep header aligned with theme */
-  color: white;
-}
-
-.product-table th, .product-table td {
-  text-align: center;
-  vertical-align: middle;
 }
 
 .main
@@ -207,24 +163,54 @@ button.h3{
   display: flex;
 }
 
-.ajout-ORG {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  /* background-color: #007461; */
-  /* color: white; */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease;
-  display: flex;
+.profile-card {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  color: #333;
+  transition: transform 0.3s;
 }
-/* .ajout-ORG:hover {
+
+.profile-card:hover {
+  transform: scale(1.05);
+}
+
+.profile-header {
   background-color: #007461;
-  width: 200px;
-} */
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+}
+
+.profile-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.profile-info {
+  padding: 20px;
+}
+
+.profile-info p {
+  font-size: 16px;
+  margin: 8px 0;
+}
+
+.change-password {
+  background-color: #007461;
+  color: #ffffff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.change-password:hover {
+  background-color: #005945;
+}

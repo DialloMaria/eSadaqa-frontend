@@ -9,7 +9,12 @@ import { AdminComponent } from '../admin/admin.component';
 @Component({
   selector: 'app-list-organisation',
   standalone: true,
-  imports: [RouterLink,CommonModule,AdminComponent],
+  imports: [
+    RouterLink,
+    CommonModule,
+  ],
+  // imports: [RouterLink,CommonModule,AdminComponent],
+
   templateUrl: './list-organisation.component.html',
   styleUrl: './list-organisation.component.css'
 })
@@ -36,6 +41,9 @@ export class ListeOrganisationComponent  {
       (response) => {
         if (response.success) {
           this.organisations = response.donateurs_structures;
+          this.organisations.forEach((organisation: OrganisationModel) => {
+            organisation.photo_profile = organisation.user?.photo_profile? `http://127.0.0.1:8000/storage/${organisation.photo_profile}`: 'https://img.freepik.com/photos-gratuite/pot-miel-cote-pot-miel_1340-23142.jpg?ga=GA1.1.242611404.1703246724&semt=ais_hybrid';
+          });
           console.log('Organisations: ', this.organisations);
         }
       },
