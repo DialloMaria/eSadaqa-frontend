@@ -1,19 +1,21 @@
+import { AuthService } from '../../../../../Services/auth.Service';
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { AuthService } from '../../../../Services/auth.Service';
-import { OrganisationModel } from '../../../../Models/Organiation.model';
+import { UserModel } from '../../../../../Models/User.model';
+import { DonateurModel } from '../../../../../Models/Donateur.model';
+import { OrganisationModel } from '../../../../../Models/Organiation.model';
 
 @Component({
-  selector: 'app-add-organisation',
+  selector: 'app-produit-form',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './OrganisationRegister.component.html',
   styleUrl: './OrganisationRegister.component.css'
 })
-export class RegisterAddOrganisationComponent {
+export class RegisterOrganisationComponent {
   OrganisationRegister: FormGroup;
   isEditMode = false;
   currentStep: number = 1;
@@ -204,7 +206,7 @@ export class RegisterAddOrganisationComponent {
         const user: OrganisationModel = this.OrganisationRegister.value;
 
 
-        this.authService.registerAddOrganisation(user).subscribe({
+        this.authService.registerOrganisation(user).subscribe({
           next: () => {
             console.log('inscription reussie avec succès');
             this.router.navigate(['/connexion']);

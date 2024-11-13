@@ -125,11 +125,20 @@ export class AuthService{
     return this.http.post(`${apiUrl}/register/donateur`, identifiant)
   }
 
-  registerOrganisation(identifiant: any) {
-    return this.http.post(`${apiUrl}/register/organisation`, identifiant)
+  registerOrganisation(data: FormData) {
+    return this.http.post(`${apiUrl}/register/organisation`, data)
   }
+
+  // registerOrganisation(data: FormData) {
+  //   return this.http.post('http://127.0.0.1:8000/api/register/organisation', data);
+  // }
+
   registerBeneficiaire(identifiant: any) {
     return this.http.post(`${apiUrl}/register/beneficiaire`, identifiant)
+  }
+
+  registerAddOrganisation(identifiant: any) {
+    return this.http.post(`${apiUrl}/register/addOrganisation`, identifiant)
   }
 
 

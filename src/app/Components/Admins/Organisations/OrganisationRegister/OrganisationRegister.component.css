@@ -95,7 +95,7 @@
   .back {
     height: 100vh;
     /* background: linear-gradient(to bottom right , rgba(42, 44, 44, 0.7), rgba(62, 151, 135, 0.7)), url('../../../../../../assets/images/nexion.png') no-repeat center center/cover; */
-    background-image: linear-gradient(rgba(41, 108, 91, 0.418),rgba(41, 108, 91, 0.418)), url('../../../../../assets/images/nexion.png');
+    background-image: linear-gradient(rgba(41, 108, 91, 0.418),rgba(41, 108, 91, 0.418)), url('../../../../../../assets/images/nexion.png');
 
     display: flex;
     background-size: cover;

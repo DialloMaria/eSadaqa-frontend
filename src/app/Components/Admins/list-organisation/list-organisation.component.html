@@ -46,6 +46,13 @@
           <span>Deconnexion</span>
         </a>
       </li>
+<!--
+      <li>
+        <a href="#" [routerLink]="['ajout']" class="menu-item">
+          <i class="fas fa-user-cog"></i>
+          <span class="menu-text">Add Organisation</span>
+        </a>
+      </li> -->
     </ul>
   </div>
 
@@ -60,6 +67,8 @@
 
 
 <div class="detail">
+  <!-- <a [routerLink]="['ajout/organisation']">Ajout une Organisation</a> -->
+  <a [routerLink]="['/ajout/organisation']">Ajout une Organisation</a>
   <h2 class="text-center my-4">Liste des Organisations</h2>
   <table class="table table-hover table-striped product-table">
     <thead class="table-dark">
@@ -113,7 +122,5 @@
   <button class="fab btn btn-primary">
     <i class="fas fa-plus"></i>
   </button>
-
 </div>
-
 
