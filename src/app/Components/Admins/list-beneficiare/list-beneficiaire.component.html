@@ -1,99 +1,57 @@
 
 <div class="main">
 
-  <div class="sidebar">
-    <div class="logo"></div>
-    <ul class="menu">
-      <li class="active">
-        <a href="#" [routerLink]="['/dashboard']" class="menu-item">
-          <i class="fas fa-tachometer-alt"></i>
-          <span class="menu-text">Dashboard</span>
-        </a>
-      </li>
-
-      <li>
-        <a href="#" [routerLink]="['/dashboard/dons']" class="menu-item">
-          <i class="fas fa-gift"></i>
-          <span class="menu-text">Dons</span>
-        </a>
-      </li>
-
-      <li>
-        <a href="#" [routerLink]="['/dashboard/donateurs']" class="menu-item">
-          <i class="fas fa-users"></i>
-          <span class="menu-text">Donateurs</span>
-        </a>
-      </li>
-      <li>
-        <a href="#" [routerLink]="['/dashboard/organisation']" class="menu-item">
-          <i class="fas fa-building"></i>
-          <span class="menu-text">Organisations</span>
-        </a>
-      </li>
-
-      <li>
-        <a href="#" [routerLink]="['/dashboard/Beneficiaire']" class="menu-item">
-          <i class="fas fa-hand-holding-heart"></i>
-          <span class="menu-text">Bénéficiaires</span>
-        </a>
-      </li>
-
-      <li class="logout">
-        <a href="#">
-          <i class="fas fa-sign-out-alt"></i>
-          <span>Deconnexion</span>
-        </a>
-      </li>
-    </ul>
-  </div>
+  <app-sidebar></app-sidebar>
 
   <div class="contenu">
+   <app-headers></app-headers>
 
-    <div class="header">
-      <div class="welcome-message">
-        <i class="fas fa-user-circle"></i>
-        <span class="username">Mariam</span>
-      </div>
-    </div>
+  <div class="detail">
 
-<div class="detail">
-  <h2 class="text-center my-4">Liste des Beneficiaires</h2>
-  <table class="table table-hover table-striped product-table">
-    <thead class="table-dark">
-      <tr>
-        <th scope="col">Nom</th>
-        <th scope="col">Prénom</th>
-        <th scope="col">E-mail</th>
-        <th scope="col">Téléphone</th>
-        <th scope="col">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let beneficiaire of beneficiaires">
+    <h2 class="text-center my-4">Liste des Beneficiaires</h2>
+    <table class="table table-hover table-striped product-table">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Nom</th>
+          <th scope="col">Prénom</th>
+          <th scope="col">E-mail</th>
+          <th scope="col">Téléphone</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let beneficiaire of beneficiaires">
 
-        <td>{{ beneficiaire.nom }}</td>
-        <td>{{ beneficiaire.prenom }}</td>
-        <td>{{ beneficiaire.email }}</td>
-        <td>{{ beneficiaire.telephone }}</td>
-        <td>
-          <button class="btn btn-success btn-sm" >
-            <i class="fas fa-edit"></i>
-          </button>
-          <button class="btn btn-danger btn-sm" >
-            <i class="fas fa-trash-alt"></i>
-          </button>
-          <button [routerLink]="['/profilDetailBeneficiaire',beneficiaire.id]" class="btn btn-info btn-sm" title="Voir détails">
-            <i class="fas fa-eye"></i>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+          <td>{{ beneficiaire.nom }}</td>
+          <td>{{ beneficiaire.prenom }}</td>
+          <td>{{ beneficiaire.email }}</td>
+          <td>{{ beneficiaire.telephone }}</td>
+          <td>
+            <button class="btn btn-success btn-sm" >
+              <i class="fas fa-edit"></i>
+            </button>
+            <button class="btn btn-danger btn-sm" >
+              <i class="fas fa-trash-alt"></i>
+            </button>
+            <button [routerLink]="['/profilDetailBeneficiaire',beneficiaire.id]" class="btn btn-info btn-sm" title="Voir détails">
+              <i class="fas fa-eye"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
 
   </div>
 
+</div>
+
+<div class="ajout-ORG">
+  <span></span>
+  <button [routerLink]="['/ajout/beneficiaire']" class="fab btn btn-primary">
+    <i class="fas fa-plus"></i>
+  </button>
 </div>
 
 

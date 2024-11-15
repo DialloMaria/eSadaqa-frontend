@@ -18,6 +18,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { ProduitModel } from '../../../Models/TypeProduit.model';
 import { Chart } from 'chart.js';
 import { ProduitService } from '../../../Services/produit.Service';
+import { HeadersComponent } from '../headers/header.component';
+import { SiderbarComponent } from '../sidebar/sidebar.component';
 
 
 @Component({
@@ -34,6 +36,8 @@ import { ProduitService } from '../../../Services/produit.Service';
     MatDatepickerModule,
     MatNativeDateModule,
     BsDatepickerModule,
+    HeadersComponent,
+    SiderbarComponent
   ],
   templateUrl: './list-don.component.html',
   styleUrl: './list-don.component.css'

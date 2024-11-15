@@ -34,6 +34,7 @@ import { ProfilDetailOrganisationComponent } from './Components/Admins/list-orga
 import { ProfilDetailDonateurComponent } from './Components/Admins/list-donateurs/detail-profil/profil.component';
 import { ProfilDetailBeneficiaireComponent } from './Components/Admins/list-beneficiare/detail-profil/profil.component';
 import { RegisterAddOrganisationComponent } from './Components/Admins/ajout-Organisation/OrganisationRegister/OrganisationRegister.component';
+import { AddBeneficiaireComponent } from './Components/Admins/ajout-beneficiaire/register.component';
 
 export const routes: Routes = [
 // Routes portails et par defaut
@@ -58,6 +59,8 @@ export const routes: Routes = [
   {path: 'inscription/organisation', component:RegisterOrganisationComponent},
 
   {path: 'ajout/organisation', component:RegisterAddOrganisationComponent},
+
+  {path: 'ajout/beneficiaire', component:AddBeneficiaireComponent},
 
   {path: 'inscription/beneficiaire', component:InscriptionBenefiaireComponent},
 

@@ -21,6 +21,13 @@
 }
 
 
+.contenu
+{
+  position: relative;
+  width: 100%;
+
+}
+
 
 
 .welcome-message {

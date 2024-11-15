@@ -6,11 +6,13 @@ import { OrganisationModel } from '../../../Models/Organiation.model';
 import { UserModel } from '../../../Models/User.model';
 import { AdminComponent } from '../admin/admin.component';
 import { BeneficiaireModel } from '../../../Models/Beneficiaire.model';
+import { HeadersComponent } from '../headers/header.component';
+import { SiderbarComponent } from '../sidebar/sidebar.component';
 
 @Component({
   selector: 'app-profil-admin',
   standalone: true,
-  imports: [RouterLink, CommonModule, AdminComponent],
+  imports: [RouterLink, CommonModule, AdminComponent,HeadersComponent,SiderbarComponent],
   templateUrl: './profil-admin.component.html',
   styleUrl: './profil-admin.component.css'
 })

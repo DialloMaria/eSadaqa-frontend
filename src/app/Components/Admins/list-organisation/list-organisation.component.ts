@@ -5,6 +5,8 @@ import { AdminService } from '../../../Services/admin.Service';
 import { OrganisationModel } from '../../../Models/Organiation.model';
 import { UserModel } from '../../../Models/User.model';
 import { AdminComponent } from '../admin/admin.component';
+import { HeadersComponent } from '../headers/header.component';
+import { SiderbarComponent } from '../sidebar/sidebar.component';
 
 @Component({
   selector: 'app-list-organisation',
@@ -12,6 +14,8 @@ import { AdminComponent } from '../admin/admin.component';
   imports: [
     RouterLink,
     CommonModule,
+    HeadersComponent,
+    SiderbarComponent
   ],
   // imports: [RouterLink,CommonModule,AdminComponent],
 

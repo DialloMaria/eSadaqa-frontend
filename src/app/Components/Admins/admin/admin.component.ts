@@ -21,6 +21,8 @@ import {  BarController, BarElement} from 'chart.js';
 import { ProduitService } from '../../../Services/produit.Service';
 import { ProduitModel } from '../../../Models/TypeProduit.model';
 import { ProfilAdminComponent } from "../profil-admin/profil-admin.component";
+import { SiderbarComponent } from "../sidebar/sidebar.component";
+import { HeadersComponent } from "../headers/header.component";
 
 
 @Component({
@@ -39,7 +41,9 @@ import { ProfilAdminComponent } from "../profil-admin/profil-admin.component";
     MatDatepickerModule,
     MatNativeDateModule,
     BsDatepickerModule,
-    ProfilAdminComponent
+    ProfilAdminComponent,
+    SiderbarComponent,
+    HeadersComponent
 ],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css'

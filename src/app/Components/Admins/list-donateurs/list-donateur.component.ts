@@ -6,11 +6,13 @@ import { OrganisationModel } from '../../../Models/Organiation.model';
 import { UserModel } from '../../../Models/User.model';
 import { AdminComponent } from '../admin/admin.component';
 import { DonateurModel } from '../../../Models/Donateur.model';
+import { SiderbarComponent } from '../sidebar/sidebar.component';
+import { HeadersComponent } from '../headers/header.component';
 
 @Component({
   selector: 'app-list-donateurs',
   standalone: true,
-  imports: [RouterLink,CommonModule],
+  imports: [RouterLink,CommonModule, SiderbarComponent, HeadersComponent],
   templateUrl: './list-donateur.component.html',
   styleUrl: './list-donateur.component.css'
 })

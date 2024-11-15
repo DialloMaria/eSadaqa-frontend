@@ -137,9 +137,21 @@ export class AuthService{
     return this.http.post(`${apiUrl}/register/beneficiaire`, identifiant)
   }
 
-  registerAddOrganisation(identifiant: any) {
-    return this.http.post(`${apiUrl}/register/addOrganisation`, identifiant)
+
+  registerAddOrganisation(data: FormData) {
+    return this.http.post(`${apiUrl}/register/addOrganisation`, data)
   }
+
+
+
+  // registerAddBeneficiaire(data: FormData) {
+  //   return this.http.post(`${apiUrl}/register/addBeneficiare`, data)
+  // }
+
+  registerAddBeneficiaire(identifiant: any) {
+    return this.http.post(`${apiUrl}/register/addBeneficiare`, identifiant)
+  }
+
 
 
 

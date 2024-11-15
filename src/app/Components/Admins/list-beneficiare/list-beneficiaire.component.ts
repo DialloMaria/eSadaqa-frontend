@@ -6,11 +6,14 @@ import { OrganisationModel } from '../../../Models/Organiation.model';
 import { UserModel } from '../../../Models/User.model';
 import { AdminComponent } from '../admin/admin.component';
 import { BeneficiaireModel } from '../../../Models/Beneficiaire.model';
+import { SiderbarComponent } from '../sidebar/sidebar.component';
+import { HeadersComponent } from '../headers/header.component';
 
 @Component({
   selector: 'app-list-beneficiaire',
   standalone: true,
-  imports: [RouterLink,CommonModule],
+  imports: [RouterLink,CommonModule,HeadersComponent,
+    SiderbarComponent],
   templateUrl: './list-beneficiaire.component.html',
   styleUrl: './list-beneficiaire.component.css'
 })

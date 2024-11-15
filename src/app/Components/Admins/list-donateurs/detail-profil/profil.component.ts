@@ -8,11 +8,13 @@ import { OrganisationModel } from '../../../../Models/Organiation.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserModel } from '../../../../Models/User.model';
 import { DonateurModel } from '../../../../Models/Donateur.model';
+import { SiderbarComponent } from '../../sidebar/sidebar.component';
+import { HeadersComponent } from '../../headers/header.component';
 
 @Component({
   selector: 'app-profilDetailDonateur',
   standalone: true,
-  imports: [CommonModule,RouterLink],
+  imports: [CommonModule,RouterLink,SiderbarComponent,HeadersComponent],
   templateUrl: './profil.component.html',
   styleUrl: './profil.component.css'
 })
@@ -45,9 +47,7 @@ export class ProfilDetailDonateurComponent implements OnInit {
         if (response && response.donateur) {
           // Flatten the structure so it can be easily displayed in the template
           const donateur = response.donateur;
-          const userWithStructure = {
-            ...donateur,
-            ...donateur.donateur, // merge nested donateur structure details into the main object
+          const userWithStructure = {...donateur,...donateur.donateur, // merge nested donateur structure details into the main object
             photo_profile: donateur.photo_profile
               ? `http://127.0.0.1:8000/storage/${donateur.photo_profile}`
               : 'https://img.freepik.com/photos-gratuite/pot-miel-cote-pot-miel_1340-23142.jpg?ga=GA1.1.242611404.1703246724&semt=ais_hybrid'

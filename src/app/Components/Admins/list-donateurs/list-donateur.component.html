@@ -1,60 +1,11 @@
 
 <div class="main">
 
-  <div class="sidebar">
-    <div class="logo"></div>
-    <ul class="menu">
-      <li class="active">
-        <a href="#" [routerLink]="['/dashboard']" class="menu-item">
-          <i class="fas fa-tachometer-alt"></i>
-          <span class="menu-text">Dashboard</span>
-        </a>
-      </li>
-
-      <li>
-        <a href="#" [routerLink]="['/dashboard/dons']" class="menu-item">
-          <i class="fas fa-gift"></i>
-          <span class="menu-text">Dons</span>
-        </a>
-      </li>
-
-      <li>
-        <a href="#" [routerLink]="['/dashboard/donateurs']" class="menu-item">
-          <i class="fas fa-users"></i>
-          <span class="menu-text">Donateurs</span>
-        </a>
-      </li>
-      <li>
-        <a href="#" [routerLink]="['/dashboard/organisation']" class="menu-item">
-          <i class="fas fa-building"></i>
-          <span class="menu-text">Organisations</span>
-        </a>
-      </li>
-
-      <li>
-        <a href="#" [routerLink]="['/dashboard/Beneficiaire']" class="menu-item">
-          <i class="fas fa-hand-holding-heart"></i>
-          <span class="menu-text">Bénéficiaires</span>
-        </a>
-      </li>
-
-      <li class="logout">
-        <a href="#">
-          <i class="fas fa-sign-out-alt"></i>
-          <span>Deconnexion</span>
-        </a>
-      </li>
-    </ul>
-  </div>
+  <app-sidebar></app-sidebar>
 
   <div class="contenu">
+    <app-headers></app-headers>
 
-    <div class="header">
-      <div class="welcome-message">
-        <i class="fas fa-user-circle"></i>
-        <span class="username">Mariam</span>
-      </div>
-    </div>
 
     <div class="detail">
       <h2 class="text-center my-4">Liste des Donateurs</h2>

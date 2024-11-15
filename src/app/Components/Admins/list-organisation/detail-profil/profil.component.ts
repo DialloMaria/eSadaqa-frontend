@@ -7,11 +7,13 @@ import { AdminComponent } from '../../admin/admin.component';
 import { OrganisationModel } from '../../../../Models/Organiation.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserModel } from '../../../../Models/User.model';
+import { HeadersComponent } from '../../headers/header.component';
+import { SiderbarComponent } from '../../sidebar/sidebar.component';
 
 @Component({
   selector: 'app-profilDetailOrganisation',
   standalone: true,
-  imports: [CommonModule,RouterLink],
+  imports: [CommonModule,RouterLink,HeadersComponent,SiderbarComponent],
   templateUrl: './profil.component.html',
   styleUrl: './profil.component.css'
 })
@@ -42,9 +44,7 @@ export class ProfilDetailOrganisationComponent implements OnInit {
     this.adminService.getProfilOrganisation(id).subscribe(
       (response) => {
         console.log(response);
-        this.ProfilDetailOrganisations = Array.isArray(response.organisation)
-          ? response.organisation
-          : [response.organisation];
+        this.ProfilDetailOrganisations = Array.isArray(response.organisation)? response.organisation: [response.organisation];
         this.ProfilDetailOrganisations.forEach((ProfilDetailOrganisation: OrganisationModel) => {
           ProfilDetailOrganisation.photo_profile = ProfilDetailOrganisation.photo_profile
             ? `http://127.0.0.1:8000/storage/${ProfilDetailOrganisation.photo_profile}`

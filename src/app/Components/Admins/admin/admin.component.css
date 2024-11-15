@@ -1,187 +1,13 @@
 
 
-/* Header styles */
-.header {
+.main{
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 2rem;
-  background-color: #007461; /* Couleur de fond de l'en-tête */
-  color: #fff;
-  width: auto;
-  height: 100px;
-  box-shadow: 0px 4px 6px rgba(150, 146, 146, 0.555);
 }
-
-.welcome-message {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.welcome-message i {
-  font-size: 1.5rem;
-}
-
-.welcome-message .username {
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-.sidebar {
-
-  position: sticky;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 110px;
-  height: 100vh;
-  padding: 0 1.7rem;
-  color: #fff;
-  overflow: hidden;
-  transition: all 0.5s linear;
-  background: #fff;
-  box-shadow: 0px 10px 25px #297fb918;
-  z-index: 5;
-}
-
-.sidebar:hover {
-  width: 260px;
-  transition: 0.5s;
-}
-
-.logo {
-  color: #2980B9;
-  height: 80px;
-  padding: 16px;
-}
-
-.menu {
-  height: 88%;
+.contenu
+{
   position: relative;
-  list-style: none;
-  padding: 0;
-}
-
-.menu li {
-  color: #8A92A6;
-  padding: 1rem;
-  margin: 8px 0;
-  border-radius: 8px;
-  transition: all 0.5 ease-in-out;
-}
-
-.menu li:hover,.menu a:hover,
-.active {
-  color: #fff;
-  background: #007461;
-}
-
-.menu a.active {
-  color: white;
-}
-
-.menu a {
-  color: inherit;
-  font-size: 16px;
-  font-weight: bold;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-
-.menu a span {
-  overflow: hidden;
-}
-
-.menu a i {
-  font-size: 1.2rem;
-}
-
-.logout {
-  position: absolute;
-  bottom: 0;
-  left: 0;
   width: 100%;
-}
 
-
-.datepicker-custom {
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-  background-color: #f9f9f9;
-  max-width: 400px;
-}
-
-.datepicker-custom .bs-datepicker-head {
-  background-color: #007bff;
-  color: white;
-  padding: 10px;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-}
-
-.datepicker-custom .bs-datepicker-body {
-  padding: 10px;
-}
-
-.datepicker-custom td {
-  padding: 10px;
-  border-radius: 4px;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.datepicker-custom td:hover {
-  background-color: #007bff;
-  color: white;
-  cursor: pointer;
-}
-
-.datepicker-custom td.selected,
-.datepicker-custom td.active {
-  background-color: #28a745;
-  color: white;
-}
-
-.datepicker-custom .bs-datepicker-nav button {
-  background-color: transparent;
-  border: none;
-  color: white;
-}
-
-.datepicker-custom .bs-datepicker-nav button:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.datepicker-custom th {
-  padding: 10px;
-  background-color: #e9ecef;
-}
-
-.datepicker-custom .bs-datepicker {
-  border: none;
-  box-shadow: none;
-}
-
-.diagram{
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-justify-content: center;
-}
-canvas {
-  max-width: 50%;
-  max-height: 500px; /* Limiter la hauteur */
-}
-
-
-.diagramBar {
-  width: 50%; /* Ajuste la largeur du graphique */
-  margin: 0 auto; /* Centre le graphique */
 }
 
 /* Styles pour les cartes */
@@ -227,21 +53,67 @@ canvas {
   margin: 0;
 }
 
-
-
-.main{
+.diagram{
   display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+justify-content: center;
 }
-.contenu
-{
-  position: relative;
-  width: 100%;
-
+canvas {
+  max-width: 50%;
+  max-height: 500px; /* Limiter la hauteur */
 }
 
 
+.diagramBar {
+  width: 50%; /* Ajuste la largeur du graphique */
+  margin: 0 auto; /* Centre le graphique */
+}
 
 
+.donnes {
+  display: flex;
+    margin: 0 100px;
+    padding: 20px;
+    gap: 50px;
+
+  }
+
+  .diagram {
+    background-color: #f8f9fa; /* Couleur de fond douce */
+    border: 1px solid #ced4da; /* Bordure pour délimiter la section */
+    border-radius: 10px; /* Coins arrondis */
+    text-align: center;
+    width: 100%; /* Assurez-vous que le conteneur a la largeur souhaitée */
+    margin-bottom: 30px; /* Espace entre le diagramme et le reste */
+  }
+  .diagramBar {
+    background-color: #f8f9fa; /* Couleur de fond douce */
+    border: 1px solid #ced4da; /* Bordure pour délimiter la section */
+    border-radius: 10px; /* Coins arrondis */
+    text-align: center;
+    width: 100%; /* Assurez-vous que le conteneur a la largeur souhaitée */
+    height: auto; /* Hauteur du conteneur */
+  }
+
+  #productChart {
+    max-width: 100%; /* S'assurer que le diagramme ne dépasse pas la largeur de son conteneur */
+    height: 200px; /* Hauteur automatique pour un bon rapport d'aspect */
+  }
+
+  #donChart {
+    max-width: 100%; /* S'assurer que le diagramme ne dépasse pas la largeur de son conteneur */
+    height: 200px; /* Hauteur automatique pour un bon rapport d'aspect */
+  }
+
+
+
+
+  canvas {
+    max-width: 100%; /* Pour s'assurer que le canvas s'adapte au conteneur */
+    height: auto; /* Pour garder le rapport d'aspect */
+  }
 
 
 
@@ -254,48 +126,56 @@ canvas {
     justify-content: center;
     gap: 10px;
   }
+  @media (max-width: 1024px) {
+    .card {
+      width: 45%; /* Deux cartes par ligne pour tablettes */
+    }
+  }
 
+@media (max-width: 768px) {
 
-.donnes {
-display: flex;
-  margin: 0 100px;
-  padding: 20px;
-  gap: 50px;
-
+  .dashboard-cards {
+    margin: 0;
+    margin-top: 50px;
+    padding: 50px;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .card {
+    width: 100%; /* Une carte par ligne pour mobiles */
+  }
 }
 
-.diagram {
-  background-color: #f8f9fa; /* Couleur de fond douce */
-  border: 1px solid #ced4da; /* Bordure pour délimiter la section */
-  border-radius: 10px; /* Coins arrondis */
-  text-align: center;
-  width: 100%; /* Assurez-vous que le conteneur a la largeur souhaitée */
-  margin-bottom: 30px; /* Espace entre le diagramme et le reste */
-}
-.diagramBar {
-  background-color: #f8f9fa; /* Couleur de fond douce */
-  border: 1px solid #ced4da; /* Bordure pour délimiter la section */
-  border-radius: 10px; /* Coins arrondis */
-  text-align: center;
-  width: 100%; /* Assurez-vous que le conteneur a la largeur souhaitée */
-  height: auto; /* Hauteur du conteneur */
+@media (max-width: 480px) {
+  .card {
+    width: 100%; /* Une carte par ligne pour les mobiles */
+  }
 }
 
-#productChart {
-  max-width: 100%; /* S'assurer que le diagramme ne dépasse pas la largeur de son conteneur */
-  height: 200px; /* Hauteur automatique pour un bon rapport d'aspect */
+@media (max-width: 768px) {
+  .donnes  {
+    margin: 0;
+    padding: 1rem;
+    gap: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .diagram,
+  .diagramBar {
+    flex: 1 1 45%;
+    min-width: 300px;
+    max-width: 100%;
+  }
 }
 
-#donChart {
-  max-width: 100%; /* S'assurer que le diagramme ne dépasse pas la largeur de son conteneur */
-  height: 200px; /* Hauteur automatique pour un bon rapport d'aspect */
-}
-
-
-
-
+/* Canvas pour graphiques */
 canvas {
-  max-width: 100%; /* Pour s'assurer que le canvas s'adapte au conteneur */
-  height: auto; /* Pour garder le rapport d'aspect */
+  max-width: 100%;
+  height: auto;
 }
+
+
+
+
+
 

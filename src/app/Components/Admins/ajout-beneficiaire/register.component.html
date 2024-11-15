@@ -1,0 +1,262 @@
+
+
+<div class="main">
+  <app-sidebar></app-sidebar>
+
+  <div class="contenu">
+    
+   <app-headers></app-headers>
+<div class="style">
+  <!-- <div class="image-section">
+    <img src="../../../../assets/image copy 4.png" alt="Illustration ajout bénéficiaire" class="illustration-image">
+  </div> -->
+  <div class="container">
+    <h3>Ajout Beneficiaire</h3>
+    <div  *ngIf="currentStep === 1">
+      <form [formGroup]="registerForm" (ngSubmit)="nextStep()">
+        <div class="input-group-container">
+          <div class="form-group">
+            <label for="nom">Nom</label>
+            <i class="fas fa-user form-icon"></i>
+            <input id="nom" formControlName="nom" class="form-control animate__animated animate__fadeInUp" type="text" placeholder="Nom" required>
+            <div *ngIf="registerForm.get('nom')?.invalid && registerForm.get('nom')?.touched" class="text-danger animate__animated animate__shakeX">
+              <div *ngIf="registerForm.get('nom')?.errors?.['required']">Le Nom est obligatoire.</div>
+              <div *ngIf="!registerForm.get('nom')?.errors?.['required'] && registerForm.get('nom')?.errors?.['minlength']">
+                Le Nom doit contenir au moins 3 caractères.
+              </div>
+              <div *ngIf="!registerForm.get('nom')?.errors?.['required'] && !registerForm.get('nom')?.errors?.['minlength'] && registerForm.get('nom')?.errors?.['maxlength']">
+                Le Nom ne peut pas dépasser 20 caractères.
+              </div>
+              <div *ngIf="!registerForm.get('nom')?.errors?.['required'] && !registerForm.get('nom')?.errors?.['minlength'] && !registerForm.get('nom')?.errors?.['maxlength'] && registerForm.get('nom')?.errors?.['pattern']">
+                Le Nom ne doit contenir que des lettres.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="prenom">Prénom</label>
+            <i class="fas fa-user form-icon"></i>
+            <input id="prenom" formControlName="prenom" class="form-control animate__animated animate__fadeInUp" type="text" placeholder="Prénom" required>
+            <div *ngIf="registerForm.get('prenom')?.invalid && registerForm.get('prenom')?.touched" class="text-danger animate__animated animate__shakeX">
+              <div *ngIf="registerForm.get('prenom')?.errors?.['required']">Le Prénom est obligatoire.</div>
+              <div *ngIf="!registerForm.get('prenom')?.errors?.['required'] && registerForm.get('prenom')?.errors?.['minlength']">
+                Le Prénom doit contenir au moins 3 caractères.
+              </div>
+              <div *ngIf="!registerForm.get('prenom')?.errors?.['required'] && !registerForm.get('prenom')?.errors?.['minlength'] && registerForm.get('prenom')?.errors?.['maxlength']">
+                Le Prénom ne peut pas dépasser 20 caractères.
+              </div>
+              <div *ngIf="!registerForm.get('prenom')?.errors?.['required'] && !registerForm.get('prenom')?.errors?.['minlength'] && !registerForm.get('prenom')?.errors?.['maxlength'] && registerForm.get('prenom')?.errors?.['pattern']">
+                Le Prénom ne doit contenir que des lettres.
+              </div>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <i class="fas fa-envelope form-icon"></i>
+            <input id="email" formControlName="email" class="form-control animate__animated animate__fadeInUp" type="email" placeholder="Email" required>
+            <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="text-danger animate__animated animate__shakeX">
+              <div *ngIf="registerForm.get('email')?.errors?.['required']">L'Email est obligatoire.</div>
+              <div *ngIf="!registerForm.get('email')?.errors?.['required'] && registerForm.get('email')?.errors?.['email']">
+                L'Email doit être valide.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="telephone">Téléphone</label>
+            <i class="fas fa-phone form-icon"></i>
+            <input id="telephone" formControlName="telephone" class="form-control animate__animated animate__fadeInUp" type="tel" placeholder="Téléphone" required>
+            <div *ngIf="registerForm.get('telephone')?.invalid && registerForm.get('telephone')?.touched" class="text-danger animate__animated animate__shakeX">
+              <div *ngIf="registerForm.get('telephone')?.errors?.['required']">Le Téléphone est obligatoire.</div>
+              <div *ngIf="!registerForm.get('telephone')?.errors?.['required'] && registerForm.get('telephone')?.errors?.['invalidLength']">
+                Le Téléphone doit contenir exactement 9 chiffres.
+              </div>
+              <div *ngIf="!registerForm.get('telephone')?.errors?.['required'] && !registerForm.get('telephone')?.errors?.['invalidLength'] && registerForm.get('telephone')?.errors?.['mustStartWith7']">
+                Le Téléphone doit commencer par '7'.
+              </div>
+              <div *ngIf="!registerForm.get('telephone')?.errors?.['required'] && !registerForm.get('telephone')?.errors?.['invalidLength'] && !registerForm.get('telephone')?.errors?.['mustStartWith7'] && registerForm.get('telephone')?.errors?.['pattern']">
+                Le Téléphone ne doit contenir que des chiffres.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="adresse">Adresse</label>
+            <i class="fas fa-home form-icon"></i>
+            <input id="adresse" formControlName="adresse" class="form-control animate__animated animate__fadeInUp" type="text" placeholder="Adresse" required>
+            <div *ngIf="registerForm.get('adresse')?.invalid && registerForm.get('adresse')?.touched" class="text-danger animate__animated animate__shakeX">
+              <div *ngIf="registerForm.get('adresse')?.errors?.['required']">L'Adresse est obligatoire.</div>
+              <div *ngIf="!registerForm.get('adresse')?.errors?.['required'] && registerForm.get('adresse')?.errors?.['minlength']">
+                L'Adresse doit contenir au moins 3 caractères.
+              </div>
+              <div *ngIf="!registerForm.get('adresse')?.errors?.['required'] && !registerForm.get('adresse')?.errors?.['minlength'] && registerForm.get('adresse')?.errors?.['maxlength']">
+                L'Adresse ne peut pas dépasser 20 caractères.
+              </div>
+              <div *ngIf="!registerForm.get('adresse')?.errors?.['required'] && !registerForm.get('adresse')?.errors?.['minlength'] && !registerForm.get('adresse')?.errors?.['maxlength'] && registerForm.get('adresse')?.errors?.['pattern']">
+                L'Adresse ne doit contenir que des lettres et des chiffres.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group ">
+            <label for="password">Mot de passe</label>
+            <i class="fas fa-lock form-icon"></i>
+            <input id="password" formControlName="password" class="form-control animate__animated animate__fadeInUp" type="password" placeholder="Mot de passe" required>
+            <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="text-danger animate__animated animate__shakeX">
+              <div *ngIf="registerForm.get('password')?.errors?.['required']">Le Mot de passe est obligatoire.</div>
+              <div *ngIf="!registerForm.get('password')?.errors?.['required'] && registerForm.get('password')?.errors?.['minlength']">
+                Le Mot de passe doit comporter au moins 6 caractères.
+              </div>
+              <div *ngIf="!registerForm.get('password')?.errors?.['required'] && !registerForm.get('password')?.errors?.['minlength'] && registerForm.get('password')?.errors?.['uppercase']">
+                Le Mot de passe doit contenir au moins une lettre majuscule.
+              </div>
+              <div *ngIf="!registerForm.get('password')?.errors?.['required'] && !registerForm.get('password')?.errors?.['minlength'] && !registerForm.get('password')?.errors?.['uppercase'] && registerForm.get('password')?.errors?.['number']">
+                Le Mot de passe doit contenir au moins un chiffre.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="photo_profile">Photo de profil</label>
+            <i class="fas fa-file-image form-icon"></i>
+            <input id="photo_profile" (change)="onFileChange($event, 'photo_profile')" class="form-control animate__animated animate__fadeInUp" type="file" accept="image/*" required>
+            <div *ngIf="!selectedFile && registerForm.get('photo_profile')?.touched" class="text-danger animate__animated animate__shakeX">
+              La photo de profil est obligatoire.
+            </div>
+          </div>
+
+        </div>
+      <button type="button" (click)="nextStep()" > Suivant </button>
+      </form>
+    </div>
+
+    <div *ngIf="currentStep === 2">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="input-group-container">
+          <div class="form-group">
+            <label for="nomstructure">nomstructure</label>
+            <i class="fas fa-building form-icon"></i>
+            <input id="nomstructure" formControlName="nomstructure" class="form-control animate__animated animate__fadeInUp" type="text" placeholder="nomstructure de la Structure" required>
+            <div *ngIf="registerForm.get('nomstructure')?.invalid && registerForm.get('nomstructure')?.touched" class="text-danger animate__animated animate__shakeX">
+              <div *ngIf="registerForm.get('nomstructure')?.errors?.['required']">Le nomstructure est obligatoire.</div>
+              <div *ngIf="!registerForm.get('nomstructure')?.errors?.['required'] && registerForm.get('nomstructure')?.errors?.['minlength']">
+                Le Nom Structure doit contenir au moins 3 caractères.
+              </div>
+              <div *ngIf="!registerForm.get('nomstructure')?.errors?.['required'] && !registerForm.get('nomstructure')?.errors?.['minlength'] && registerForm.get('nomstructure')?.errors?.['maxlength']">
+                Le  Nom Structure ne peut pas dépasser 20 caractères.
+              </div>
+              <div *ngIf="!registerForm.get('nomstructure')?.errors?.['required'] && !registerForm.get('nomstructure')?.errors?.['minlength'] && !registerForm.get('nomstructure')?.errors?.['maxlength'] && registerForm.get('nomstructure')?.errors?.['pattern']">
+                Le  Nom Structure ne doit contenir que des lettres.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="emailstructure">Email structure</label>
+            <i class="fas fa-envelope form-icon"></i>
+            <input id="emailstructure" formControlName="emailstructure" class="form-control animate__animated animate__fadeInUp" type="emailstructure" placeholder="emailstructure" required>
+            <div *ngIf="registerForm.get('emailstructure')?.invalid && registerForm.get('emailstructure')?.touched" class="text-danger animate__animated animate__shakeX">
+              <div *ngIf="registerForm.get('emailstructure')?.errors?.['required']">L'emailstructure est obligatoire.</div>
+              <div *ngIf="!registerForm.get('emailstructure')?.errors?.['required'] && registerForm.get('emailstructure')?.errors?.['emailstructure']">
+                L'Email de votre structure doit être valide.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="description">description</label>
+            <i class="fas fa-align-left form-icon"></i>
+            <input id="description" formControlName="description" class="form-control animate__animated animate__fadeInUp" type="text" placeholder="description de la Structure" required>
+            <div *ngIf="registerForm.get('description')?.invalid && registerForm.get('description')?.touched" class="text-danger animate__animated animate__shakeX">
+              <div *ngIf="registerForm.get('description')?.errors?.['required']">Le description est obligatoire.</div>
+              <div *ngIf="!registerForm.get('description')?.errors?.['required'] && registerForm.get('description')?.errors?.['minlength']">
+                La description doit contenir au moins 10 caractères.
+              </div>
+              <div *ngIf="!registerForm.get('description')?.errors?.['required'] && !registerForm.get('description')?.errors?.['minlength'] && registerForm.get('description')?.errors?.['maxlength']">
+                La description ne peut pas dépasser 255 caractères.
+              </div>
+              <div *ngIf="!registerForm.get('description')?.errors?.['required'] && !registerForm.get('description')?.errors?.['minlength'] && !registerForm.get('description')?.errors?.['maxlength'] && registerForm.get('description')?.errors?.['letter']">
+                La description doit contenir au moins une lettre.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="fondateur">fondateur</label>
+            <i class="fas fa-user form-icon"></i>
+            <input id="fondateur" formControlName="fondateur" class="form-control animate__animated animate__fadeInUp" type="text" placeholder="fondateur" required>
+            <div *ngIf="registerForm.get('fondateur')?.invalid && registerForm.get('fondateur')?.touched" class="text-danger animate__animated animate__shakeX">
+              <div *ngIf="registerForm.get('fondateur')?.errors?.['required']">Le fondateur est obligatoire.</div>
+              <div *ngIf="!registerForm.get('fondateur')?.errors?.['required'] && registerForm.get('fondateur')?.errors?.['minlength']">
+                Le fondateur doit contenir au moins 3 caractères.
+              </div>
+              <div *ngIf="!registerForm.get('fondateur')?.errors?.['required'] && !registerForm.get('fondateur')?.errors?.['minlength'] && registerForm.get('fondateur')?.errors?.['maxlength']">
+                Le fondateur ne peut pas dépasser 20 caractères.
+              </div>
+              <div *ngIf="!registerForm.get('fondateur')?.errors?.['required'] && !registerForm.get('fondateur')?.errors?.['minlength'] && !registerForm.get('fondateur')?.errors?.['maxlength'] && registerForm.get('fondateur')?.errors?.['pattern']">
+                Le Fondateur ne doit contenir que des lettres.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="logo">Logo</label>
+            <i class="fas fa-file-image form-icon"></i>
+            <input id="logo" (change)="onFileChange($event, 'logo')" class="form-control animate__animated animate__fadeInUp" type="file" accept="image/*" required>
+            <div *ngIf="!selectedFile && registerForm.get('logo')?.touched" class="text-danger animate__animated animate__shakeX">
+              Le Logo est obligatoire.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="recepisse">recepisse</label>
+            <i class="fas fa-file-image form-icon"></i>
+            <input id="recepisse" (change)="onFileChange($event, 'recepisse')" class="form-control animate__animated animate__fadeInUp" type="file" accept="image/*" required>
+            <div *ngIf="!selectedFile && registerForm.get('recepisse')?.touched" class="text-danger animate__animated animate__shakeX">
+              Le recepisse est obligatoire.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="image_cni">image_cni</label>
+            <i class="fas fa-file-image form-icon"></i>
+            <input id="image_cni" (change)="onFileChange($event, 'image_cni')" class="form-control animate__animated animate__fadeInUp" type="file" accept="image/*" required>
+            <div *ngIf="!selectedFile && registerForm.get('image_cni')?.touched" class="text-danger animate__animated animate__shakeX">
+              Le image_cni est obligatoire.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="date_creation">Date de Création</label>
+            <i class="fas fa-calendar-alt form-icon"></i>
+            <input id="date_creation" formControlName="date_creation" class="form-control animate__animated animate__fadeInUp" type="date" required>
+            <div *ngIf="registerForm.get('date_creation')?.invalid && registerForm.get('date_creation')?.touched" class="text-danger animate__animated animate__shakeX">
+              <div *ngIf="registerForm.get('date_creation')?.errors?.['required']">La date de création est obligatoire.</div>
+              <div *ngIf="!registerForm.get('date_creation')?.errors?.['required'] && registerForm.get('date_creation')?.errors?.['futureDate']">
+                La date de création ne peut pas être dans le futur.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <button type="submit" class="btn btn-primary">S'inscrire</button>
+
+      </form>
+    </div>
+
+    <div *ngIf="successMessage" class="alert alert-success mt-3">
+      {{ successMessage }}
+    </div>
+
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+      {{ errorMessage }}
+    </div>
+  </div>
+
+
+</div>
+
+  </div>
+</div>

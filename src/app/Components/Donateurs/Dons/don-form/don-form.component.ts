@@ -70,7 +70,6 @@ export class DonFormComponent {
   }
 
 
-
   submitDon(): void {
     if (this.donForm.invalid || this.produits.length === 0) {
       // alert('Veuillez ajouter au moins un produit.');
