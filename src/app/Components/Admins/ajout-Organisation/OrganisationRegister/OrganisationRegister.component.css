@@ -1,4 +1,14 @@
 
+.main{
+  display: flex;
+  position: relative;
+}
+.contenu
+{
+  position: relative;
+  width: 100%;
+
+}
 .form-group {
   position: relative;
 }
@@ -93,9 +103,9 @@
 
 
   .back {
-    height: 100vh;
+    height: 90vh;
     /* background: linear-gradient(to bottom right , rgba(42, 44, 44, 0.7), rgba(62, 151, 135, 0.7)), url('../../../../../../assets/images/nexion.png') no-repeat center center/cover; */
-    background-image: linear-gradient(rgba(41, 108, 91, 0.418),rgba(41, 108, 91, 0.418)), url('../../../../../assets/images/nexion.png');
+    background-image: linear-gradient(rgba(41, 108, 91, 0.418),rgba(41, 108, 91, 0.418));
 
     display: flex;
     background-size: cover;
@@ -113,4 +123,21 @@
   .nav-link
   {
     color: #00715D;
+  }
+
+
+  .btn-back {
+    background-color: #046a54;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-back:hover {
+    background-color: #03493c;
   }

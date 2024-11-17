@@ -5,7 +5,12 @@
   padding: 0;
   box-sizing: border-box;
 }
-.logo {
+.logo{
+  height: 0px;
+  margin-top: -250px;
+  width: 100px;
+}
+.logo img{
   font-size: 24px;
   font-weight: 600;
   color:#CFA100;
@@ -15,6 +20,8 @@
 
 /* Styles pour le menu */
 .header {
+  margin: 0;
+  padding: 0;
   width: 100%;
   padding: 20px;
   position: fixed;

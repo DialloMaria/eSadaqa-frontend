@@ -17,7 +17,7 @@
     <table class="table table-hover table-striped product-table">
       <thead class="table-dark">
         <tr>
-          <th scope="col">Profile</th>
+          <!-- <th scope="col">Profile</th> -->
           <th scope="col">Nom</th>
           <th scope="col">Prenom</th>
           <th scope="col">E-mail</th>
@@ -27,7 +27,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let organisation of organisations">
-          <td>
+          <!-- <td>
             <img
               *ngIf="organisation.user?.photo_profile"
               [src]="organisation.user?.photo_profile"
@@ -35,18 +35,18 @@
               class="img-thumbnail"
               style="width: 50px; height: 50px;"
             />
-          </td>
+          </td> -->
           <td>{{ organisation.user?.nom }}</td>
           <td>{{ organisation.user?.prenom }}</td>
           <td>{{ organisation.user?.email }}</td>
           <td>{{ organisation.user?.telephone }}</td>
           <td>
-            <button class="btn btn-success btn-sm">
+            <!-- <button class="btn btn-success btn-sm">
               <i class="fas fa-edit"></i>
             </button>
             <button class="btn btn-danger btn-sm">
               <i class="fas fa-trash-alt"></i>
-            </button>
+            </button> -->
             <button [routerLink]="['/profilDetailOrganisation', organisation.id]" class="btn btn-info btn-sm" title="Voir détails">
               <i class="fas fa-eye"></i>
           </button>

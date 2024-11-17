@@ -13,6 +13,18 @@
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.main{
+  display: flex;
+  position: relative;
+}
+.contenu
+{
+  position: relative;
+  width: 100%;
+
+}
+
+
 
 
 .welcome-message {
@@ -158,59 +170,64 @@ li {
   pointer-events: none;
 }
 
-.main
-{
-  display: flex;
-}
 
-.profile-card {
-  max-width: 400px;
-  margin: 0 auto;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  color: #333;
-  transition: transform 0.3s;
-}
 
-.profile-card:hover {
-  transform: scale(1.05);
-}
 
 .profile-header {
-  background-color: #007461;
-  color: #ffffff;
+  background-color: #046a54;
+  color: white;
   padding: 20px;
-  text-align: center;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
 }
 
-.profile-photo {
+.profile-header:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.profile-header img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  margin-bottom: 15px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
-.profile-info {
+.profile-header img:hover {
+  transform: scale(1.05);
+}
+
+.profile-section {
+  background-color: white;
   padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
 }
 
-.profile-info p {
-  font-size: 16px;
-  margin: 8px 0;
+.profile-section:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.change-password {
-  background-color: #007461;
-  color: #ffffff;
+
+.btn-back {
+  background-color: #046a54;
+  color: white;
   border: none;
-  padding: 10px 15px;
+  padding: 8px 15px;
   border-radius: 5px;
+  font-size: 1rem;
+  margin-bottom: 20px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
 }
 
-.change-password:hover {
-  background-color: #005945;
+.btn-back:hover {
+  background-color: #03493c;
 }

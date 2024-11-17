@@ -9,7 +9,7 @@
   <div class="contenu">
    <app-headers></app-headers>
 
-    <div class="profile-card" *ngFor="let user of users">
+    <!-- <div class="profile-card" *ngFor="let user of users">
       <div class="profile-header">
         <img
         *ngIf="user.photo_profile"
@@ -25,10 +25,61 @@
         <p><strong>Téléphone :</strong> {{ user.telephone }}</p>
         <button class="change-password">Changer le mot de passe</button>
       </div>
+    </div> -->
+
+    <div
+    class="container my-5 animate__animated animate__fadeIn animate__delay-1s" *ngFor="let user of users"    >
+      <!-- Bouton Retour -->
+      <button [routerLink]="['/dashboard/organisation']" class="btn-back animate__animated animate__fadeInLeft animate__delay-1s">
+        ← Retour
+      </button>
+    <!-- Profile Header -->
+    <div class="profile-header animate__animated animate__slideInLeft animate__delay-1s">
+      <img
+        *ngIf="user.photo_profile"
+        [src]="user.photo_profile"
+        alt="Photo de profil"
+        class="img-thumbnail animate__animated animate__zoomIn animate__delay-1s"
+      />
+      <div>
+        <h3>{{ user.prenom }} {{ user.nom }}</h3>
+      </div>
     </div>
+
+    <!-- User Information Section -->
+    <div class="profile-section animate__animated animate__fadeInUp animate__delay-2s">
+      <h4>Information</h4>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Prénom</label>
+          <p>{{ user.prenom }}</p>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Nom</label>
+          <p>{{ user.nom }}</p>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Adresse email</label>
+          <p>{{ user.email }}</p>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Téléphone</label>
+          <p>{{ user.telephone }}</p>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Adresse</label>
+          <p>{{ user.adresse }}</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 
 </div>
+
+
+
+
 
 
 

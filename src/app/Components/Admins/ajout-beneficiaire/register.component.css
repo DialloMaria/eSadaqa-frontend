@@ -7,192 +7,7 @@
 {
   position: relative;
   width: 100%;
-  /* background-image: url('../../../../assets/image\ copy\ 4.png');
-  background-repeat: no-repeat; */
-}
 
-.style {
-  display: flex;
-}
-
-
-.header {
-  position: sticky;
-  padding-top: 100px;
-  display: flex;
-  width: 100%;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 2rem;
-  background-color: #007461; /* Couleur de fond de l'en-tête */
-  color: #fff;
-  height: 100px;
-  z-index: 0;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-
-
-.welcome-message {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.welcome-message i {
-  font-size: 1.5rem;
-}
-
-.welcome-message .username {
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-.sidebar {
-  position: sticky;
-  left: 0;
-  bottom: 0;
-  width: 110px;
-  height: 100vh;
-  padding: 0 1.7rem;
-  color: #fff;
-  overflow: hidden;
-  transition: all 0.5s linear;
-  background: #fff;
-  box-shadow: 0px 10px 25px #297fb918;
-  z-index: 1;
-}
-
-.sidebar:hover {
-  width: 260px;
-  transition: 0.5s;
-}
-
-.logo {
-  color: #2980B9;
-  height: 80px;
-  padding: 16px;
-}
-
-.menu {
-  height: 88%;
-  position: relative;
-  list-style: none;
-  padding: 0;
- }
-
-.menu li {
-  color: #8A92A6;
-  padding: 1rem;
-  margin: 8px 0;
-  border-radius: 8px;
-  transition: all 0.5 ease-in-out;
-}
-
-.menu li:hover,.menu a:hover,
-.active {
-  color: #fff;
-  background: #007461;
-}
-
-.menu a.active {
-  color: white;
-}
-
-.menu a {
-  color: inherit;
-  font-size: 16px;
-  font-weight: bold;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-
-
-.menu a span {
-  overflow: hidden;
-}
-
-.menu a i {
-  font-size: 1.2rem;
-}
-
-.logout {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-}
-
-
-.organisation-list {
-  padding: 20px;
-  background-color: #f9f9f9;
-}
-
-.error-message {
-  color: red;
-  font-weight: bold;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  background-color: #fff;
-  margin: 10px 0;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-/* Floating Action Button */
-.fab {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  background-color: #007461;
-  color: white;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease;
-}
-
-
-
-.fab i {
-  pointer-events: none;
-}
-button.h3{
-  color: #0000;
-  font-size: 1.5rem;
-}
-
-
-
-/* Adjusting the table container */
-.detail {
-  width: 100%; /* Decrease the width of the table */
-  transition: margin-left 0.5s ease-in-out;
-}
-
-.sidebar:hover .detail {
-  margin-left: 260px; /* Move the table further left when sidebar expands */
-  transition: 0.5s;
-}
-
-
-form{
-  margin-top: 30px;
 }
 .form-group {
   position: relative;
@@ -265,20 +80,18 @@ form{
 }
 
 
-
-.image-section {
-  width: 60%;
-margin-top: 290px;
-}
-
-.illustration-image {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-
-
+.auth-container {
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.488);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  .form-container {
+    transition: opacity 0.3s ease;
+  }
   .container {
     margin-top: 7.5rem;
 
@@ -289,4 +102,25 @@ margin-top: 290px;
   }
 
 
-  
+  .back {
+    height: 90vh;
+    /* background: linear-gradient(to bottom right , rgba(42, 44, 44, 0.7), rgba(62, 151, 135, 0.7)), url('../../../../../../assets/images/nexion.png') no-repeat center center/cover; */
+    background-image: linear-gradient(rgba(41, 108, 91, 0.418),rgba(41, 108, 91, 0.418));
+
+    display: flex;
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif; /* Utilisation de Montserrat */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+  }
+
+
+  .nav-link
+  {
+    color: #00715D;
+  }

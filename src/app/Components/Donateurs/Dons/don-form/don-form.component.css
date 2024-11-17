@@ -31,3 +31,50 @@
  .modal-backdrop.custom-backdrop {
   background-color: rgba(0, 0, 0, 0.5); /* Un fond noir avec 50% de transparence */
 }
+
+
+
+
+
+.don-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* Button Styles */
+.btn-add {
+  color: #CFA100;
+  border-radius: 15px;
+  border: 1px solid #CFA100;
+  text-decoration: none;
+  margin-top: 30px;
+}
+
+.form-control{
+  border-radius: 10px;
+}
+.btn-add,
+.btn-detail,
+.btn-modifier,
+.btn-supprimer {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-add:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  background-color: #CFA100;
+  color: #f3f3f3;
+}
+
+
+.btn-add {
+  animation: pulsate 1.5s infinite;
+}
+
+
+
+
+

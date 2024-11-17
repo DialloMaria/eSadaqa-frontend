@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../../../Services/auth.Service';
 import { OrganisationModel } from '../../../../Models/Organiation.model';
+import { HeadersComponent } from '../../headers/header.component';
+import { SiderbarComponent } from '../../sidebar/sidebar.component';
 
 @Component({
   selector: 'app-add-organisation',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule,HeadersComponent,SiderbarComponent,RouterLink],
   templateUrl: './OrganisationRegister.component.html',
   styleUrl: './OrganisationRegister.component.css'
 })

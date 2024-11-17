@@ -1,100 +1,37 @@
-<!-- <h2>Ajouter un Don</h2>
-<form [formGroup]="donForm" (ngSubmit)="submit()">
-  <div class="form-group">
-    <label for="libelle">Libellé</label>
-    <input id="libelle" formControlName="libelle" class="form-control" type="text" placeholder="Libellé" required>
-    <div *ngIf="donForm.get('libelle')?.invalid && donForm.get('libelle')?.touched" class="text-danger">
-      Le libellé est obligatoirng serv.
-    </div>
-  </div>
 
-  <div class="form-group">
-    <label for="description">Description</label>
-    <textarea id="description" formControlName="description" class="form-control" placeholder="Description" required></textarea>
-    <div *ngIf="donForm.get('description')?.invalid && donForm.get('description')?.touched" class="text-danger">
-      La description est obligatoirng serve.
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="lieuReception">Lieu de Réception</label>
-    <input id="lieuReception" formControlName="lieuReception" class="form-control" type="text" placeholder="Lieu de réception" required>
-    <div *ngIf="donForm.get('lieuReception')?.invalid && donForm.get('lieuReception')?.touched" class="text-danger">
-      Le lieu de réception est obligatoirng serv.
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="categorie">Lieu de Réception</label>
-    <input id="categorie" formControlName="categorie" class="form-control" type="text" placeholder="Lieu de réception" required>
-    <div *ngIf="donForm.get('categorie')?.invalid && donForm.get('categorie')?.touched" class="text-danger">
-      Le categorie est obligatoirng serv.
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="adresse">Lieu de Réception</label>
-    <input id="adresse" formControlName="adresse" class="form-control" type="text" placeholder="Lieu de réception" required>
-    <div *ngIf="donForm.get('adresse')?.invalid && donForm.get('adresse')?.touched" class="text-danger">
-      L'adresse  est obligatoirng serv.
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="image">Image (URL)</label>
-    <input id="image" type="text" *ngIf="donForm.get('image')?.invalid && donForm.get('image')?.touched"  class="form-control">
-  </div>
-
-  <button type="submit" class="btn btn-primary"  [disabled]="donForm.invalid && produitForm.invalid">Ajouter le Don</button>
-</form> -->
-
-<!--
-<h2>{{ isEditMode ? 'Modifier un Produit' : 'Ajouter un Produit' }}</h2>
-
-<form [formGroup]="produitForm" >
-  <div class="form-group">
-    <label for="libelle">Libellé</label>
-    <input id="libelle" formControlName="libelle" class="form-control" type="text" placeholder="Libellé" required>
-    <div *ngIf="produitForm.get('libelle')?.invalid && produitForm.get('libelle')?.touched" class="text-danger">
-      Le libellé est obligatoirng serv.
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="quantite">Quantité</label>
-    <input id="quantite" formControlName="quantite" class="form-control" type="number" placeholder="Quantité" required>
-    <div *ngIf="produitForm.get('quantite')?.invalid && produitForm.get('quantite')?.touched" class="text-danger">
-      La quantité est obligatoirng serve.
-    </div>
-  </div>
-
-  <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Modifier' : 'Ajouter' }}</button>
-</form> -->
-
-<!-- Bouton pour ouvrir le modal -->
 
 <!-- Modal -->
-<div class="modal fade" id="donModal" tabindex="-1" aria-labelledby="donModalLabel" aria-hidden="true" data-bs-backdrop="false">
+<div
+  class="modal fade"
+  id="donModal"
+  tabindex="-1"
+  aria-labelledby="donModalLabel"
+  aria-hidden="true"
+  data-bs-backdrop="false"
+>
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="donModalLabel">Ajouter un Don</h5>
         <button type="button" class="btn-close"  data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+
+
+
       <div class="modal-body">
-        <form [formGroup]="donForm" (ngSubmit)="submitDon()" class="shadow p-4 rounded bg-light">
+        <form [formGroup]="donForm" (ngSubmit)="submitDon()" class="p-4">
           <!-- Première ligne : Libellé et Description -->
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label for="libelle">Libellé</label>
+              <label for="libelle" class="form-label fw-bold">Libellé</label>
                 <input id="libelle" formControlName="libelle" class="form-control" type="text" placeholder="Libellé" required>
                 <!-- Messages d'erreur -->
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <label for="description">Description</label>
+                <label for="description" class="form-label fw-bold">Description</label>
                 <textarea id="description" formControlName="description" class="form-control" placeholder="Description" required></textarea>
                 <div *ngIf="donForm.get('description')?.invalid && donForm.get('description')?.touched" class="text-danger">
                   La description est obligatoirng serve.
@@ -110,8 +47,8 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label for="adresse">Lieu de Réception</label>
-                <input id="adresse" formControlName="adresse" class="form-control" type="text" placeholder="lieu de reception" required>
+                <label for="lieuReception" class="form-label fw-bold"
+                >Lieu de réception</label>                <input id="adresse" formControlName="adresse" class="form-control" type="text" placeholder="lieu de reception" required>
                 <div *ngIf="donForm.get('adresse')?.invalid && donForm.get('adresse')?.touched" class="text-danger">
                   L'adresse est obligatoirng serve.
                 </div>
@@ -120,21 +57,10 @@
                 </div>
               </div>
             </div>
-            <!-- <div class="col-md-6">
-              <div class="form-group">
-                <label for="lieuReception">Lieu de Réception</label>
-                <input id="lieuReception" formControlName="lieuReception" class="form-control" type="text" placeholder="Lieu de réception" required>
-                <div *ngIf="donForm.get('lieuReception')?.invalid && donForm.get('lieuReception')?.touched" class="text-danger">
-                  Le lieu de réception est obligatoirng serv.
-                </div>
-                <div *ngIf="donForm.get('lieuReception')?.errors?.['maxlength'] && donForm.get('lieuReception')?.touched" class="text-danger">
-                  Le lieu de réception ne peut pas dépasser 150 caractères.
-                </div>
-              </div>
-            </div> -->
+
             <div class="col-md-6">
               <div class="form-group">
-                <label for="categorie">Catégorie</label>
+                <label for="categorie" class="form-label fw-bold">Categorie</label>
                 <select id="categorie" formControlName="categorie" class="form-control" required>
                   <option value="" disabled selected>Choisir une catégorie</option>
                   <option value="produit">Produit</option>
@@ -149,30 +75,23 @@
 
           <!-- Troisième ligne : Adresse et Image -->
           <div class="row">
-            <!-- <div class="col-md-6">
-              <div class="form-group">
-                <label for="adresse">Lieu de Réception</label>
-                <input id="adresse" formControlName="adresse" class="form-control" type="text" placeholder="Adresse" required>
-                <div *ngIf="donForm.get('adresse')?.invalid && donForm.get('adresse')?.touched" class="text-danger">
-                  L'adresse est obligatoirng serve.
-                </div>
-                <div *ngIf="donForm.get('adresse')?.errors?.['maxlength'] && donForm.get('adresse')?.touched" class="text-danger">
-                  L'adresse ne peut pas dépasser 200 caractères.
-                </div>
-              </div>
-            </div> -->
             <div class="row">
               <div class="form-group">
-                <label for="image">Image </label>
+                <label for="images" class="form-label fw-bold">Images</label>
                 <input id="image" formControlName="image" class="form-control" type="file"  accept="image/*"   (change)="onImageSelected($event)"   placeholder="URL de l'image">
               </div>
             </div>
           </div>
 
           <!-- Ajouter vos projets button -->
-          <button type="button" class="btn btn-secondary" (click)="showProduitForm = true" [disabled]="donForm.invalid">
-            Ajouter vos produits
+          <!-- <button type="button" class="btn btn-outline-warning px-4 py-2 rounded-pill fw-bold" >
+            <i class="fas fa-plus"></i> Ajouter un produit
+          </button> -->
+
+          <button  type="button" class="btn btn-primary mt-5" class="btn btn-add mb-3 animate__animated animate__bounce" (click)="showProduitForm = true" [disabled]="donForm.invalid">
+            <i class="fas fa-plus"></i> Ajouter un produit
           </button>
+
 
           <!-- Formulaire pour ajouter un produit -->
           <div *ngIf="showProduitForm" class="mt-4">
@@ -212,3 +131,5 @@
     </div>
   </div>
 </div>
+
+

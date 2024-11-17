@@ -130,7 +130,13 @@
   color: red;
   font-weight: bold;
 }
+.btn {
+  background-color: #007461;
+ }
 
+ .fa-eye{
+   color: #fff;
+ }
 ul {
   list-style-type: none;
   padding: 0;
@@ -306,7 +312,7 @@ button.h3{
   }
   /* .detail{
     margin-bottom: 500px;
-  } */  
+  } */
   .product-table th:nth-child(3),
   .product-table th:nth-child(4),
   .product-table td:nth-child(3),
