@@ -24,14 +24,24 @@ import { ListeOrganisationComponent } from './Components/Admins/list-organisatio
 import { ListDonComponent } from './Components/Admins/don-list/list-don.component';
 import { InscriptionBenefiaireComponent } from './Components/Authentifications/Inscription/Beneficiaires/InscriptionBeneficiaire/inscription-beneficiaire.component';
 import { RegisterComponent } from './Components/Authentifications/Inscription/Beneficiaires/register/register.component';
+import { RoleGuard } from './guards/role.guard'; // Assurez-vous que le chemin est correct
+import { ResponsiveComponent } from './Components/Portail/responsive/responsive.component';
+import { ListeAllDonateurComponent } from './Components/Admins/list-donateurs/list-donateur.component';
+import { ProfilAdminComponent } from './Components/Admins/profil-admin/profil-admin.component';
+import { ProfilOrganisationComponent } from './Components/Organisations/profil/profil.component';
+import { ProfilDonateurComponent } from './Components/Donateurs/profil/profil.component';
+import { ProfilDetailOrganisationComponent } from './Components/Admins/list-organisation/detail-profil/profil.component';
+import { ProfilDetailDonateurComponent } from './Components/Admins/list-donateurs/detail-profil/profil.component';
+import { ProfilDetailBeneficiaireComponent } from './Components/Admins/list-beneficiare/detail-profil/profil.component';
+import { RegisterAddOrganisationComponent } from './Components/Admins/ajout-Organisation/OrganisationRegister/OrganisationRegister.component';
+import { AddBeneficiaireComponent } from './Components/Admins/ajout-beneficiaire/register.component';
 
 export const routes: Routes = [
-
-
-
 // Routes portails et par defaut
   // {path:'**', pathMatch:'full', redirectTo:'accueil'},
   {path: 'accueil', component: AccueilComponent},
+
+  {path: 'me', component: ResponsiveComponent},
 
   {path: 'propos', component: ProposComponent},
 
@@ -48,29 +58,41 @@ export const routes: Routes = [
 
   {path: 'inscription/organisation', component:RegisterOrganisationComponent},
 
+  {path: 'ajout/organisation', component:RegisterAddOrganisationComponent},
+
+  {path: 'ajout/beneficiaire', component:AddBeneficiaireComponent},
+
   {path: 'inscription/beneficiaire', component:InscriptionBenefiaireComponent},
 
 
   {path: 'registerB', component:  RegisterComponent},
 
-
-
-
   {path: 'inscription/daara', component:RegisterBeneficiaireComponent},
 
   {path: 'connexion', component:ConnexionComponent},
 
-  {path: 'deconnexion', component: ConnexionComponent},
+  {path: 'deconnexion', component: ConnexionComponent  },
 
   {path: 'dashboard', component: AdminComponent},
 
   {path: 'dashboard/organisation', component: ListeOrganisationComponent},
 
+  {path: 'dashboard/donateurs', component: ListeAllDonateurComponent},
 
   {path: 'dashboard/dons', component:   ListDonComponent},
+
   {path: 'dashboard/Beneficiaire', component:   ListBeneficiaireComponent},
 
+  {path: 'dashboard/profilAdmin', component:   ProfilAdminComponent},
 
+  {path: 'profilOrganisation', component:   ProfilOrganisationComponent},
+
+  { path: 'profilDetailOrganisation/:id', component: ProfilDetailOrganisationComponent },
+
+  {path: 'profilDonateur', component:   ProfilDonateurComponent},
+
+  {path: 'profilDetailDonateur/:id', component:   ProfilDetailDonateurComponent},
+  {path: 'profilDetailBeneficiaire/:id', component:   ProfilDetailBeneficiaireComponent},
 
 
 
@@ -105,4 +127,3 @@ export const routes: Routes = [
   { path: 'list/don', component:   ListDonReservationComponent},
 
 ];
-

@@ -20,13 +20,15 @@ import { Chart, LineController, LineElement, PointElement, LinearScale, Title, C
 import {  BarController, BarElement} from 'chart.js';
 import { ProduitService } from '../../../Services/produit.Service';
 import { ProduitModel } from '../../../Models/TypeProduit.model';
+import { ProfilAdminComponent } from "../profil-admin/profil-admin.component";
+import { SiderbarComponent } from "../sidebar/sidebar.component";
+import { HeadersComponent } from "../headers/header.component";
 
 
 @Component({
   selector: 'app-admin-dashbord-menu',
   standalone: true,
   imports: [
-    CommonModule,
     ReactiveFormsModule,
     CalendarModule,
     RouterLink,
@@ -39,6 +41,9 @@ import { ProduitModel } from '../../../Models/TypeProduit.model';
     MatDatepickerModule,
     MatNativeDateModule,
     BsDatepickerModule,
+    ProfilAdminComponent,
+    SiderbarComponent,
+    HeadersComponent
 ],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css'
@@ -170,6 +175,7 @@ getEvolutionProduit(): void {
         const quantiteProduit = data.map(item => item.quantite);
 
         const filteredQuantiteProduit = quantiteProduit.filter((value): value is number => value !== undefined && value !== null);
+        this.nombreDonsUtilisateur = this.dons.length;
 
         if (nomProduit.length > 0 && filteredQuantiteProduit.length > 0) {
           this.createBarChart(nomProduit, filteredQuantiteProduit);
@@ -202,7 +208,7 @@ createBarChart(nomProduit: string[], filteredQuantiteProduit: number[]) {
       datasets: [{
         label: 'Quantité de Produits Fournis',
         data: filteredQuantiteProduit,
-        backgroundColor: '#D4A017', 
+        backgroundColor: '#D4A017',
         borderColor: '#007461',
         borderWidth: 1
       }]
@@ -222,6 +228,22 @@ createBarChart(nomProduit: string[], filteredQuantiteProduit: number[]) {
   this.chart.update();
 }
 
+logout(): void {
+  const token = localStorage.getItem('access_token');
+  if (token) {
+    // Suppression des informations d'authentification
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('user');
+
+    // Redirection vers la page de connexion
+    this.router.navigateByUrl('/connexion');
+  } else {
+    console.error('Token non trouvé.');
+  }
+}
+
+
+// profilAdmin()
 
 }
 

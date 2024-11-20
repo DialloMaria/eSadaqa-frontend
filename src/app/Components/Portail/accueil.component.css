@@ -5,9 +5,23 @@
   padding: 0;
   box-sizing: border-box;
 }
+.logo{
+  height: 0px;
+  margin-top: -250px;
+  width: 100px;
+}
+.logo img{
+  font-size: 24px;
+  font-weight: 600;
+  color:#CFA100;
+  text-decoration: none;
+  font-family: 'Arial', sans-serif;
+}
 
 /* Styles pour le menu */
 .header {
+  margin: 0;
+  padding: 0;
   width: 100%;
   padding: 20px;
   position: fixed;
@@ -81,7 +95,7 @@
   cursor: pointer;
 }
 
-.menu-toggle div {
+.menu-toggle .bar {
   width: 30px;
   height: 3px;
   background-color: #ffffff; /* Couleur du hamburger */
@@ -90,61 +104,35 @@
 }
 
 /* Responsivité */
-@media (max-width: 768px) {
-  .navbar {
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-
-  .nav-links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    height: 0;
-    overflow: hidden;
-    flex-direction: column;
-    background-color: #00715D;
-    transition: height 0.3s ease;
-  }
-
-  .nav-links li {
-    text-align: center;
-    width: 100%;
-    padding: 10px 0;
-  }
-
-  .nav-links li a {
-    font-size: 1.2rem;
+/* Pour mobile */
+@media screen and (max-width: 768px) {
+  .header {
     padding: 10px;
   }
 
-  .btn-inscription {
-    margin-top: 20px;
-    padding: 12px 25px;
-    font-size: 1.2rem;
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 100%;
+    background-color: #00715D;
+  }
+
+  .nav-links.active {
+    display: flex;
   }
 
   .menu-toggle {
     display: flex;
   }
 
-  /* Afficher le menu quand on clique sur l'icône burger */
-  .nav-open #nav-links {
-    height: 180px; /* Ajuster en fonction du nombre de liens */
-  }
-
-  /* Transition du bouton burger */
-  .menu-toggle.open .bar:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-  .menu-toggle.open .bar:nth-child(2) {
-    opacity: 0;
-  }
-  .menu-toggle.open .bar:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+  .btn-inscription {
+    margin-top: 10px;
   }
 }
+
 
 
 /* Styles pour la bannière */
@@ -209,47 +197,6 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
-/* Eléments graphiques pour la bannière */
-.design-elements {
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  z-index: 0; /* Position inférieure pour les éléments graphiques */
-}
-
-/* Lignes décoratives */
-.line {
-  width: 80px;
-  height: 3px;
-  background-color: #CFA100;
-  animation: growLine 2s infinite alternate;
-}
-
-.line1 {
-  animation-delay: 0.3s;
-}
-
-.line2 {
-  animation-delay: 0.6s;
-}
-
-.line3 {
-  animation-delay: 0.9s;
-}
-
-/* Cercle décoratif */
-.circle {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #ffffff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  animation: bounceCircle 1.5s infinite ease-in-out;
-}
 
 /* Animations */
 @keyframes growLine {
@@ -272,10 +219,6 @@
 
 /* Pour les écrans de 768px et moins (tablettes et petits ordinateurs) */
 @media (max-width: 768px) {
-  .banner {
-    text-align: center;
-    padding: 15px;
-  }
 
   .banner-title {
     font-size: 2rem;
@@ -294,7 +237,6 @@
 @media (max-width: 480px) {
   .banner {
     margin-top: 130px;
-    padding: 10px;
     height: auto; /* Adapte la hauteur à l'écran mobile */
   }
 
@@ -330,7 +272,6 @@
 }
 
 .about-content {
-
   display: flex;
   flex-direction: row; /* Alignement par défaut en ligne */
   justify-content: space-between;
@@ -342,7 +283,6 @@
 }
 
 .text-content {
-
   font-family: "Buenard-Bold", Helvetica;
   font-weight: 700;
   color: #000000;
@@ -351,7 +291,6 @@
   line-height: normal;
   flex: 1;
   display: flex;
-  font-weight: 700;
   font-size: 36px;
   letter-spacing: 0;
   line-height: normal;
@@ -359,9 +298,9 @@
   justify-content: space-between; /* Espacement vertical du texte */
   gap: 10px; /* Ajoute de l'espace entre les éléments de texte */
 }
+
 .text-content h4 {
   font-family: "Buenard-Bold", Helvetica;
-
   font-size: 1.5rem; /* Taille du titre h4 */
   color: #00715D; /* Couleur du titre */
   margin-bottom: 20px; /* Marge sous le titre */
@@ -369,7 +308,6 @@
 
 .text-content h2 {
   font-family: "Buenard-Bold", Helvetica;
-
   font-size: 2.5rem;
   color: #00715D; /* Green title */
   margin-bottom: 20px;
@@ -398,7 +336,6 @@
   justify-content: center;
   align-items: center;
   z-index: 100;
-
 }
 
 
@@ -600,9 +537,6 @@
   line-height: normal;
 }
 
-
-
-
 .aide {
   background-image: url('../../../assets/images/patern1.png');
   background-repeat: no-repeat;
@@ -679,7 +613,6 @@
   margin-right: 150px;
 }
 
-
 .image-container {
   max-width: 45%;
 }
@@ -690,10 +623,8 @@
 }
 
 
-
 .don-section {
   font-family: "Buenard-Bold", Helvetica;
-
   box-sizing: border-box;
   display: flex;
   gap: 50px;
@@ -835,12 +766,11 @@ small {
   }
 }
 
-
 * {
   box-sizing: border-box;
 }
 
-
+/****************************** SECTION FOOTER  ******************************/
 
 .footer {
   margin-top: 500px;
@@ -899,4 +829,38 @@ small {
 .footer-text {
   text-align: center;
   color: white;
+}
+
+/* Button Styles */
+.btn-add {
+  color: #00715D;
+  border-radius: 15px;
+  border: 3px solid #00715D;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-add:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #00715D;
+}
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.09);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.btn-add {
+  animation: pulsate 3s infinite;
 }

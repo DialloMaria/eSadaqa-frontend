@@ -1,0 +1,328 @@
+.main{
+  display: flex;
+  position: relative;
+}
+.contenu
+{
+  position: relative;
+  width: 100%;
+
+}
+
+
+.header {
+  position: sticky;
+  padding-top: 100px;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 2rem;
+  background-color: #007461; /* Couleur de fond de l'en-tête */
+  color: #fff;
+  height: 100px;
+  z-index: 0;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.welcome-message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.welcome-message i {
+  font-size: 1.5rem;
+}
+
+.welcome-message .username {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.sidebar {
+  position: sticky;
+  left: 0;
+  bottom: 0;
+  width: 110px;
+  height: 100vh;
+  padding: 0 1.7rem;
+  color: #fff;
+  overflow: hidden;
+  transition: all 0.5s linear;
+  background: #fff;
+  box-shadow: 0px 10px 25px #297fb918;
+  z-index: 1;
+}
+
+.sidebar:hover {
+  width: 260px;
+  transition: 0.5s;
+}
+
+.logo {
+  color: #2980B9;
+  height: 80px;
+  padding: 16px;
+}
+
+.menu {
+  height: 88%;
+  position: relative;
+  list-style: none;
+  padding: 0;
+ }
+
+.menu li {
+  color: #8A92A6;
+  padding: 1rem;
+  margin: 8px 0;
+  border-radius: 8px;
+  transition: all 0.5 ease-in-out;
+}
+
+.menu li:hover,.menu a:hover,
+.active {
+  color: #fff;
+  background: #007461;
+}
+
+.menu a.active {
+  color: white;
+}
+
+.menu a {
+  color: inherit;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+
+
+.menu a span {
+  overflow: hidden;
+}
+
+.menu a i {
+  font-size: 1.2rem;
+}
+
+.logout {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+
+.organisation-list {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+}
+.btn {
+  background-color: #007461;
+ }
+
+ .fa-eye{
+   color: #fff;
+ }
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: #fff;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+/* Floating Action Button */
+.fab {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  background-color: #007461;
+  color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+
+
+.fab i {
+  pointer-events: none;
+}
+button.h3{
+  color: #0000;
+  font-size: 1.5rem;
+}
+
+
+
+/* Adjusting the table container */
+.detail {
+  width: 100%; /* Decrease the width of the table */
+  transition: margin-left 0.5s ease-in-out;
+}
+
+.sidebar:hover .detail {
+  margin-left: 260px; /* Move the table further left when sidebar expands */
+  transition: 0.5s;
+}
+
+/* Adjusting the table size and position */
+.table {
+  width: 90%; /* Decrease the width of the table */
+  margin-top: 50px; /* Move the table up */
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for effect */
+}
+
+/* Table header styling */
+.table-dark {
+  background-color: #007461; /* Keep header aligned with theme */
+  color: white;
+}
+
+.product-table th, .product-table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.main
+{
+  display: flex;
+}
+
+
+
+
+.ajout-ORG {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  background-color: #007461;
+  color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+  display: flex;
+  overflow: hidden;
+}
+.ajout-ORG:hover {
+  background-color: #007461;
+  width: 200px;
+}
+/* Sidebar mobile */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    width: 100%;
+    height: 12vh;
+    margin: 0px;
+    padding: 0px;
+    /*height: auto;
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1); */
+  }
+
+  li{
+    height: 12vh;
+    margin: 0;
+    padding: 0;
+  }
+  .menu li {
+    margin: 0;
+    padding: 0px;
+  }
+  .logo {
+    display: none;
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 0;
+    list-style: none;
+  }
+
+  .menu li {
+    flex: 1;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.8rem;
+  }
+
+  .menu a {
+    color: #8A92A6;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu .active,
+  .menu li.active a {
+    color: #007461;
+    font-weight: bold;
+  }
+
+  .menu a .menu-text {
+    display: block;
+    font-size: 0.75rem;
+  }
+
+  /* Enlever les animations de largeur */
+  .sidebar:hover {
+    width: 100%;
+  }
+  .logout{
+    display: none;
+  }
+  /* .detail{
+    margin-bottom: 500px;
+  } */
+  .product-table th:nth-child(3),
+  .product-table th:nth-child(4),
+  .product-table td:nth-child(3),
+  .product-table td:nth-child(4) {
+    display: none; /* Masque les colonnes Prénom et E-mail */
+  }
+
+  .product-table th,
+  .product-table td {
+    font-size: 0.9rem; /* Réduit la taille de la police */
+  }
+}
+

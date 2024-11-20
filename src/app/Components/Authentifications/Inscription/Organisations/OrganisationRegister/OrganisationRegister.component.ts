@@ -201,22 +201,48 @@ export class RegisterOrganisationComponent {
 
   // Soumission du formulaire
   submit(): void {
+    const formData = new FormData();
 
-      if (this.OrganisationRegister.valid) {
-        const user: OrganisationModel = this.OrganisationRegister.value;
+    // Ajoutez tous les champs texte et les fichiers dans formData
+    formData.append('nom', this.OrganisationRegister.get('nom')?.value);
+    formData.append('prenom', this.OrganisationRegister.get('prenom')?.value);
+    formData.append('email', this.OrganisationRegister.get('email')?.value);
+    formData.append('adresse', this.OrganisationRegister.get('adresse')?.value);
+    formData.append('telephone', this.OrganisationRegister.get('telephone')?.value);
+    formData.append('password', this.OrganisationRegister.get('password')?.value);
+    formData.append('confimationMDP', this.OrganisationRegister.get('confimationMDP')?.value);
+    formData.append('nomstructure', this.OrganisationRegister.get('nomstructure')?.value);
+    formData.append('emailstructure', this.OrganisationRegister.get('emailstructure')?.value);
+    formData.append('description', this.OrganisationRegister.get('description')?.value);
+    formData.append('typestructure', this.OrganisationRegister.get('typestructure')?.value);
+    formData.append('siege', this.OrganisationRegister.get('siege')?.value);
+    formData.append('date_creation', this.OrganisationRegister.get('date_creation')?.value);
+    formData.append('fondateur', this.OrganisationRegister.get('fondateur')?.value);
 
-
-        this.authService.registerOrganisation(user).subscribe({
-          next: () => {
-            console.log('inscription reussie avec succès');
-            this.router.navigate(['/connexion']);
-          },
-          error: (err) => {
-            console.error('Erreur lors de l\'inscription', err);
-          }
-        });
+    // Ajoutez les fichiers si sélectionnés
+    if (this.selectedFile) {
+      formData.append('photo_profile', this.selectedFile);
     }
+    if (this.selectedLogo) {
+      formData.append('logo', this.selectedLogo);
+    }
+    if (this.selectedRecepisse) {
+      formData.append('recepisse', this.selectedRecepisse);
+    }
+
+    // Envoyer les données
+    this.authService.registerOrganisation(formData).subscribe({
+      next: () => {
+        console.log('Inscription réussie avec succès');
+        this.router.navigate(['/connexion']);
+      },
+      error: (err) => {
+        console.error('Erreur lors de l\'inscription', err.error); // Affichez les erreurs précises
+      }
+    });
   }
+
+
 
 
     // Méthode pour afficher le formulaire de connexion

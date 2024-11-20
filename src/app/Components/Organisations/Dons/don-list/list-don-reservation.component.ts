@@ -19,7 +19,7 @@ import { ReservationComponent } from "../../Reservations/reservation/reservation
     ReservationComponent
 ],
   templateUrl: './list-don-reservation.component.html',
-  styleUrl: './don-list.component.css'
+  styleUrl: './list-don-reservation.component.css'
 })
 export class ListDonReservationComponent implements OnInit {
   dons: DonModel[] = [];
@@ -36,7 +36,6 @@ export class ListDonReservationComponent implements OnInit {
   ngOnInit(): void {
     this.getAllDons();
     this.getUserId(); // Récupérer l'utilisateur connecté
-
   }
     userRole!: string;
   // Méthode pour récupérer l'ID de l'utilisateur connecté depuis le token ou session
@@ -62,7 +61,68 @@ export class ListDonReservationComponent implements OnInit {
       return this.userRole === 'organisation'; // Adapter selon votre gestion des rôles
     }
 
+    getDonsConfirmerForOrganisation(): void {
+      const token = localStorage.getItem('access_token');
+      if (token) {
+        this.DonService.getDonsConfirmerForOrganisation().subscribe(
+          (response: any) => {
+            if (Array.isArray(response.data)) {
+              this.dons = response.data;
+              console.log('dons:', this.dons);
+              this.dons.forEach((dons: DonModel) => {
+                dons.image = dons.image ? `http://127.0.0.1:8000/storage/${dons.image}` : 'https://img.freepik.com/photos-gratuite/pot-miel-cote-pot-miel_1340-23142.jpg?ga=GA1.1.242611404.1703246724&semt=ais_hybrid',
+                dons.id = dons.id
+              });
 
+              this.getNombreDonsUtilisateur();
+            }
+
+          },
+          (error) => {
+            if (error.status === 401) {
+              this.showAlert('Erreur', 'Session expirée. Veuillez vous reconnecter.', 'error');
+              this.router.navigate(['/connexion']);
+            } else {
+              console.error('Erreur lors de la récupération des dons:', error);
+            }
+          }
+        );
+      } else {
+        this.showAlert('Erreur', 'Vous devez être connecté pour voir cette page.', 'error');
+        this.router.navigate(['/connexion']);
+      }
+    }
+    getDonsEnAttenteForOrganisation(): void {
+      const token = localStorage.getItem('access_token');
+      if (token) {
+        this.DonService.getDonsEnAttenteForOrganisation().subscribe(
+          (response: any) => {
+            if (Array.isArray(response.data)) {
+              this.dons = response.data;
+              console.log('dons:', this.dons);
+              this.dons.forEach((dons: DonModel) => {
+                dons.image = dons.image ? `http://127.0.0.1:8000/storage/${dons.image}` : 'https://img.freepik.com/photos-gratuite/pot-miel-cote-pot-miel_1340-23142.jpg?ga=GA1.1.242611404.1703246724&semt=ais_hybrid',
+                dons.id = dons.id
+              });
+
+              this.getNombreDonsUtilisateur();
+            }
+
+          },
+          (error) => {
+            if (error.status === 401) {
+              this.showAlert('Erreur', 'Session expirée. Veuillez vous reconnecter.', 'error');
+              this.router.navigate(['/connexion']);
+            } else {
+              console.error('Erreur lors de la récupération des dons:', error);
+            }
+          }
+        );
+      } else {
+        this.showAlert('Erreur', 'Vous devez être connecté pour voir cette page.', 'error');
+        this.router.navigate(['/connexion']);
+      }
+    }
 
 
   // Récupérer tous les dons et calculer le nombre de dons de l'utilisateur connecté
@@ -97,6 +157,9 @@ export class ListDonReservationComponent implements OnInit {
       this.router.navigate(['/connexion']);
     }
   }
+
+
+
   // Filtrer les dons par utilisateur connecté
   // Calculer le nombre de dons créés par l'utilisateur connecté
   getNombreDonsUtilisateur(): void {

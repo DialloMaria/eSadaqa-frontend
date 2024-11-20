@@ -1,0 +1,553 @@
+/* Menu-bar */
+.menu-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(10, 80, 0, 0.3);
+  color: #00715D;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  z-index: 500;
+  position: relative;
+}
+
+.logo-img {
+  width: 100px; /* Taille du logo */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li {
+  display: inline;
+}
+
+.nav-links a {
+  color: #00715D;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  color: #00715D;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.notification-icon {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.user-name {
+  font-weight: bold;
+}
+
+.user-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* Banner Section */
+.banner-section {
+  height: 500px;
+  background-image: url('../../../../../assets/images/donation.png');
+  background-size: cover;
+  background-position: bottom center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  margin-top: 10px;
+}
+/* .banner-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 113, 93, 0.7), rgba(0, 113, 93, 0.5)); Vert foncé
+  z-index: 1;
+} */
+
+.banner-content {
+  text-align: center;
+  color: white;
+  position: relative;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.banner-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.banner-text {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+/* .btn-banner {
+  padding: 10px 20px;
+  background-color: #ff6137;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-banner:hover {
+  background-color: #ce0033;
+} */
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Style de la carte de compteur de dons */
+.don-count-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 250px;
+  height: 100px;
+  background-color: #D4A017; /* Couleur similaire à l'image */
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin-right: 20px; /* Ajuste selon l'emplacement souhaité */
+  margin-top: -50px;
+  margin-left: auto; /* Centers the card in the available space */
+  margin-right: 18rem; /* Centers the card in the available space */
+  position: relative;
+}
+.menu-bar {
+  margin-top: -8px;
+  z-index: 20;
+}
+/* Style du cercle contenant le nombre de dons */
+.cercle {
+  width: 70px;
+  height: 70px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.don-count {
+  font-size: 2rem;
+  color: #00715D; /* Couleur verte */
+  margin: 0;
+  font-weight: bold;
+}
+
+/* Texte à droite du cercle */
+.don-text {
+  text-align: center;
+  font-size: 1rem;
+  color: white;
+  font-weight: bold;
+}
+
+/* Media Queries pour le responsive */
+
+/* Pour les petits écrans */
+@media (max-width: 768px) {
+  .banner-title {
+    font-size: 2.5rem;
+  }
+
+  .banner-text {
+    font-size: 1.2rem;
+  }
+
+  .btn-banner {
+    padding: 8px 15px;
+  }
+
+  .menu-bar {
+    flex-direction: column; /* Stack menu items vertically */
+    align-items: flex-start; /* Align items to the left */
+  }
+
+  .user-info {
+    margin-top: 10px;
+    width: 100%; /* Full width on smaller screens */
+    justify-content: space-between; /* Space between notification and user name */
+  }
+
+  .don-count-card {
+    width: 80%; /* Responsive width for smaller screens */
+    margin: 20px auto; /* Center with auto margins */
+    padding: 15px;
+  }
+
+  .don-count-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .don-count-card p {
+    font-size: 1rem;
+  }
+}
+
+/* Responsive cards for the list of donations */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.don-card {
+  width: 30%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  background-color: white;
+  margin: 10px;
+}
+
+.don-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.don-card-body {
+  padding: 15px;
+  text-align: left;
+}
+
+.don-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.don-description {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.don-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* Button Styles */
+.btn-add {
+  color: #00715D;
+  border-radius: 15px;
+  border: 3px solid #00715D;
+  text-decoration: none;
+}
+
+.btn-detail {
+  color: #666;
+  background-color: white;
+  border-radius: 15px;
+  border: 3px solid #666;
+}
+
+.btn-modifier {
+  background-color: white;
+  color: #ffc107;
+  border-radius: 15px;
+  border: 3px solid #ffc107;
+}
+
+.btn-supprimer {
+  background-color: white;
+  color: #dc3545;
+  border-radius: 15px;
+  border: 3px solid #dc3545;
+}
+
+.btn-supprimer:hover {
+  border: 3px solid red;
+}
+
+.btn-annuler {
+  background-color: white;
+  color: #666;
+  border-radius: 15px;
+  border: 3px solid #666;
+}
+
+.btn-annuler:hover {
+  border: 3px solid red;
+}
+
+/* Responsive styles for donation cards */
+/* Pour les tablettes en mode portrait (768px et plus) */
+@media (max-width: 768px) {
+  .don-card {
+    width: 45%; /* Deux cartes par ligne sur les écrans moyens */
+  }
+}
+
+/* Pour les smartphones (576px et plus) */
+@media (max-width: 576px) {
+  .don-card {
+    width: 100%; /* Une seule carte par ligne sur les petits écrans */
+  }
+
+  .don-buttons {
+    flex-direction: column; /* Empile les boutons sur les petits écrans */
+    align-items: center;
+  }
+
+  .don-buttons button {
+    margin-bottom: 10px;
+    width: 100%; /* Full width buttons */
+  }
+}
+
+
+/*       ANIMATION        */
+
+/* Existing styles... */
+
+/* Button Styles */
+.btn-add,
+.btn-detail,
+.btn-modifier,
+.btn-supprimer {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-add:hover,
+.btn-detail:hover,
+.btn-modifier:hover,
+.btn-supprimer:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #00715D;
+}
+
+.btn-supprimer:hover {
+  color: #dc3545;
+  border: 3px solid #dc3545;
+}
+
+.btn-modifier:hover {
+  color: #ffc107;
+  border: 3px solid #ffc107;
+}
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.09);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.btn-add {
+  animation: pulsate 1.5s infinite;
+}
+
+/* Card Hover Effects */
+.don-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.don-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Image Hover Effects */
+.don-img {
+  transition: transform 0.3s ease;
+}
+
+.don-card:hover .don-img {
+  transform: scale(1.05);
+}
+
+/* Banner Button Hover Effects */
+.btn-banner {
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.btn-banner::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 113, 93, 0.5);
+  transition: transform 0.3s ease;
+  transform: translateY(-100%);
+  z-index: 1;
+}
+
+.btn-banner:hover::after {
+  transform: translateY(0);
+}
+
+.btn-banner:hover {
+  color: white;
+}
+
+/* Notification Icon Animation */
+.notification-icon {
+  transition: transform 0.3s ease;
+}
+
+.notification-icon:hover {
+  transform: translateY(-5px) rotate(20deg);
+}
+
+
+
+.btn-add, .btn-detail, .btn-modifier, .btn-supprimer {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-add:hover, .btn-detail:hover, .btn-modifier:hover, .btn-supprimer:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+/************************************FOOTER********************************/
+.footer {
+  background-color: #00715D;
+  color: white;
+  padding: 20px 0;
+  height: 250px;
+}
+
+
+.footer-links a {
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
+
+.dropdown-menu {
+  top: 30px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  padding: 10px;
+  /* z-index: 3; */
+}
+
+.dropdown-menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-menu ul li {
+  padding: 5px 0;
+}
+
+.dropdown-menu ul li:hover {
+  background-color: #f0f0f0;
+}
+
+.notification-icon {
+  cursor: pointer;
+  font-size: 24px;
+}
+
+
+.notification-item {
+  border: 1px solid #ccc;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+.notification-dropdown .btn-secondary {
+  background-color: #00715D;
+  border: none;
+  color: white;
+}
+
+.notification-dropdown .btn-secondary:focus,
+.notification-dropdown .btn-secondary:hover {
+  background-color: #D4A017;
+}
+.notification-dropdown {
+  position: relative;
+  margin-right: 10px; /* Space between user name and bell icon */
+}
+
+.notification-icon {
+  font-size: 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+.notification-dropdown .dropdown-menu {
+  right: 0; /* Align dropdown to the right */
+  left: auto; /* Cancel any left alignment */
+}
+.dropdown-menu-dark {
+  background-color: #343a40;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+
+
+
+.notification-icon {
+  position: relative;
+  display: inline-block;
+  margin-right: 5px; /* Espacement entre l'icône et le badge */
+}
+
+.badge {
+  position: absolute;
+  top: -5px; /* Ajustez la position verticale */
+  right: -10px; /* Ajustez la position horizontale */
+  background-color: red; /* Choisissez une couleur pour le badge */
+  color: white; /* Couleur du texte */
+  border-radius: 50%; /* Badge circulaire */
+  padding: 0.25em 0.5em; /* Espacement interne */
+  font-size: 0.75em; /* Taille du texte du badge */
+}

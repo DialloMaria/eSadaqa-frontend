@@ -14,6 +14,7 @@
       <span class="user-name">{{ prenom }}</span>
       <!-- <img [src]="photo_profile" alt="Profile" class="user-photo"> -->
     </button>
+    <!-- <button [routerLink]="['/profilOrganisation']"  >Profile</button> -->
     <ul class="dropdown-menu" aria-labelledby="userDropdown">
       <li>
         <button  type="button"[routerLink]="['/connexion']"  class="btn btn-add mb-3 animate__animated animate__bounce" routerLinkerActive="active">
@@ -22,7 +23,7 @@
       </li>
     </ul>
   </div>
-
+  
 </div>
 
 <!-- Section de la bannière -->
@@ -37,24 +38,18 @@
 
 </div>
 
-<!-- <div class="don-count-card">
-  <div class="cercle">
-    <p class="don-count">{{ nombreDonsUtilisateur }}</p>
-  </div>
-  <p class=" don-text">DON OFFERTS</p>
-</div> -->
 
 <div class="container my-5">
   <h2 class="text-center mb-4">Liste des Dons</h2>
-  <!-- <button  type="button" class="btn btn-primary mt-5" class="btn btn-add mb-3 animate__animated animate__bounce" data-bs-toggle="modal" data-bs-target="#donModal">
-    Ajouter un Don
-  </button> -->
 
-  <!-- <a routerLink="/dons/add" class="btn btn-add mb-3 animate__animated animate__bounce" data-bs-toggle="modal" data-bs-target="#donModal">Ajouter un Don</a> -->
+  <div class="filterBouton d-flex gap-2">
+    <button class="btn btn-success" (click)="getAllDons()" type="button">Don</button>
+    <button class="btn btn-success" (click)="getDonsConfirmerForOrganisation()" type="button">Don confirmer</button>
+    <button class="btn btn-success" (click)="getDonsEnAttenteForOrganisation()" type="button">Don En_attente</button>
+  </div>
 
   <div class="cards-container">
     <div class="don-card animate__animated animate__fadeInUp" *ngFor="let don of dons">
-      <!-- *ngIf="don.created_by && isDonCreator(don.created_by)" -->
       <div>
         <img [src]="don.image || 'https://via.placeholder.com/300'" class="don-img">
 
@@ -69,7 +64,7 @@
               <button class="btn btn-supprimer" (click)="deleteDon(don.id)">Supprimer</button>
             </ng-container>
 
-            <ng-container *ngIf="userRole === 'organisation'">
+            <ng-container *ngIf="userRole === 'organisation' && don.status !== 'confirme' && don.status !== 'en_attente'">
               <button class="btn btn-success" (click)="reserverDon(don.id ?? 0)" type="button" data-bs-toggle="modal" data-bs-target="#reservationModal">Réserver</button>
             </ng-container>
           </div>

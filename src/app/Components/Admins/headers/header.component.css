@@ -1,0 +1,315 @@
+
+
+/* Header styles */
+.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 2rem;
+  background-color: #007461; /* Couleur de fond de l'en-tête */
+  color: #fff;
+  width: auto;
+  height: 100px;
+  box-shadow: 0px 4px 6px rgba(150, 146, 146, 0.555);
+}
+
+.welcome-message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.welcome-message i {
+  font-size: 1.5rem;
+}
+
+.welcome-message .username {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.sidebar {
+
+  position: sticky;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 110px;
+  height: 100vh;
+  padding: 0 1.7rem;
+  color: #fff;
+  overflow: hidden;
+  transition: all 0.5s linear;
+  background: #fff;
+  box-shadow: 0px 10px 25px #297fb918;
+  z-index: 5;
+}
+
+.sidebar:hover {
+  width: 260px;
+  transition: 0.5s;
+}
+
+.logo {
+  color: #2980B9;
+  height: 80px;
+  padding: 16px;
+}
+
+.menu {
+  height: 88%;
+  position: relative;
+  list-style: none;
+  padding: 0;
+}
+
+.menu li {
+  color: #8A92A6;
+  padding: 1rem;
+  margin: 8px 0;
+  border-radius: 8px;
+  transition: all 0.5 ease-in-out;
+}
+
+.menu li:hover,.menu a:hover,
+.active {
+  color: #fff;
+  background: #007461;
+}
+
+.menu a.active {
+  color: white;
+}
+
+.menu a {
+  color: inherit;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+
+.menu a span {
+  overflow: hidden;
+}
+
+.menu a i {
+  font-size: 1.2rem;
+}
+
+.logout {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+
+.datepicker-custom {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  background-color: #f9f9f9;
+  max-width: 400px;
+}
+
+.datepicker-custom .bs-datepicker-head {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.datepicker-custom .bs-datepicker-body {
+  padding: 10px;
+}
+
+.datepicker-custom td {
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.datepicker-custom td:hover {
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.datepicker-custom td.selected,
+.datepicker-custom td.active {
+  background-color: #28a745;
+  color: white;
+}
+
+.datepicker-custom .bs-datepicker-nav button {
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+
+.datepicker-custom .bs-datepicker-nav button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.datepicker-custom th {
+  padding: 10px;
+  background-color: #e9ecef;
+}
+
+.datepicker-custom .bs-datepicker {
+  border: none;
+  box-shadow: none;
+}
+
+.diagram{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+justify-content: center;
+}
+canvas {
+  max-width: 50%;
+  max-height: 500px; /* Limiter la hauteur */
+}
+
+
+.diagramBar {
+  width: 50%; /* Ajuste la largeur du graphique */
+  margin: 0 auto; /* Centre le graphique */
+}
+
+/* Styles pour les cartes */
+.dashboard-cards {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem auto;
+  padding: 1rem;
+  padding: 0 100px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+  width: 23%;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card i {
+  font-size: 3rem;
+  color: #007461;
+  margin-bottom: 1rem;
+}
+
+.card h3 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.card p {
+  font-size: 1.2rem;
+  color: #007461;
+  margin: 0;
+}
+
+
+
+.main{
+  display: flex;
+}
+.contenu
+{
+  position: relative;
+  width: 100%;
+
+}
+
+
+
+
+
+
+
+  /* Error message styling */
+  .alert-danger {
+    border-radius: 10px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+
+.donnes {
+display: flex;
+  margin: 0 100px;
+  padding: 20px;
+  gap: 50px;
+
+}
+
+.diagram {
+  background-color: #f8f9fa; /* Couleur de fond douce */
+  border: 1px solid #ced4da; /* Bordure pour délimiter la section */
+  border-radius: 10px; /* Coins arrondis */
+  text-align: center;
+  width: 100%; /* Assurez-vous que le conteneur a la largeur souhaitée */
+  margin-bottom: 30px; /* Espace entre le diagramme et le reste */
+}
+.diagramBar {
+  background-color: #f8f9fa; /* Couleur de fond douce */
+  border: 1px solid #ced4da; /* Bordure pour délimiter la section */
+  border-radius: 10px; /* Coins arrondis */
+  text-align: center;
+  width: 100%; /* Assurez-vous que le conteneur a la largeur souhaitée */
+  height: auto; /* Hauteur du conteneur */
+}
+
+#productChart {
+  max-width: 100%; /* S'assurer que le diagramme ne dépasse pas la largeur de son conteneur */
+  height: 200px; /* Hauteur automatique pour un bon rapport d'aspect */
+}
+
+#donChart {
+  max-width: 100%; /* S'assurer que le diagramme ne dépasse pas la largeur de son conteneur */
+  height: 200px; /* Hauteur automatique pour un bon rapport d'aspect */
+}
+
+
+
+
+canvas {
+  max-width: 100%; /* Pour s'assurer que le canvas s'adapte au conteneur */
+  height: auto; /* Pour garder le rapport d'aspect */
+}
+
+
+@media (max-width: 768px) {
+
+
+  .header {
+    height: 50px;
+    margin-top: 0px;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+
+  }
+
+}

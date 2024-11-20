@@ -1,73 +1,57 @@
-<!-- <section  class="detail">
-=  <table class="table table-hover table-striped product-table">
-    <thead class="table-dark">
-      <tr>
-        <tr>
-        <th scope="col">Nom</th>
-        <th scope="col">Prenom</th>
-        <th scope="col">E-mail</th>
-        <th scope="col">Telephone</th>
-        <th scope="col">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let organisation of organisations">
-        <td>{{ organisation.nomstructure }}</td>
-        <td>{{ organisation.emailstructure }}</td>
-        <td>{{ organisation }}</td>
-
-
-        <td>
-          <button class="btn btn-success btn-sm">
-            <i class="fas fa-edit"></i>
-          </button>
-          <button class="btn btn-danger btn-sm">
-            <i class="fas fa-trash-alt"></i>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-</section> -->
-
-<app-admin-dashbord-menu></app-admin-dashbord-menu>
 
 <div class="main">
 
-<section class="detail">
-  <h2 class="text-center my-4">Liste des Organisations</h2>
-  <table class="table table-hover table-striped product-table">
-    <thead class="table-dark">
-      <tr>
-        <th scope="col">Nom</th>
-        <th scope="col">Prenom</th>
-        <th scope="col">E-mail</th>
-        <th scope="col">Téléphone</th>
-        <th scope="col">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let organisation of organisations">
-        <td>{{ organisation.user?.nom }}</td>
-        <td>{{ organisation.user?.prenom }}</td>
-        <td>{{ organisation.user?.email }}</td>
-        <td>{{ organisation.user?.telephone }}</td>
-        <td>
-          <button class="btn btn-success btn-sm">
-            <i class="fas fa-edit"></i>
-          </button>
-          <button class="btn btn-danger btn-sm">
-            <i class="fas fa-trash-alt"></i>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</section>
+  <app-sidebar></app-sidebar>
+
+  <div class="contenu">
+   <app-headers></app-headers>
+
+  <div class="detail">
+
+    <h2 class="text-center my-4">Liste des Beneficiaires</h2>
+    <table class="table table-hover table-striped product-table">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Nom</th>
+          <th scope="col">Prénom</th>
+          <th scope="col">E-mail</th>
+          <th scope="col">Téléphone</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let beneficiaire of beneficiaires">
+
+          <td>{{ beneficiaire.nom }}</td>
+          <td>{{ beneficiaire.prenom }}</td>
+          <td>{{ beneficiaire.email }}</td>
+          <td>{{ beneficiaire.telephone }}</td>
+          <td>
+            <!-- <button class="btn btn-success btn-sm" >
+              <i class="fas fa-edit"></i>
+            </button>
+            <button class="btn btn-danger btn-sm" >
+              <i class="fas fa-trash-alt"></i>
+            </button> -->
+            <button [routerLink]="['/profilDetailBeneficiaire',beneficiaire.id]" class="btn  btn-sm" title="Voir détails">
+              <i class="fas fa-eye"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  </div>
 
 </div>
-<!-- Floating Action Button -->
-<button class="fab btn btn-primary">
-  <i class="fas fa-plus"></i>
-</button>
+
+<div class="ajout-ORG">
+  <span></span>
+  <button [routerLink]="['/ajout/beneficiaire']" class="fab btn btn-primary">
+    <i class="fas fa-plus"></i>
+  </button>
+</div>
+
+

@@ -1,0 +1,95 @@
+
+
+<div class="main">
+
+  <app-sidebar></app-sidebar>
+
+  <div class="contenu">
+
+    <app-headers></app-headers>
+
+    <div class="container my-5 animate__animated animate__fadeIn animate__delay-1s">
+      <!-- Bouton Retour -->
+        <button [routerLink]="['/dashboard/Beneficiaire']" class="btn-back animate__animated animate__fadeInLeft animate__delay-1s">
+          ← Retour
+        </button>
+
+      <!-- Profile Header -->
+      <div  *ngFor="let ProfilDetailBeneficiaire of ProfilDetailBeneficiaires" class="profile-header animate__animated animate__slideInLeft animate__delay-1s">
+        <img
+          *ngIf="ProfilDetailBeneficiaire.user?.photo_profile"
+          [src]="ProfilDetailBeneficiaire.user?.photo_profile"
+          alt="Photo de profil"
+          class="img-thumbnail animate__animated animate__zoomIn animate__delay-1s"
+        />
+        <div
+        >
+          <h3>{{ ProfilDetailBeneficiaire.prenom }} {{ ProfilDetailBeneficiaire.nom }}</h3>
+        </div>
+      </div>
+
+      <!-- User Information Section -->
+      <div *ngFor="let ProfilDetailBeneficiaire of ProfilDetailBeneficiaires"
+      class="profile-section animate__animated animate__fadeInUp animate__delay-2s">
+        <h4>Information</h4>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Prénom</label>
+            <p>{{ ProfilDetailBeneficiaire.prenom }}</p>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Nom</label>
+            <p>{{ ProfilDetailBeneficiaire.nom }}</p>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Adresse email</label>
+            <p>{{ ProfilDetailBeneficiaire.email }}</p>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Téléphone</label>
+            <p>{{ ProfilDetailBeneficiaire.telephone }}</p>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Adresse</label>
+            <p>{{ ProfilDetailBeneficiaire.adresse }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Structure Information Section (displayed only if `donateur` has data) -->
+    <!-- Structure Information Section (displayed only if `beneficiaire` has data) -->
+    <div
+      class="profile-section animate__animated animate__fadeInUp animate__delay-3s"
+      *ngFor="let ProfilDetailBeneficiaire of ProfilDetailBeneficiaires"  >
+
+      <h4>Information de la structure</h4>
+      <div class="row">
+        <div class="col-md-6 mb-3" *ngIf="ProfilDetailBeneficiaire.beneficiaire?.nomstructure">
+          <label class="form-label">Nom de la structure</label>
+          <p>{{ ProfilDetailBeneficiaire.beneficiaire.nomstructure }}</p>
+        </div>
+        <div class="col-md-6 mb-3" *ngIf="ProfilDetailBeneficiaire.beneficiaire?.siege">
+          <label class="form-label">Siège</label>
+          <p>{{ ProfilDetailBeneficiaire.beneficiaire.siege }}</p>
+        </div>
+        <div class="col-md-6 mb-3" *ngIf="ProfilDetailBeneficiaire.beneficiaire?.emailstructure">
+          <label class="form-label">Email de la structure</label>
+          <p>{{ ProfilDetailBeneficiaire.beneficiaire.emailstructure }}</p>
+        </div>
+        <div class="col-md-6 mb-3" *ngIf="ProfilDetailBeneficiaire.beneficiaire?.date_creation">
+          <label class="form-label">Date de création</label>
+          <p>{{ ProfilDetailBeneficiaire.beneficiaire.date_creation }}</p>
+        </div>
+        <div class="col-md-6 mb-3" *ngIf="ProfilDetailBeneficiaire.beneficiaire?.description">
+          <label class="form-label">Description</label>
+          <p>{{ ProfilDetailBeneficiaire.beneficiaire.description }}</p>
+        </div>
+      </div>
+    </div>
+
+
+    </div>
+
+  </div>
+
+</div>

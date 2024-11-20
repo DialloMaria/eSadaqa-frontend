@@ -5,7 +5,7 @@ export interface DonModel {
   libelle?: string;
   description?: string;
   categorie?: 'monetaire' | 'produit'; // Enum
-  status?: 'en_attente' | 'reservé' | 'distribué'; // Enum
+  status?: 'en_attente' | 'reservé' | 'confirme' | 'distribué'; // Enum
   adresse?: string;
   image?: string;
   created_by?: number;

@@ -32,7 +32,8 @@
 
 <div class="container mt-4">
   <!-- Modal -->
-  <div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
+    <div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true" data-bs-backdrop="false">
+=
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -41,7 +42,7 @@
         </div>
         <div class="modal-body">
           <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
-            
+
             <div class="form-group">
               <label for="description">Description</label>
               <input id="description" formControlName="description" class="form-control" placeholder="Entrez la description de la réservation" />

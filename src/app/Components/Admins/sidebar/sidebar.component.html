@@ -1,0 +1,54 @@
+
+<div class="burger-menu" (click)="toggleSidebar()">
+  <i class="fas fa-bars"></i>
+</div>
+
+  <div class="sidebar"  [class.active]="isSidebarOpen">
+      <div class="logo"></div>
+      <ul class="menu">
+        <li [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
+          <a href="#" [routerLink]="['/dashboard']" class="menu-item">
+            <i class="fas fa-tachometer-alt"></i>
+            <span class="menu-text">Dashboard</span>
+          </a>
+        </li>
+
+       <li [routerLinkActive]="'active'">
+          <a href="#" [routerLink]="['/dashboard/dons']" class="menu-item">
+            <i class="fas fa-gift"></i>
+            <span class="menu-text">Dons</span>
+          </a>
+        </li>
+
+       <li [routerLinkActive]="'active'">
+          <a href="#" [routerLink]="['/dashboard/donateurs']" class="menu-item">
+            <i class="fas fa-users"></i>
+            <span class="menu-text">Donateurs</span>
+          </a>
+        </li>
+       <li [routerLinkActive]="'active'">
+          <a href="#"     [routerLink]="['/dashboard/organisation']" class="menu-item">
+            <i class="fas fa-building"></i>
+            <span class="menu-text">Organisations</span>
+          </a>
+        </li>
+
+       <li [routerLinkActive]="'active'">
+          <a href="#" [routerLink]="['/dashboard/Beneficiaire']" class="menu-item">
+            <i class="fas fa-hand-holding-heart"></i>
+            <span class="menu-text">Bénéficiaires</span>
+          </a>
+
+        </li>
+
+        <li class="logout">
+          <a  (click)="logout()">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Deconnexion</span>
+          </a>
+        </li>
+      </ul>
+  </div>
+
+
+

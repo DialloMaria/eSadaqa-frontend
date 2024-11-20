@@ -29,6 +29,30 @@ export class DonService {
     return this.http.get<{ message: string; data: DonModel[] }>(`${apiUrl}/don/affichage`, { headers });
 }
 
+  // Méthode pour récupérer les dons avec le token JWT
+  getAllDons(): Observable<{ message: string; data: DonModel[] }> {
+    const token = this.authService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.get<{ message: string; data: DonModel[] }>(`${apiUrl}/admin/don/affichage`, { headers });
+}
+
+getDonsConfirmerForOrganisation(): Observable<{ message: string; data: DonModel[] }> {
+  const token = this.authService.getToken();
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+  return this.http.get<{ message: string; data: DonModel[] }>(`${apiUrl}/don/confirmer/organisation`, { headers });
+}
+
+getDonsEnAttenteForOrganisation(): Observable<{ message: string; data: DonModel[] }> {
+  const token = this.authService.getToken();
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+  return this.http.get<{ message: string; data: DonModel[] }>(`${apiUrl}/don/enAttente/organisation`, { headers });
+}
+
+
+
 
   // Supprime un don
   deleteDon(id: number): Observable<void> {

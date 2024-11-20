@@ -18,6 +18,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { ProduitModel } from '../../../Models/TypeProduit.model';
 import { Chart } from 'chart.js';
 import { ProduitService } from '../../../Services/produit.Service';
+import { HeadersComponent } from '../headers/header.component';
+import { SiderbarComponent } from '../sidebar/sidebar.component';
 
 
 @Component({
@@ -34,6 +36,8 @@ import { ProduitService } from '../../../Services/produit.Service';
     MatDatepickerModule,
     MatNativeDateModule,
     BsDatepickerModule,
+    HeadersComponent,
+    SiderbarComponent
   ],
   templateUrl: './list-don.component.html',
   styleUrl: './list-don.component.css'
@@ -94,7 +98,7 @@ export class ListDonComponent implements OnInit {
   getAllDons(): void {
     const token = localStorage.getItem('access_token');
     if (token) {
-      this.DonService.getDons().subscribe(
+      this.DonService.getAllDons().subscribe(
         (response: any) => {
           if (Array.isArray(response.data)) {
             this.dons = response.data;

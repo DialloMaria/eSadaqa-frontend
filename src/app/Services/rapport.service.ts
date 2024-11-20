@@ -18,4 +18,6 @@ export class RapportService {
     return this.http.post<any>(`${apiUrl}/generate-rapport/`, {reservation_id} , {headers});
 
   }
+
+
 }

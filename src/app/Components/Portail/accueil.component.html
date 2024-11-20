@@ -1,9 +1,10 @@
-<div class="container">
+
   <!-- Section du Menu -->
   <header class="header">
     <nav class="navbar animate__animated animate__fadeInDown">
-      <a class="logo" >e-Sadaqa
-        <img src="assets/logo.png" alt="" width="120">
+
+      <a class="logo" >
+        <img src="../../../assets/logo/Image collée 1.png" alt="" >
       </a>
       <div class="menu-toggle" id="mobile-menu">
         <span class="bar"></span>
@@ -19,10 +20,15 @@
       <a class="btn-inscription" [routerLink]="['/demande']">Inscription</a>
     </nav>
   </header>
+  <script>
+    document.getElementById('mobile-menu').addEventListener('click', function() {
+      const navLinks = document.getElementById('nav-links');
+      navLinks.classList.toggle('active');
+    });
+  </script>
 
   <!-- Section de la Bannière -->
 
-</div>
 <section class="banner">
   <div class="banner-content animate__animated animate__fadeInLeft">
     <h1 class="banner-title animate__animated animate__fadeInDown">Bienvenue sur notre portail</h1>
@@ -54,48 +60,35 @@
 
 
 
-    <section class="group">
-      <div class="">
-      <div class="overlap">
-        <div class="text-wrapper">Transparence</div>
-        <p class="div">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna
-        </p>
-        <div class="rectangle"></div>
-      </div>
+<section class="group">
+  <div class="overlap">
+    <div class="text-wrapper">Transparence</div>
+    <p class="div">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+    <div class="rectangle"></div>
+  </div>
 
-      <div class="overlap-group">
-        <div class="text-wrapper-2">Lorem</div>
-        <p class="div">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna
-        </p>
-        <div class="rectangle"></div>
-      </div>
+  <div class="overlap-group">
+    <div class="text-wrapper-2">Lorem</div>
+    <p class="div">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+    <div class="rectangle"></div>
+  </div>
 
-      <div class="overlap-group-2">
-        <div class="text-wrapper-3">Partage</div>
-        <p class="div">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna
-        </p>
-        <div class="rectangle"></div>
-      </div>
+  <div class="overlap-group-2">
+    <div class="text-wrapper-3">Partage</div>
+    <p class="div">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+    <div class="rectangle"></div>
+  </div>
 
-      <div class="overlap-2">
-        <div class="text-wrapper-2">Lorem</div>
-        <p class="div">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna
-        </p>
-        <div class="rectangle"></div>
-      </div>
+  <div class="overlap-2">
+    <div class="text-wrapper-2">Lorem</div>
+    <p class="div">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+    <div class="rectangle"></div>
+  </div>
 
-      <div class="text-wrapper-4">Nos valeurs</div>
-      <p class="p">Lorem ipsum dolor sit amet</p>
-    </div>
-    </section>
+  <div class="text-wrapper-4">Nos valeurs</div>
+  <p class="p">Lorem ipsum dolor sit amet</p>
+</section>
+
 <!--
 
     <section class="group">
@@ -154,7 +147,7 @@
       <div class="don-text-content">
         <h4>Votre Don Peut Tout Changer</h4>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-        <button>Je veux faire un Don</button>
+        <button class="btn btn-add mb-3 animate__animated animate__bounce" [routerLink]="['/connexion']">Je veux faire un Don</button>
       </div>
       <div class="don-image-content">
         <img src="../../../assets/images/senegal.png" alt="A propos image"> <!-- Décommentez pour activer l'image -->

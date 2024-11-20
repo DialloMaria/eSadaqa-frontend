@@ -2,60 +2,11 @@
 
 <div class="main">
 
-  <div class="sidebar">
-      <div class="logo"></div>
-      <ul class="menu">
-        <li class="active">
-          <a href="#" class="menu-item">
-            <i class="fas fa-tachometer-alt"></i>
-            <span class="menu-text">Dashboard</span>
-          </a>
-        </li>
 
-        <li>
-          <a href="#" [routerLink]="['/dashboard/dons']" class="menu-item">
-            <i class="fas fa-gift"></i>
-            <span class="menu-text">Dons</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="#" class="menu-item">
-            <i class="fas fa-users"></i>
-            <span class="menu-text">Donateurs</span>
-          </a>
-        </li>
-        <li>
-          <a href="#"     [routerLink]="['/dashboard/organisation']" class="menu-item">
-            <i class="fas fa-building"></i>
-            <span class="menu-text">Organisations</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="#" class="menu-item">
-            <i class="fas fa-hand-holding-heart"></i>
-            <span class="menu-text">Bénéficiaires</span>
-          </a>
-        </li>
-
-        <li class="logout">
-          <a href="#" [routerLink]="['/connexion']">
-            <i class="fas fa-sign-out-alt"></i>
-            <span>Deconnexion</span>
-          </a>
-        </li>
-      </ul>
-  </div>
+  <app-sidebar></app-sidebar>
 
   <div class="contenu">
-    <div class="header">
-      <div class="welcome-message">
-        <i class="fas fa-user-circle"></i>
-        <span class="username">Mariam</span>
-      </div>
-    </div>
-
+   <app-headers></app-headers>
 
     <!-- Section des cartes -->
     <div class="dashboard-cards">
@@ -63,7 +14,7 @@
         <i class="fas fa-gift"></i>
         <div class="card-content">
           <h3>Nombre de Dons</h3>
-          <p>250</p>
+          <p>{{ nombreDonsUtilisateur }}</p>
         </div>
       </div>
 
@@ -87,7 +38,7 @@
         <i class="fas fa-building"></i>
         <div class="card-content">
           <h3>Nombre d'Organisations</h3>
-          <p>45</p>
+          <p>{{ nombreDonsUtilisateur }}</p>
         </div>
       </div>
     </div>
@@ -98,9 +49,9 @@
         <!-- Adjust the size of the canvas -->
         <canvas id="donChart" width="50%" height="90%"></canvas>
       </div>
+
       <div class="diagramBar">
         <h2>Produits les plus fournis</h2>
-       
         <canvas id="productChart" width="400" height="200"></canvas>
       </div>
     </div>

@@ -1,35 +1,141 @@
-<div class="rapport-container">
-  <h2>Génération du rapport</h2>
-
-  <button (click)="generateRapport()" class="btn btn-primary">Générer un rapport</button>
-
-  <!-- Affichage du rapport -->
-  <div *ngIf="rapportContenu">
-    <h3>Rapport généré :</h3>
-    <pre>{{ rapportContenu }}</pre> <!-- Utilisez <pre> pour conserver le formatage -->
+<div class="menu-bar animate__animated animate__fadeInDown">
+  <div class="logo">
+    <img src="logo.png" alt="Logo" class="logo-img">
   </div>
+  <ul class="nav-links">
+    <li><a routerLink="/accueil">Accueil</a></li>
+    <li><a routerLink="/dons">Dons</a></li>
+  </ul>
+
+  <div class="user-info">
+    <!-- Dropdown for notifications -->
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fa fa-bell notification-icon"></i>
+        <!-- <span class="badge" *ngIf="unconfirmedReservationsCount > 0">{{ unconfirmedReservationsCount }}</span> -->
+      </button>
+      <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+        <!-- <app-notifications></app-notifications> -->
+      </ul>
+    </div>
+
+    <!-- Dropdown for user info and logout -->
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        <span class="user-name">{{ prenom }}</span>
+        <!-- <img [src]="photo_profile" alt="Profile" class="user-photo"> -->
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="userDropdown">
+        <li>
+          <button  type="button"  (click)="logout()" class="btn btn-add mb-3 animate__animated animate__bounce" routerLinkerActive="active">
+            deconnexion
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
 
   <!-- Affichage d'un message d'erreur en cas d'échec -->
   <div *ngIf="errorMessage" class="alert alert-danger">
     {{ errorMessage }}
   </div>
-</div>
+
+
+
 
 <div class="reservation-list">
   <h2 class="mb-4">Liste des Réservations</h2>
 
-  <div *ngIf="reservations.length === 0" class="alert alert-warning">
-    <p>Aucune réservation disponible.</p>
-  </div>
-  <ul class="list-group">
-    <li *ngFor="let reservation of reservations" class="list-group-item">
-      <div class="reservation-item p-3"  *ngIf="reservation.don.status == 'confirme'">
-        <!-- <p><strong>ID Réservation :</strong> {{ reservation.id }}</p> -->
-        <p><strong>Bénéficiaire :</strong> {{ reservation.beneficiaire.nomstructure }}</p>
-        <p><strong>Description :</strong> {{ reservation.description }}</p>
-        <!-- <p><strong>Date :</strong> {{ reservation.date }}</p> -->
-        <button class="btn btn-success" >Generer un rapport</button>
+  <div>
+    <div *ngFor="let reservation of reservations" class="card mb-3">
+      <div class="card-header">
+        Donateur: {{ reservation.don.creator.nom }} {{ reservation.don.creator.prenom }}
       </div>
-    </li>
-  </ul>
+      <div class="card-body">
+        <h5 class="card-title">Don: {{ reservation.don.libele }}</h5>
+        <p>Don: {{ reservation.don.libelle  }}</p>
+        <p class="card-text">{{ reservation.description }}</p>
+        <button (click)="generateRapport( reservation.id)" class="btn btn-primary">Générer un rapport</button>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noReservations>
+    <p>Aucune réservation trouvée pour ce bénéficiaire.</p>
+  </ng-template>
 </div>
+
+
+<!-- Section de la bannière -->
+<div class="banner-section animate__animated animate__zoomIn">
+  <div class="banner-content">
+    <h1 class="banner-title">Bienvenue sur notre plateforme de Dons</h1>
+    <p class="banner-text">Faites la différence en soutenant des causes importantes.</p>
+    <!-- <a routerLink="/dons" class="btn btn-banner">Découvrir les Dons</a> -->
+  </div>
+
+  <!-- Carte affichant le nombre de dons -->
+
+</div>
+
+<div class="don-count-card">
+  <div class="cercle">
+    <p class="don-count">{{ nombreDonsUtilisateur }}</p>
+  </div>
+  <p class=" don-text">DON OFFERTS</p>
+</div>
+
+<div class="container my-5">
+  <h2 class="text-center mb-4">Liste des Dons</h2>
+
+
+  <!-- <a routerLink="/dons/add" class="btn btn-add mb-3 animate__animated animate__bounce" data-bs-toggle="modal" data-bs-target="#donModal">Ajouter un Don</a> -->
+
+  <div class="cards-container">
+    <div class="don-card animate__animated animate__fadeInUp" *ngFor="let don of dons">
+      <!-- *ngIf="don.created_by && isDonCreator(don.created_by)" -->
+      <div>
+        <img [src]="don.image || 'https://via.placeholder.com/300'" class="don-img">
+
+        <div class="don-card-body">
+          <h5 class="don-title">{{ don.libelle }}</h5>
+          {{ don.description ? (don.description | slice: 0:190) + '...' : don.description }}
+          <div class="don-buttons">
+            <button class="btn btn-detail" [routerLink]="['/dons', don.id]">Détails</button>
+
+            <ng-container *ngIf="don.created_by && isDonCreator(don.created_by)">
+              <button class="btn btn-modifier" data-bs-toggle="modal" data-bs-target="#donModal">Modifier</button>
+              <button class="btn btn-supprimer">Supprimer</button>
+            </ng-container>
+
+            <ng-container *ngIf="userRole === 'organisation'">
+              <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#reservationModal">Réserver</button>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- src/app/components/reservations/reservations.component.html -->
+<!-- <div class="container">
+  <h2>Mes Réservations</h2>
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+  <div *ngIf="reservations.length === 0 && !errorMessage">
+    <p>Aucune réservation trouvée.</p>
+  </div>
+
+  <div *ngFor="let reservation of reservations" class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">{{ reservation.don.nom }}</h5>
+      <p class="card-text">
+        Donateur: {{ reservation.don.creator.prenom }} {{ reservation.don.creator.nom }}
+      </p>
+    </div>
+  </div>
+</div> -->

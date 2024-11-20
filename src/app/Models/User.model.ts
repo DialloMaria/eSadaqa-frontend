@@ -8,5 +8,6 @@ export interface UserModel
   telephone ?: number;
   password ?: string;
   photo_profile?:string;
+  role: string;
 
 }

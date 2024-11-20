@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ReservationService } from '../../../../Services/reservation.Service';
 import { CommonModule } from '@angular/common';
 import { DonModel } from '../../../../Models/Don.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-reservation',
@@ -91,23 +92,56 @@ onSubmit(): void {
         .subscribe({
           next: (response) => {
             console.log('Réservation créée avec succès:', response);
-            alert('Réservation créée avec succès !');
+            Swal.fire({
+              title: 'Succès',
+              text: 'Réservation créée avec succès !',
+              icon: 'success',
+              confirmButtonText: 'OK',
+              customClass: {
+                confirmButton: 'btn-supprimer'
+              }
+            });
           },
           error: (error) => {
             if (error.status === 409) {
               // Afficher un message spécifique pour l'erreur 409
-              alert('Erreur: Une réservation existe déjà pour ce don.');
+              Swal.fire({
+                title: 'Erreur',
+                text: 'Une réservation existe déjà pour ce don.',
+                icon: 'warning',
+                confirmButtonText: 'OK',
+                customClass: {
+                  confirmButton: 'btn-supprimer'
+                }
+              });
             } else {
               console.error('Erreur lors de la création de la réservation:', error);
-              alert('Erreur lors de la création de la réservation.');
+              Swal.fire({
+                title: 'Erreur',
+                text: 'Erreur lors de la création de la réservation.',
+                icon: 'error',
+                confirmButtonText: 'OK',
+                customClass: {
+                  confirmButton: 'btn-supprimer'
+                }
+              });
             }
           }
         });
     }
   } else {
-    alert('Erreur: Aucun ID de don trouvé.');
+    Swal.fire({
+      title: 'Erreur',
+      text: 'Aucun ID de don trouvé.',
+      icon: 'error',
+      confirmButtonText: 'OK',
+      customClass: {
+        confirmButton: 'btn-supprimer'
+      }
+    });
   }
 }
+
 
 
 

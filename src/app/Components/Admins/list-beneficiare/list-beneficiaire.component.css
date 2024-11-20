@@ -1,15 +1,27 @@
-/* Header styles */
-.header {
-  padding-top: 100px;
-  margin-left: 100px;
+.main{
   display: flex;
+  position: relative;
+}
+.contenu
+{
+  position: relative;
+  width: 100%;
+
+}
+
+
+.header {
+  position: sticky;
+  padding-top: 100px;
+  display: flex;
+  width: 100%;
   justify-content: flex-end;
   align-items: center;
   padding: 2rem;
   background-color: #007461; /* Couleur de fond de l'en-tête */
   color: #fff;
   height: 100px;
-  z-index: 1;
+  z-index: 0;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -32,7 +44,6 @@
 
 .sidebar {
   position: sticky;
-  top: -50px;
   left: 0;
   bottom: 0;
   width: 110px;
@@ -43,7 +54,7 @@
   transition: all 0.5s linear;
   background: #fff;
   box-shadow: 0px 10px 25px #297fb918;
-  z-index: 5;
+  z-index: 1;
 }
 
 .sidebar:hover {
@@ -132,39 +143,17 @@ li {
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-/* Floating Action Button */
-.fab {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  background-color: #007461;
-  color: white;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease;
-}
 
-.fab:hover {
-  background-color: #005f4a;
+button.h3{
+  color: #0000;
+  font-size: 1.5rem;
 }
-
-.fab i {
-  pointer-events: none;
-}
-
 
 
 
 /* Adjusting the table container */
 .detail {
-  width: 90%; /* Decrease the width of the table */
-  background-color: #f9f9f9;
+  width: 100%; /* Decrease the width of the table */
   transition: margin-left 0.5s ease-in-out;
 }
 
@@ -192,8 +181,132 @@ li {
   text-align: center;
   vertical-align: middle;
 }
+.btn {
+ background-color: #007461;
+}
 
+.fa-eye{
+  color: #fff;
+}
 .main
 {
   display: flex;
 }
+
+
+
+
+.fab {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  background-color: #007461;
+  color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.fab i {
+  pointer-events: none;
+}
+.table-container {
+  max-height: 100px; /* Adjust height as needed */
+  overflow-y: auto;
+}
+
+
+
+/* Sidebar mobile */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    width: 100%;
+    height: 12vh;
+    margin: 0px;
+    padding: 0px;
+    /*height: auto;
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1); */
+  }
+
+  li{
+    height: 12vh;
+    margin: 0;
+    padding: 0;
+  }
+  .menu li {
+    margin: 0;
+    padding: 0px;
+  }
+  .logo {
+    display: none;
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 0;
+    list-style: none;
+  }
+
+  .menu li {
+    flex: 1;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.8rem;
+  }
+
+  .menu a {
+    color: #8A92A6;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu .active,
+  .menu li.active a {
+    color: #007461;
+    font-weight: bold;
+  }
+
+  .menu a .menu-text {
+    display: block;
+    font-size: 0.75rem;
+  }
+
+  /* Enlever les animations de largeur */
+  .sidebar:hover {
+    width: 100%;
+  }
+  .logout{
+    display: none;
+  }
+  /* .detail{
+    margin-bottom: 500px;
+  } */
+  .product-table th:nth-child(3),
+  .product-table th:nth-child(4),
+  .product-table td:nth-child(3),
+  .product-table td:nth-child(4) {
+    display: none; /* Masque les colonnes Prénom et E-mail */
+  }
+
+  .product-table th,
+  .product-table td {
+    font-size: 0.9rem; /* Réduit la taille de la police */
+  }
+}
+

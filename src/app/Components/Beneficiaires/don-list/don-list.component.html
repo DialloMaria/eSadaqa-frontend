@@ -1,0 +1,260 @@
+  <!-- <div class="container my-5">
+    <h2 class="text-center mb-4">Liste des Dons</h2>
+    <a routerLink="/dons/add" class="btn btn-primary mb-3">Ajouter un Don</a>
+
+    <div class="row">
+      <div class="col-md-4 mb-4" *ngFor="let don of dons">
+        <div class="card don-card animate-card">
+          <img [src]="don.image || 'https://via.placeholder.com/300'" class="card-img-top" alt="{{ don.libelle }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ don.libelle }}</h5>
+            <p class="card-text">{{ don.description }}</p>
+            <p><strong>Catégorie:</strong> {{ don.categorie }}</p>
+            <p><strong>Status:</strong> {{ don.status }}</p>
+            <a  [routerLink]="['/dons', don.id]"class="btn btn-info btn-sm">Voir</a>
+            <a routerLink="/dons/edit/{{ don.id }}" class="btn btn-warning btn-sm">Modifier</a>
+            <button class="btn btn-danger btn-sm" (click)="deleteDon(don.id)">Supprimer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- <div class="container my-5">
+    <h2 class="text-center mb-4">Liste des Dons</h2>
+    <a routerLink="/dons/add" class="btn btn-primary mb-3">Ajouter un Don</a>
+
+    <div class="row">
+      <div class="col-md-4 mb-4" *ngFor="let don of dons">
+        <div class="card don-card animate-card">
+          <img [src]="don.image || 'https://via.placeholder.com/300'" class="card-img-top" alt="{{ don.libelle }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ don.libelle }}</h5>
+            <p class="card-text">{{ don.description }}</p>
+            <p><strong>Catégorie:</strong> {{ don.categorie }}</p>
+            <p><strong>Status:</strong> {{ don.status }}</p>
+            <a [routerLink]="['/dons', don.id]" class="btn btn-info btn-sm">Voir</a> -->
+
+            <!-- Vérification si l'utilisateur connecté est celui qui a créé le don -->
+            <!-- <ng-container *ngIf="don.created_by && isDonCreator(don.created_by)">
+              <a routerLink="/dons/edit/{{ don.id }}" class="btn btn-warning btn-sm">Modifier</a>
+              <button class="btn btn-danger btn-sm" (click)="deleteDon(don.id)">Supprimer</button>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="cards-container">
+    <div class="don-card" *ngFor="let don of dons">
+      <img src="https://via.placeholder.com/200" alt="Project image" class="don-img" >
+      <div class="don-card-body">
+        <h5 class="don-title">{{ don.libelle }}</h5>
+        <p class="don-description">{{ don.description }}</p>
+        <div class="don-buttons">
+          <button class="btn btn-detail" [routerLink]="['/dons', don.id]">Détails</button> -->
+          <!-- Vérification si l'utilisateur connecté est celui qui a créé le don -->
+          <!-- <ng-container *ngIf="don.created_by && isDonCreator(don.created_by)">
+            <button class="btn btn-modifier" routerLink="/dons/edit/{{ don.id }}">Modifier</button>
+            <button class="btn btn-supprimer" (click)="deleteDon(don.id)">Supprimer</button>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+ -->
+
+
+<!-- <body>
+  <div class="card">
+    <img src="Group 1000004320.png" alt="Enfant" class="card-image">
+    <div class="card-content">
+        <h2 class="card-title">Lorem lorem lorem lorem</h2>
+        <p class="card-description">Un projet pour aider les enfant en difficulté ...</p>
+        <div class="card-buttons">
+            <button class="btn detail">Détail</button>
+            <button class="btn modify">Modifier</button>
+            <button class="btn delete">Supprimer</button>
+        </div>
+    </div>
+  </div>
+</body> -->
+
+
+<!-- <div class="project-card">
+  <img src="https://openui.fly.dev/openui/400x200.svg" alt="Sport activities" class="card-img-top">
+  <div class="card-body">
+      <div class="d-flex justify-content-between">
+          <span class="badge badge-secondary-custom">Sport</span>
+          <span class="text-muted-custom">le 12/08/2024</span>
+      </div>
+      <h5 class="card-title mt-2">Programme de soutien scolaire</h5>
+      <p class="card-text text-muted-custom">Un projet pour aider les élèves en difficulté scolaire à améliorer leurs performances académiques ...</p>
+      <div class="d-flex justify-content-between align-items-center mt-4">
+          <div class="d-flex align-items-center">
+              <span class="text-success fw-semibold">2435</span>
+              <span class="text-muted-custom ms-2">👍</span>
+              <span class="text-danger fw-semibold ms-4">127</span>
+              <span class="text-muted-custom ms-2">👎</span>
+          </div>
+          <a href="#" class="btn btn-primary-custom">Voir les détails</a>
+      </div>
+  </div>
+</div> -->
+
+
+
+
+
+<!-- <div class="menu-bar animate__animated animate__fadeInDown">
+  <div class="logo">
+    <img src="logo.png" alt="Logo" class="logo-img">
+  </div>
+  <ul class="nav-links">
+    <li><a routerLink="/accueil">Accueil</a></li>
+    <li><a routerLink="/dons">Dons</a></li>
+  </ul>
+
+  <div class="user-info">
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fa fa-bell notification-icon"></i>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+        <app-notifications></app-notifications>
+      </ul>
+    </div>
+      <span class="user-name">{{prenom}}</span>
+      <span class="user-photo">{{photo_profile}}</span>
+    </div>
+    <button  type="button"[routerLink]="['/connexion']"  class="btn btn-add mb-3 animate__animated animate__bounce" routerLinkerActive="active">
+      deconnexion
+    </button>
+</div> -->
+
+<div class="menu-bar animate__animated animate__fadeInDown">
+  <div class="logo">
+    <img src="logo.png" alt="Logo" class="logo-img">
+  </div>
+  <ul class="nav-links">
+    <li><a routerLink="/accueil">Accueil</a></li>
+    <li><a routerLink="/dons">Dons</a></li>
+  </ul>
+
+  <div class="user-info">
+    <!-- Dropdown for notifications -->
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fa fa-bell notification-icon"></i>
+        <!-- <span class="badge" *ngIf="unconfirmedReservationsCount > 0">{{ unconfirmedReservationsCount }}</span> -->
+      </button>
+      <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+      </ul>
+    </div>
+
+    <!-- Dropdown for user info and logout -->
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        <span class="user-name">{{ prenom }}</span>
+        <!-- <img [src]="photo_profile" alt="Profile" class="user-photo"> -->
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="userDropdown">
+        <li>
+          <button  type="button"  (click)="logout()" class="btn btn-add mb-3 animate__animated animate__bounce" routerLinkerActive="active">
+            deconnexion
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- Section de la bannière -->
+<div class="banner-section animate__animated animate__zoomIn">
+  <div class="banner-content">
+    <h1 class="banner-title">Bienvenue sur notre plateforme de Dons</h1>
+    <p class="banner-text">Faites la différence en soutenant des causes importantes.</p>
+    <!-- <a routerLink="/dons" class="btn btn-banner">Découvrir les Dons</a> -->
+  </div>
+
+  <!-- Carte affichant le nombre de dons -->
+
+</div>
+
+<div class="don-count-card">
+  <div class="cercle">
+    <p class="don-count">{{ nombreDonsUtilisateur }}</p>
+  </div>
+  <p class=" don-text">DON OFFERTS</p>
+</div>
+
+<div class="container my-5">
+  <h2 class="text-center mb-4">Liste des Dons</h2>
+  <button  type="button" class="btn btn-primary mt-5" class="btn btn-add mb-3 animate__animated animate__bounce" data-bs-toggle="modal" data-bs-target="#donModal">
+    Ajouter un Don
+  </button>
+
+  <!-- <a routerLink="/dons/add" class="btn btn-add mb-3 animate__animated animate__bounce" data-bs-toggle="modal" data-bs-target="#donModal">Ajouter un Don</a> -->
+
+  <div class="cards-container">
+    <div class="don-card animate__animated animate__fadeInUp" *ngFor="let don of dons.slice().reverse()">
+      <!-- *ngIf="don.created_by && isDonCreator(don.created_by)" -->
+      <div>
+        <img [src]="don.image || 'https://via.placeholder.com/300'" class="don-img">
+
+        <div class="don-card-body">
+          <h5 class="don-title">{{ don.libelle }}</h5>
+          {{ don.description ? (don.description | slice: 0:190) + '...' : don.description }}
+          <div class="don-buttons">
+            <button class="btn btn-detail" [routerLink]="['/dons', don.id]">Détails</button>
+
+            <ng-container *ngIf="don.created_by && isDonCreator(don.created_by)">
+              <button class="btn btn-modifier" data-bs-toggle="modal" data-bs-target="#donModal">Modifier</button>
+              <button class="btn btn-supprimer">Supprimer</button>
+            </ng-container>
+
+            <ng-container *ngIf="userRole === 'organisation'">
+              <button class="btn btn-success" (click)="reserverDon(don.id ?? 0)" type="button" data-bs-toggle="modal" data-bs-target="#reservationModal">Réserver</button>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Pagination -->
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item" [ngClass]="{'disabled': currentPage === 1}">
+      <a class="page-link" (click)="changePage(currentPage - 1)">Previous</a>
+    </li>
+    <li class="page-item" *ngFor="let page of [].constructor(getTotalPages()); let i = index"
+        [ngClass]="{'active': i + 1 === currentPage}">
+      <a class="page-link" (click)="changePage(i + 1)">{{ i + 1 }}</a>
+    </li>
+    <li class="page-item" [ngClass]="{'disabled': currentPage === getTotalPages()}">
+      <a class="page-link" (click)="changePage(currentPage + 1)">Next</a>
+    </li>
+  </ul>
+</nav>
+
+
+<!-- <div class="pagination">
+  <button class="btn" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Précédent</button>
+  <span>Page {{currentPage}} / {{totalPages}}</span>
+  <button class="btn" (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Suivant</button>
+</div> -->
+<footer class="footer">
+</footer>
+
+
+
+
+

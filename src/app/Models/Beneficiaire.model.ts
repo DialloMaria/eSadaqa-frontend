@@ -12,4 +12,5 @@ export interface BeneficiaireModel {
   image_cn?: string;
   numero_identite?: string;
   user_Id?: number | null; // nullable, foreign key to User
+  user: any;
 }
